@@ -1,3 +1,5 @@
+package MiniProject_Chic_Chic;
+
 public class java_test {
     public static void main(String[] args) {
 //         test test!
@@ -5,6 +7,6 @@ public class java_test {
         // test test test test
         // test2
         // test is
-        // test test test test
+        // tes is 02
     }
 }
