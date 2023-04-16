@@ -8,5 +8,6 @@ public class java_test {
         // test2
         // test is
         // tes is 02
+        // test JS
     }
 }
