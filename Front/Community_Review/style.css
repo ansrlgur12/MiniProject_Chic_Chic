@@ -1,0 +1,165 @@
+*{
+    box-sizing: border-box;
+    margin: 0px;
+  }
+  
+  
+hr {
+    display: block;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    margin-left: auto;
+    margin-right: auto;
+    border-style: inset;
+    border-width: 1px solid #42240a;
+  }
+h1 {
+    display: block;
+    font-size: 2em;
+    margin-top: 0.67em;
+    margin-bottom: 0.67em;
+    margin-left: 0;
+    margin-right: 0;
+    font-weight: bold;
+  }
+  h2 {
+    display: block;
+    font-size: 1.5em;
+    margin-top: 0.83em;
+    margin-bottom: 0.83em;
+    margin-left: 0;
+    margin-right: 0;
+    font-weight: bold;
+  }
+  body{
+    height: auto;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  header{
+    background-color: white;
+    position: fixed;
+    width: 100vw;
+    height: 130px;
+    display: flex;
+    flex-direction: column;
+    border-bottom: 1px solid #ccc;
+  }
+  .top{
+    height: 15px;
+    background-color: #42240a;
+    margin-bottom: 10px;
+  }
+  .logo-line{
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+  }
+  .logo-line .logo-left{
+    padding-left: 15vw;
+    flex-basis: 20%;
+  }
+  .logo-line .logo{
+    width: 250px;
+    height: 100%;
+  }
+  .logo-line .logo .image{
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-image: url("./image/로고.jpg");
+  }
+  .logo-line .logo-right{
+    justify-content: center;
+    align-items: center;
+    flex-basis: 20%;
+    display: flex;
+    flex-direction: row;
+  }
+  .logo-line .logo-right .searchbar{
+    display: flex;
+    height: 100%;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+  .logo-line .logo-right .searchbar .search-btn{
+    margin-right: 15px;
+  }
+  .logo-line .logo-right .searchbar .search-btn:active{
+    background-color: aquamarine;
+  }
+  
+  .logo-line .logo-right .searchbar .search-txt{
+    height: 30px;
+    margin-right: 15px;
+    display: none;
+  }
+  .nav{
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .nav .menu{
+    width: 400px;
+    display: flex;
+    justify-content: space-evenly;
+    font-size: 0.9em;
+  }
+  
+  a{
+    text-decoration: none;
+    font-weight: bold;
+    color: #42240a;
+  }
+  main{
+    margin-top: 130px;
+    width: 60vw;
+    height: auto;
+    padding: 70px 0px 0px 0px;
+  }
+  main .section{
+    height: 15vh;
+    display: flex;
+    flex-direction: column;
+  }
+  main .section .article-title {
+    
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 20px 0px 20px 0px;
+  }
+  main .article-list{
+    width: 100%;
+    height: 100%;
+  }
+  main .article-list .article{
+    padding: 30px 0px 30px 0px;
+    border-bottom: .5px solid #ccc;
+    height: 200px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  main .article-list .article .article-image{
+    flex-basis: 25%;
+    background-color: #ccc;
+    height: 150px;
+    width: 150px;
+    background-size: cover;
+    background-position: center;
+  }
+
+  main .article-list .article:nth-child(2) .article-image{
+    background-image: url("./image/로고.jpg");
+  }
+  main .article-list .article:nth-child(3) .article-image{
+    background-image: url("./image/bear\ wallpaper\ pc\ Mac\ 네이버\ 아이콘\ 곰.png");
+  }
