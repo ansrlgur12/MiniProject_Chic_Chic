@@ -1,0 +1,150 @@
+*{
+    box-sizing: border-box;
+    margin: 0px;
+  }
+  body{
+    height: auto;
+    position: relative;
+  }
+  header{
+    background-color: white;
+    position: fixed;
+    width: 100vw;
+    height: 130px;
+    display: flex;
+    flex-direction: column;
+  }
+  .top{
+    height: 15px;
+    background-color: #42240a;
+    margin-bottom: 10px;
+  }
+  .logo-line{
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+  }
+  .logo-line .logo-left{
+    padding-left: 15vw;
+    flex-basis: 20%;
+  }
+  .logo-line .logo{
+    width: 250px;
+    height: 100%;
+  }
+  .logo-line .logo .image{
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-image: url("./image/로고.jpg");
+  }
+  .logo-line .logo-right{
+    justify-content: center;
+    align-items: center;
+    flex-basis: 20%;
+    display: flex;
+    flex-direction: row;
+  }
+  .logo-line .logo-right .searchbar{
+    display: flex;
+    height: 100%;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+  .logo-line .logo-right .searchbar .search-btn{
+    margin-right: 15px;
+  }
+  .logo-line .logo-right .searchbar .search-btn:active{
+    background-color: aquamarine;
+  }
+  
+  .logo-line .logo-right .searchbar .search-txt{
+    height: 30px;
+    margin-right: 15px;
+    display: none;
+  }
+  .nav{
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .nav .menu{
+    width: 400px;
+    display: flex;
+    justify-content: space-evenly;
+    font-size: 0.9em;
+  }
+  
+  a{
+    text-decoration: none;
+    font-weight: bold;
+    color: #42240a;
+  }
+  main .container{
+    padding-top: 130px;
+  }
+  main .container .article{
+    
+    width: 100%;
+    height: 65vh;
+  }
+  .main-image{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+  }
+  .article:nth-child(1) .main-image{
+    background-image: url("./image/메인3.jpg");
+  }
+  
+  .article:nth-child(2) .main-image{
+    background-image: url("./image/커뮤.jpg");
+  }
+  
+  .article:nth-child(3) .main-image{
+    background-image: url("./image/커스텀3.jpg");
+  }
+  
+  .article:nth-child(4) .main-image{
+    background-image: url("./image/공지2.jpg");
+  }
+  .article .main-image .main-btn {
+    width: 100px;
+    height: 50px;
+    border-style: none;
+    background-color: rgba(255, 255, 255);
+    font-weight: bold;
+  }
+  .main-desc{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-basis: 60%;
+    width: 25%;
+    background-color: #341a01b3;
+    margin-bottom: 15px;
+  }
+  h2{
+    font-size: 2em;
+    font-weight: bold;
+    color: white;
+  }
+  p{
+    text-align: center;
+    color: white;
+    font-weight: bold;
+    line-height: 1.5;
+  }
+  
