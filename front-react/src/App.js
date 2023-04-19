@@ -12,7 +12,6 @@ function App() {
   return (
     <Router>
       <Routes>
-        {<Route path='/' element={<Header />} />}
         <Route path='/' element={<Main />} />
         <Route path='/community' element={<Community />} />
         <Route path='/imagetest' element={<ImageTest />} />

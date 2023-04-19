@@ -27,7 +27,7 @@ const MainStyle = styled.div`
     background-position: center;
     background-attachment: fixed;
   }
-  
+
   .article:nth-child(1) .main-image{
     background-image: url("./image/메인3.jpg");
   }
@@ -77,7 +77,7 @@ const Main = () => {
 
     return(
         <>
-        <Header />
+        <Header/>
         <MainStyle>
         <div class="main">
             <div class="container">

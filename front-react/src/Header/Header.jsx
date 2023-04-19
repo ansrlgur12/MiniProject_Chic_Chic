@@ -140,7 +140,7 @@ const Header = () => {
                 <div class="top"></div>
                 <div class="logo-line">
                     <div class="logo-left"></div>
-                    <div class="logo"><div className="image" style={{ backgroundImage: `url(${logoImage})`, backgroundSize: 'cover' }}></div></div>
+                    <div class="logo" onClick={()=>nav("/")}><div className="image" style={{ backgroundImage: `url(${logoImage})`, backgroundSize: 'cover' }}></div></div>
                     <div class="logo-right">
                         <div class="searchbar">
                         <input class="search-txt" type="text" placeholder="" />

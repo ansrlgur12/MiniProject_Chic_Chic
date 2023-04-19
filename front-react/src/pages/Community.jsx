@@ -1,14 +1,13 @@
 import React from "react";
 import styled, {css} from "styled-components";
 import Header from "../Header/Header";
-import HeaderStyle from "../Header/Header";
+import {HeaderStyle} from "../Header/Header";
 import { Link } from "react-router-dom";
 
 const CommunityStyle = styled.div`
     box-sizing: border-box;
     margin: 0px;
     height: auto;
-    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
