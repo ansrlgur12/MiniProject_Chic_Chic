@@ -126,6 +126,7 @@ const HeaderStyle = styled.div`
         flex-direction: column;
         justify-content: flex-start;
         align-items: center;
+        cursor: pointer;
     }
 `;
 
@@ -166,7 +167,7 @@ const Header = () => {
                             <p>회원거래</p>
                         </div>
                         <div className="caption-title">
-                            <p>향수 테스트</p>
+                            <p onClick={()=>nav("/testmain")}>향수 테스트</p>
                             <p>노트 피라미드</p>
                         </div>
                         <div className="caption-title">
