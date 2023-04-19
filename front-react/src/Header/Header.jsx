@@ -107,7 +107,8 @@ const Header = () => {
                 <div class="menu">
                     <a href="#">Perfume</a>
                     <Link to = "/community">소개</Link>
-                    <a href="#">Custom</a>
+                    
+                    <Link to = "/imageTest">Custom</Link>
                     <a href="#">Notice</a>
                 </div>
                 </div>
