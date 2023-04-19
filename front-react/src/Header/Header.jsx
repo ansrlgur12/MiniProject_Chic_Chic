@@ -1,9 +1,11 @@
 import React from "react";
 import styled, {css} from "styled-components";
-import logoImage from "./image/로고.jpg"
-import { Link } from "react-router-dom";
+import logoImage from "../image/로고.jpg"
+import { Link, useNavigate } from "react-router-dom";
+import "./font.css";
 
 const HeaderStyle = styled.div`
+
     box-sizing: border-box;
     background-color: white;
     position: fixed;
@@ -11,7 +13,9 @@ const HeaderStyle = styled.div`
     height: 130px;
     display: flex;
     flex-direction: column;
-    .top{
+    
+    border-bottom: 1px solid #ccc;
+ .top{
     height: 15px;
     background-color: #42240a;
     margin-bottom: 10px;
@@ -70,10 +74,12 @@ const HeaderStyle = styled.div`
     align-items: center;
   }
   .nav .menu{
-    width: 400px;
+    font-family : 'NeoDunggeunmoPro-Regular';
+    width: 650px;
     display: flex;
-    justify-content: space-evenly;
-    font-size: 0.9em;
+    justify-content: space-around;
+    font-size: 1.1em;
+    font-weight: 100;
   }
   
   a{
@@ -81,10 +87,52 @@ const HeaderStyle = styled.div`
     font-weight: bold;
     color: #42240a;
   }
+  h2 {
+    display: block;
+    font-size: 1.5em;
+    margin-top: 0.83em;
+    margin-bottom: 0.83em;
+    margin-left: 0;
+    margin-right: 0;
+    font-weight: bold;
+  }
+
+  .caption{
+            color: #42240a;
+            position: absolute;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            padding-top: 10px;
+            padding-left: 30px;
+            width: 650px;
+            height: 150px;
+            background-color: white;
+            transition: all;
+            border-bottom-left-radius: 5px;
+            border-bottom-right-radius: 5px;
+           transition-duration: .3s;
+           transition-delay: .3s;
+           font-size: small;
+            opacity: 0;
+        }
+    .menu:hover .caption{
+        opacity: 1;
+        transform: translateY(37px);
+    }
+    .caption .caption-title{
+        line-height: 2;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        cursor: pointer;
+    }
 `;
 
 const Header = () => {
 
+    const nav = useNavigate();
 
     return(
         <>
@@ -105,11 +153,29 @@ const Header = () => {
                 </div>
                 <div class="nav">
                 <div class="menu">
-                    <a href="#">Perfume</a>
-                    <Link to = "/community">소개</Link>
-                    
-                    <Link to = "/imageTest">Custom</Link>
-                    <a href="#">Notice</a>
+                    <Link to = "/">Perfume</Link>
+                    <Link to = "/community">Community</Link>
+                    <Link to = "/">Custom</Link>
+                    <Link to = "/">Notice</Link>
+                    <div class="caption">
+                        <div className="caption-title">
+                            <p>향수</p>
+                        </div>
+                        <div className="caption-title">
+                            <p onClick={()=>nav("/Community")}>리뷰</p>
+                            <p>정보공유</p>
+                            <p>회원거래</p>
+                        </div>
+                        <div className="caption-title">
+                            <p onClick={()=>nav("/testmain")}>향수 테스트</p>
+                            <p>노트 피라미드</p>
+                        </div>
+                        <div className="caption-title">
+                            <p>공지사항</p>
+                            <p>이벤트</p>
+                            <p>새 소식</p>
+                        </div>
+                    </div>
                 </div>
                 </div>
             </HeaderStyle>
