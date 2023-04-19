@@ -1,6 +1,7 @@
 import React from "react";
 import styled, {css} from "styled-components";
 import Header from "../Header/Header";
+import HeaderStyle from "../Header/Header";
 import { Link } from "react-router-dom";
 
 const CommunityStyle = styled.div`
@@ -58,6 +59,21 @@ const CommunityStyle = styled.div`
   .main .article-list .article:nth-child(3) .article-image{
     background-image: url("./image/bear\ wallpaper\ pc\ Mac\ 네이버\ 아이콘\ 곰.png");
   }
+  h2 {
+    display: block;
+    font-size: 1.5em;
+    margin-top: 0.83em;
+    margin-bottom: 0.83em;
+    margin-left: 0;
+    margin-right: 0;
+    font-weight: bold;
+  }
+  .select{
+    height: 25px;
+    width: 70px;
+  }
+  
+    
 `;
 
 const Community = () => {
@@ -71,7 +87,7 @@ const Community = () => {
                 <h2>리뷰</h2>
                 <div class="article-title">
                     <p>전체 글</p>
-                    <select name="" id="">
+                    <select  className ="select" name="" id="">
                         <option value="전체 글">전체 글</option>
                         <option value="조회순">조회순</option>
                         <option value="인기순">인기순</option>
