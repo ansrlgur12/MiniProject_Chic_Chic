@@ -90,7 +90,7 @@ export const ImageTestStyle = styled.div`
   padding: 1rem 4rem;
   
   border: none;
-  border-radius: 2rem;
+  border-radius: 8px;
   background-color: #1fdba9;
   color: white;
   font-size: 1.5rem;
