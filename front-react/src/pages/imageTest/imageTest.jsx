@@ -52,10 +52,10 @@ export const ImageTestStyle = styled.div`
     
     border: 1px solid black;
     width: 375px;
-    height: 812px;
+    height: 77vh;
     margin: 0px auto;
     padding: 2rem;
-    margin-top:30vh;
+    margin-top:20vh;
    
     display: flex;
   flex-direction: column;
