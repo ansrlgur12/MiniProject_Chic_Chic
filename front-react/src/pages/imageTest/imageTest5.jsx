@@ -19,7 +19,7 @@ const ImageTest5 = () =>{
             <div className="gage">
           <p className="qnum">6/6</p>
         <div class="qheader">
-          <div className="bar" style={{width:' 20vw',height:'100%', background:'black'}}></div>
+          <div className="bar" style={{width:' 100%',height:'100%', background:'black'}}></div>
         </div>
         </div>
         </Gage>
