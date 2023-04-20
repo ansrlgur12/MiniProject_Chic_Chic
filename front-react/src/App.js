@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import ImageTest from './pages/imageTest/imageTest';
 import ImageTest1 from './pages/imageTest/imageTest1';
 import TestMain from './pages/imageTest/TestMain';
+import ImageTest2 from './pages/imageTest/imageTest2';
 import Information from './pages/Infomation';
 import UserDeal from './pages/Userdeal';
 import Article from './pages/Article';
@@ -24,9 +25,12 @@ function App() {
         <Route path='/information' element={<Information />} />
         <Route path='/userdeal' element={<UserDeal />} />
         <Route path='/article' element={<Article />} />
-        <Route path='/imagetest2' element={<ImageTest1 />} />
         <Route path='/EventPage' element={<EventPage />} />
         <Route path='/Notice' element={<Notice />} />
+        <Route path='/imagetest1' element={<ImageTest1 />} />
+        <Route path='/imagetest2' element={<ImageTest2 />} />
+
+>>>>>>> master
 
       </Routes>
     </Router>

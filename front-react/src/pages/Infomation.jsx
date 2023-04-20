@@ -29,7 +29,7 @@ const Information = () => {
                         </div>
                         <div class="article-image"></div>
                     </div>
-                    <div class="article">
+                    <div class="article" onClick={()=>nav("/article")}>
                         <div class="article-left">
                             <h2>제목 제목</h2>
                             <p>뭐시기뭐시기</p>

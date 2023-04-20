@@ -1,11 +1,11 @@
 import React from "react";
 import Header from "../Header/Header";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {CommunityStyle} from "./Community";
 
 
 const UserDeal = () => {
-
+    const nav = useNavigate();
     return(
         <>
             <Header />
@@ -23,14 +23,14 @@ const UserDeal = () => {
                 </div>
                 <div class="article-list">
                     <hr/>
-                    <div class="article">
+                    <div class="article" onClick={()=>nav("/article")}>
                         <div class="article-left">
                             <h2>제목 제목</h2>
                             <p>뭐시기뭐시기</p>
                         </div>
                         <div class="article-image"></div>
                     </div>
-                    <div class="article">
+                    <div class="article" onClick={()=>nav("/article")}>
                         <div class="article-left">
                             <h2>제목 제목</h2>
                             <p>뭐시기뭐시기</p>
