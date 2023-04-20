@@ -18,7 +18,7 @@ export const ImageTestStyle = styled.div`
     display:flex;
     align-items:center;
     justify-content:center;
-   
+    
     
   
   
@@ -29,7 +29,7 @@ export const ImageTestStyle = styled.div`
     margin: 0px auto;
     padding: 2rem;
     margin-top:30vh;
-    position: relative;
+   
     display: flex;
   flex-direction: column;
   justify-content: center; 
