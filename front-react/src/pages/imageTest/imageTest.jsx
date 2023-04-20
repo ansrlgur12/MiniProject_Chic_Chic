@@ -5,6 +5,7 @@ import Spring from "../../image/spring.png"
 import Summer from "../../image/summer.png"
 import Fall from "../../image/fall.png"
 import Winter from "../../image/winter.png"
+import "../../Header/font.css";
 
 export const ImageTestStyle = styled.div`
 
@@ -12,16 +13,16 @@ export const ImageTestStyle = styled.div`
     padding: 0;
     height: 100vh;
     
-    font-family: "Helvetica Neue", Arial, sans-serif;
+    font-family : 'NeoDunggeunmoPro-Regular';
     font-size: 16px;
     line-height: 1.5;
     display:flex;
     align-items:center;
     justify-content:center;
-   
+    
     
   
-  
+
   .container {
     border: 1px solid black;
     width: 375px;
@@ -29,7 +30,7 @@ export const ImageTestStyle = styled.div`
     margin: 0px auto;
     padding: 2rem;
     margin-top:30vh;
-    position: relative;
+   
     display: flex;
   flex-direction: column;
   justify-content: center; 
@@ -39,13 +40,24 @@ export const ImageTestStyle = styled.div`
     
     
   }
+  .qnum{
+    margin-top: 10px;
+  }
   
   .header {
     
+    background-color: #fff;  
+  }
+  .qheader{
     background-color: #fff;
-    padding: 20px 0;
+    border: 3px solid black;
+    padding:0px;
+    width: 20vw;
+    height:30px;
     
   }
+
+
   .title {
     margin-top:0;
     font-size: 24px;
@@ -53,9 +65,11 @@ export const ImageTestStyle = styled.div`
   }
   `
   export const ImageTestStyle1 = styled.div`
+  font-family : 'NeoDunggeunmoPro-Regular';
   
   .content {
-    padding: 40px 0;
+    padding-bottom: 40px;
+    padding-top: 20px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -104,7 +118,7 @@ export const ImageTestStyle = styled.div`
   .option {
     
     width: 140px;
-    height: 60px;
+    height: 120px;
     
   margin-bottom: 20px;
     
@@ -154,8 +168,9 @@ const ImageTest= () =>{
         <ImageTestStyle>
           <ImageTestStyle1>
         <div class="container">
-        <div class="header">
-          <h1 class="title">향수 유형 테스트</h1>
+          <p className="qnum">1/6</p>
+        <div class="qheader">
+          <div className="bar" style={{width:' 3.2vw',height:'3.2vh', background:'black'}}></div>
         </div>
         <div class="content">
           <div class="question">

@@ -4,6 +4,7 @@ import Community from './pages/Community';
 import Main from './pages/Main';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import ImageTest from './pages/imageTest/imageTest';
+import ImageTest1 from './pages/imageTest/imageTest1';
 import TestMain from './pages/imageTest/TestMain';
 import Information from './pages/Infomation';
 import UserDeal from './pages/Userdeal';
@@ -21,6 +22,7 @@ function App() {
         <Route path='/information' element={<Information />} />
         <Route path='/userdeal' element={<UserDeal />} />
         <Route path='/article' element={<Article />} />
+        <Route path='/imagetest2' element={<ImageTest1 />} />
 
 
       </Routes>
