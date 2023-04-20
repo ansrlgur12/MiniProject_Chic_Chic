@@ -28,7 +28,7 @@ export const ImageTestStyle = styled.div`
     height: 70vh;
     margin: 0px auto;
     padding: 2rem;
-    margin-top:150px;
+    margin-top:240px;
     position: relative;
     display: flex;
   flex-direction: column;
@@ -81,6 +81,7 @@ export const ImageTestStyle = styled.div`
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+    
   }
   
   .startBtn{
@@ -111,6 +112,7 @@ export const ImageTestStyle = styled.div`
     border: 1px solid #ccc;
     border-radius: 10px;
     transition: background-color 0.2s, border-color 0.2s, color 0.2s;
+    cursor:pointer;
   }
    .optionP{
   
