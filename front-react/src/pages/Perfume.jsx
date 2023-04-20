@@ -726,7 +726,7 @@ export const PerfumeStyle = styled.div`
         padding: 0 1.25em;
     }
 }
-`;
+    `;
 
 
 
