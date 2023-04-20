@@ -177,7 +177,7 @@ const Header = () => {
                     <p className="menutitle title4">Notice</p>
                     <div class="caption">
                         <div className="caption-title perfume">
-                            <p>향수</p>
+                            <p onClick={()=>nav("/PerfumePage")}>향수</p>
                         </div>
                         <div className="caption-title review">
                             <p onClick={()=>nav("/Community")}>리뷰</p>

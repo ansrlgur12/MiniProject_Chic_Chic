@@ -31,21 +31,6 @@ const MainStyle = styled.div`
     background-attachment: fixed;
   }
 
-  .article:nth-child(1) .main-image{
-    background-image: url("./image/메인3.jpg");
-  }
-  
-  .article:nth-child(2) .main-image{
-    background-image: url("./image/커뮤.jpg");
-  }
-  
-  .article:nth-child(3) .main-image{
-    background-image: url("./image/커스텀3.jpg");
-  }
-  
-  .article:nth-child(4) .main-image{
-    background-image: url("./image/공지2.jpg");
-  }
   .article .main-image .main-btn {
     width: 100px;
     height: 50px;
