@@ -39,7 +39,6 @@ function App() {
         <Route path='/imagetest5' element={<ImageTest5 />} />
         <Route path='/imagetest6' element={<ImageTest6 />} />
 
->>>>>>> master
 
       </Routes>
     </Router>
