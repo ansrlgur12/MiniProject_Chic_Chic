@@ -1,7 +1,7 @@
 import React from "react";
 import styled, {css} from "styled-components";
 import Header from "../Header/Header";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export const CommunityStyle = styled.div`
     box-sizing: border-box;
@@ -58,6 +58,7 @@ export const CommunityStyle = styled.div`
     background-image: url("./image/bear\ wallpaper\ pc\ Mac\ 네이버\ 아이콘\ 곰.png");
   }
   h2 {
+    color: #804f23;;
     display: block;
     font-size: 1.5em;
     margin-top: 0.83em;
@@ -68,7 +69,7 @@ export const CommunityStyle = styled.div`
   }
   .select{
     height: 25px;
-    width: 70px;
+    width: 90px;
   }
   .article{
     cursor:pointer;
@@ -78,7 +79,7 @@ export const CommunityStyle = styled.div`
 `;
 
 const Community = () => {
-
+    const nav = useNavigate();
     return(
         <>
             <Header />
@@ -96,14 +97,14 @@ const Community = () => {
                 </div>
                 <div class="article-list">
                     <hr/>
-                    <div class="article">
+                    <div class="article" onClick={()=>nav("/article")}>
                         <div class="article-left">
                             <h2>제목 제목</h2>
                             <p>뭐시기뭐시기</p>
                         </div>
                         <div class="article-image"></div>
                     </div>
-                    <div class="article">
+                    <div class="article" onClick={()=>nav("/article")}>
                         <div class="article-left">
                             <h2>제목 제목</h2>
                             <p>뭐시기뭐시기</p>
