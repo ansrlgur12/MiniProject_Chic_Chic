@@ -16,6 +16,7 @@ import UserDeal from './pages/Userdeal';
 import Article from './pages/Article';
 import EventPage from './pages/EventPage';
 import Notice from './pages/Notice';
+import PerfumePage from './pages/Perfume';
 
 
 
@@ -34,12 +35,12 @@ function App() {
         <Route path='/Notice' element={<Notice />} />
         <Route path='/imagetest1' element={<ImageTest1 />} />
         <Route path='/imagetest2' element={<ImageTest2 />} />
+        <Route path='/PerfumePage' element={<PerfumePage />} />
         <Route path='/imagetest3' element={<ImageTest3 />} />
         <Route path='/imagetest4' element={<ImageTest4 />} />
         <Route path='/imagetest5' element={<ImageTest5 />} />
         <Route path='/imagetest6' element={<ImageTest6 />} />
 
->>>>>>> master
 
       </Routes>
     </Router>
