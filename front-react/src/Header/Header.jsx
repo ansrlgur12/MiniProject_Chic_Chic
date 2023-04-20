@@ -77,7 +77,7 @@ const HeaderStyle = styled.div`
     font-family : 'NeoDunggeunmoPro-Regular';
     width: 650px;
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     font-size: 1.1em;
     font-weight: 100;
   }
@@ -102,9 +102,8 @@ const HeaderStyle = styled.div`
             position: absolute;
             display: flex;
             flex-direction: row;
-            justify-content: space-around;
+            justify-content: center;
             padding-top: 10px;
-            padding-left: 30px;
             width: 650px;
             height: 150px;
             background-color: white;
@@ -115,12 +114,15 @@ const HeaderStyle = styled.div`
            transition-delay: .3s;
            font-size: small;
             opacity: 0;
+            z-index: 5;
         }
     .menu:hover .caption{
         opacity: 1;
         transform: translateY(37px);
     }
     .caption .caption-title{
+        position: relative;
+        margin: 0px 50px;
         line-height: 2;
         display: flex;
         flex-direction: column;
@@ -128,15 +130,22 @@ const HeaderStyle = styled.div`
         align-items: center;
         cursor: pointer;
     }
-    h2 {
-    display: block;
-    font-size: 1.5em;
-    margin-top: 0.83em;
-    margin-bottom: 0.83em;
-    margin-left: 0;
-    margin-right: 0;
-    font-weight: bold;
-  }
+    .menutitle{
+        margin: 0px 50px 0px 50px;
+        color: #42240a;
+    }
+    .review{
+        position: absolute;
+        left: 30px;
+    }
+    .custom{
+        position: absolute;
+        left: 30px;
+    }
+    .notice{
+        position: absolute;
+        left: 15px;
+    }
 `;
 
 const Header = () => {
@@ -162,24 +171,24 @@ const Header = () => {
                 </div>
                 <div class="nav">
                 <div class="menu">
-                    <Link to = "/">Perfume</Link>
-                    <Link to = "/community">Community</Link>
-                    <Link to = "/">Custom</Link>
-                    <Link to = "/">Notice</Link>
+                    <p className="menutitle title1">Perfume</p>
+                    <p className="menutitle title2">Community</p>
+                    <p className="menutitle title3">Custom</p>
+                    <p className="menutitle title4">Notice</p>
                     <div class="caption">
-                        <div className="caption-title">
+                        <div className="caption-title perfume">
                             <p>향수</p>
                         </div>
-                        <div className="caption-title">
+                        <div className="caption-title review">
                             <p onClick={()=>nav("/Community")}>리뷰</p>
                             <p onClick={()=>nav("/Information")}>정보공유</p>
                             <p onClick={()=>nav("/UserDeal")}>회원거래</p>
                         </div>
-                        <div className="caption-title">
+                        <div className="caption-title custom">
                             <p onClick={()=>nav("/testmain")}>향수 테스트</p>
                             <p>노트 피라미드</p>
                         </div>
-                        <div className="caption-title">
+                        <div className="caption-title notice">
                             <p>공지사항</p>
                             <p>이벤트</p>
                             <p>새 소식</p>
