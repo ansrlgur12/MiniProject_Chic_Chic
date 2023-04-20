@@ -12,6 +12,7 @@ import UserDeal from './pages/Userdeal';
 import Article from './pages/Article';
 import EventPage from './pages/EventPage';
 import Notice from './pages/Notice';
+import PerfumePage from './pages/Perfume';
 
 
 function App() {
@@ -29,6 +30,7 @@ function App() {
         <Route path='/Notice' element={<Notice />} />
         <Route path='/imagetest1' element={<ImageTest1 />} />
         <Route path='/imagetest2' element={<ImageTest2 />} />
+        <Route path='/PerfumePage' element={<PerfumePage />} />
 
 >>>>>>> master
 
