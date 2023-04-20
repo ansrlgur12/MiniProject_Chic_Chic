@@ -1,11 +1,13 @@
 // import logo from './logo.svg';
 // import './App.css';
-import Header from './Header/Header';
 import Community from './pages/Community';
 import Main from './pages/Main';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import ImageTest from './pages/imageTest/imageTest';
 import TestMain from './pages/imageTest/TestMain';
+import Information from './pages/Infomation';
+import UserDeal from './pages/Userdeal';
+import Article from './pages/Article';
 
 
 function App() {
@@ -16,6 +18,9 @@ function App() {
         <Route path='/community' element={<Community />} />
         <Route path='/imagetest' element={<ImageTest />} />
         <Route path='/Testmain' element={<TestMain />} />
+        <Route path='/information' element={<Information />} />
+        <Route path='/userdeal' element={<UserDeal />} />
+        <Route path='/article' element={<Article />} />
 
 
       </Routes>

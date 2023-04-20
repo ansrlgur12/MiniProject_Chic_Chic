@@ -35,11 +35,11 @@ const HeaderStyle = styled.div`
     height: 100%;
   }
   .logo-line .logo .image{
+    cursor:pointer;
     width: 100%;
     height: 100%;
     background-size: cover;
     background-position: center;
-    background-image: url("./image/로고.jpg");
   }
   .logo-line .logo-right{
     justify-content: center;
@@ -128,6 +128,15 @@ const HeaderStyle = styled.div`
         align-items: center;
         cursor: pointer;
     }
+    h2 {
+    display: block;
+    font-size: 1.5em;
+    margin-top: 0.83em;
+    margin-bottom: 0.83em;
+    margin-left: 0;
+    margin-right: 0;
+    font-weight: bold;
+  }
 `;
 
 const Header = () => {
@@ -163,8 +172,8 @@ const Header = () => {
                         </div>
                         <div className="caption-title">
                             <p onClick={()=>nav("/Community")}>리뷰</p>
-                            <p>정보공유</p>
-                            <p>회원거래</p>
+                            <p onClick={()=>nav("/Information")}>정보공유</p>
+                            <p onClick={()=>nav("/UserDeal")}>회원거래</p>
                         </div>
                         <div className="caption-title">
                             <p onClick={()=>nav("/testmain")}>향수 테스트</p>

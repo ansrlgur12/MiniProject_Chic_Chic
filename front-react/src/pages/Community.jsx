@@ -1,10 +1,9 @@
 import React from "react";
 import styled, {css} from "styled-components";
 import Header from "../Header/Header";
-import {HeaderStyle} from "../Header/Header";
 import { Link } from "react-router-dom";
 
-const CommunityStyle = styled.div`
+export const CommunityStyle = styled.div`
     box-sizing: border-box;
     margin: 0px;
     height: auto;
@@ -27,7 +26,7 @@ const CommunityStyle = styled.div`
     
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: right;
     margin: 20px 0px 20px 0px;
   }
   .main .article-list{
@@ -71,6 +70,9 @@ const CommunityStyle = styled.div`
     height: 25px;
     width: 70px;
   }
+  .article{
+    cursor:pointer;
+  }
   
     
 `;
@@ -85,7 +87,6 @@ const Community = () => {
             <div class="section">
                 <h2>리뷰</h2>
                 <div class="article-title">
-                    <p>전체 글</p>
                     <select  className ="select" name="" id="">
                         <option value="전체 글">전체 글</option>
                         <option value="조회순">조회순</option>
