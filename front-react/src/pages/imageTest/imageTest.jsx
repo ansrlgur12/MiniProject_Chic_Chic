@@ -40,16 +40,21 @@ export const ImageTestStyle = styled.div`
     
     
   }
+  .qnum{
+    margin-top: 10px;
+  }
   
   .header {
     
     background-color: #fff;  
   }
   .qheader{
+    background-color: #fff;
     border: 3px solid black;
-    padding:  0;
+    padding:0px;
     width: 20vw;
-    height: 3%;
+    height:30px;
+    
   }
 
 
@@ -63,7 +68,8 @@ export const ImageTestStyle = styled.div`
   font-family : 'NeoDunggeunmoPro-Regular';
   
   .content {
-    padding: 40px 0;
+    padding-bottom: 40px;
+    padding-top: 20px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -112,7 +118,7 @@ export const ImageTestStyle = styled.div`
   .option {
     
     width: 140px;
-    height: 60px;
+    height: 120px;
     
   margin-bottom: 20px;
     
@@ -164,7 +170,7 @@ const ImageTest= () =>{
         <div class="container">
           <p className="qnum">1/6</p>
         <div class="qheader">
-          <div className="bar" style={{width:' 3.2vw',height:'100%', background:'black'}}></div>
+          <div className="bar" style={{width:' 3.2vw',height:'3.2vh', background:'black'}}></div>
         </div>
         <div class="content">
           <div class="question">
