@@ -116,7 +116,7 @@ export const ImageTestStyle = styled.div`
   
   .startBtn{
     display: block;
-    
+    font-family : 'NeoDunggeunmoPro-Regular';
   margin: 0 auto ;
   padding: 1rem 4rem;
   
@@ -170,6 +170,22 @@ export const ImageTestStyle = styled.div`
     box-shadow: 0 0 0 2px #006aff;
   }
   
+`
+export const TextOpt= styled.div`
+  .text-option{
+    
+    width: 20vw;
+    height: 5vh;
+    text-align: center;
+    border: 1px solid black;
+    border-radius: 8px;
+    margin: 10px;
+    cursor: pointer;
+    color: #fff;
+    font-size: 1rem;
+    font-weight:bold;
+    background-color: #659eecc7;
+  }
 
 
 
