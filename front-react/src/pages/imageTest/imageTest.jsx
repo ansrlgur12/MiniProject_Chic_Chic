@@ -6,7 +6,32 @@ import Summer from "../../image/summer.png"
 import Fall from "../../image/fall.png"
 import Winter from "../../image/winter.png"
 import "../../Header/font.css";
+import { useNavigate } from "react-router-dom";
 
+export const Gage = styled.div`
+    .gage{
+      
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+   
+   
+  
+    
+    
+  }
+  .qnum{
+    margin-top: 10px;
+  }
+  .qheader{
+    background-color: #fff;
+    border: 3px solid black;
+    padding:0px;
+    width: 20vw;
+    height:10px;
+    
+  }
+`
 export const ImageTestStyle = styled.div`
 
     margin: 0;
@@ -24,6 +49,7 @@ export const ImageTestStyle = styled.div`
   
 
   .container {
+    
     border: 1px solid black;
     width: 375px;
     height: 70vh;
@@ -38,24 +64,14 @@ export const ImageTestStyle = styled.div`
     text-align: center;
     
     
-    
   }
-  .qnum{
-    margin-top: 10px;
-  }
+
   
   .header {
     
     background-color: #fff;  
   }
-  .qheader{
-    background-color: #fff;
-    border: 3px solid black;
-    padding:0px;
-    width: 20vw;
-    height:30px;
-    
-  }
+ 
 
 
   .title {
@@ -160,18 +176,23 @@ export const ImageTestStyle = styled.div`
 `
 
 const ImageTest= () =>{
-
+const nav= useNavigate();
 
     return(
         <>
         <Header/>
         <ImageTestStyle>
+          
           <ImageTestStyle1>
         <div class="container">
+        <Gage>
+          <div className="gage">
           <p className="qnum">1/6</p>
         <div class="qheader">
-          <div className="bar" style={{width:' 3.2vw',height:'3.2vh', background:'black'}}></div>
+          <div className="bar" style={{width:' 3.2vw',height:'100%', background:'black'}}></div>
+          </div>
         </div>
+        </Gage>
         <div class="content">
           <div class="question">
             <h2 class="question-title">질문 1</h2>
@@ -179,19 +200,19 @@ const ImageTest= () =>{
             </div>
             <div class="options">
               <div className="optionP">
-              <button class="option" style={{ backgroundImage: `url(${Spring})`, backgroundSize: 'cover' }}> </button>
+              <button class="option" onClick={()=>nav("/imageTest1")} style={{ backgroundImage: `url(${Spring})`, backgroundSize: 'cover' }}> </button>
               <p>봄</p>
               </div>
               <div className="optionP">
-              <button class="option"style={{ backgroundImage: `url(${Summer})`, backgroundSize: 'cover' }}></button>
+              <button class="option" onClick={()=>nav("/imageTest1")} style={{ backgroundImage: `url(${Summer})`, backgroundSize: 'cover' }}></button>
               <p>여름</p>
               </div>
               <div className="optionP">
-              <button class="option"style={{ backgroundImage: `url(${Fall})`, backgroundSize: 'cover' }}></button>
+              <button class="option" onClick={()=>nav("/imageTest1")} style={{ backgroundImage: `url(${Fall})`, backgroundSize: 'cover' }}></button>
               <p>가을</p>
               </div>
               <div className="optionP">
-              <button class="option"style={{ backgroundImage: `url(${Winter})`, backgroundSize: 'cover' }}></button>
+              <button class="option" onClick={()=>nav("/imageTest1")} style={{ backgroundImage: `url(${Winter})`, backgroundSize: 'cover' }}></button>
                <p>겨울</p>
                </div>
             </div>
