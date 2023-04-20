@@ -18,33 +18,53 @@ const ArticleStyle = styled.div`
     margin-right: 0;
     font-weight: bold;
   }
+  h3 {
+
+display: block;
+
+font-size: 1.17em;
+
+margin-top: 1em;
+
+margin-bottom: 1em;
+
+margin-left: 0;
+
+margin-right: 0;
+
+font-weight: bold;
+
+}
 
     .title{
         margin-top: 60px;
+        color: #5f330d;
     }
     .likes{
         margin-top: 50px;
         border: 1px solid #ccc;
-        width: 150px;
+        width: 100px;
         height: 30px;
         display: flex;
         justify-content: space-evenly;
         border-radius: 15px;
+        margin-bottom: 50px;
     }
     .main{
         margin-top: 50px;
     }
     .list{
-        margin-top: 50px;
-        border: 1px solid #ccc;
+        margin-bottom: 30px;
+        color: #696969;
+        border: .5px solid #ccc;
+        font-size: small;
     }
     .list-title{
-        padding: 5px;
-        border-bottom: 1px solid #ccc;
+        padding-left: 15px;
+        width: 100%;
+        height: 15px;
     }
-    .lists{
-
-    }
+    
     ul {
   display: block;
   list-style-type: disc;
@@ -68,6 +88,48 @@ ol {
 li {
   display: list-item;
   text-align: -webkit-match-parent;
+  margin-bottom: 15px;
+}
+
+p {
+
+display: block;
+
+margin-top: 1em;
+
+margin-bottom: 1em;
+
+margin-left: 0;
+
+margin-right: 15px;
+
+}
+
+hr{
+    border: .3px solid #ccc;
+}
+.tag-list{
+    display: flex;
+    flex-direction: row;
+}
+.tagName{
+    color: rgb(125, 125, 125);
+}
+.titleInfo{
+    display: flex;
+    flex-direction: row;
+    color: #9c9c9c;
+    font-size: small;
+}
+button{
+    background-color: white;
+    border: none;
+}
+.shareBtn{
+    margin-bottom: 3px;
+}
+.likeBtn{
+    color: #d01919;
 }
 `;
 
@@ -78,8 +140,11 @@ const Article = () => {
         <ArticleStyle>
             <div className="title">
                 <h2>제목 제목 제목</h2>
-                <p>작성자 이름</p>
-                <p>2023.04.20 시간</p>
+                <div className="titleInfo">
+                    <p>작성자 이름</p>
+                    <p>|</p>
+                    <p>2023.04.20 시간</p>
+                </div>
             </div>
             <div className="main">
                 <p>본문내용본문내용본문내용본문내용</p>
@@ -93,12 +158,19 @@ const Article = () => {
 
             </div>
             <div className="likes">
-                <button type="radio">좋아요</button>
-                <button>공유</button>
+                <button className="likeBtn"><i class="fa-sharp fa-regular fa-heart"></i></button>
+                <button className="shareBtn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-share" viewBox="0 0 16 16">
+                    <path d="M13.5 1a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM11 2.5a2.5 2.5 0 1 1 .603 1.628l-6.718 3.12a2.499 2.499 0 0 1 0 1.504l6.718 3.12a2.5 2.5 0 1 1-.488.876l-6.718-3.12a2.5 2.5 0 1 1 0-3.256l6.718-3.12A2.5 2.5 0 0 1 11 2.5zm-8.5 4a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zm11 5.5a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3z"/>
+                    </svg>
+                </button>
             </div>
 
             <div className="list">
-                <div className="list-title">이 카테고리의 다른글</div>
+                <div className="list-title">
+                    <p>이 카테고리의 다른글</p>
+                </div>
+                <hr />
                 <div className="lists">
                     <ul>
                         <li>다른 글</li>
@@ -109,7 +181,28 @@ const Article = () => {
                     </ul>
                 </div>
             </div>
-                
+            <br />
+            <div className="tag">
+                <h3>태그</h3>
+                <div className="tag-list">
+                    <p className="tagName">#향수</p>
+                    <p className="tagName">#퍼퓸</p>
+                    <p className="tagName">#칙칙</p>
+                </div>
+            </div>
+            <br />
+            <div className="comment">
+                <h3>댓글</h3>
+                <div className="list">
+                <ul>
+                        <li>다른 글</li>
+                        <li>다른 글</li>
+                        <li>다른 글들</li>
+                        <li>다른 글 3</li>
+                        <li>따른 글</li>
+                    </ul>
+                </div>
+            </div>
         </ArticleStyle>
         </>
     );
