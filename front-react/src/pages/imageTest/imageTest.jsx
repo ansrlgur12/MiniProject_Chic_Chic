@@ -22,7 +22,7 @@ export const ImageTestStyle = styled.div`
     
     
   
-  
+
   .container {
     border: 1px solid black;
     width: 375px;
@@ -44,7 +44,10 @@ export const ImageTestStyle = styled.div`
   .header {
     
     background-color: #fff;
-    padding: 20px 0;
+    border: 3px solid black;
+    padding:  0;
+    width: 20vw;
+    height: 3%;
     
   }
   .title {
@@ -54,6 +57,7 @@ export const ImageTestStyle = styled.div`
   }
   `
   export const ImageTestStyle1 = styled.div`
+  font-family : 'NeoDunggeunmoPro-Regular';
   
   .content {
     padding: 40px 0;
@@ -155,8 +159,9 @@ const ImageTest= () =>{
         <ImageTestStyle>
           <ImageTestStyle1>
         <div class="container">
+          <p className="qnum">1/6</p>
         <div class="header">
-          <h1 class="title">향수 유형 테스트</h1>
+          <div className="bar" style={{width:' 3.2vw',height:'100%', background:'black'}}></div>
         </div>
         <div class="content">
           <div class="question">
