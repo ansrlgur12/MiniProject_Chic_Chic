@@ -5,6 +5,7 @@ import Spring from "../../image/spring.png"
 import Summer from "../../image/summer.png"
 import Fall from "../../image/fall.png"
 import Winter from "../../image/winter.png"
+import "../../Header/font.css";
 
 export const ImageTestStyle = styled.div`
 
@@ -12,7 +13,7 @@ export const ImageTestStyle = styled.div`
     padding: 0;
     height: 100vh;
     
-    font-family: "Helvetica Neue", Arial, sans-serif;
+    font-family : 'NeoDunggeunmoPro-Regular';
     font-size: 16px;
     line-height: 1.5;
     display:flex;
