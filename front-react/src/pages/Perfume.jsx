@@ -725,8 +725,8 @@ export const PerfumeStyle = styled.div`
     #wrapper > * > .inner {
         padding: 0 1.25em;
     }
-
-    `;
+}
+`;
 
 
 

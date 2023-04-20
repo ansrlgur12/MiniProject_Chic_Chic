@@ -8,11 +8,14 @@ import mainImage4 from "../image/공지2.jpg";
 
 const MainStyle = styled.div`
 .main .container{
-    padding-top: 130px;
+    width: 100vw;
+    padding: 130px 0px 0px 0px;
+    margin: 0;
+
   }
   .main .container .article{
     
-    width: 100%;
+    width: 100vw;
     height: 65vh;
   }
   .main-image{
