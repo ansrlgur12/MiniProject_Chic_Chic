@@ -43,13 +43,16 @@ export const ImageTestStyle = styled.div`
   
   .header {
     
-    background-color: #fff;
+    background-color: #fff;  
+  }
+  .qheader{
     border: 3px solid black;
     padding:  0;
     width: 20vw;
     height: 3%;
-    
   }
+
+
   .title {
     margin-top:0;
     font-size: 24px;
@@ -160,7 +163,7 @@ const ImageTest= () =>{
           <ImageTestStyle1>
         <div class="container">
           <p className="qnum">1/6</p>
-        <div class="header">
+        <div class="qheader">
           <div className="bar" style={{width:' 3.2vw',height:'100%', background:'black'}}></div>
         </div>
         <div class="content">
