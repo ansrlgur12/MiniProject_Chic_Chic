@@ -28,7 +28,7 @@ export const ImageTestStyle = styled.div`
     height: 70vh;
     margin: 0px auto;
     padding: 2rem;
-    margin-top:240px;
+    margin-top:30vh;
     position: relative;
     display: flex;
   flex-direction: column;
