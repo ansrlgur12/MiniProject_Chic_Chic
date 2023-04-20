@@ -9,6 +9,8 @@ import TestMain from './pages/imageTest/TestMain';
 import Information from './pages/Infomation';
 import UserDeal from './pages/Userdeal';
 import Article from './pages/Article';
+import EventPage from './pages/EventPage';
+import Notice from './pages/Notice';
 
 
 function App() {
@@ -23,7 +25,8 @@ function App() {
         <Route path='/userdeal' element={<UserDeal />} />
         <Route path='/article' element={<Article />} />
         <Route path='/imagetest2' element={<ImageTest1 />} />
-
+        <Route path='/EventPage' element={<EventPage />} />
+        <Route path='/Notice' element={<Notice />} />
 
       </Routes>
     </Router>
