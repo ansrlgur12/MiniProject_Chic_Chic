@@ -73,8 +73,11 @@ export const NoticeStyle = styled.div`
   .article{
     cursor:pointer;
   }
-  
-    
+  .line {
+    border-bottom: 1px solid #afafaf;
+    width: 1fr;
+    margin: 10px 0 20px 0;
+  }
 `;
 
 const Notice = () => {
@@ -95,7 +98,7 @@ const Notice = () => {
                         </select>
                     </div>
                     <div class="article-list">
-                        <hr/>
+                        <div className="line"></div>
                         <div class="article">
                             <div class="article-left">
                                 <h2>규정사항 업데이트</h2>
@@ -106,6 +109,20 @@ const Notice = () => {
                         <div class="article">
                             <div class="article-left">
                                 <h2>체험단 모집 공고</h2>
+                                <p>아래 단체에서 체험단을 모집하고 있으니 참고 바랍니다.</p>
+                            </div>
+                            <div class="article-image"></div>
+                        </div>
+                        <div class="article">
+                            <div class="article-left">
+                                <h2>체험단 모집 공고2</h2>
+                                <p>아래 단체에서 체험단을 모집하고 있으니 참고 바랍니다.</p>
+                            </div>
+                            <div class="article-image"></div>
+                        </div>
+                        <div class="article">
+                            <div class="article-left">
+                                <h2>체험단 모집 공고3</h2>
                                 <p>아래 단체에서 체험단을 모집하고 있으니 참고 바랍니다.</p>
                             </div>
                             <div class="article-image"></div>
