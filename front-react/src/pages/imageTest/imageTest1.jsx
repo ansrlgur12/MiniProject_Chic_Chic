@@ -28,13 +28,13 @@ const ImageTest1 = () =>{
             <h2 class="question-title">질문 2</h2>
             <p class="question-description">어느 곳으로 여행을 떠나고 싶으세요?</p>
             </div>
-            <div class="options">
+            <div class="options2">
               <div className="optionP">
-              <button class="option" onClick={()=>nav("/imageTest2")} style={{ backgroundImage: `url(${city})`, backgroundSize: 'cover' }}> </button>
-              <p>사람들로 북적이는 도시</p>
+              <button class="option2" onClick={()=>nav("/imageTest2")} style={{ backgroundImage: `url(${city})`, backgroundSize: 'cover' }}> </button>
+              <p>북적이는 도시</p>
               </div>
               <div className="optionP">
-              <button class="option" onClick={()=>nav("/imageTest2")} style={{ backgroundImage: `url(${vacation})`, backgroundSize: 'cover' }}></button>
+              <button class="option2" onClick={()=>nav("/imageTest2")} style={{ backgroundImage: `url(${vacation})`, backgroundSize: 'cover' }}></button>
               <p>힐링되는 휴양지</p>
               </div>
             
