@@ -80,6 +80,7 @@ export const CommunityStyle = styled.div`
 `;
 
 const Community = () => {
+  const nav = useNavigate();
     return(
         <>
             <Header />
@@ -104,6 +105,7 @@ const Community = () => {
                     </div>
                 </div>
             </div>
+            <div><p  onClick={()=>nav("/newarticle")}>글작성</p></div>
             </CommunityStyle>
         </>
     );
