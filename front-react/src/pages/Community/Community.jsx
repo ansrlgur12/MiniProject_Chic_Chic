@@ -1,7 +1,8 @@
 import React from "react";
 import styled, {css} from "styled-components";
-import Header from "../Header/Header";
+import Header from "../../Header/Header";
 import { Link, useNavigate } from "react-router-dom";
+import ArticleLists from "../ArticleLists";
 
 export const CommunityStyle = styled.div`
     box-sizing: border-box;
@@ -79,40 +80,29 @@ export const CommunityStyle = styled.div`
 `;
 
 const Community = () => {
-    const nav = useNavigate();
     return(
         <>
             <Header />
             <CommunityStyle>
             <div class = "main">
-            <div class="section">
-                <h2>리뷰</h2>
-                <div class="article-title">
-                    <select  className ="select" name="" id="">
-                        <option value="전체 글">전체 글</option>
-                        <option value="조회순">조회순</option>
-                        <option value="인기순">인기순</option>
-                        <option value="최신순">최신순</option>
-                    </select>
-                </div>
-                <div class="article-list">
-                    <hr/>
-                    <div class="article" onClick={()=>nav("/article")}>
-                        <div class="article-left">
-                            <h2>제목 제목</h2>
-                            <p>뭐시기뭐시기</p>
-                        </div>
-                        <div class="article-image"></div>
+                <div class="section">
+                    <h2>리뷰</h2>
+                    <div class="article-title">
+                        <select  className ="select" name="" id="">
+                            <option value="전체 글">전체 글</option>
+                            <option value="조회순">조회순</option>
+                            <option value="인기순">인기순</option>
+                            <option value="최신순">최신순</option>
+                        </select>
                     </div>
-                    <div class="article" onClick={()=>nav("/article")}>
-                        <div class="article-left">
-                            <h2>제목 제목</h2>
-                            <p>뭐시기뭐시기</p>
-                        </div>
-                        <div class="article-image"></div>
+                    <div class="article-list">
+                        <hr/>
+                        <ArticleLists />
+                        <ArticleLists />
+                        <ArticleLists />
+                        <ArticleLists />
                     </div>
                 </div>
-            </div>
             </div>
             </CommunityStyle>
         </>

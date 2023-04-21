@@ -116,7 +116,7 @@ const HeaderStyle = styled.div`
             opacity: 0;
             z-index: 5;
         }
-    .menu:hover .caption{
+    .nav :hover .caption{
         opacity: 1;
         transform: translateY(37px);
     }
