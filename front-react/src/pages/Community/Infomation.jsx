@@ -3,6 +3,7 @@ import Header from "../../Header/Header";
 import {CommunityStyle} from "./Community";
 import { Link, useNavigate } from "react-router-dom";
 import ArticleLists from "../ArticleLists";
+import Footer from "../../Footer/Footer";
 
 const Information = () => {
     const nav = useNavigate();
@@ -30,6 +31,7 @@ const Information = () => {
             </div>
             </div>
             </CommunityStyle>
+            <Footer />
         </>
     );
 }

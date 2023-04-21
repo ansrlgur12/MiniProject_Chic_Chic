@@ -3,6 +3,7 @@ import Header from "../../Header/Header";
 import { Link, useNavigate } from "react-router-dom";
 import {CommunityStyle} from "./Community";
 import ArticleLists from "../ArticleLists";
+import Footer from "../../Footer/Footer";
 
 
 const UserDeal = () => {
@@ -32,6 +33,7 @@ const UserDeal = () => {
             </div>
             </div>
             </CommunityStyle>
+            <Footer />
         </>
     );
 }
