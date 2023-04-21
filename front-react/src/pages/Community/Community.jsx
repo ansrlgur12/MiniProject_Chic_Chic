@@ -3,11 +3,12 @@ import styled, {css} from "styled-components";
 import Header from "../../Header/Header";
 import { Link, useNavigate } from "react-router-dom";
 import ArticleLists from "../ArticleLists";
+import Footer from "../../Footer/Footer";
 
 export const CommunityStyle = styled.div`
     box-sizing: border-box;
     margin: 0px;
-    height: auto;
+    height: 1300px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -123,6 +124,8 @@ const Community = () => {
                 </div>
             </div>
             </CommunityStyle>
+            <Footer />
+          
         </>
     );
 }

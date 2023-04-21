@@ -5,6 +5,7 @@ import mainImage1 from "../image/메인3.jpg";
 import mainImage2 from "../image/커뮤.jpg";
 import mainImage3 from "../image/커스텀3.jpg";
 import mainImage4 from "../image/공지2.jpg";
+import Footer from "../Footer/Footer";
 
 const MainStyle = styled.div`
 .main .container{
@@ -76,6 +77,7 @@ const Main = () => {
             </div>
         </div>
         </MainStyle>
+        <Footer />
         </>
     );
 }
