@@ -1,6 +1,12 @@
 import React from "react";
 import styled, {css} from "styled-components";
 import Header from "../Header/Header";
+import eventimg1 from "../image/event1.jpeg";
+import eventimg2 from "../image/event2.jpeg";
+import eventimg3 from "../image/event3.jpeg";
+import eventimg4 from "../image/event4.jpeg";
+import eventimg5 from "../image/event5.jpeg";
+
 
 
 const EventStyle = styled.div`
@@ -38,17 +44,20 @@ const EventStyle = styled.div`
 
     }
     .eventPost {
-        width: 420px;
-        height: 560px;
+        width: 220px;
+        height: 260px;
+        margin: 10px;
+        border: 1px solid #444;
     }
     .eArticle {
         margin: 0 10px;
-
     }
-    #hr {
+
+    .hr {
         margin: 10px 0 20px 0;
     }
 `;
+
 
 const EventPage = () => {
 
@@ -64,18 +73,18 @@ const EventPage = () => {
                             <div className="eArticle eArticle3">예정 이벤트</div>
                             <div className="eArticle eArticle4">종료 이벤트</div>
                         </div>
-                        <hr id="hr"/>
+                        <hr className="hr"/>
                         <div className="eContainer">
-                            <div className="eventPost post1"><img src="../image/event1.jpeg" alt="event1" id="eImg" /></div>
-                            <div className="eventPost post2"><img src="../image/event2.jpeg" alt="event2" id="eImg" /></div>
-                            <div className="eventPost post3"><img src="../image/event3.jpeg" alt="event3" id="eImg" /></div>
-                            <div className="eventPost post4"><img src="../image/event4.jpeg" alt="event4" id="eImg" /></div>
-                            <div className="eventPost post5"><img src="../image/event5.jpeg" alt="event5" id="eImg" /></div>
-                            <div className="eventPost post6"><img src="../image/event1.jpeg" alt="event1" id="eImg" /></div>
-                            <div className="eventPost post7"><img src="../image/event2.jpeg" alt="event2" id="eImg" /></div>
-                            <div className="eventPost post8"><img src="../image/event3.jpeg" alt="event3" id="eImg" /></div>
-                            <div className="eventPost post9"><img src="../image/event4.jpeg" alt="event4" id="eImg" /></div>
-                            <div className="eventPost post10"><img src="../image/event5.jpeg" alt="event5" id="eImg" /></div>
+                            <div className="eventPost post1" style={{backgroundImage: `url(${eventimg1})`, backgroundSize: 'cover', backgroundRepeat: "no-repeat"}}></div>
+                            <div className="eventPost post2" style={{backgroundImage: `url(${eventimg2})`, backgroundSize: 'cover', backgroundRepeat: "no-repeat"}}></div>
+                            <div className="eventPost post3" style={{backgroundImage: `url(${eventimg3})`, backgroundSize: 'contain', backgroundRepeat: "no-repeat"}}></div>
+                            <div className="eventPost post4" style={{backgroundImage: `url(${eventimg4})`, backgroundSize: 'cover', backgroundRepeat: "no-repeat"}}></div>
+                            <div className="eventPost post5" style={{backgroundImage: `url(${eventimg5})`, backgroundSize: 'cover', backgroundRepeat: "no-repeat"}}></div>
+                            <div className="eventPost post6" style={{backgroundImage: `url(${eventimg1})`, backgroundSize: 'cover', backgroundRepeat: "no-repeat"}}></div>
+                            <div className="eventPost post7" style={{backgroundImage: `url(${eventimg2})`, backgroundSize: 'cover', backgroundRepeat: "no-repeat"}}></div>
+                            <div className="eventPost post8" style={{backgroundImage: `url(${eventimg3})`, backgroundSize: 'contain', backgroundRepeat: "no-repeat"}}></div>
+                            <div className="eventPost post9" style={{backgroundImage: `url(${eventimg4})`, backgroundSize: 'cover', backgroundRepeat: "no-repeat"}}></div>
+
                         </div>
                     </div>
                 </div>
