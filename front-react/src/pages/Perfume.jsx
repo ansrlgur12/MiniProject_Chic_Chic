@@ -2,7 +2,7 @@ import React from "react";
 import styled, {css} from "styled-components";
 import Header from "../Header/Header";
 import { Link, useNavigate } from "react-router-dom";
-
+import n1 from "../image/n1.png";
 export const PerfumeStyle = styled.div`
    
 		a:hover {
@@ -375,11 +375,11 @@ export const PerfumeStyle = styled.div`
 
 /* Header */
 
-	#header {
+header {
 		padding: 8em 0 0.1em 0 ;
 	}
 
-		#header .logo {
+		header .logo {
 			display: block;
 			border-bottom: 0;
 			color: inherit;
@@ -391,29 +391,29 @@ export const PerfumeStyle = styled.div`
 			display: inline-block;
 		}
 
-			#header .logo > * {
+			header .logo > * {
 				display: inline-block;
 				vertical-align: middle;
 			}
 
-			#header .logo .symbol {
+			header .logo .symbol {
 				margin-right: 0.65em;
 			}
 
-				#header .logo .symbol img {
+				header .logo .symbol img {
 					display: block;
 					width: 2em;
 					height: 2em;
 				}
 
-		#header nav {
+		header nav {
 			position: fixed;
 			right: 2em;
 			top: 2em;
 			z-index: 10000;
 		}
 
-			#header nav ul {
+			header nav ul {
 				display: -moz-flex;
 				display: -webkit-flex;
 				display: -ms-flex;
@@ -427,12 +427,12 @@ export const PerfumeStyle = styled.div`
 				padding: 0;
 			}
 
-				#header nav ul li {
+				header nav ul li {
 					display: block;
 					padding: 0;
 				}
 
-					#header nav ul li a {
+					header nav ul li a {
 						display: block;
 						position: relative;
 						height: 3em;
@@ -447,7 +447,7 @@ export const PerfumeStyle = styled.div`
 						text-transform: uppercase;
 					}
 
-					#header nav ul li a[href="#menu"] {
+					header nav ul li a[href="#menu"] {
 						-webkit-tap-highlight-color: transparent;
 						width: 4em;
 						text-indent: 4em;
@@ -457,7 +457,7 @@ export const PerfumeStyle = styled.div`
 						white-space: nowrap;
 					}
 
-						#header nav ul li a[href="#menu"]:before, #header nav ul li a[href="#menu"]:after {
+						header nav ul li a[href="#menu"]:before, header nav ul li a[href="#menu"]:after {
 							-moz-transition: opacity 0.2s ease;
 							-webkit-transition: opacity 0.2s ease;
 							-ms-transition: opacity 0.2s ease;
@@ -474,44 +474,45 @@ export const PerfumeStyle = styled.div`
 							background-size: 2em 2em;
 						}
 
-						#header nav ul li a[href="#menu"]:before {
+						header nav ul li a[href="#menu"]:before {
 							background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cstyle%3Eline %7B stroke-width: 8px%3B stroke: %23f2849e%3B %7D%3C/style%3E%3Cline x1='0' y1='25' x2='100' y2='25' /%3E%3Cline x1='0' y1='50' x2='100' y2='50' /%3E%3Cline x1='0' y1='75' x2='100' y2='75' /%3E%3C/svg%3E");
 							opacity: 0;
 						}
 
-						#header nav ul li a[href="#menu"]:after {
+						header nav ul li a[href="#menu"]:after {
 							background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cstyle%3Eline %7B stroke-width: 8px%3B stroke: %23585858%3B %7D%3C/style%3E%3Cline x1='0' y1='25' x2='100' y2='25' /%3E%3Cline x1='0' y1='50' x2='100' y2='50' /%3E%3Cline x1='0' y1='75' x2='100' y2='75' /%3E%3C/svg%3E");
 							opacity: 1;
 						}
 
-						#header nav ul li a[href="#menu"]:hover:before {
+						header nav ul li a[href="#menu"]:hover:before {
 							opacity: 1;
 						}
 
-						#header nav ul li a[href="#menu"]:hover:after {
+						header nav ul li a[href="#menu"]:hover:after {
 							opacity: 0;
 						}
 
 		@media screen and (max-width: 736px) {
 
-			#header {
+			header {
 				padding: 4em 0 0.1em 0 ;
 			}
 
-				#header nav {
+				header nav {
 					right: 0.5em;
 					top: 0.5em;
 				}
 
-					#header nav ul li a[href="#menu"]:before, #header nav ul li a[href="#menu"]:after {
+					header nav ul li a[href="#menu"]:before, header nav ul li a[href="#menu"]:after {
 						background-size: 1.5em 1.5em;
 					}
 
 		}
 
+
 /* Menu */
 
-	#wrapper {
+	wrapper {
 		-moz-transition: opacity 0.45s ease;
 		-webkit-transition: opacity 0.45s ease;
 		-ms-transition: opacity 0.45s ease;
@@ -519,7 +520,7 @@ export const PerfumeStyle = styled.div`
 		opacity: 1;
 	}
 
-	#menu {
+	menu {
 		-moz-transform: translateX(22em);
 		-webkit-transform: translateX(22em);
 		-ms-transform: translateX(22em);
@@ -542,7 +543,7 @@ export const PerfumeStyle = styled.div`
 		z-index: 10002;
 	}
 
-		#menu > .inner {
+		menu > .inner {
 			-moz-transition: opacity 0.45s ease;
 			-webkit-transition: opacity 0.45s ease;
 			-ms-transition: opacity 0.45s ease;
@@ -558,18 +559,18 @@ export const PerfumeStyle = styled.div`
 			overflow-y: auto;
 		}
 
-			#menu > .inner > ul {
+			menu > .inner > ul {
 				list-style: none;
 				margin: 0 0 1em 0;
 				padding: 0;
 			}
 
-				#menu > .inner > ul > li {
+				menu > .inner > ul > li {
 					padding: 0;
 					border-top: solid 1px rgba(255, 255, 255, 0.15);
 				}
 
-					#menu > .inner > ul > li a {
+					menu > .inner > ul > li a {
 						display: block;
 						padding: 1em 0;
 						line-height: 1.5;
@@ -577,12 +578,12 @@ export const PerfumeStyle = styled.div`
 						color: inherit;
 					}
 
-					#menu > .inner > ul > li:first-child {
+					menu > .inner > ul > li:first-child {
 						border-top: 0;
 						margin-top: -1em;
 					}
 
-		#menu > .close {
+		menu > .close {
 			-moz-transition: opacity 0.45s ease, -moz-transform 0.45s ease;
 			-webkit-transition: opacity 0.45s ease, -webkit-transform 0.45s ease;
 			-ms-transition: opacity 0.45s ease, -ms-transform 0.45s ease;
@@ -607,7 +608,7 @@ export const PerfumeStyle = styled.div`
 			white-space: nowrap;
 		}
 
-			#menu > .close:before, #menu > .close:after {
+			menu > .close:before, menu > .close:after {
 				-moz-transition: opacity 0.2s ease;
 				-webkit-transition: opacity 0.2s ease;
 				-ms-transition: opacity 0.2s ease;
@@ -624,21 +625,21 @@ export const PerfumeStyle = styled.div`
 				background-size: 2em 2em;
 			}
 
-			#menu > .close:before {
+			menu > .close:before {
 				background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cstyle%3Eline %7B stroke-width: 8px%3B stroke: %23f2849e%3B %7D%3C/style%3E%3Cline x1='15' y1='15' x2='85' y2='85' /%3E%3Cline x1='85' y1='15' x2='15' y2='85' /%3E%3C/svg%3E");
 				opacity: 0;
 			}
 
-			#menu > .close:after {
+			menu > .close:after {
 				background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cstyle%3Eline %7B stroke-width: 8px%3B stroke: %23585858%3B %7D%3C/style%3E%3Cline x1='15' y1='15' x2='85' y2='85' /%3E%3Cline x1='85' y1='15' x2='15' y2='85' /%3E%3C/svg%3E");
 				opacity: 1;
 			}
 
-			#menu > .close:hover:before {
+			menu > .close:hover:before {
 				opacity: 1;
 			}
 
-			#menu > .close:hover:after {
+			menu > .close:hover:after {
 				opacity: 0;
 			}
 
@@ -697,13 +698,13 @@ export const PerfumeStyle = styled.div`
 
 /* Main */
 
-	#main {
+	main {
 		padding: 0em 0 6em 0 ;
 	}
 
 		@media screen and (max-width: 736px) {
 
-			#main {
+			main {
 				padding: 0em 0 4em 0 ;
 			}
 
@@ -712,7 +713,7 @@ export const PerfumeStyle = styled.div`
 
 /* Wrapper */
 
-#wrapper > * > .inner {
+wrapper > * > .inner {
 	background-color: #ffffff;
     width: 100%;
     max-width: 50em;
@@ -722,7 +723,7 @@ export const PerfumeStyle = styled.div`
 
 @media screen and (max-width: 200px) {
 	
-    #wrapper > * > .inner {
+    wrapper > * > .inner {
         padding: 0 1.25em;
     }
 }
@@ -741,13 +742,14 @@ const PerfumePage = () => {
     <div id="main">
         <div class="inner">
             <header>
-                <h1>향수정보</h1>
+                <h2>향수정보</h2>
             
             </header>
             <section class="tiles">
                 <article class="style1">
-                    <span class="image">
-                        <img src="images/n1.png" alt="" />
+                    <span class="image" >
+                        <img src={n1} alt=""/>
+						
                     </span>
                     <a href="generic.html">
                         <h2>향수1</h2>
@@ -756,9 +758,10 @@ const PerfumePage = () => {
                         </div>
                     </a>
                 </article>
-                <article class="style2">
-                    <span class="image">
-                        <img src="images/n1.png" alt="" />
+                <article class="style1">
+                    <span class="image" >
+                        <img src={n1} alt=""/>
+						
                     </span>
                     <a href="generic.html">
                         <h2>향수2</h2>
@@ -767,78 +770,61 @@ const PerfumePage = () => {
                         </div>
                     </a>
                 </article>
-                <article class="style3">
-                    <span class="image">
-                        <img src="images/n1.png" alt="" />
+				<article class="style1">
+                    <span class="image" >
+                        <img src={n1} alt=""/>
+						
                     </span>
                     <a href="generic.html">
-                        <h2>향수3</h2>
+                        <h2>향수1</h2>
                         <div class="content">
                             <p>향수 어쩌구저쩌구~</p>
                         </div>
                     </a>
                 </article>
-                <article class="style4">
-                    <span class="image">
-                        <img src="images/n1.png" alt="" />
+				<article class="style1">
+                    <span class="image" >
+                        <img src={n1} alt=""/>
+						
                     </span>
                     <a href="generic.html">
-                        <h2>향수4</h2>
+                        <h2>향수1</h2>
                         <div class="content">
                             <p>향수 어쩌구저쩌구~</p>
                         </div>
                     </a>
                 </article>
-                <article class="style5">
-                    <span class="image">
-                        <img src="images/n1.png" alt="" />
+				<article class="style1">
+                    <span class="image" >
+                        <img src={n1} alt=""/>
+						
                     </span>
                     <a href="generic.html">
-                        <h2>향수5</h2>
+                        <h2>향수1</h2>
                         <div class="content">
                             <p>향수 어쩌구저쩌구~</p>
                         </div>
                     </a>
                 </article>
-                <article class="style6">
-                    <span class="image">
-                        <img src="images/n1.png" alt="" />
+				<article class="style1">
+                    <span class="image" >
+                        <img src={n1} alt=""/>
+						
                     </span>
                     <a href="generic.html">
-                        <h2>향수6</h2>
+                        <h2>향수1</h2>
                         <div class="content">
                             <p>향수 어쩌구저쩌구~</p>
                         </div>
                     </a>
                 </article>
-                <article class="style2">
-                    <span class="image">
-                        <img src="images/n1.png" alt="" />
+				<article class="style1">
+                    <span class="image" >
+                        <img src={n1} alt=""/>
+						
                     </span>
                     <a href="generic.html">
-                        <h2>향수7</h2>
-                        <div class="content">
-                            <p>향수 어쩌구저쩌구~</p>
-                        </div>
-                    </a>
-                </article>
-                <article class="style3">
-                    <span class="image">
-                        <img src="images/n1.png" alt="" />
-                    </span>
-                    <a href="generic.html">
-                        <h2>향수8</h2>
-                        <div class="content">
-                            <p>향수 어쩌구저쩌구~</p>
-                        </div>
-                    </a>
-                </article>
-                <article class="style1">
-                    <span class="image">
-                        <img src="images/n1.png" alt="" />
-                    </span>
-                    <a href="generic.html">
-                        <h2>향수9</h2>
+                        <h2>향수1</h2>
                         <div class="content">
                             <p>향수 어쩌구저쩌구~</p>
                         </div>
