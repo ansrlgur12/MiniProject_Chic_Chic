@@ -3,9 +3,9 @@ import styled, {css} from "styled-components";
 import Header from "../Header/Header";
 import { Link, useNavigate } from "react-router-dom";
 import n1 from "../image/n1.png";
-import { PerfumeListStyle } from "./PerfumeList";
 
-export const PerfumeStyle = styled.div`
+export const PerfumeListStyle = styled.div`
+
 
 	strong, b {
 		font-weight: 900;
@@ -726,120 +726,145 @@ wrapper > * > .inner {
 }
     `;
 
+const PerfumeListPage = () => useNavigate();
+    <>
+      <Header />
+      <PerfumeListStyle>
+        <div id="wrapper">
+
+				
+					<header id="header">
+						<div class="inner">
+
+				
+
+							
+								<nav>
+									<ul>
+										<li><a href="#menu">Menu</a></li>
+									</ul>
+								</nav>
+
+						</div>
+					</header>
+						
+
+				
+					<nav id="menu">
+						<h2>Menu</h2>
+						<ul>
+							<li><a href="index.html">메인</a></li>
+							<li><a href="generic.html">커뮤니티</a></li>
+							<li><a href="generic.html">커스텀</a></li>
+							<li><a href="generic.html">향수</a></li>
+						</ul>
+					</nav>
+
+			
+					<div id="main">
+						<div class="inner">
+							<h1>샤넬 no.5</h1>
+							<span class="image main"><img src="" alt="" /></span>
+							<p>훌로랄-알데하이드, 정의할 수 없는 여성다움을 표현하는 가상의
+
+								꽃다발. 우아하고 매혹적이며 현대적인, 시간을 초월하는 향수입니다.
+								
+								'N°5 오 드 퍼퓸'은 단지 향의 농도만을 달리 한 것이 아닌,
+								
+								본래의 향이 추구하는 바와 베이스 노트에 충실하면서
+								
+								한편으로 새로움을 추구한, 향의 새로운 해석입니다.
+							</p>
+								
+						</div>
+					</div>
+
+					<div class="container">
+						<div class="inner">
+							<h3>샤넬 no.5 리뷰</h3>
+							<hr/>
+							<div class="row">
+								<div class="col-sm-6">
+                                <img src={n1} alt=""/>
+								</div>
+								<div class="col-sm-6">
+									<p>샤넬 no.5는 훌로랄-알데하이드 계열의 여성용 향수로, 우아하고 매혹적이며 현대적인, 시간을 초월하는 향수입니다.</p>
+									<p>'N°5 오 드 퍼퓸'은 본래의 향이 추구하는 바와 베이스 노트에 충실하면서 한편으로 새로움을 추구한, 향의 새로운 해석입니다.</p>
+									<p>마음에 드는 점: ...</p>
+									<p>아쉬운 점: ...</p>
+									<p>평점: ⭐️⭐️⭐️⭐️</p>
+								</div>
+							</div>
+						</div>
 
 
-const PerfumePage = () => {
-	const nav = useNavigate();
-    return(
-        <>
-            <Header />
-            <PerfumeStyle>
-            <div id="wrapper">
+					</div>
 
-    <div id="main">
-        <div class="inner">
-            <header>
-                <h2>향수정보</h2>
-            
-            </header>
-            <div class="tiles">
-                <div class="style1">
-                    <div class="image" >
-                        <img src={n1} alt=""/>
-						
-                    </div>
-                    <Link to = "/PerfumeList">
-                        <h2>향수1</h2>
-                        <div class="content">
-                            <p>향수 어쩌구저쩌구~</p>
-                        </div>
-                    </Link>
-                </div>
-                <article class="style1">
-                    <span class="image" >
-                        <img src={n1} alt=""/>
-						
-                    </span>
-                    <a href="generic.html">
-                        <h2>향수2</h2>
-                        <div class="content">
-                            <p>향수 어쩌구저쩌구~</p>
-                        </div>
-                    </a>
-                </article>
-				<article class="style1">
-                    <span class="image" >
-                        <img src={n1} alt=""/>
-						
-                    </span>
-                    <a href="generic.html">
-                        <h2>향수1</h2>
-                        <div class="content">
-                            <p>향수 어쩌구저쩌구~</p>
-                        </div>
-                    </a>
-                </article>
-				<article class="style1">
-                    <span class="image" >
-                        <img src={n1} alt=""/>
-						
-                    </span>
-                    <a href="generic.html">
-                        <h2>향수1</h2>
-                        <div class="content">
-                            <p>향수 어쩌구저쩌구~</p>
-                        </div>
-                    </a>
-                </article>
-				<article class="style1">
-                    <span class="image" >
-                        <img src={n1} alt=""/>
-						
-                    </span>
-                    <a href="generic.html">
-                        <h2>향수1</h2>
-                        <div class="content">
-                            <p>향수 어쩌구저쩌구~</p>
-                        </div>
-                    </a>
-                </article>
-				<article class="style1">
-                    <span class="image" >
-                        <img src={n1} alt=""/>
-						
-                    </span>
-                    <a href="generic.html">
-                        <h2>향수1</h2>
-                        <div class="content">
-                            <p>향수 어쩌구저쩌구~</p>
-                        </div>
-                    </a>
-                </article>
-				<article class="style1">
-                    <span class="image" >
-                        <img src={n1} alt=""/>
-						
-                    </span>
-                    <a href="generic.html">
-                        <h2>향수1</h2>
-                        <div class="content">
-                            <p>향수 어쩌구저쩌구~</p>
-                        </div>
-                    </a>
-                </article>
-                
-                
-            </div>
-        </div>
-    </div>
-
-
-
+					<div class="container">
+						<div class="inner">
+							<h3>샤넬 no.5 리뷰</h3>
+							<hr/>
+							<div class="row">
+								<div class="col-sm-6">
+                                <img src={n1} alt=""/>
+								</div>
+								<div class="col-sm-6">
+									<p>좋은 향수 향수입니다.</p>
+									<p>비싼편입니다.</p>
+									<p>마음에 드는 점: ...</p>
+									<p>아쉬운 점: ...</p>
+									<p>평점: ⭐️⭐️⭐️</p>
+								</div>
+							</div>
+						</div>
+					</div>
+<div id="main">
+  <div class="inner">
+    <header>
+      <h3>비슷한 향수</h3>
+    </header>
+  </div>
 </div>
-</PerfumeStyle>
+<div class="tiles">
+		<article class="style1">
+			<span class="image">
+				<img src={n1} alt=""/>
+									</span>
+									<a href="generic.html">
+										<h2>향수1</h2>
+										<div class="content">
+											<p>향수 어쩌구저쩌구~</p>
+										</div>
+									</a>
+								</article>
+								<article class="style2">
+									<span class="image">
+                                    <img src={n1} alt=""/>
+									</span>
+									<a href="generic.html">
+										<h2>향수2</h2>
+										<div class="content">
+											<p>향수 어쩌구저쩌구~</p>
+										</div>
+									</a>
+								</article>
+								<article class="style3">
+									<span class="image">
+                                    <img src={n1} alt=""/>
+									</span>
+									<a href="generic.html">
+										<h2>향수3</h2>
+										<div class="content">
+											<p>향수 어쩌구저쩌구~</p>
+										</div>
+									</a>
+								</article>
+</div>
+					</div>
+			
+</PerfumeListStyle>
 
 </>
-);
-}
 
-export default PerfumePage;
+
+export default PerfumeListPage;
