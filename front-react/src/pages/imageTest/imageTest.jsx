@@ -52,10 +52,10 @@ export const ImageTestStyle = styled.div`
     
     border: 1px solid black;
     width: 375px;
-    height: 70vh;
+    height: 77vh;
     margin: 0px auto;
     padding: 2rem;
-    margin-top:30vh;
+    margin-top:20vh;
    
     display: flex;
   flex-direction: column;
@@ -109,9 +109,15 @@ export const ImageTestStyle = styled.div`
   
   .options {
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap:wrap;
     justify-content: space-between;
     
+  }
+  .options2{
+    display: flex;
+    
+    justify-content: space-between;
+
   }
   
   .startBtn{
@@ -136,13 +142,27 @@ export const ImageTestStyle = styled.div`
     width: 140px;
     height: 120px;
     
-  margin-bottom: 20px;
+  
     
     background-color: #fff;
     border: 1px solid #ccc;
     border-radius: 10px;
     transition: background-color 0.2s, border-color 0.2s, color 0.2s;
     cursor:pointer;
+  }
+  .option2{
+    width: 140px;
+    height: 120px;
+    margin: 1rem;
+    
+  
+    
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    transition: background-color 0.2s, border-color 0.2s, color 0.2s;
+    cursor:pointer;
+
   }
    .optionP{
   
