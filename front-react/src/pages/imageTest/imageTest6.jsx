@@ -2,11 +2,14 @@ import React from "react";
 import Header from "../../Header/Header";
 import { useState, useEffect } from 'react';
 import { ImageTestStyle,ImageTestStyle1 } from "./imageTest";
+import { useNavigate } from "react-router-dom";
 
 
 const ImageTest6 = () =>{
+  const nav = useNavigate();
         
         const [loadingText, setLoadingText] = useState('결과 확인중');
+        
       
         useEffect(() => {
           // 일정 시간 간격으로 마침표를 추가하는 타이머
@@ -25,9 +28,9 @@ const ImageTest6 = () =>{
             clearTimeout(nextTimer);
           }
         }, []);
-      
+  
         return (
-            <>
+           <>
             <Header/>
             <ImageTestStyle>
                 <ImageTestStyle1>
@@ -35,14 +38,19 @@ const ImageTest6 = () =>{
 
           <div className="container">
             <p>{loadingText}</p>
-            {/* 결과창 구현 */}
+               
           </div>
           </ImageTestStyle1>
           </ImageTestStyle>
          
           </>
         );
-      };
+       
+        };
+
+   
+    
+    
       
 
 

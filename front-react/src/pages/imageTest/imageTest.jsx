@@ -46,7 +46,11 @@ export const ImageTestStyle = styled.div`
     justify-content:center;
     
     
-  
+  .resultbox{
+    width: 150px;
+    height: 150px;
+    border: 2px solid black;
+  }
 
   .container {
     
@@ -206,6 +210,7 @@ export const TextOpt= styled.div`
     font-weight:bold;
     background-color: #659eecc7;
   }
+  
 
 
 
