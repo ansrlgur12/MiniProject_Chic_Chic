@@ -29,7 +29,7 @@ const ImageTest4 = () => {
              <TextOpt>
               <button class="text-option" onClick={()=>nav("/imageTest5")}>남성</button>
               <button class="text-option" onClick={()=>nav("/imageTest5")}>여성</button>
-              <button class="text-option" onClick={()=>nav("/imageTest5")}>중성</button>
+              <button class="text-option" onClick={()=>nav("/TestResult")}>중성</button>
               </TextOpt>
              
             
