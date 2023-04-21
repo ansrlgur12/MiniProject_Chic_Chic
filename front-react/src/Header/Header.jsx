@@ -13,6 +13,7 @@ const HeaderStyle = styled.div`
     height: 130px;
     display: flex;
     flex-direction: column;
+    z-index: 10;
     
     border-bottom: 1px solid #ccc;
  .top{
@@ -100,12 +101,13 @@ const HeaderStyle = styled.div`
   .caption{
             color: #42240a;
             position: absolute;
+            overflow: hidden;
             display: flex;
             flex-direction: row;
             justify-content: center;
             padding-top: 10px;
             width: 650px;
-            height: 150px;
+            height: 0px;
             background-color: white;
             transition: all;
             border-bottom-left-radius: 5px;
@@ -114,11 +116,16 @@ const HeaderStyle = styled.div`
            transition-delay: .3s;
            font-size: small;
             opacity: 0;
-            z-index: 5;
+            z-index: 1;
+            top: 110px;
         }
-    .nav :hover .caption{
+    .nav:hover .caption{
         opacity: 1;
-        transform: translateY(37px);
+        transform: translateY(20px);
+        
+        height: 150px;
+    }
+    .caption:hover{
     }
     .caption .caption-title{
         position: relative;
