@@ -6,6 +6,7 @@ import ArticleLists from "../ArticleLists";
 
 
 const UserDeal = () => {
+    const nav = useNavigate();
     return(
         <>
             <Header />
@@ -20,9 +21,10 @@ const UserDeal = () => {
                         <option value="인기순">인기순</option>
                         <option value="최신순">최신순</option>
                     </select>
+                    <div><p className="write" onClick={()=>nav("/newarticle")}>작성하기</p></div>
                 </div>
                 <div class="article-list">
-                    <hr/>
+                    <div className="line" />
                     <ArticleLists />
                     <ArticleLists />
                     <ArticleLists />

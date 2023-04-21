@@ -69,11 +69,27 @@ export const CommunityStyle = styled.div`
     font-weight: bold;
   }
   .select{
+    margin-right: 20px;
     height: 25px;
     width: 90px;
   }
   .article{
     cursor:pointer;
+  }
+  .line {
+        border-bottom: 1px solid #afafaf;
+        width: 1fr;
+        margin: 10px 0 20px 0;
+  }
+  
+  .write{
+    height: 30px;
+    width: 90px;
+    border: .5px solid #858585;
+    border-radius: 5px;
+    padding: 3px;
+    text-align: center;
+    line-height: 1.5;
   }
   
     
@@ -95,9 +111,10 @@ const Community = () => {
                             <option value="인기순">인기순</option>
                             <option value="최신순">최신순</option>
                         </select>
+                        <div><p className="write" onClick={()=>nav("/newarticle")}>작성하기</p></div>
                     </div>
                     <div class="article-list">
-                        <hr/>
+                        <div className="line" />
                         <ArticleLists />
                         <ArticleLists />
                         <ArticleLists />
@@ -105,7 +122,6 @@ const Community = () => {
                     </div>
                 </div>
             </div>
-            <div><p  onClick={()=>nav("/newarticle")}>글작성</p></div>
             </CommunityStyle>
         </>
     );

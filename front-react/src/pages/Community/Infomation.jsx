@@ -5,6 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import ArticleLists from "../ArticleLists";
 
 const Information = () => {
+    const nav = useNavigate();
     return(
         <>
             <Header />
@@ -19,9 +20,10 @@ const Information = () => {
                         <option value="인기순">인기순</option>
                         <option value="최신순">최신순</option>
                     </select>
+                    <div><p className="write" onClick={()=>nav("/newarticle")}>작성하기</p></div>
                 </div>
                 <div class="article-list">
-                    <hr/>
+                    <div className="line" />
                     <ArticleLists />
                     <ArticleLists />
                 </div>
