@@ -110,6 +110,20 @@ const Notice = () => {
                             </div>
                             <div class="article-image"></div>
                         </div>
+                        <div class="article">
+                            <div class="article-left">
+                                <h2>체험단 모집 공고2</h2>
+                                <p>아래 단체에서 체험단을 모집하고 있으니 참고 바랍니다.</p>
+                            </div>
+                            <div class="article-image"></div>
+                        </div>
+                        <div class="article">
+                            <div class="article-left">
+                                <h2>체험단 모집 공고3</h2>
+                                <p>아래 단체에서 체험단을 모집하고 있으니 참고 바랍니다.</p>
+                            </div>
+                            <div class="article-image"></div>
+                        </div>
                     </div>
                 </div>
             </div>
