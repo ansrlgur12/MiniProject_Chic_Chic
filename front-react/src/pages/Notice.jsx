@@ -73,8 +73,11 @@ export const NoticeStyle = styled.div`
   .article{
     cursor:pointer;
   }
-  
-    
+  .line {
+    border-bottom: 1px solid #afafaf;
+    width: 1fr;
+    margin: 10px 0 20px 0;
+  }
 `;
 
 const Notice = () => {
@@ -95,7 +98,7 @@ const Notice = () => {
                         </select>
                     </div>
                     <div class="article-list">
-                        <hr/>
+                        <div className="line"></div>
                         <div class="article">
                             <div class="article-left">
                                 <h2>규정사항 업데이트</h2>
