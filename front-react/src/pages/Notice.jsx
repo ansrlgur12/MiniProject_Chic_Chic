@@ -1,6 +1,7 @@
 import React from "react";
 import styled, {css} from "styled-components";
 import Header from "../Header/Header";
+import Footer from "../Footer/Footer";
 
 
 export const NoticeStyle = styled.div`
@@ -131,6 +132,7 @@ const Notice = () => {
                 </div>
             </div>
             </NoticeStyle>
+            <Footer />
         </>
     );
 }

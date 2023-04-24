@@ -6,6 +6,7 @@ import eventimg2 from "../image/event2.jpeg";
 import eventimg3 from "../image/event3.jpeg";
 import eventimg4 from "../image/event4.jpeg";
 import eventimg5 from "../image/event5.jpeg";
+import Footer from "../Footer/Footer";
 
 
 
@@ -95,6 +96,7 @@ const EventPage = () => {
                     </div>
                 </div>
             </EventStyle>
+            <Footer />
         </>
     );
 }
