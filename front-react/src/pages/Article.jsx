@@ -1,6 +1,8 @@
 import React from "react";
 import Header from "../Header/Header";
 import styled from "styled-components";
+import AxiosApi from "../api/Axios";
+import { useState, useEffect } from "react";
 
 const ArticleStyle = styled.div`
     box-sizing: border-box;
@@ -134,29 +136,36 @@ button{
 `;
 
 const Article = () => {
+    const[article, setArticle] = useState("");
+
+    useEffect(()=>{
+        const article = async() => {
+            const rsp = await AxiosApi.articleGet("ALL");
+            setArticle(rsp.data);
+        }
+        article();
+    }, []);
+
     return(
         <>
         <Header/>
         <ArticleStyle>
-            <div className="title">
-                <h2>제목 제목 제목</h2>
-                <div className="titleInfo">
-                    <p>작성자 이름</p>
-                    <p>|</p>
-                    <p>2023.04.20 시간</p>
+            {article && article.map(article => (
+                <div className="container" key={article.anum}>
+                    <div className="title">
+                        <h2>{article.title}</h2>
+                        <div className="titleInfo">
+                            <p>{article.unum}</p>
+                            <p>|</p>
+                            <p>{article.date}</p>
+                        </div>
+                    </div>
+                    <div className="main">
+                        <p>{article.text}</p>
+                    </div>
                 </div>
-            </div>
-            <div className="main">
-                <p>본문내용본문내용본문내용본문내용</p>
-                <p>본문내용본문내용본문내용본문내용본문내용본문내용</p>
-                <p>본문내용본문내용본문내용본문내용본문내용본문내용</p>
-                <p>본문내용본문내용본문내용본문내용본문내용본문내용</p>
-                <p>본문내용본문내용본문내용본문내용본문내용본문내용</p>
-                <p>본문내용본문내용본문내용본문내용본문내용본문내용</p>
-                <p>본문내용본문내용본문내용본문내용본문내용본문내용</p>
-                <p>본문내용본문내용본문내용본문내용본문내용본문내용</p>
-
-            </div>
+            ))}
+           
             <div className="likes">
                 <button className="likeBtn"><i class="fa-sharp fa-regular fa-heart"></i></button>
                 <button className="shareBtn">
