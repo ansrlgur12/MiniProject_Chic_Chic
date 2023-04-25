@@ -20,6 +20,7 @@ import PerfumePage from './pages/Perfume';
 import PerfumeListPage from './pages/PerfumeList';
 import TestResult from './pages/imageTest/TestResult';
 import NoteFinderMain from './pages/NoteFinder/NoteFinderMain';
+import NoteCategory from './pages/NoteFinder/NoteCategory';
 import Draft from './pages/NewArticle';
 import MyPage from './pages/MyPage/MyPage';
 import News from './pages/Notice/News';
@@ -50,6 +51,7 @@ function App() {
         <Route path='/imagetest6' element={<ImageTest6 />} />
         <Route path='/testresult' element={<TestResult />} />
         <Route path='/notefindermain' element={<NoteFinderMain />} />
+        <Route path='/notecategory' element={<NoteCategory />} />
         <Route path='/newarticle' element={<Draft />} />
         <Route path='/MyPage' element={<MyPage />} />
         <Route path='/News' element={<News />} />

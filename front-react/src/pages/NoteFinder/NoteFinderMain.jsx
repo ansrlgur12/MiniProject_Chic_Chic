@@ -3,6 +3,8 @@ import Header from "../../Header/Header";
 import { ImageTestStyle,ImageTestStyle1 } from "../imageTest/imageTest";
 import styled from "styled-components";
 import Footer from "../../Footer/Footer";
+import { useNavigate } from "react-router-dom";
+
 
 const Triangle = styled.div`
 .pyramid {
@@ -39,7 +41,13 @@ button{
     text-align:center;
 }
 `;
+
+
+
+
+
 const NoteFinderMain = () => {
+    const nav = useNavigate();
 
 return(
     <>
@@ -53,7 +61,7 @@ return(
         
        
         <div class="pyramid">
-  <button class="pyramid__section">click</button>
+  <button class="pyramid__section"onClick={()=>nav("/NoteCategory")}>click</button>
   <button class="pyramid__section">click</button>
   <button class="pyramid__section">click</button>
 </div>
@@ -66,8 +74,10 @@ return(
         </div>
     </ImageTestStyle1>
    </ImageTestStyle>
+   
    <Footer/>
     </>
 );
 };
+
 export default NoteFinderMain;
