@@ -19,9 +19,10 @@ import Notice from './pages/Notice';
 import PerfumePage from './pages/Perfume';
 import PerfumeListPage from './pages/PerfumeList';
 import TestResult from './pages/imageTest/TestResult';
-import NoteFinderMain from './NoteFinder/NoteFinderMain';
+import NoteFinderMain from './pages/NoteFinder/NoteFinderMain';
 import Draft from './pages/NewArticle';
 import MyPage from './pages/MyPage/MyPage';
+import News from './pages/News/News';
 
 
 
@@ -50,6 +51,7 @@ function App() {
         <Route path='/notefindermain' element={<NoteFinderMain />} />
         <Route path='/newarticle' element={<Draft />} />
         <Route path='/MyPage' element={<MyPage />} />
+        <Route path='/News' element={<News />} />
 
 
 

@@ -1,12 +1,12 @@
 import React from "react";
 import styled, {css} from "styled-components";
-import Header from "../Header/Header";
+import Header from "../../Header/Header";
 import eventimg1 from "../image/event1.jpeg";
 import eventimg2 from "../image/event2.jpeg";
 import eventimg3 from "../image/event3.jpeg";
 import eventimg4 from "../image/event4.jpeg";
 import eventimg5 from "../image/event5.jpeg";
-import Footer from "../Footer/Footer";
+import Footer from "../../Footer/Footer";
 
 
 
