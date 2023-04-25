@@ -198,7 +198,7 @@ const Header = () => {
                         <div className="caption-title notice">
                             <p onClick={()=>nav("/Notice")}>공지사항</p>
                             <p onClick={()=>nav("/EventPage")}>이벤트</p>
-                            <p>새 소식</p>
+                            <p onClick={()=>nav("/News")}>새 소식</p>
                         </div>
                     </div>
                 </div>

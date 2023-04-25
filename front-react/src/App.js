@@ -14,14 +14,16 @@ import ImageTest6 from './pages/imageTest/imageTest6';
 import Information from './pages/Community/Infomation';
 import UserDeal from './pages/Community/Userdeal';
 import Article from './pages/Article';
-import EventPage from './pages/EventPage';
-import Notice from './pages/Notice';
+import EventPage from './pages/Notice/EventPage';
+import Notice from './pages/Notice/Notice';
 import PerfumePage from './pages/Perfume';
 import PerfumeListPage from './pages/PerfumeList';
 import TestResult from './pages/imageTest/TestResult';
 import NoteFinderMain from './pages/NoteFinder/NoteFinderMain';
 import Draft from './pages/NewArticle';
 import MyPage from './pages/MyPage/MyPage';
+import News from './pages/Notice/News';
+
 
 
 
@@ -50,6 +52,8 @@ function App() {
         <Route path='/notefindermain' element={<NoteFinderMain />} />
         <Route path='/newarticle' element={<Draft />} />
         <Route path='/MyPage' element={<MyPage />} />
+        <Route path='/News' element={<News />} />
+
 
 
 

@@ -3,7 +3,7 @@ import styled, {css} from "styled-components";
 import { Link, useNavigate } from "react-router-dom";
 import Header from "../../Header/Header";
 import Footer from "../../Footer/Footer";
-import profileimg from "../../image/profile.png"
+import profileimg from "../../image/face.png"
 import gradeimg5 from "../../image/gradeLv5.png"
 
 export const MyPageStyle = styled.div`
@@ -15,16 +15,21 @@ export const MyPageStyle = styled.div`
     align-items: center;
 
     .container {
-        width: 1024px;
+        width: 960px;
         height: auto;
         display: inline-block;
         margin-top: 130px;
+    }
+    h2 {
+        text-align: center;
+        margin: 1em;
     }
     .top {
         width: 1fr;
         height: auto;
         border: 1px solid black;
-        padding: 20px
+        padding: 20px;
+        border-radius: 10px;
     }
     .profileP1 {
         width: 100px;
@@ -37,11 +42,13 @@ export const MyPageStyle = styled.div`
         justify-items: center;
         align-items: center;
         margin: 4px;
+        margin-top: 10px;
     }
     .up {
         display: flex;
         justify-content: space-evenly;
         align-items: center;
+
     }
     .textProfile {
         display: flex;
@@ -53,6 +60,7 @@ export const MyPageStyle = styled.div`
         margin: 16px;
         padding: 4px 8px;
         border-radius: 5px;
+        cursor: pointer;
     }
     .gradeImg {
         width: 10px;
@@ -66,14 +74,19 @@ export const MyPageStyle = styled.div`
         display: flex;
         justify-content: space-around;
     }
-    .line {
+    .inside {
         border-bottom: 1px solid #afafaf;
         margin: 20px 0;
+
+    }
+    .pr1 .pr2 {
+        margin: 20px;
     }
     .pr2{
         width: 1fr;
         height: 120px;
         border: 1px solid #afafaf;
+        padding: 10px;
     }
     .down {
         margin-top: 2em;
@@ -91,6 +104,7 @@ const MyPage = () => {
             <Header/>
             <MyPageStyle>
                 <div className="container">
+                    <h2>My Page</h2>
                     <div className="top">
                         <div className="inside">
                             <div className="up">
@@ -114,7 +128,7 @@ const MyPage = () => {
                                 </div>
                             </div>
                             <div className="down">
-                                <div className="pr1"><h3>소개 글</h3></div>
+                                <div className="pr1"><h4>소개 글</h4></div>
                                 <div className="pr2">안녕하세요 <br />소개 글 작성란입니다.</div>
                             </div>
                         </div>
