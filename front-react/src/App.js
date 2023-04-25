@@ -26,6 +26,7 @@ import News from './pages/Notice/News';
 
 
 
+
 function App() {
   return (
     <Router>
@@ -52,6 +53,7 @@ function App() {
         <Route path='/newarticle' element={<Draft />} />
         <Route path='/MyPage' element={<MyPage />} />
         <Route path='/News' element={<News />} />
+
 
 
 
