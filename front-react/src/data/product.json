@@ -1,0 +1,12 @@
+{
+    "products": [
+      {
+        "id": 1,
+        "name": "NO5",
+        "provider": "샤넬",
+        "price": 100,
+        "image": "/image/no1.png"
+      }
+    ]
+  }
+  

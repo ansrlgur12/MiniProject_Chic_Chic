@@ -3,7 +3,8 @@ import styled, {css} from "styled-components";
 import Header from "../Header/Header";
 import { Link, useNavigate } from "react-router-dom";
 import n1 from "../image/n1.png";
-import { PerfumeListStyle } from "./PerfumeList";
+import Footer from "../Footer/Footer";
+import PerfumeListPage from "./PerfumeList";
 
 export const PerfumeStyle = styled.div`
 
@@ -120,7 +121,7 @@ export const PerfumeStyle = styled.div`
 		margin: -2.5em 0 0 -2.5em;
 	}
 
-		.tiles article {
+		.tiles div {
 			-moz-transition: -moz-transform 0.5s ease, opacity 0.5s ease;
 			-webkit-transition: -webkit-transform 0.5s ease, opacity 0.5s ease;
 			-ms-transition: -ms-transform 0.5s ease, opacity 0.5s ease;
@@ -130,7 +131,7 @@ export const PerfumeStyle = styled.div`
 			margin: 2.5em 0 0 2.5em;
 		}
 
-			.tiles article > .image {
+			.tiles div > .image {
 				-moz-transition: -moz-transform 0.5s ease;
 				-webkit-transition: -webkit-transform 0.5s ease;
 				-ms-transition: -ms-transform 0.5s ease;
@@ -142,12 +143,12 @@ export const PerfumeStyle = styled.div`
 				overflow: hidden;
 			}
 
-				.tiles article > .image img {
+				.tiles div > .image img {
 					display: inline-block;
 					width: 50%; /*사진 이미지크기*/
 				}
 
-				.tiles article > .image:before {
+				.tiles div > .image:before {
 					pointer-events: none;
 					-moz-transition: background-color 0.5s ease, opacity 0.5s ease;
 					-webkit-transition: background-color 0.5s ease, opacity 0.5s ease;
@@ -165,7 +166,7 @@ export const PerfumeStyle = styled.div`
 					opacity: 0.8;
 				}
 
-				.tiles article > .image:after {
+				.tiles div > .image:after {
 					pointer-events: none;
 					-moz-transition: opacity 0.5s ease;
 					-webkit-transition: opacity 0.5s ease;
@@ -186,7 +187,7 @@ export const PerfumeStyle = styled.div`
 					z-index: 2;
 				}
 
-			.tiles article > a {
+			.tiles div > a {
 				display: -moz-flex;
 				display: -webkit-flex;
 				display: -ms-flex;
@@ -221,19 +222,19 @@ export const PerfumeStyle = styled.div`
 				z-index: 3;
 			}
 
-				.tiles article > a > :last-child {
+				.tiles div > a > :last-child {
 					margin: 0;
 				}
 
-				.tiles article > a:hover {
+				.tiles div > a:hover {
 					color: #ffffff !important;
 				} 
 
-				.tiles article > a h2 {
+				.tiles div > a h2 {
 					margin: 0;
 				}
 
-				.tiles article > a .content {
+				.tiles div > a .content {
 					-moz-transition: max-height 0.5s ease, opacity 0.5s ease;
 					-webkit-transition: max-height 0.5s ease, opacity 0.5s ease;
 					-ms-transition: max-height 0.5s ease, opacity 0.5s ease;
@@ -245,51 +246,32 @@ export const PerfumeStyle = styled.div`
 					opacity: 0;
 				}
 
-					.tiles article > a .content > :last-child {
+					.tiles div > a .content > :last-child {
 						margin-bottom: 0;
 					}
 
-			.tiles article.style1 > .image:before {
+			.tiles div.style1 > .image:before {
 				background-color: #ede6e6;
-			}
+			} /*향수 div배경
 
-			.tiles article.style2 > .image:before {
-				background-color: #ede6e6;
-			}
 
-			.tiles article.style3 > .image:before {
-				background-color: #ede6e6;
-			}
-
-			.tiles article.style4 > .image:before {
-				background-color: #ede6e6;
-			}
-
-			.tiles article.style5 > .image:before {
-				background-color: #ede6e6;
-			}
-
-			.tiles article.style6 > .image:before {
-				background-color: #ede6e6;
-			}
-
-			body:not(.is-touch) .tiles article:hover > .image {
+			body:not(.is-touch) .tiles div:hover > .image {
 				-moz-transform: scale(1.1);
 				-webkit-transform: scale(1.1);
 				-ms-transform: scale(1.1);
 				transform: scale(1.1);
 			}
 
-				body:not(.is-touch) .tiles article:hover > .image:before {
+				body:not(.is-touch) .tiles div:hover > .image:before {
 					background-color: #333333;
 					opacity: 0.35;
 				}
 
-				body:not(.is-touch) .tiles article:hover > .image:after {
+				body:not(.is-touch) .tiles div:hover > .image:after {
 					opacity: 0;
 				}
 
-			body:not(.is-touch) .tiles article:hover .content {
+			body:not(.is-touch) .tiles div:hover .content {
 				max-height: 15em;
 				opacity: 1;
 			}
@@ -298,7 +280,7 @@ export const PerfumeStyle = styled.div`
 			margin-top: 2em;
 		}
 
-		body.is-preload .tiles article {
+		body.is-preload .tiles div {
 			-moz-transform: scale(0.9);
 			-webkit-transform: scale(0.9);
 			-ms-transform: scale(0.9);
@@ -306,7 +288,7 @@ export const PerfumeStyle = styled.div`
 			opacity: 0;
 		}
 
-		body.is-touch .tiles article .content {
+		body.is-touch .tiles div .content {
 			max-height: 15em;
 			opacity: 1;
 		}
@@ -317,7 +299,7 @@ export const PerfumeStyle = styled.div`
 				margin: -1.25em 0 0 -1.25em;
 			}
 
-				.tiles article {
+				.tiles div {
 					width: calc(33.33333% - 1.25em);
 					margin: 1.25em 0 0 1.25em;
 				}
@@ -330,7 +312,7 @@ export const PerfumeStyle = styled.div`
 				margin: -2.5em 0 0 -2.5em;
 			}
 
-				.tiles article {
+				.tiles div {
 					width: calc(50% - 2.5em);
 					margin: 2.5em 0 0 2.5em;
 				}
@@ -343,12 +325,12 @@ export const PerfumeStyle = styled.div`
 				margin: -1.25em 0 0 -1.25em;
 			}
 
-				.tiles article {
+				.tiles div {
 					width: calc(50% - 1.25em);
 					margin: 1.25em 0 0 1.25em;
 				}
 
-					.tiles article:hover > .image {
+					.tiles div:hover > .image {
 						-moz-transform: scale(1.0);
 						-webkit-transform: scale(1.0);
 						-ms-transform: scale(1.0);
@@ -363,7 +345,7 @@ export const PerfumeStyle = styled.div`
 				margin: 0;
 			}
 
-				.tiles article {
+				.tiles div {
 					width: 100%;
 					margin: 1.25em 0 0 0;
 				}
@@ -410,84 +392,8 @@ header {
 			z-index: 1;
 		}
 
-			header nav ul {
-				display: -moz-flex;
-				display: -webkit-flex;
-				display: -ms-flex;
-				display: flex;
-				-moz-align-items: center;
-				-webkit-align-items: center;
-				-ms-align-items: center;
-				align-items: center;
-				list-style: none;
-				margin: 0;
-				padding: 0;
-			}
 
-				header nav ul li {
-					display: block;
-					padding: 0;
-				}
 
-					header nav ul li a {
-						display: block;
-						position: relative;
-						height: 3em;
-						line-height: 3em;
-						padding: 0 1.5em;
-						background-color: rgba(255, 255, 255, 0.5);
-						border-radius: 4px;
-						border: 0;
-						font-size: 0.8em;
-						font-weight: 900;
-						letter-spacing: 0.35em;
-						text-transform: uppercase;
-					}
-
-					header nav ul li a[href="#menu"] {
-						-webkit-tap-highlight-color: transparent;
-						width: 4em;
-						text-indent: 4em;
-						font-size: 1em;
-						overflow: hidden;
-						padding: 0;
-						white-space: nowrap;
-					}
-
-						header nav ul li a[href="#menu"]:before, header nav ul li a[href="#menu"]:after {
-							-moz-transition: opacity 0.2s ease;
-							-webkit-transition: opacity 0.2s ease;
-							-ms-transition: opacity 0.2s ease;
-							transition: opacity 0.2s ease;
-							content: '';
-							display: block;
-							position: absolute;
-							top: 0;
-							left: 0;
-							width: 100%;
-							height: 100%;
-							background-position: center;
-							background-repeat: no-repeat;
-							background-size: 2em 2em;
-						}
-
-						header nav ul li a[href="#menu"]:before {
-							background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cstyle%3Eline %7B stroke-width: 8px%3B stroke: %23f2849e%3B %7D%3C/style%3E%3Cline x1='0' y1='25' x2='100' y2='25' /%3E%3Cline x1='0' y1='50' x2='100' y2='50' /%3E%3Cline x1='0' y1='75' x2='100' y2='75' /%3E%3C/svg%3E");
-							opacity: 0;
-						}
-
-						header nav ul li a[href="#menu"]:after {
-							background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cstyle%3Eline %7B stroke-width: 8px%3B stroke: %23585858%3B %7D%3C/style%3E%3Cline x1='0' y1='25' x2='100' y2='25' /%3E%3Cline x1='0' y1='50' x2='100' y2='50' /%3E%3Cline x1='0' y1='75' x2='100' y2='75' /%3E%3C/svg%3E");
-							opacity: 1;
-						}
-
-						header nav ul li a[href="#menu"]:hover:before {
-							opacity: 1;
-						}
-
-						header nav ul li a[href="#menu"]:hover:after {
-							opacity: 0;
-						}
 
 		@media screen and (max-width: 736px) {
 
@@ -503,207 +409,6 @@ header {
 					header nav ul li a[href="#menu"]:before, header nav ul li a[href="#menu"]:after {
 						background-size: 1.5em 1.5em;
 					}
-
-		}
-
-
-/* Menu */
-
-	wrapper {
-		-moz-transition: opacity 0.45s ease;
-		-webkit-transition: opacity 0.45s ease;
-		-ms-transition: opacity 0.45s ease;
-		transition: opacity 0.45s ease;
-		opacity: 1;
-	}
-
-	menu {
-		-moz-transform: translateX(22em);
-		-webkit-transform: translateX(22em);
-		-ms-transform: translateX(22em);
-		transform: translateX(22em);
-		-moz-transition: -moz-transform 0.45s ease, visibility 0.45s;
-		-webkit-transition: -webkit-transform 0.45s ease, visibility 0.45s;
-		-ms-transition: -ms-transform 0.45s ease, visibility 0.45s;
-		transition: transform 0.45s ease, visibility 0.45s;
-		position: fixed;
-		top: 0;
-		right: 0;
-		width: 15em;
-		max-width: 80%;
-		height: 100%;
-		-webkit-overflow-scrolling: touch;
-		background: #e6a7a7; /* 메뉴컬러*/
-		color: #ffffff;
-		cursor: default;
-		visibility: hidden;
-		z-index: 1;
-	}
-
-		menu > .inner {
-			-moz-transition: opacity 0.45s ease;
-			-webkit-transition: opacity 0.45s ease;
-			-ms-transition: opacity 0.45s ease;
-			transition: opacity 0.45s ease;
-			-webkit-overflow-scrolling: touch;
-			position: absolute;
-			top: 0;
-			left: 0;
-			width: 100%;
-			height: 100%;
-			padding: 2.75em;
-			opacity: 0;
-			overflow-y: auto;
-		}
-
-			menu > .inner > ul {
-				list-style: none;
-				margin: 0 0 1em 0;
-				padding: 0;
-			}
-
-				menu > .inner > ul > li {
-					padding: 0;
-					border-top: solid 1px rgba(255, 255, 255, 0.15);
-				}
-
-					menu > .inner > ul > li a {
-						display: block;
-						padding: 1em 0;
-						line-height: 1.5;
-						border: 0;
-						color: inherit;
-					}
-
-					menu > .inner > ul > li:first-child {
-						border-top: 0;
-						margin-top: -1em;
-					}
-
-		menu > .close {
-			-moz-transition: opacity 0.45s ease, -moz-transform 0.45s ease;
-			-webkit-transition: opacity 0.45s ease, -webkit-transform 0.45s ease;
-			-ms-transition: opacity 0.45s ease, -ms-transform 0.45s ease;
-			transition: opacity 0.45s ease, transform 0.45s ease;
-			-moz-transform: scale(0.25) rotate(180deg);
-			-webkit-transform: scale(0.25) rotate(180deg);
-			-ms-transform: scale(0.25) rotate(180deg);
-			transform: scale(0.25) rotate(180deg);
-			-webkit-tap-highlight-color: transparent;
-			display: block;
-			position: absolute;
-			top: 2em;
-			left: -6em;
-			width: 6em;
-			text-indent: 6em;
-			height: 3em;
-			border: 0;
-			font-size: 1em;
-			opacity: 0;
-			overflow: hidden;
-			padding: 0;
-			white-space: nowrap;
-		}
-
-			menu > .close:before, menu > .close:after {
-				-moz-transition: opacity 0.2s ease;
-				-webkit-transition: opacity 0.2s ease;
-				-ms-transition: opacity 0.2s ease;
-				transition: opacity 0.2s ease;
-				content: '';
-				display: block;
-				position: absolute;
-				top: 0;
-				left: 0;
-				width: 100%;
-				height: 100%;
-				background-position: center;
-				background-repeat: no-repeat;
-				background-size: 2em 2em;
-			}
-
-			menu > .close:before {
-				background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cstyle%3Eline %7B stroke-width: 8px%3B stroke: %23f2849e%3B %7D%3C/style%3E%3Cline x1='15' y1='15' x2='85' y2='85' /%3E%3Cline x1='85' y1='15' x2='15' y2='85' /%3E%3C/svg%3E");
-				opacity: 0;
-			}
-
-			menu > .close:after {
-				background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cstyle%3Eline %7B stroke-width: 8px%3B stroke: %23585858%3B %7D%3C/style%3E%3Cline x1='15' y1='15' x2='85' y2='85' /%3E%3Cline x1='85' y1='15' x2='15' y2='85' /%3E%3C/svg%3E");
-				opacity: 1;
-			}
-
-			menu > .close:hover:before {
-				opacity: 1;
-			}
-
-			menu > .close:hover:after {
-				opacity: 0;
-			}
-
-		@media screen and (max-width: 736px) {
-
-			#menu {
-				-moz-transform: translateX(16.5em);
-				-webkit-transform: translateX(16.5em);
-				-ms-transform: translateX(16.5em);
-				transform: translateX(16.5em);
-				width: 16.5em;
-			}
-
-				#menu > .inner {
-					padding: 2.75em 1.5em;
-				}
-
-				#menu > .close {
-					top: 0.5em;
-					left: -4.25em;
-					width: 4.25em;
-					text-indent: 4.25em;
-				}
-
-					#menu > .close:before, #menu > .close:after {
-						background-size: 1.5em 1.5em;
-					}
-
-		}
-
-	body.is-menu-visible #wrapper {
-		pointer-events: none;
-		cursor: default;
-		opacity: 0.25;
-	}
-
-	body.is-menu-visible #menu {
-		-moz-transform: translateX(0);
-		-webkit-transform: translateX(0);
-		-ms-transform: translateX(0);
-		transform: translateX(0);
-		visibility: visible;
-	}
-
-		body.is-menu-visible #menu > * {
-			opacity: 1;
-		}
-
-		body.is-menu-visible #menu .close {
-			-moz-transform: scale(1.0) rotate(0deg);
-			-webkit-transform: scale(1.0) rotate(0deg);
-			-ms-transform: scale(1.0) rotate(0deg);
-			transform: scale(1.0) rotate(0deg);
-			opacity: 1;
-		}
-
-/* Main */
-
-	main {
-		padding: 0em 0 6em 0 ;
-	}
-
-		@media screen and (max-width: 736px) {
-
-			main {
-				padding: 0em 0 4em 0 ;
-			}
 
 		}
 
@@ -748,88 +453,48 @@ const PerfumePage = () => {
                         <img src={n1} alt=""/>
 						
                     </div>
-                    <Link to = "/PerfumeList">
-                        <h2>향수1</h2>
-                        <div class="content">
-                            <p>향수 어쩌구저쩌구~</p>
-                        </div>
-                    </Link>
+					<Link>
+                        <h2 onClick={()=>nav("/PerfumeList")}>향수1</h2>
+						</Link>
                 </div>
-                <article class="style1">
-                    <span class="image" >
-                        <img src={n1} alt=""/>
-						
-                    </span>
-                    <a href="generic.html">
-                        <h2>향수2</h2>
-                        <div class="content">
-                            <p>향수 어쩌구저쩌구~</p>
-                        </div>
-                    </a>
-                </article>
-				<article class="style1">
-                    <span class="image" >
-                        <img src={n1} alt=""/>
-						
-                    </span>
-                    <a href="generic.html">
-                        <h2>향수1</h2>
-                        <div class="content">
-                            <p>향수 어쩌구저쩌구~</p>
-                        </div>
-                    </a>
-                </article>
-				<article class="style1">
-                    <span class="image" >
-                        <img src={n1} alt=""/>
-						
-                    </span>
-                    <a href="generic.html">
-                        <h2>향수1</h2>
-                        <div class="content">
-                            <p>향수 어쩌구저쩌구~</p>
-                        </div>
-                    </a>
-                </article>
-				<article class="style1">
-                    <span class="image" >
-                        <img src={n1} alt=""/>
-						
-                    </span>
-                    <a href="generic.html">
-                        <h2>향수1</h2>
-                        <div class="content">
-                            <p>향수 어쩌구저쩌구~</p>
-                        </div>
-                    </a>
-                </article>
-				<article class="style1">
-                    <span class="image" >
-                        <img src={n1} alt=""/>
-						
-                    </span>
-                    <a href="generic.html">
-                        <h2>향수1</h2>
-                        <div class="content">
-                            <p>향수 어쩌구저쩌구~</p>
-                        </div>
-                    </a>
-                </article>
-				<article class="style1">
-                    <span class="image" >
-                        <img src={n1} alt=""/>
-						
-                    </span>
-                    <a href="generic.html">
-                        <h2>향수1</h2>
-                        <div class="content">
-                            <p>향수 어쩌구저쩌구~</p>
-                        </div>
-                    </a>
-                </article>
-                
-                
             </div>
+
+			<div class="tiles">
+                <div class="style1">
+                    <div class="image" >
+                        <img src={n1} alt=""/>
+						
+                    </div>
+				
+                        <h2 onClick={()=>nav("/PerfumeList")}>향수1</h2>
+					
+                </div>
+            </div>
+
+			<div class="tiles">
+                <div class="style1">
+                    <div class="image" >
+                        <img src={n1} alt=""/>
+						
+                    </div>
+					<Link>
+                        <h2 onClick={()=>nav("/PerfumeList")}>향수1</h2>
+						</Link>
+                </div>
+            </div>
+
+			<div class="tiles">
+                <div class="style1">
+                    <div class="image" >
+                        <img src={n1} alt=""/>
+						
+                    </div>
+					<Link>
+                        <h2 onClick={()=>nav("/PerfumeList")}>향수1</h2>
+						</Link>
+                </div>
+            </div>
+			
         </div>
     </div>
 
@@ -837,7 +502,7 @@ const PerfumePage = () => {
 
 </div>
 </PerfumeStyle>
-
+<Footer/>
 </>
 );
 }

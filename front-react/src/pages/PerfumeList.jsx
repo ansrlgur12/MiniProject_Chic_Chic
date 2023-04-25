@@ -3,9 +3,9 @@ import styled, {css} from "styled-components";
 import Header from "../Header/Header";
 import { Link, useNavigate } from "react-router-dom";
 import n1 from "../image/n1.png";
+import Footer from "../Footer/Footer";
 
 export const PerfumeListStyle = styled.div`
-
 
 	strong, b {
 		font-weight: 900;
@@ -726,7 +726,9 @@ wrapper > * > .inner {
 }
     `;
 
-const PerfumeListPage = () => useNavigate();
+const PerfumeListPage = () => {
+	const nav = useNavigate();
+    return(
     <>
       <Header />
       <PerfumeListStyle>
@@ -864,7 +866,9 @@ const PerfumeListPage = () => useNavigate();
 			
 </PerfumeListStyle>
 
+<Footer/>
 </>
-
+	);
+	}
 
 export default PerfumeListPage;

@@ -44,7 +44,7 @@ function App() {
         <Route path='/imagetest1' element={<ImageTest1 />} />
         <Route path='/imagetest2' element={<ImageTest2 />} />
         <Route path='/PerfumePage' element={<PerfumePage />} />
-        <Route path='/PerfumeListPage' element={<PerfumeListPage />} />
+        <Route path='/PerfumeList' element={<PerfumeListPage />} />
         <Route path='/imagetest3' element={<ImageTest3 />} />
         <Route path='/imagetest4' element={<ImageTest4 />} />
         <Route path='/imagetest5' element={<ImageTest5 />} />
