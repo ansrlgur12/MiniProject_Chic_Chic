@@ -5,7 +5,7 @@ const AxiosApi = {
 
     articleGet : async(anum) => {
         
-        return await axios.get(CHIC_DOMAIN + `/article/anum=${anum}`);
+        return await axios.get(CHIC_DOMAIN + `/article/${anum}`);
     },
 };
 
