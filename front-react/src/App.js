@@ -38,7 +38,7 @@ function App() {
         <Route path='/Testmain' element={<TestMain />} />
         <Route path='/information' element={<Information />} />
         <Route path='/userdeal' element={<UserDeal />} />
-        <Route path='/article' element={<Article />} />
+        <Route path='/article/:anum' element={<Article />} />
         <Route path='/EventPage' element={<EventPage />} />
         <Route path='/Notice' element={<Notice />} />
         <Route path='/imagetest1' element={<ImageTest1 />} />

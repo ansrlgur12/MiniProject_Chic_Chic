@@ -3,6 +3,7 @@ import { useNavigate } from "react-router";
 import styled from "styled-components";
 import AxiosApi from "../api/Axios";
 import { useState, useEffect } from "react";
+import Article from "./Article";
 
 const ArticleListBlock = styled.div`
     .main .article-list{
@@ -34,17 +35,21 @@ const ArticleListBlock = styled.div`
 
     useEffect(()=>{
         const article = async() => {
-            const rsp = await AxiosApi.articleGet("ALL");
+            const rsp = await AxiosApi.articleGet(0);
             setArticle(rsp.data);
         }
         article();
     }, []);
 
+    const handleClick = (num) => {
+        nav(`/article/${num}`);
+      };
+
     return(
         <>
             <ArticleListBlock>        
             {article && article.map(article => (
-                <div class="article" onClick={()=>nav("/article")}>
+                <div class="article" key={article.anum} onClick={()=>handleClick(article.anum)}>
                 <div class="article-left">
                     <h2>{article.title}</h2>
                     <p>{article.text}</p>
