@@ -27,8 +27,6 @@ const UserDeal = () => {
                 <div class="article-list">
                     <div className="line" />
                     <ArticleLists />
-                    <ArticleLists />
-                    <ArticleLists />
                 </div>
             </div>
             </div>

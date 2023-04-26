@@ -26,7 +26,6 @@ const Information = () => {
                 <div class="article-list">
                     <div className="line" />
                     <ArticleLists />
-                    <ArticleLists />
                 </div>
             </div>
             </div>

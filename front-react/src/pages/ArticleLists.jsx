@@ -1,6 +1,8 @@
 import React from "react";
 import { useNavigate } from "react-router";
 import styled from "styled-components";
+import AxiosApi from "../api/Axios";
+import { useState, useEffect } from "react";
 
 const ArticleListBlock = styled.div`
     .main .article-list{
@@ -28,14 +30,33 @@ const ArticleListBlock = styled.div`
 
   const ArticleLists = () => {
     const nav = useNavigate();
+    const[article, setArticle] = useState("");
+
+    useEffect(()=>{
+        const article = async() => {
+            const rsp = await AxiosApi.articleGet("ALL");
+            setArticle(rsp.data);
+        }
+        article();
+    }, []);
+
     return(
-        <div class="article" onClick={()=>nav("/article")}>
-            <div class="article-left">
-                <h2>제목 제목</h2>
-                <p>뭐시기뭐시기</p>
+        <>
+            <ArticleListBlock>        
+            {article && article.map(article => (
+                <div class="article" onClick={()=>nav("/article")}>
+                <div class="article-left">
+                    <h2>{article.title}</h2>
+                    <p>{article.text}</p>
+                </div>
+                <div class="article-image"></div>
             </div>
-            <div class="article-image"></div>
-        </div>
+            ))}
+            </ArticleListBlock>
+
+        </>
+
+        
     );
   }
 

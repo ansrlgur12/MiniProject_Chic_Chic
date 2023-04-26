@@ -117,9 +117,6 @@ const Community = () => {
                     <div class="article-list">
                         <div className="line" />
                         <ArticleLists />
-                        <ArticleLists />
-                        <ArticleLists />
-                        <ArticleLists />
                     </div>
                 </div>
             </div>
