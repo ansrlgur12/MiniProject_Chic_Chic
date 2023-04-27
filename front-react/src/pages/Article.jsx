@@ -142,7 +142,7 @@ const Article = () => {
 
     useEffect(()=>{
         const article = async() => {
-            const rsp = await AxiosApi.articleGet(anum);
+            const rsp = await AxiosApi.write(anum);
             console.log(anum);
             setArticle(rsp.data);
         }

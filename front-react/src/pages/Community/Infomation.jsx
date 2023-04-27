@@ -25,7 +25,7 @@ const Information = () => {
                 </div>
                 <div class="article-list">
                     <div className="line" />
-                    <ArticleLists />
+                    <ArticleLists num={2}/>
                 </div>
             </div>
             </div>

@@ -116,7 +116,7 @@ const Community = () => {
                     </div>
                     <div class="article-list">
                         <div className="line" />
-                        <ArticleLists />
+                        <ArticleLists num={1}/>
                     </div>
                 </div>
             </div>

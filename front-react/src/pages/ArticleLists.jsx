@@ -29,19 +29,19 @@ const ArticleListBlock = styled.div`
     }
   `;
 
-  const ArticleLists = () => {
+  const ArticleLists = (props) => {
     const nav = useNavigate();
     const[article, setArticle] = useState("");
 
     useEffect(()=>{
         const article = async() => {
-            const rsp = await AxiosApi.articleGet(0);
+            const rsp = await AxiosApi.articleGet(props.num);
             setArticle(rsp.data);
         }
         article();
     }, []);
 
-    const handleClick = (num) => {
+    const onClick = (num) => {
         nav(`/article/${num}`);
       };
 
@@ -49,7 +49,7 @@ const ArticleListBlock = styled.div`
         <>
             <ArticleListBlock>        
             {article && article.map(article => (
-                <div class="article" key={article.anum} onClick={()=>handleClick(article.anum)}>
+                <div class="article" key={article.anum} onClick={()=>onClick(article.anum)}>
                 <div class="article-left">
                     <h2>{article.title}</h2>
                     <p>{article.text}</p>
