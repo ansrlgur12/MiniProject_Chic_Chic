@@ -7,6 +7,10 @@ const AxiosApi = {
         
         return await axios.get(CHIC_DOMAIN + `/article/${anum}`);
     },
+    write : async(num) => {
+        
+        return await axios.get(CHIC_DOMAIN + `/articles/${num}`);
+    },
 };
 
 export default AxiosApi;
