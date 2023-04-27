@@ -1,0 +1,60 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "블랙팬덤",
+      "provider": "킬리안",
+      "oz": 16,
+      "image": "../images/킬리안 블랙팬덤.png"
+    },
+    {
+      "id": 2,
+      "name": "탐다오",
+      "provider": "딥디크",
+      "oz": 16,
+      "image": "../images/딥디크 탐다오.png"
+    },
+    {
+      "id": 3,
+      "name": "조바이조러브스",
+      "provider": "조러브스",
+      "oz": 16,
+      "image": "../images/조러브스 조바이조러브스.png"
+    },
+    {
+      "id": 4,
+      "name": "가브리엘",
+      "provider": "샤넬",
+      "oz": 16,
+      "image": "../images/샤넬 가브리엘.png"
+    },
+    {
+      "id": 5,
+      "name": "떼르데르메스",
+      "provider": "에르메스",
+      "oz": 16,
+      "image": "../images/에르메스 떼르데르메스.png"
+    },
+    {
+      "id": 6,
+      "name": "코발트파출리",
+      "provider": "조러브스",
+      "oz": 16,
+      "image": "../images/조러브스 코발트파출리.png"
+    },
+    {
+      "id": 7,
+      "name": "델리나",
+      "provider": "퍼퓸드말리",
+      "oz": 16,
+      "image": "../images/퍼퓸드말리 델리나.png"
+    },
+    {
+      "id": 8,
+      "name": "타마린도",
+      "provider": "메모",
+      "oz": 16,
+      "image": "../images/메모 타마린도.png"
+    }
+  ]
+}
