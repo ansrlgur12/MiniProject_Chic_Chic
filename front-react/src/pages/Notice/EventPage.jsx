@@ -1,12 +1,9 @@
-import React from "react";
-import styled, {css} from "styled-components";
+import React, { useEffect, useState } from "react";
+import styled from "styled-components";
 import Header from "../../Header/Header";
-import eventimg1 from "../../image/event1.jpeg";
-import eventimg2 from "../../image/event2.jpeg";
-import eventimg3 from "../../image/event3.jpeg";
-import eventimg4 from "../../image/event4.jpeg";
-import eventimg5 from "../../image/event5.jpeg";
 import Footer from "../../Footer/Footer";
+import { useNavigate } from "react-router-dom";
+import AxiosApi from "../../api/Axios";
 
 
 
@@ -50,6 +47,7 @@ const EventStyle = styled.div`
         height: 260px;
         margin: 10px;
         border: .5px solid #afafaf;
+        background-color: #afafaf;
     }
     .eArticle {
         margin: 0 10px;
@@ -67,6 +65,16 @@ const EventStyle = styled.div`
 
 
 const EventPage = () => {
+    const nav = useNavigate();
+    const[eventDesc, setEventDesc] = useState("");
+
+    useEffect(()=> {
+        const eventDesc = async() => {
+            const rsp = await AxiosApi.eventDescGet("ALL");
+            setEventDesc(rsp.data);
+        }
+        eventDesc();
+    }, []);
 
     return(
         <>
@@ -82,18 +90,15 @@ const EventPage = () => {
                             <div className="eArticle eArticle4">종료 이벤트</div>
                         </div>
                         <div className="line"/>
-                        <div className="eContainer">
-                            <div className="eventPost post1" style={{backgroundImage: `url(${eventimg1})`, backgroundSize: 'cover', backgroundRepeat: "no-repeat"}}></div>
-                            <div className="eventPost post2" style={{backgroundImage: `url(${eventimg2})`, backgroundSize: 'cover', backgroundRepeat: "no-repeat"}}></div>
-                            <div className="eventPost post3" style={{backgroundImage: `url(${eventimg3})`, backgroundSize: 'contain', backgroundRepeat: "no-repeat"}}></div>
-                            <div className="eventPost post4" style={{backgroundImage: `url(${eventimg4})`, backgroundSize: 'cover', backgroundRepeat: "no-repeat"}}></div>
-                            <div className="eventPost post5" style={{backgroundImage: `url(${eventimg5})`, backgroundSize: 'cover', backgroundRepeat: "no-repeat"}}></div>
-                            <div className="eventPost post6" style={{backgroundImage: `url(${eventimg1})`, backgroundSize: 'cover', backgroundRepeat: "no-repeat"}}></div>
-                            <div className="eventPost post7" style={{backgroundImage: `url(${eventimg2})`, backgroundSize: 'cover', backgroundRepeat: "no-repeat"}}></div>
-                            <div className="eventPost post8" style={{backgroundImage: `url(${eventimg3})`, backgroundSize: 'contain', backgroundRepeat: "no-repeat"}}></div>
-                            <div className="eventPost post9" style={{backgroundImage: `url(${eventimg4})`, backgroundSize: 'cover', backgroundRepeat: "no-repeat"}}></div>
-
-                        </div>
+                        {eventDesc && eventDesc.map(eventDesc => (
+                            <div className="eContainer" onClick={()=>nav("/EventDesc")}>
+                                <div className="eventPost">
+                                    <p>{eventDesc.eventNum}</p>
+                                    <p>{eventDesc.eTitle}</p>
+                                </div>
+                            </div>
+                        ))}
+                        
                     </div>
                 </div>
             </EventStyle>
