@@ -16,6 +16,10 @@ const AxiosApi = {
 
        // return await axios.get(CHIC_DOMAIN + `/${}`);
     }
+    eventDescGet : async(eNum) => { // 이벤트 페이지 async
+
+        return await axios.get(CHIC_DOMAIN + `/EventDesc/${eNum}`);
+    },
 };
 
 export default AxiosApi;
