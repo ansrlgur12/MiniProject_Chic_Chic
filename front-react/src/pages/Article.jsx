@@ -3,7 +3,7 @@ import Header from "../Header/Header";
 import styled from "styled-components";
 import AxiosApi from "../api/Axios";
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 const ArticleStyle = styled.div`
     box-sizing: border-box;
@@ -134,9 +134,22 @@ button{
 .likeBtn{
     color: #d01919;
 }
+.likeDeleteUpdate{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.deleteUpdate{
+    cursor: pointer;
+    margin-top: 30px;
+    display: flex;
+    font-size: small;
+    color: #696969;
+}   
 `;
 
 const Article = () => {
+    const nav = useNavigate();
     const { anum } = useParams(); 
     const[article, setArticle] = useState("");
 
@@ -148,6 +161,12 @@ const Article = () => {
         }
         article();
     }, [anum]);
+
+    const onClickDelete = async() => {
+        const rsp = await AxiosApi.deleteArticle(anum);
+        console.log(rsp);
+        nav('/');
+    }
 
     return(
         <>
@@ -168,15 +187,22 @@ const Article = () => {
                     </div>
                 </div>
             ))}
-           
-            <div className="likes">
-                <button className="likeBtn"><i class="fa-sharp fa-regular fa-heart"></i></button>
-                <button className="shareBtn">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-share" viewBox="0 0 16 16">
-                    <path d="M13.5 1a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM11 2.5a2.5 2.5 0 1 1 .603 1.628l-6.718 3.12a2.499 2.499 0 0 1 0 1.504l6.718 3.12a2.5 2.5 0 1 1-.488.876l-6.718-3.12a2.5 2.5 0 1 1 0-3.256l6.718-3.12A2.5 2.5 0 0 1 11 2.5zm-8.5 4a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zm11 5.5a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3z"/>
-                    </svg>
-                </button>
+            <div className="likeDeleteUpdate">
+                <div className="likes">
+                    <button className="likeBtn"><i class="fa-sharp fa-regular fa-heart"></i></button>
+                    <button className="shareBtn">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-share" viewBox="0 0 16 16">
+                        <path d="M13.5 1a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM11 2.5a2.5 2.5 0 1 1 .603 1.628l-6.718 3.12a2.499 2.499 0 0 1 0 1.504l6.718 3.12a2.5 2.5 0 1 1-.488.876l-6.718-3.12a2.5 2.5 0 1 1 0-3.256l6.718-3.12A2.5 2.5 0 0 1 11 2.5zm-8.5 4a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zm11 5.5a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3z"/>
+                        </svg>
+                    </button>
+                </div>
+                <div className="deleteUpdate">
+                    <p>수정하기</p>
+                    <p>|</p>
+                    <p onClick={onClickDelete}>삭제하기</p>
+                </div>
             </div>
+            
 
             <div className="list">
                 <div className="list-title">
