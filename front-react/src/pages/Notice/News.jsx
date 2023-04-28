@@ -4,7 +4,6 @@ import styled, { css } from "styled-components";
 import Footer from "../../Footer/Footer";
 import newsimg1 from "../../image/news1.jpg";
 import newsimg2 from "../../image/news2.jpg";
-
 import { Link, useNavigate } from "react-router-dom";
 
 const NewsStyle = styled.div`
@@ -19,7 +18,7 @@ const NewsStyle = styled.div`
         margin-top: 130px;
         width: 60vw;
         height: auto;
-        padding: 70px 0px 0px 0px;
+        padding: 40px 0px 0px 0px;
     }
     .main .section{
 
@@ -30,7 +29,7 @@ const NewsStyle = styled.div`
         display: flex;
         flex-direction: row;
         justify-content: right;
-        margin: 20px 0px 20px 0px;
+        margin: 10px 0px 20px 0px;
     }
     .main .article-list{
         width: 100%;
@@ -90,6 +89,10 @@ const NewsStyle = styled.div`
     .article-image{
         width: 50vw;
     }
+    .list {
+        height: 500px;
+        overflow-y: scroll;
+    }
 `;
 
 const News = () => {
@@ -111,36 +114,154 @@ const News = () => {
                             <option value="최신순">최신순</option>
                         </select>
                     </div>
-                    <div class="article-list">
-                        <div className="line"></div>
-                        <div class="article">
-                            <div class="article-left">
-                                <h2>CHANEL PARFUMEUR</h2>
-                                <p>샤넬 향수는 특별한 향과 함께 있는 그대로의 모습을 드러내는 작품입니다.
-                                    특별한 시리즈를 통해 샤넬 향수에 관련된 노하우와 전문 기술, 창의성을 끊임없이 추구하는 샤넬의 여정을 확인해 보세요. </p>
+                    <div className="list">
+                        <div class="article-list">
+                            <div className="line"></div>
+                            <div class="article">
+                                <div class="article-left">
+                                    <h2>CHANEL PARFUMEUR</h2>
+                                    <p>샤넬 향수는 특별한 향과 함께 있는 그대로의 모습을 드러내는 작품입니다.
+                                        특별한 시리즈를 통해 샤넬 향수에 관련된 노하우와 전문 기술, 창의성을 끊임없이 추구하는 샤넬의 여정을 확인해 보세요. </p>
+                                </div>
+                                <div class="article-image" style={{backgroundImage: `url(${newsimg1})`, backgroundSize: 'cover'}}></div>
                             </div>
-                            <div class="article-image" style={{backgroundImage: `url(${newsimg1})`, backgroundSize: 'cover'}}></div>
-                        </div>
-                        <div class="article">
-                            <div class="article-left">
-                                <h2>샤넬, 북촌서 향수 체험 공간 '조향 마스터클래스' 오픈 | 연합뉴스</h2>
-                                <p>샤넬은 오는 19일부터 내년 3월 25일까지 북촌 휘겸재에서 '조향 마스터클래스'를 오픈한다고 7일 밝혔다.</p>
+                            <div class="article">
+                                <div class="article-left">
+                                    <h2>샤넬, 북촌서 향수 체험 공간 '조향 마스터클래스' 오픈 | 연합뉴스</h2>
+                                    <p>샤넬은 오는 19일부터 내년 3월 25일까지 북촌 휘겸재에서 '조향 마스터클래스'를 오픈한다고 7일 밝혔다.</p>
+                                </div>
+                                <div class="article-image" style={{backgroundImage: `url(${newsimg2})`, backgroundSize: 'cover'}}></div>
                             </div>
-                            <div class="article-image" style={{backgroundImage: `url(${newsimg2})`, backgroundSize: 'cover'}}></div>
-                        </div>
-                        <div class="article">
-                            <div class="article-left">
-                                <h2>체험단 모집 공고2</h2>
-                                <p>아래 단체에서 체험단을 모집하고 있으니 참고 바랍니다.</p>
+                            <div class="article">
+                                <div class="article-left">
+                                    <h2>체험단 모집 공고2</h2>
+                                    <p>아래 단체에서 체험단을 모집하고 있으니 참고 바랍니다.</p>
+                                </div>
+                                <div class="article-image"></div>
                             </div>
-                            <div class="article-image"></div>
-                        </div>
-                        <div class="article">
-                            <div class="article-left">
-                                <h2>체험단 모집 공고3</h2>
-                                <p>아래 단체에서 체험단을 모집하고 있으니 참고 바랍니다.</p>
+                            <div class="article">
+                                <div class="article-left">
+                                    <h2>체험단 모집 공고3</h2>
+                                    <p>아래 단체에서 체험단을 모집하고 있으니 참고 바랍니다.</p>
+                                </div>
+                                <div class="article-image"></div>
                             </div>
-                            <div class="article-image"></div>
+                            <div class="article">
+                                <div class="article-left">
+                                    <h2>CHANEL PARFUMEUR</h2>
+                                    <p>샤넬 향수는 특별한 향과 함께 있는 그대로의 모습을 드러내는 작품입니다.
+                                        특별한 시리즈를 통해 샤넬 향수에 관련된 노하우와 전문 기술, 창의성을 끊임없이 추구하는 샤넬의 여정을 확인해 보세요. </p>
+                                </div>
+                                <div class="article-image" style={{backgroundImage: `url(${newsimg1})`, backgroundSize: 'cover'}}></div>
+                            </div>
+                            <div class="article">
+                                <div class="article-left">
+                                    <h2>샤넬, 북촌서 향수 체험 공간 '조향 마스터클래스' 오픈 | 연합뉴스</h2>
+                                    <p>샤넬은 오는 19일부터 내년 3월 25일까지 북촌 휘겸재에서 '조향 마스터클래스'를 오픈한다고 7일 밝혔다.</p>
+                                </div>
+                                <div class="article-image" style={{backgroundImage: `url(${newsimg2})`, backgroundSize: 'cover'}}></div>
+                            </div>
+                            <div class="article">
+                                <div class="article-left">
+                                    <h2>체험단 모집 공고2</h2>
+                                    <p>아래 단체에서 체험단을 모집하고 있으니 참고 바랍니다.</p>
+                                </div>
+                                <div class="article-image"></div>
+                            </div>
+                            <div class="article">
+                                <div class="article-left">
+                                    <h2>체험단 모집 공고3</h2>
+                                    <p>아래 단체에서 체험단을 모집하고 있으니 참고 바랍니다.</p>
+                                </div>
+                                <div class="article-image"></div>
+                            </div>
+                            <div class="article">
+                                <div class="article-left">
+                                    <h2>CHANEL PARFUMEUR</h2>
+                                    <p>샤넬 향수는 특별한 향과 함께 있는 그대로의 모습을 드러내는 작품입니다.
+                                        특별한 시리즈를 통해 샤넬 향수에 관련된 노하우와 전문 기술, 창의성을 끊임없이 추구하는 샤넬의 여정을 확인해 보세요. </p>
+                                </div>
+                                <div class="article-image" style={{backgroundImage: `url(${newsimg1})`, backgroundSize: 'cover'}}></div>
+                            </div>
+                            <div class="article">
+                                <div class="article-left">
+                                    <h2>샤넬, 북촌서 향수 체험 공간 '조향 마스터클래스' 오픈 | 연합뉴스</h2>
+                                    <p>샤넬은 오는 19일부터 내년 3월 25일까지 북촌 휘겸재에서 '조향 마스터클래스'를 오픈한다고 7일 밝혔다.</p>
+                                </div>
+                                <div class="article-image" style={{backgroundImage: `url(${newsimg2})`, backgroundSize: 'cover'}}></div>
+                            </div>
+                            <div class="article">
+                                <div class="article-left">
+                                    <h2>체험단 모집 공고2</h2>
+                                    <p>아래 단체에서 체험단을 모집하고 있으니 참고 바랍니다.</p>
+                                </div>
+                                <div class="article-image"></div>
+                            </div>
+                            <div class="article">
+                                <div class="article-left">
+                                    <h2>체험단 모집 공고3</h2>
+                                    <p>아래 단체에서 체험단을 모집하고 있으니 참고 바랍니다.</p>
+                                </div>
+                                <div class="article-image"></div>
+                            </div>
+                            <div class="article">
+                                <div class="article-left">
+                                    <h2>CHANEL PARFUMEUR</h2>
+                                    <p>샤넬 향수는 특별한 향과 함께 있는 그대로의 모습을 드러내는 작품입니다.
+                                        특별한 시리즈를 통해 샤넬 향수에 관련된 노하우와 전문 기술, 창의성을 끊임없이 추구하는 샤넬의 여정을 확인해 보세요. </p>
+                                </div>
+                                <div class="article-image" style={{backgroundImage: `url(${newsimg1})`, backgroundSize: 'cover'}}></div>
+                            </div>
+                            <div class="article">
+                                <div class="article-left">
+                                    <h2>샤넬, 북촌서 향수 체험 공간 '조향 마스터클래스' 오픈 | 연합뉴스</h2>
+                                    <p>샤넬은 오는 19일부터 내년 3월 25일까지 북촌 휘겸재에서 '조향 마스터클래스'를 오픈한다고 7일 밝혔다.</p>
+                                </div>
+                                <div class="article-image" style={{backgroundImage: `url(${newsimg2})`, backgroundSize: 'cover'}}></div>
+                            </div>
+                            <div class="article">
+                                <div class="article-left">
+                                    <h2>체험단 모집 공고2</h2>
+                                    <p>아래 단체에서 체험단을 모집하고 있으니 참고 바랍니다.</p>
+                                </div>
+                                <div class="article-image"></div>
+                            </div>
+                            <div class="article">
+                                <div class="article-left">
+                                    <h2>체험단 모집 공고3</h2>
+                                    <p>아래 단체에서 체험단을 모집하고 있으니 참고 바랍니다.</p>
+                                </div>
+                                <div class="article-image"></div>
+                            </div>
+                            <div class="article">
+                                <div class="article-left">
+                                    <h2>CHANEL PARFUMEUR</h2>
+                                    <p>샤넬 향수는 특별한 향과 함께 있는 그대로의 모습을 드러내는 작품입니다.
+                                        특별한 시리즈를 통해 샤넬 향수에 관련된 노하우와 전문 기술, 창의성을 끊임없이 추구하는 샤넬의 여정을 확인해 보세요. </p>
+                                </div>
+                                <div class="article-image" style={{backgroundImage: `url(${newsimg1})`, backgroundSize: 'cover'}}></div>
+                            </div>
+                            <div class="article">
+                                <div class="article-left">
+                                    <h2>샤넬, 북촌서 향수 체험 공간 '조향 마스터클래스' 오픈 | 연합뉴스</h2>
+                                    <p>샤넬은 오는 19일부터 내년 3월 25일까지 북촌 휘겸재에서 '조향 마스터클래스'를 오픈한다고 7일 밝혔다.</p>
+                                </div>
+                                <div class="article-image" style={{backgroundImage: `url(${newsimg2})`, backgroundSize: 'cover'}}></div>
+                            </div>
+                            <div class="article">
+                                <div class="article-left">
+                                    <h2>체험단 모집 공고2</h2>
+                                    <p>아래 단체에서 체험단을 모집하고 있으니 참고 바랍니다.</p>
+                                </div>
+                                <div class="article-image"></div>
+                            </div>
+                            <div class="article">
+                                <div class="article-left">
+                                    <h2>체험단 모집 공고3</h2>
+                                    <p>아래 단체에서 체험단을 모집하고 있으니 참고 바랍니다.</p>
+                                </div>
+                                <div class="article-image"></div>
+                            </div>
                         </div>
                     </div>
                 </div>
