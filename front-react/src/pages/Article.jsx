@@ -142,7 +142,7 @@ const Article = () => {
 
     useEffect(()=>{
         const article = async() => {
-            const rsp = await AxiosApi.write(anum);
+            const rsp = await AxiosApi.ariticle(anum);
             console.log(anum);
             setArticle(rsp.data);
         }
@@ -158,7 +158,7 @@ const Article = () => {
                     <div className="title">
                         <h2>{article.title}</h2>
                         <div className="titleInfo">
-                            <p>{article.unum}</p>
+                            <p>{article.id}</p>
                             <p>|</p>
                             <p>{article.date}</p>
                         </div>
