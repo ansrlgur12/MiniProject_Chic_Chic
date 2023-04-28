@@ -156,7 +156,9 @@ const Draft = () => {
         <button>등록</button>
         <button>취소</button>
         </div>
+        <p>{htmlString}</p>
       </Setting>
+      
       
     </>
   );
