@@ -44,7 +44,7 @@ const ArticleListBlock = styled.div`
 
     useEffect(()=>{
         const article = async() => {
-            const rsp = await AxiosApi.articleGet(props.num);
+            const rsp = await AxiosApi.articleList(props.num);
             setArticle(rsp.data);
         }
         article();

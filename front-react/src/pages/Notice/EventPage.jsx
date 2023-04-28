@@ -64,13 +64,13 @@ const EventStyle = styled.div`
 `;
 
 
-const EventPage = (props) => {
+const EventPage = () => {
     const nav = useNavigate();
     const[eventDesc, setEventDesc] = useState("");
 
     useEffect(()=> {
         const eventDesc = async() => {
-            const rsp = await AxiosApi.eventDescGet(props.eNum);
+            const rsp = await AxiosApi.eventDescGet();
             setEventDesc(rsp.data);
             console.log("랜더링");
         }
