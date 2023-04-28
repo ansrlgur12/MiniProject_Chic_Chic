@@ -26,7 +26,7 @@ const UserDeal = () => {
                 </div>
                 <div class="article-list">
                     <div className="line" />
-                    <ArticleLists />
+                    <ArticleLists num={3}/>
                 </div>
             </div>
             </div>

@@ -64,17 +64,22 @@ const EventStyle = styled.div`
 `;
 
 
-const EventPage = () => {
+const EventPage = (props) => {
     const nav = useNavigate();
     const[eventDesc, setEventDesc] = useState("");
 
     useEffect(()=> {
         const eventDesc = async() => {
-            const rsp = await AxiosApi.eventDescGet("ALL");
+            const rsp = await AxiosApi.eventDescGet(props.eNum);
             setEventDesc(rsp.data);
+            console.log("랜더링");
         }
         eventDesc();
     }, []);
+
+    const onClick = (eNum) => {
+        nav(`/EventDesc/${eNum}`);
+    };
 
     return(
         <>
@@ -91,7 +96,7 @@ const EventPage = () => {
                         </div>
                         <div className="line"/>
                         {eventDesc && eventDesc.map(eventDesc => (
-                            <div className="eContainer" onClick={()=>nav("/EventDesc")}>
+                            <div className="eContainer" key={eventDesc.eNum} onClick={()=>onClick(eventDesc.eNum)}>
                                 <div className="eventPost">
                                     <p>{eventDesc.eventNum}</p>
                                     <p>{eventDesc.eTitle}</p>

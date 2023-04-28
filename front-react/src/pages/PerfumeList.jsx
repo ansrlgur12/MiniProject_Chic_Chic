@@ -752,15 +752,6 @@ const PerfumeListPage = () => {
 						
 
 				
-					<nav id="menu">
-						<h2>Menu</h2>
-						<ul>
-							<li><a href="index.html">메인</a></li>
-							<li><a href="generic.html">커뮤니티</a></li>
-							<li><a href="generic.html">커스텀</a></li>
-							<li><a href="generic.html">향수</a></li>
-						</ul>
-					</nav>
 
 			
 					<div id="main">

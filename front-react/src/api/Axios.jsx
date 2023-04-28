@@ -5,12 +5,16 @@ const AxiosApi = {
 
     articleGet : async(anum) => {
         
-        return await axios.get(CHIC_DOMAIN + `/article/anum=${anum}`);
+        return await axios.get(CHIC_DOMAIN + `/article/${anum}`);
+    },
+    write : async(num) => {
+        
+        return await axios.get(CHIC_DOMAIN + `/articles/${num}`);
     },
 
-    eventDescGet : async(eventNum) => { // 이벤트 페이지 async
+    eventDescGet : async(eNum) => { // 이벤트 페이지 async
 
-        return await axios.get(CHIC_DOMAIN + `/EventPage/eventNum=${eventNum}`);
+        return await axios.get(CHIC_DOMAIN + `/EventDesc/${eNum}`);
     },
 };
 

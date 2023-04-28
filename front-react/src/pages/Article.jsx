@@ -3,6 +3,7 @@ import Header from "../Header/Header";
 import styled from "styled-components";
 import AxiosApi from "../api/Axios";
 import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 
 const ArticleStyle = styled.div`
     box-sizing: border-box;
@@ -136,15 +137,17 @@ button{
 `;
 
 const Article = () => {
+    const { anum } = useParams(); 
     const[article, setArticle] = useState("");
 
     useEffect(()=>{
         const article = async() => {
-            const rsp = await AxiosApi.articleGet("ALL");
+            const rsp = await AxiosApi.write(anum);
+            console.log(anum);
             setArticle(rsp.data);
         }
         article();
-    }, []);
+    }, [anum]);
 
     return(
         <>

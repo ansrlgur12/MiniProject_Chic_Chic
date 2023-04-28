@@ -18,6 +18,7 @@ import EventPage from './pages/Notice/EventPage';
 import Notice from './pages/Notice/Notice';
 import PerfumePage from './pages/Perfume';
 import PerfumeListPage from './pages/PerfumeList';
+import Products from './pages/Products';
 import TestResult from './pages/imageTest/TestResult';
 import NoteFinderMain from './pages/NoteFinder/NoteFinderMain';
 import NoteCategory from './pages/NoteFinder/NoteCategory';
@@ -29,6 +30,7 @@ import News from './pages/Notice/News';
 
 
 function App() {
+  
   return (
     <Router>
       <Routes>
@@ -38,13 +40,14 @@ function App() {
         <Route path='/Testmain' element={<TestMain />} />
         <Route path='/information' element={<Information />} />
         <Route path='/userdeal' element={<UserDeal />} />
-        <Route path='/article' element={<Article />} />
+        <Route path='/article/:anum' element={<Article />} />
         <Route path='/EventPage' element={<EventPage />} />
         <Route path='/Notice' element={<Notice />} />
         <Route path='/imagetest1' element={<ImageTest1 />} />
         <Route path='/imagetest2' element={<ImageTest2 />} />
         <Route path='/PerfumePage' element={<PerfumePage />} />
         <Route path='/PerfumeList' element={<PerfumeListPage />} />
+        <Route path='/Products' element={<Products />} />
         <Route path='/imagetest3' element={<ImageTest3 />} />
         <Route path='/imagetest4' element={<ImageTest4 />} />
         <Route path='/imagetest5' element={<ImageTest5 />} />
