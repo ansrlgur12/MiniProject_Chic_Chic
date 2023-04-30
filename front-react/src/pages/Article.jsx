@@ -163,9 +163,9 @@ const Article = () => {
     }, [anum]);
 
     const onClickDelete = async() => {
-        const rsp = await AxiosApi.deleteArticle(anum);
+        const rsp = await AxiosApi.deleteArticle2(anum);
         console.log(rsp);
-        nav('/');
+        nav('/community');
     }
 
     return(
