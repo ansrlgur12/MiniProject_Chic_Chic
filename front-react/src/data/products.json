@@ -5,56 +5,81 @@
       "name": "블랙팬덤",
       "provider": "킬리안",
       "oz": 16,
-      "image": "../images/킬리안 블랙팬덤.png"
+      "image": "../images/킬리안 블랙팬덤.png",
+      "impormation": "테스트입니다1.",
+      "type": "타입1",
+      "review": "아주 훌륭합니다1"
+      
     },
     {
       "id": 2,
       "name": "탐다오",
       "provider": "딥디크",
       "oz": 16,
-      "image": "../images/딥디크 탐다오.png"
+      "image": "../images/딥디크 탐다오.png",
+      "impormation": "테스트입니다2.",
+      "type": "타입2",
+      "review": "아주 훌륭합니다2"
     },
     {
       "id": 3,
       "name": "조바이조러브스",
       "provider": "조러브스",
       "oz": 16,
-      "image": "../images/조러브스 조바이조러브스.png"
+      "image": "../images/조러브스 조바이조러브스.png",
+      "impormation": "테스트입니다3.",
+      "type": "타입3",
+      "review": "아주 훌륭합니다3"
     },
     {
       "id": 4,
       "name": "가브리엘",
       "provider": "샤넬",
       "oz": 16,
-      "image": "../images/샤넬 가브리엘.png"
+      "image": "../images/샤넬 가브리엘.png",
+      "impormation": "테스트입니다4.",
+      "type": "타입4",
+      "review": "아주 훌륭합니다4"
     },
     {
       "id": 5,
       "name": "떼르데르메스",
       "provider": "에르메스",
       "oz": 16,
-      "image": "../images/에르메스 떼르데르메스.png"
+      "image": "../images/에르메스 떼르데르메스.png",
+      "impormation": "테스트입니다5.",
+      "type": "타입5",
+      "review": "아주 훌륭합니다5"
     },
     {
       "id": 6,
       "name": "코발트파출리",
       "provider": "조러브스",
       "oz": 16,
-      "image": "../images/조러브스 코발트파출리.png"
+      "image": "../images/조러브스 코발트파출리.png",
+      "impormation": "테스트입니다6.",
+      "type": "타입6",
+      "review": "아주 훌륭합니다6"
     },
     {
       "id": 7,
       "name": "델리나",
       "provider": "퍼퓸드말리",
       "oz": 16,
-      "image": "../images/퍼퓸드말리 델리나.png"
+      "image": "../images/퍼퓸드말리 델리나.png",
+      "impormation": "테스트입니다7.",
+      "type": "타입7",
+      "review": "아주 훌륭합니다7"
     },
     {
       "id": 8,
       "name": "타마린도",
       "provider": "메모",
       "oz": 16,
-      "image": "../images/메모 타마린도.png"
+      "image": "../images/메모 타마린도.png",
+      "impormation": "테스트입니다8.",
+      "type": "타입8",
+      "review": "아주 훌륭합니다8"
     }
   ]
 }
