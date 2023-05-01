@@ -204,6 +204,9 @@ const Login = () => {
       console.log(response.data);
 
       if(response.data === true) {
+          window.localStorage.setItem("userId", inputId);
+          window.localStorage.setItem("userPw", inputPw);
+          window.localStorage.setItem("isLogin", "TRUE");
           nav("/");
           setUserId(inputId);
           setPassword(inputPw);

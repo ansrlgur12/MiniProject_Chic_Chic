@@ -97,6 +97,7 @@ export const MyPageStyle = styled.div`
 
 const MyPage = () => {
 
+    console.log("로그인성공");
     const nav = useNavigate();
 
     return (

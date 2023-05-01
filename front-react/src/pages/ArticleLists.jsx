@@ -6,20 +6,19 @@ import { useState, useEffect } from "react";
 import Article from "./Article";
 
 const ArticleListBlock = styled.div`
-    .main .article-list{
-        width: 100%;
-        height: 100%;
-    }
-    .main .article-list .article{
-        padding: 30px 0px 30px 0px;
+
+    .article{
+        padding: 10px 0px 30px 0px;
         border-bottom: .5px solid #ccc;
         height: 200px;
         display: flex;
         flex-direction: row;
         justify-content: space-between;
+        
+        
     }
 
-    .main .article-list .article .article-image{
+    .article .article-image{
         flex-basis: 25%;
         background-color: #ccc;
         height: 150px;
@@ -28,6 +27,10 @@ const ArticleListBlock = styled.div`
         background-position: center;
     }
     .article-left{
+        overflow:hidden; 
+        text-overflow:ellipsis;
+        white-space:nowrap;
+        flex-basis: 65%;
         padding-top: 0px;
         line-height: 1;
     }
@@ -36,6 +39,7 @@ const ArticleListBlock = styled.div`
         font-size: small;
         color: #737373;
     }
+
   `;
 
   const ArticleLists = (props) => {
@@ -56,15 +60,18 @@ const ArticleListBlock = styled.div`
 
     return(
         <>
-            <ArticleListBlock>        
+            <ArticleListBlock>     
             {article && article.map(article => (
                 <div class="article" key={article.anum} onClick={()=>onClick(article.anum)}>
-                <div class="article-left">
+              
+                <div class="article-left" >
                     <h2>{article.title} </h2>
                     <p className="userDate">{article.id}  |  {article.date}</p>
-                    <p>{article.text}</p>
+                    <br />
+                    {article.text}
                 </div>
                 <div class="article-image"></div>
+            
             </div>
             ))}
             </ArticleListBlock>

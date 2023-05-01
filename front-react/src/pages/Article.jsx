@@ -167,6 +167,9 @@ const Article = () => {
         console.log(rsp);
         nav('/community');
     }
+    const onClickUpdate = () => {
+        nav('/newArticle', article)
+    }
 
     return(
         <>
@@ -182,9 +185,7 @@ const Article = () => {
                             <p>{article.date}</p>
                         </div>
                     </div>
-                    <div className="main">
-                        <p>{article.text}</p>
-                    </div>
+                    <div className="main" dangerouslySetInnerHTML={{ __html: article.text }} />
                 </div>
             ))}
             <div className="likeDeleteUpdate">
@@ -197,7 +198,7 @@ const Article = () => {
                     </button>
                 </div>
                 <div className="deleteUpdate">
-                    <p>수정하기</p>
+                    <p onClick={onClickUpdate}>수정하기</p>
                     <p>|</p>
                     <p onClick={onClickDelete}>삭제하기</p>
                 </div>

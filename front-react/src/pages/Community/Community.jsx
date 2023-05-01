@@ -31,34 +31,8 @@ export const CommunityStyle = styled.div`
     justify-content: right;
     margin: 20px 0px 20px 0px;
   }
-  .main .article-list{
-    width: 100%;
-    height: 100%;
-  }
-  .main .article-list .article{
-    padding: 30px 0px 30px 0px;
-    border-bottom: .5px solid #ccc;
-    height: 200px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-  }
 
-  .main .article-list .article .article-image{
-    flex-basis: 25%;
-    background-color: #ccc;
-    height: 150px;
-    width: 150px;
-    background-size: cover;
-    background-position: center;
-  }
 
-  .main .article-list .article:nth-child(2) .article-image{
-    background-image: url("./image/로고.jpg");
-  }
-  .main .article-list .article:nth-child(3) .article-image{
-    background-image: url("./image/bear\ wallpaper\ pc\ Mac\ 네이버\ 아이콘\ 곰.png");
-  }
   h2 {
     color: #804f23;;
     display: block;
