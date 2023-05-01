@@ -1,5 +1,6 @@
 // import logo from './logo.svg';
 // import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import Community from './pages/Community/Community';
 import Main from './pages/Main';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
@@ -25,7 +26,6 @@ import NoteCategory from './pages/NoteFinder/NoteCategory';
 import Draft from './pages/NewArticle';
 import MyPage from './pages/MyPage/MyPage';
 import News from './pages/Notice/News';
-
 
 
 
