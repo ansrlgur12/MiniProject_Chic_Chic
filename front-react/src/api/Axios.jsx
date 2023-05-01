@@ -12,9 +12,9 @@ const AxiosApi = {
         return await axios.get(CHIC_DOMAIN + `/articles/${num}`);
     },
 
-    eventDescGet : async(eNum) => { // 이벤트 페이지 async
+    eventDescGet : async(eventNum) => { // 이벤트 페이지 async
 
-        return await axios.get(CHIC_DOMAIN + `/EventDesc/${eNum}`);
+        return await axios.get(CHIC_DOMAIN + `/EventPage/${eventNum}`);
     },
 };
 

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import Header from "../../Header/Header";
 import Footer from "../../Footer/Footer";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import AxiosApi from "../../api/Axios";
 
 
@@ -64,22 +64,18 @@ const EventStyle = styled.div`
 `;
 
 
-const EventPage = (props) => {
-    const nav = useNavigate();
+const EventPage = () => {
+    // const nav = useNavigate(); 
     const[eventDesc, setEventDesc] = useState("");
 
     useEffect(()=> {
         const eventDesc = async() => {
-            const rsp = await AxiosApi.eventDescGet(props.eNum);
+            const rsp = await AxiosApi.eventDescGet("eventNum");
             setEventDesc(rsp.data);
-            console.log("랜더링");
         }
         eventDesc();
     }, []);
 
-    const onClick = (eNum) => {
-        nav(`/EventDesc/${eNum}`);
-    };
 
     return(
         <>
@@ -94,9 +90,9 @@ const EventPage = (props) => {
                             <div className="eArticle eArticle3">예정 이벤트</div>
                             <div className="eArticle eArticle4">종료 이벤트</div>
                         </div>
-                        <div className="line"/>
+                        <div className="line"/> 
                         {eventDesc && eventDesc.map(eventDesc => (
-                            <div className="eContainer" key={eventDesc.eNum} onClick={()=>onClick(eventDesc.eNum)}>
+                            <div className="eContainer" key={eventDesc.eventNum}>
                                 <div className="eventPost">
                                     <p>{eventDesc.eventNum}</p>
                                     <p>{eventDesc.eTitle}</p>
