@@ -16,18 +16,15 @@ import UserDeal from './pages/Community/Userdeal';
 import Article from './pages/Article';
 import EventPage from './pages/Notice/EventPage';
 import Notice from './pages/Notice/Notice';
-import PerfumePage from './pages/Perfume';
-import PerfumeListPage from './pages/PerfumeList';
-import Products from './pages/Products';
+import PerfumePage from './pages/PerfumePage/Perfume';
+import PerfumeListPage from './pages/PerfumePage/ProductsDtail/PerfumeList';
+import Products from './pages/Products/Products';
 import TestResult from './pages/imageTest/TestResult';
 import NoteFinderMain from './pages/NoteFinder/NoteFinderMain';
 import NoteCategory from './pages/NoteFinder/NoteCategory';
 import Draft from './pages/NewArticle';
 import MyPage from './pages/MyPage/MyPage';
 import News from './pages/Notice/News';
-import Login from './pages/Login';
-import SignUp from './pages/SignUp';
-import UserStore from './context/UserInfo';
 
 
 
@@ -35,7 +32,6 @@ import UserStore from './context/UserInfo';
 function App() {
   
   return (
-    <UserStore>
     <Router>
       <Routes>
         <Route path='/' element={<Main />} />
@@ -50,7 +46,7 @@ function App() {
         <Route path='/imagetest1' element={<ImageTest1 />} />
         <Route path='/imagetest2' element={<ImageTest2 />} />
         <Route path='/PerfumePage' element={<PerfumePage />} />
-        <Route path='/PerfumeList' element={<PerfumeListPage />} />
+        <Route path='/PerfumeList/:perfumeId' element={<PerfumeListPage />} />
         <Route path='/Products' element={<Products />} />
         <Route path='/imagetest3' element={<ImageTest3 />} />
         <Route path='/imagetest4' element={<ImageTest4 />} />
@@ -62,15 +58,14 @@ function App() {
         <Route path='/newarticle' element={<Draft />} />
         <Route path='/MyPage' element={<MyPage />} />
         <Route path='/News' element={<News />} />
-        <Route path='/Login' element={<Login />} />
-        <Route path='/SignUp' element={<SignUp />} />
+
 
 
 
 
       </Routes>
     </Router>
-    </UserStore>
+    
   );
 }
 
