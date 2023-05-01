@@ -68,7 +68,8 @@ const ArticleListBlock = styled.div`
                     <h2>{article.title} </h2>
                     <p className="userDate">{article.id}  |  {article.date}</p>
                     <br />
-                    {article.text}
+                    <div dangerouslySetInnerHTML={{ __html: article.text }} >
+                    </div>
                 </div>
                 <div class="article-image"></div>
             
