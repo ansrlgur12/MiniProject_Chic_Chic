@@ -6,6 +6,7 @@ import { EditorState, convertToRaw } from "draft-js";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import draftjsToHtml from "draftjs-to-html";
 import Header from "../Header/Header";
+import axios from "axios";
 
 const Setting = styled.div`
   padding-top: 160px;
@@ -128,11 +129,21 @@ const Draft = () => {
     await setEditorState(state);
     const html = draftjsToHtml(convertToRaw(editorState.getCurrentContent()));
     setHtmlString(html);
-  };
+  }
 
-  const uploadCallback = () => {
+  const uploadCallback = (file) => {
     console.log("이미지 업로드");
-  };
+    return new Promise((resolve, reject) => {
+      const formData = new FormData();
+      formData.append("image", file);
+  
+      axios.post("이미지 업로드 URL", formData).then((response) => {
+        resolve({ data: { link: response.data.imageUrl } });
+      }).catch((error) => {
+        reject(error);
+      });
+    });
+  }
 
   return (
     <>
@@ -163,7 +174,7 @@ const Draft = () => {
           editorState={editorState}
           onEditorStateChange={updateTextDescription}
           toolbar={{
-            image: { uploadCallback: uploadCallback },
+            image: { uploadCallback: uploadCallback, alt: { present: true, mandatory: true } },
           }}
           localization={{ locale: "ko" }}
           editorStyle={{

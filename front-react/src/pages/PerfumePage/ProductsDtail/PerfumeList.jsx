@@ -26,13 +26,13 @@ padding: 70px 0px 0px 0px;
 
 function PerfumeList(props) {
 
-     const {perfumeId} = useParams();
+    const {perfumeId} = useParams();
     const [Perfume, setPerfume] = useState({});
     const [PerfumeType, setPerfumeType] = useState([]);
     const [ReviewLists, setReviewLists] = useState([]);
 	 
     useEffect(() => {
-        let contentInfo = `products.json`;
+        // let contentInfo = `products.json`;
         
         setPerfume(...productData.products.filter(v => v.id == perfumeId));
         
@@ -42,31 +42,29 @@ function PerfumeList(props) {
         <>
             <Header/>
             <PerfumeListStyle>
+               
 			<div className="main">
-
-                  <p>향수</p>
-                  <p>{Perfume.impormation && Perfume.impormation}   </p>
-                 <p>{Perfume.impormation && Perfume.impormation}   </p>
-                <p>{Perfume.impormation && Perfume.impormation}   </p>
+                <section>
+                 <h2>향수</h2>
+                     <p>{Perfume.impormation && Perfume.impormation}</p>
+                </section>
             
                 <br />
-                <p>향수 정보</p>
-                  <p>{Perfume.type && Perfume.type}   </p>
-                 <p>{Perfume.type && Perfume.type}   </p>
-                <p>{Perfume.type && Perfume.type}   </p>
-                <p>{Perfume.type && Perfume.type}   </p>
+
+                <section>
+                <h2>향수 정보</h2>
+                  <p>{Perfume.type && Perfume.type}</p>
+                </section>
 
                 <br />
-                <p>향수 리뷰</p>
-                <p>{Perfume.review && Perfume.review}   </p>
-                 <p>{Perfume.review && Perfume.review}   </p>
-                <p>{Perfume.review && Perfume.review}   </p>
+                <section>
+                <h2>향수 리뷰</h2>
+                    <p>{Perfume.review && Perfume.review}</p>
+                </section>
         
-           
-            
-            
             </div>
-            </PerfumeListStyle> 
+            </PerfumeListStyle>
+            <Footer /> 
             
    
         </>

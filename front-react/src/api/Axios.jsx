@@ -33,9 +33,9 @@ const AxiosApi = {
         return await axios.get(CHIC_DOMAIN + `/articleDelete/${anum}`);
     },
 
-    eventDesc : async(eventNum) => { // 이벤트 페이지 async
+    eventList : async(eventNum) => { // 이벤트 페이지 async
 
-        return await axios.get(CHIC_DOMAIN + `/EventPage?name=${eventNum}`);
+        return await axios.get(CHIC_DOMAIN + `/EventPage/${eventNum}`);
     },
 
 

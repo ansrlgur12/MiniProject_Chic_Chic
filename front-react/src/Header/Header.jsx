@@ -157,8 +157,10 @@ const HeaderStyle = styled.div`
 
 const Header = () => {
 
+    const localId = window.localStorage.getItem("userId");
+    const localPw = window.localStorage.getItem("userPw");
+    const isLogin = window.localStorage.getItem("isLogin");
     const nav = useNavigate();
-    const isLogin = false;
     return(
         <>
             <HeaderStyle>

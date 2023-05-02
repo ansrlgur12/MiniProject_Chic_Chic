@@ -1,5 +1,6 @@
 // import logo from './logo.svg';
 // import './App.css';
+// import 'bootstrap/dist/css/bootstrap.min.css';
 import Community from './pages/Community/Community';
 import Main from './pages/Main';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
@@ -25,13 +26,16 @@ import NoteCategory from './pages/NoteFinder/NoteCategory';
 import Draft from './pages/NewArticle';
 import MyPage from './pages/MyPage/MyPage';
 import News from './pages/Notice/News';
-
+import UserStore from './context/UserInfo';
+import Login from './pages/Login';
+import SignUp from './pages/SignUp';
 
 
 
 function App() {
   
   return (
+    <UserStore>
     <Router>
       <Routes>
         <Route path='/' element={<Main />} />
@@ -58,6 +62,8 @@ function App() {
         <Route path='/newarticle' element={<Draft />} />
         <Route path='/MyPage' element={<MyPage />} />
         <Route path='/News' element={<News />} />
+        <Route path='/Login' element={<Login />} />
+        <Route path='/Signup' element={<SignUp />} />
 
 
 
@@ -65,6 +71,7 @@ function App() {
 
       </Routes>
     </Router>
+    </UserStore>
     
   );
 }
