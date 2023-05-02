@@ -16,6 +16,7 @@ const AxiosApi = {
         return await axios.get(CHIC_DOMAIN + `/articles/${num}`);
     },
 
+
     newArticle : async(bnum, title, text, pwd) => { // 게시글 작성 정보 저장
         const article = {
             bnum : bnum.toString(),
@@ -36,9 +37,9 @@ const AxiosApi = {
         return await axios.get(CHIC_DOMAIN + `/articleDelete/${anum}`);
     },
 
-    eventDescGet : async(eNum) => { // 이벤트 페이지 async
+    eventList : async(eventNum) => { // 이벤트 페이지 async
 
-        return await axios.get(CHIC_DOMAIN + `/EventDesc/${eNum}`);
+        return await axios.get(CHIC_DOMAIN + `/EventPage/${eventNum}`);
     },
 
 

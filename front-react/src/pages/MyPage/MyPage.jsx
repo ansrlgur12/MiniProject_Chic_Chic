@@ -119,6 +119,7 @@ const MyPage = () => {
                                     <div className="perProfile">
                                         <div className="nickname">닉네임 : 곰돌이 사육사</div>
                                         <div className="gradeLv">회원 등급 : <p className="gradeImg" style={{backgroundImage: `url(${gradeimg5})`, backgroundSize: 'contain', backgroundRepeat: 'no-repeat'}}></p></div>
+                                        <div><button>로그아웃</button></div>
                                     </div>
                                     <div className="textProfile">
                                         <div className="textHistory">내 리뷰</div>

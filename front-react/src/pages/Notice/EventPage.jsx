@@ -3,7 +3,7 @@ import styled from "styled-components";
 import Header from "../../Header/Header";
 import Footer from "../../Footer/Footer";
 import { useNavigate } from "react-router-dom";
-import AxiosApi from "../../api/Axios";
+import EventList from "./EventList";
 
 
 
@@ -65,22 +65,6 @@ const EventStyle = styled.div`
 
 
 const EventPage = () => {
-    const nav = useNavigate();
-    const[eventDesc, setEventDesc] = useState("");
-
-    useEffect(()=> {
-        const eventDesc = async() => {
-            const rsp = await AxiosApi.eventDescGet();
-            setEventDesc(rsp.data);
-            console.log("랜더링");
-        }
-        eventDesc();
-    }, []);
-
-    const onClick = (eNum) => {
-        nav(`/EventDesc/${eNum}`);
-    };
-
     return(
         <>
             <Header />
@@ -94,16 +78,10 @@ const EventPage = () => {
                             <div className="eArticle eArticle3">예정 이벤트</div>
                             <div className="eArticle eArticle4">종료 이벤트</div>
                         </div>
-                        <div className="line"/>
-                        {eventDesc && eventDesc.map(eventDesc => (
-                            <div className="eContainer" key={eventDesc.eNum} onClick={()=>onClick(eventDesc.eNum)}>
-                                <div className="eventPost">
-                                    <p>{eventDesc.eventNum}</p>
-                                    <p>{eventDesc.eTitle}</p>
-                                </div>
-                            </div>
-                        ))}
-                        
+                        <div className="line"/> 
+                        <div className="text">
+                            <EventList eNum={1} />
+                        </div>
                     </div>
                 </div>
             </EventStyle>
