@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import Footer from "../../Footer/Footer";
 import Product from "../Products/Products";
 import styled from "styled-components";
+import NowLoading from "../Loading";
 
 // Json data 를 import 하여 PerfumePage 컴포넌트에서 사용할 수 있게함
 import productData from "../../data/products.json";
@@ -94,11 +95,12 @@ export const PerfumePage = () => {
 
         </div>
         </div>
-        <div className="flex_wrap">
+        <div className="flex_wrap" >
           {/* productData.products 인 이유는 productData 안에 products가 있기 때문 */}
           {productData.products && productData.products.map((product) => {
-            return <Product key={`key-${product.id}`} product={product} />;
+            return  <Product key={`key-${product.id}`} product={product} />;
           })}
+        
         </div>
         </PerfumeStyle>
       <Footer/>

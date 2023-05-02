@@ -1,5 +1,6 @@
 // import logo from './logo.svg';
 // import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import Community from './pages/Community/Community';
 import Main from './pages/Main';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
@@ -28,7 +29,6 @@ import News from './pages/Notice/News';
 import UserStore from './context/UserInfo';
 import Login from './pages/Login';
 import SignUp from './pages/SignUp';
-
 
 
 
