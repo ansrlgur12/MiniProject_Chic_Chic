@@ -70,7 +70,7 @@ const EventPage = () => {
 
     useEffect(()=> {
         const eventDesc = async() => {
-            const rsp = await AxiosApi.eventDescGet("eventNum");
+            const rsp = await AxiosApi.eventDesc("eventNum");
             setEventDesc(rsp.data);
         }
         eventDesc();
@@ -92,14 +92,13 @@ const EventPage = () => {
                         </div>
                         <div className="line"/> 
                         {eventDesc && eventDesc.map(eventDesc => (
-                            <div className="eContainer" key={eventDesc.eventNum}>
+                            <div className="eContainer" key={eventDesc.eNum}>
                                 <div className="eventPost">
                                     <p>{eventDesc.eventNum}</p>
                                     <p>{eventDesc.eTitle}</p>
                                 </div>
                             </div>
                         ))}
-                        
                     </div>
                 </div>
             </EventStyle>

@@ -16,9 +16,9 @@ import UserDeal from './pages/Community/Userdeal';
 import Article from './pages/Article';
 import EventPage from './pages/Notice/EventPage';
 import Notice from './pages/Notice/Notice';
-import PerfumePage from './pages/Perfume';
-import PerfumeListPage from './pages/PerfumeList';
-import Products from './pages/Products';
+import PerfumePage from './pages/PerfumePage/Perfume';
+import PerfumeListPage from './pages/PerfumePage/ProductsDtail/PerfumeList';
+import Products from './pages/Products/Products';
 import TestResult from './pages/imageTest/TestResult';
 import NoteFinderMain from './pages/NoteFinder/NoteFinderMain';
 import NoteCategory from './pages/NoteFinder/NoteCategory';
@@ -46,7 +46,7 @@ function App() {
         <Route path='/imagetest1' element={<ImageTest1 />} />
         <Route path='/imagetest2' element={<ImageTest2 />} />
         <Route path='/PerfumePage' element={<PerfumePage />} />
-        <Route path='/PerfumeList' element={<PerfumeListPage />} />
+        <Route path='/PerfumeList/:perfumeId' element={<PerfumeListPage />} />
         <Route path='/Products' element={<Products />} />
         <Route path='/imagetest3' element={<ImageTest3 />} />
         <Route path='/imagetest4' element={<ImageTest4 />} />

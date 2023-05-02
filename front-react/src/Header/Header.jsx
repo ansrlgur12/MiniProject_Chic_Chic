@@ -158,7 +158,7 @@ const HeaderStyle = styled.div`
 const Header = () => {
 
     const nav = useNavigate();
-
+    const isLogin = false;
     return(
         <>
             <HeaderStyle>
@@ -171,7 +171,7 @@ const Header = () => {
                         <input class="search-txt" type="text" placeholder="" />
                         <div class="search-btn"><i class="fas fa-search"></i></div>
                     </div>
-                    <span class="material-symbols-outlined" onClick={()=>nav("/MyPage")}>
+                    <span class="material-symbols-outlined" onClick={()=> {isLogin ? nav("/MyPage") : nav("/Login")}}>
                         person
                     </span>
                 </div>

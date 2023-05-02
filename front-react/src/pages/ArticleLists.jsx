@@ -27,6 +27,15 @@ const ArticleListBlock = styled.div`
         background-size: cover;
         background-position: center;
     }
+    .article-left{
+        padding-top: 0px;
+        line-height: 1;
+    }
+
+    .userDate{
+        font-size: small;
+        color: #737373;
+    }
   `;
 
   const ArticleLists = (props) => {
@@ -35,7 +44,7 @@ const ArticleListBlock = styled.div`
 
     useEffect(()=>{
         const article = async() => {
-            const rsp = await AxiosApi.articleGet(props.num);
+            const rsp = await AxiosApi.articleList(props.num);
             setArticle(rsp.data);
         }
         article();
@@ -51,7 +60,8 @@ const ArticleListBlock = styled.div`
             {article && article.map(article => (
                 <div class="article" key={article.anum} onClick={()=>onClick(article.anum)}>
                 <div class="article-left">
-                    <h2>{article.title}</h2>
+                    <h2>{article.title} </h2>
+                    <p className="userDate">{article.id}  |  {article.date}</p>
                     <p>{article.text}</p>
                 </div>
                 <div class="article-image"></div>

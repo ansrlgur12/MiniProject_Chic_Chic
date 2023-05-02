@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import AxiosApi from "../api/Axios";
 import styled from "styled-components";
 import { Editor } from "react-draft-wysiwyg";
 import { EditorState, convertToRaw } from "draft-js";
@@ -90,7 +91,38 @@ const Viewer = styled.div`
 
 const Draft = () => {
   const [editorState, setEditorState] = useState(EditorState.createEmpty());
-  const [htmlString, setHtmlString] = useState("");
+  const [text, setHtmlString] = useState("");
+  const [title, setTitle] = useState("");
+  const [pwd, setPwd] = useState("");
+  const [bnum, setCategory] = useState(1);
+
+  useEffect(()=>{
+    console.log("본문작성");
+  },[text]);
+  useEffect(()=>{
+    console.log("제목작성");
+  },[title]);
+  useEffect(()=>{
+    console.log("비밀번호작성");
+  },[pwd]);
+ 
+
+  const onChangeTitle = (e) => {
+    setTitle(e.target.value);
+  }
+
+  const onClickOption = (e) => {
+    setCategory(e.target.value);
+  }
+  const onChangePwd = (e) => {
+    setPwd(e.target.value);
+  }
+
+  const onClickSubmit = async() => {
+      const rsp = await AxiosApi.newArticle(bnum, title, text, pwd)
+      console.log(rsp);
+  }
+
 
   const updateTextDescription = async (state) => {
     await setEditorState(state);
@@ -113,19 +145,15 @@ const Draft = () => {
       <blockquote>
       <div className="setting">
         <label>카테고리</label>
-        <select name="" id="">
+        <select value={bnum} onChange={onClickOption}>
           <option value={1}>리뷰</option>
-          <option value={2}>회원거래</option>
-          <option value={3}>정보공유</option>
+          <option value={2}>정보공유</option>
+          <option value={3}>회원거래</option>
         </select>
       </div>
       <div className="setting">
-        <label htmlFor="">비밀번호</label>
-        <input type="password" />
-      </div>
-      <div className="setting">
         <label htmlFor="">제목</label>
-        <input className="titleInput" type="text" />
+        <input className="titleInput" type="text" onChange={onChangeTitle} />
       </div>
       <div className="setting">
         <label htmlFor="">내용</label>
@@ -151,12 +179,17 @@ const Draft = () => {
         <label htmlFor="">태그</label>
         <input type="text" className="titleInput" placeholder="태그와 태그는 쉼표(,)로 구분합니다."/>
       </div>
+      <div className="setting">
+        <label htmlFor="">비밀번호</label>
+        <input type="password" onChange={onChangePwd} />
+      </div>
       </blockquote>
       <div className="submit">
-        <button>등록</button>
+        <button onClick={onClickSubmit}>등록</button>
         <button>취소</button>
         </div>
       </Setting>
+      
       
     </>
   );
