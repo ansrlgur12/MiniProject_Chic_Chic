@@ -7,6 +7,8 @@ import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import draftjsToHtml from "draftjs-to-html";
 import Header from "../Header/Header";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import Modal from "../util/Modal";
 
 const Setting = styled.div`
   padding-top: 160px;
@@ -96,6 +98,10 @@ const Draft = () => {
   const [title, setTitle] = useState("");
   const [pwd, setPwd] = useState("");
   const [bnum, setCategory] = useState(1);
+  const nav = useNavigate();
+
+  // 팝업처리(모달)
+  const[modalOpen, setModalOpen] = useState(false);
 
   useEffect(()=>{
     console.log("본문작성");
@@ -119,9 +125,18 @@ const Draft = () => {
     setPwd(e.target.value);
   }
 
+  const submit = async() => {
+    const rsp = await AxiosApi.newArticle(bnum, title, text, pwd)
+    console.log(rsp);
+    nav(-1);
+  }
+
   const onClickSubmit = async() => {
-      const rsp = await AxiosApi.newArticle(bnum, title, text, pwd)
-      console.log(rsp);
+      setModalOpen(true);
+  }
+
+  const closeModal = () => {
+    setModalOpen(false);
   }
 
 
@@ -143,6 +158,10 @@ const Draft = () => {
         reject(error);
       });
     });
+  }
+
+  const goBack = () => {
+    nav(-1);
   }
 
   return (
@@ -197,8 +216,9 @@ const Draft = () => {
       </blockquote>
       <div className="submit">
         <button onClick={onClickSubmit}>등록</button>
-        <button>취소</button>
+        <button onClick={goBack}>취소</button>
         </div>
+      <Modal open={modalOpen} type={true} confirm={submit} close={closeModal} header={"확인"}>등록 하시겠습니까?</Modal>
       </Setting>
       
       

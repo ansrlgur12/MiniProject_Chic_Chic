@@ -169,6 +169,7 @@ const Login = () => {
 
     const confirmBtn = () => {
         console.log("확인버튼이 눌려졌습니다.")
+        setModalOpen(false);
     }
 
     const onChangeId = e => {
