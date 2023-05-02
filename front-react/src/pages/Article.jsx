@@ -4,6 +4,7 @@ import styled from "styled-components";
 import AxiosApi from "../api/Axios";
 import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import OtherArticles from "./OtherArticles";
 
 const ArticleStyle = styled.div`
     box-sizing: border-box;
@@ -56,44 +57,7 @@ font-weight: bold;
     .main{
         margin-top: 50px;
     }
-    .list{
-        margin-bottom: 30px;
-        color: #696969;
-        border: .5px solid #ccc;
-        font-size: small;
-    }
-    .list-title{
-        padding-left: 15px;
-        width: 100%;
-        height: 15px;
-    }
-    
-    ul {
-  display: block;
-  list-style-type: disc;
-  margin-block-start: 1em;
-  margin-block-end: 1em;
-  margin-inline-start: 0px;
-  margin-inline-end: 0px;
-  padding-inline-start: 40px;
-}
-
-ol {
-  display: block;
-  list-style-type: decimal;
-  margin-block-start: 1em;
-  margin-block-end: 1em;
-  margin-inline-start: 0px;
-  margin-inline-end: 0px;
-  padding-inline-start: 40px;
-}
-
-li {
-  display: list-item;
-  text-align: -webkit-match-parent;
-  margin-bottom: 15px;
-}
-
+   
 p {
 
 display: block;
@@ -162,13 +126,15 @@ const Article = () => {
         article();
     }, [anum]);
 
+
+
     const onClickDelete = async() => {
         const rsp = await AxiosApi.deleteArticle2(anum);
         console.log(rsp);
         nav('/community');
     }
-    const onClickUpdate = () => {
-        nav('/newArticle', article)
+    const onClickUpdate = (num) => {
+        // nav /updateArticle 방식으로 useParam 써서 anum 가져오기 (articlelist, article 연결방식 참고해서)
     }
 
     return(
@@ -176,50 +142,36 @@ const Article = () => {
         <Header/>
         <ArticleStyle>
             {article && article.map(article => (
-                <div className="container" key={article.anum}>
-                    <div className="title">
-                        <h2>{article.title}</h2>
-                        <div className="titleInfo">
-                            <p>{article.id}</p>
-                            <p>|</p>
-                            <p>{article.date}</p>
+                <div>
+                    <div className="container" key={article.anum}>
+                        <div className="title">
+                            <h2>{article.title}</h2>
+                            <div className="titleInfo">
+                                <p>{article.id}</p>
+                                <p>|</p>
+                                <p>{article.date}</p>
+                            </div>
                         </div>
+                        <div className="main" dangerouslySetInnerHTML={{ __html: article.text }} />
                     </div>
-                    <div className="main" dangerouslySetInnerHTML={{ __html: article.text }} />
+                <div className="likeDeleteUpdate">
+                    <div className="likes">
+                        <button className="likeBtn"><i class="fa-sharp fa-regular fa-heart"></i></button>
+                        <button className="shareBtn">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-share" viewBox="0 0 16 16">
+                            <path d="M13.5 1a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM11 2.5a2.5 2.5 0 1 1 .603 1.628l-6.718 3.12a2.499 2.499 0 0 1 0 1.504l6.718 3.12a2.5 2.5 0 1 1-.488.876l-6.718-3.12a2.5 2.5 0 1 1 0-3.256l6.718-3.12A2.5 2.5 0 0 1 11 2.5zm-8.5 4a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zm11 5.5a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3z"/>
+                            </svg>
+                        </button>
+                    </div>
+                    <div className="deleteUpdate">
+                        <p onClick={onClickUpdate(article.anum)}>수정하기</p>
+                        <p>|</p>
+                        <p onClick={onClickDelete}>삭제하기</p>
+                    </div>
                 </div>
-            ))}
-            <div className="likeDeleteUpdate">
-                <div className="likes">
-                    <button className="likeBtn"><i class="fa-sharp fa-regular fa-heart"></i></button>
-                    <button className="shareBtn">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-share" viewBox="0 0 16 16">
-                        <path d="M13.5 1a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM11 2.5a2.5 2.5 0 1 1 .603 1.628l-6.718 3.12a2.499 2.499 0 0 1 0 1.504l6.718 3.12a2.5 2.5 0 1 1-.488.876l-6.718-3.12a2.5 2.5 0 1 1 0-3.256l6.718-3.12A2.5 2.5 0 0 1 11 2.5zm-8.5 4a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zm11 5.5a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3z"/>
-                        </svg>
-                    </button>
-                </div>
-                <div className="deleteUpdate">
-                    <p onClick={onClickUpdate}>수정하기</p>
-                    <p>|</p>
-                    <p onClick={onClickDelete}>삭제하기</p>
-                </div>
-            </div>
-            
-
-            <div className="list">
-                <div className="list-title">
-                    <p>이 카테고리의 다른글</p>
-                </div>
-                <hr />
-                <div className="lists">
-                    <ul>
-                        <li>다른 글</li>
-                        <li>다른 글</li>
-                        <li>다른 글들</li>
-                        <li>다른 글 3</li>
-                        <li>따른 글</li>
-                    </ul>
-                </div>
-            </div>
+           <OtherArticles bnum={article.bnum} />
+           </div>
+           ))}
             <br />
             <div className="tag">
                 <h3>태그</h3>

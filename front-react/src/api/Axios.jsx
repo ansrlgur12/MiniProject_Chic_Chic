@@ -7,6 +7,10 @@ const AxiosApi = {
         
         return await axios.get(CHIC_DOMAIN + `/article/${anum}`);
     },
+    smallArticleList : async(anum) => { // 작은 목록 출력
+        
+        return await axios.get(CHIC_DOMAIN + `/smallArticle/${anum}`);
+    },
     ariticle : async(num) => { // 게시글 출력
         
         return await axios.get(CHIC_DOMAIN + `/articles/${num}`);
