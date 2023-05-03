@@ -72,7 +72,7 @@ const OtherArticles = (props) => {
                 <div className="lists">
                     {article && article.map(article => (
                     <ul>
-                        <li onClick={()=>nav(`/article/${article.anum}`)}>{article.title}</li>
+                        <li key={article.anum} onClick={()=>nav(`/article/${article.anum}`)}>{article.title}</li>
                     </ul>
                     ))}
                 </div>

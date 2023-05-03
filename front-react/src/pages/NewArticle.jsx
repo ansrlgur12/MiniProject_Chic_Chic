@@ -1,16 +1,14 @@
 import React, { useEffect, useState } from "react";
 import AxiosApi from "../api/Axios";
 import styled from "styled-components";
-import { Editor } from "react-draft-wysiwyg";
-import { EditorState, convertToRaw } from "draft-js";
-import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
-import draftjsToHtml from "draftjs-to-html";
 import Header from "../Header/Header";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Modal from "../util/Modal";
+import { CKEditor } from "@ckeditor/ckeditor5-react";
+import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 
-const Setting = styled.div`
+export const Setting = styled.div`
   padding-top: 160px;
   width: 60vw;
   height: 15vh;
@@ -68,43 +66,24 @@ const Setting = styled.div`
     }
 `;
 
-const Container = styled.div`
+export const Container = styled.div`
     margin: 0 auto;
     width: 55vw;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
     position: static;
     
 `;
 
-const RowBox = styled.div`
-  width: 100%;
-  display: flex;
-`;
-
-const Viewer = styled.div`
-  width: calc(50% - 40px);
-  height: 400px;
-  padding: 20px;
-  margin-top: 20px;
-  border: 2px solid gray;
-`;
 
 const Draft = () => {
-  const [editorState, setEditorState] = useState(EditorState.createEmpty());
-  const [text, setHtmlString] = useState("");
   const [title, setTitle] = useState("");
   const [pwd, setPwd] = useState("");
   const [bnum, setCategory] = useState(1);
   const nav = useNavigate();
-
-  // 팝업처리(모달)
+  const [text, setBoard_content] = useState("");
   const[modalOpen, setModalOpen] = useState(false);
 
   useEffect(()=>{
-    console.log("본문작성");
+    console.log(text);
   },[text]);
   useEffect(()=>{
     console.log("제목작성");
@@ -112,7 +91,6 @@ const Draft = () => {
   useEffect(()=>{
     console.log("비밀번호작성");
   },[pwd]);
- 
 
   const onChangeTitle = (e) => {
     setTitle(e.target.value);
@@ -137,27 +115,6 @@ const Draft = () => {
 
   const closeModal = () => {
     setModalOpen(false);
-  }
-
-
-  const updateTextDescription = async (state) => {
-    await setEditorState(state);
-    const html = draftjsToHtml(convertToRaw(editorState.getCurrentContent()));
-    setHtmlString(html);
-  }
-
-  const uploadCallback = (file) => {
-    console.log("이미지 업로드");
-    return new Promise((resolve, reject) => {
-      const formData = new FormData();
-      formData.append("image", file);
-  
-      axios.post("이미지 업로드 URL", formData).then((response) => {
-        resolve({ data: { link: response.data.imageUrl } });
-      }).catch((error) => {
-        reject(error);
-      });
-    });
   }
 
   const goBack = () => {
@@ -188,22 +145,27 @@ const Draft = () => {
       <div className="setting">
         <label htmlFor="">내용</label>
         <Container>
-        <Editor
-          placeholder="게시글을 작성해주세요"
-          editorState={editorState}
-          onEditorStateChange={updateTextDescription}
-          toolbar={{
-            image: { uploadCallback: uploadCallback, alt: { present: true, mandatory: true } },
-          }}
-          localization={{ locale: "ko" }}
-          editorStyle={{
-            height: "400px",
-            width: "100%",
-            border: "3px solid lightgray",
-            padding: "20px",
-          }}
+        <CKEditor 
+            editor={ ClassicEditor }
+            data=""
+            onReady={ editor => {
+                // You can store the "editor" and use when it is needed.
+                 console.log( 'Editor is ready to use!', editor );
+                                
+            } }
+            onChange={(event, editor) => {
+                const data = editor.getData();
+                console.log({ event, editor, data });
+                setBoard_content(data);
+            }}
+            onBlur={ ( event, editor ) => {
+                console.log( 'Blur.', editor );
+            } }
+            onFocus={ ( event, editor ) => {
+                console.log( 'Focus.', editor );
+            } }
         />
-      </Container>
+        </Container>
       </div>
       <div className="setting">
         <label htmlFor="">태그</label>
