@@ -39,6 +39,27 @@ const ArticleListBlock = styled.div`
         font-size: small;
         color: #737373;
     }
+    .text{
+        height: 10px;
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .text * {
+  /* 모든 하위 요소에 대해 적용됩니다. */
+    text-align: center;
+    color: black;
+    line-height: 1.5;
+    font-size: 16px;
+    font-weight: normal;
+    margin: 0;
+    padding: 0;
+    white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  
+  /* 원하는 속성을 추가하면 됩니다. */
+}
 
   `;
 
@@ -68,8 +89,8 @@ const ArticleListBlock = styled.div`
                     <h2>{article.title} </h2>
                     <p className="userDate">{article.id}  |  {article.date}</p>
                     <br />
-                    <p className="text" dangerouslySetInnerHTML={{ __html: article.text }} >
-                    </p>
+                    <div className="text" dangerouslySetInnerHTML={{ __html: article.text }} >
+                    </div>
                 </div>
                 <div class="article-image"></div>
             

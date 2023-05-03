@@ -71,6 +71,17 @@ const AxiosApi = {
             email : email
         };
         return await axios.post(CHIC_DOMAIN + "/new", member);
+    },
+
+    update : async(anum, bnum, title, text, pwd) => {
+        const article = {
+            anum : anum.toString(),
+            bnum : bnum.toString(),
+            title : title,
+            text : text,
+            pwd : pwd
+        };
+        return await axios.post(CHIC_DOMAIN + "/update", article);
     }
 
 

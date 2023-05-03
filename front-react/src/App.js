@@ -29,7 +29,7 @@ import News from './pages/Notice/News';
 import UserStore from './context/UserInfo';
 import Login from './pages/Login';
 import SignUp from './pages/SignUp';
-
+import Update from './pages/UpdateArticle';
 
 
 function App() {
@@ -64,6 +64,7 @@ function App() {
         <Route path='/News' element={<News />} />
         <Route path='/Login' element={<Login />} />
         <Route path='/Signup' element={<SignUp />} />
+        <Route path='/update/:num' element={<Update />} />
 
 
 
