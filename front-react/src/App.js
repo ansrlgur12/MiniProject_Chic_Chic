@@ -30,6 +30,7 @@ import UserStore from './context/UserInfo';
 import Login from './pages/Login';
 import SignUp from './pages/SignUp';
 import EventDesc from './pages/Notice/EventDesc';
+import Update from './pages/UpdateArticle';
 
 
 
@@ -66,7 +67,7 @@ function App() {
         <Route path='/Login' element={<Login />} />
         <Route path='/Signup' element={<SignUp />} />
         <Route path='/EventDesc/:eNum' element={<EventDesc />} />
-
+        <Route path='/update/:num' element={<Update />} />
 
 
 

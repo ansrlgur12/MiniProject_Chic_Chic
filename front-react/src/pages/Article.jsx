@@ -116,6 +116,7 @@ const Article = () => {
     const nav = useNavigate();
     const { anum } = useParams(); 
     const[article, setArticle] = useState("");
+    
 
     useEffect(()=>{
         const article = async() => {
@@ -134,7 +135,7 @@ const Article = () => {
         nav('/community');
     }
     const onClickUpdate = (num) => {
-        // nav /updateArticle 방식으로 useParam 써서 anum 가져오기 (articlelist, article 연결방식 참고해서)
+        nav(`/update/${num}`);
     }
 
     return(
@@ -164,7 +165,7 @@ const Article = () => {
                         </button>
                     </div>
                     <div className="deleteUpdate">
-                        <p onClick={onClickUpdate(article.anum)}>수정하기</p>
+                        <p onClick={()=>onClickUpdate(article.anum)}>수정하기</p>
                         <p>|</p>
                         <p onClick={onClickDelete}>삭제하기</p>
                     </div>
