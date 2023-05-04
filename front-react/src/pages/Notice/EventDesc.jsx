@@ -7,6 +7,10 @@ import Footer from "../../Footer/Footer";
 
 
 const EventDescStyle = styled.div`
+    box-sizing: border-box;
+    padding-top: 130px;
+    width: 60vw;
+    height: auto;
 
 `;
 
@@ -15,6 +19,7 @@ const EventDesc = () => {
         <>
             <Header />
             <EventDescStyle>
+                <p>test</p>
             </EventDescStyle>
             <Footer />
         </>
