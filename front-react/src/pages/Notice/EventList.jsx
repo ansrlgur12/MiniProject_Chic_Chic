@@ -6,16 +6,13 @@ import { useNavigate } from "react-router-dom";
 const EventDescStyle = styled.div`
     box-sizing: border-box;
     margin: 0px;
-    height: auto;
     display: flex;
-    flex-direction: column;
+    justify-content: space-evenly;
     align-items: center;
+    flex-wrap: wrap;
+
     
     .eContainer{
-        display: flex; // flex 스타일 적용
-        flex-wrap: wrap;
-        justify-content: center;
-        align-items: center;
         cursor: pointer;
     }
 
@@ -24,11 +21,16 @@ const EventDescStyle = styled.div`
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        width: 100px;
-        height: 260px;
+        width: 180px;
+        height: 240px;
         margin: 10px;
         border: .5px solid #afafaf;
-        background-color: #afafaf;
+        background-color: orangered;
+        font-size: 1.2em;
+        font-weight: bold;
+    }
+    .edate {
+        font-size: .8em;
     }
 `;
 
@@ -42,6 +44,7 @@ const EventList = (props) => {
         const eventList = async() => {
             const rsp = await AxiosApi.eventList(props.eNum);
             setEventList(rsp.data);
+            console.log(rsp);
         }
         eventList();
     }, []);
@@ -52,11 +55,14 @@ const EventList = (props) => {
 
     return(
         <EventDescStyle>
-            {eventList && eventList.map(eventList => (
-                <div className="eContainer" key={eventList.eventNum} onClick={()=>onClick(eventList.eventNum)}>
+            {eventList && eventList.map(event => (
+                <div className="eContainer" key={event.eventNum} onClick={()=>onClick(event.eventNum)}>
                     <div className="eventPost">
-                        <p>{eventList.eventNum}</p>
-                        <p>{eventList.eTitle}</p>
+                        {event.eventNum} <br />
+                        {event.eventTitle} <br /><br />
+                        <p className="edate">
+                        {event.startEvent}<br /> ~ <br /> {event.endEvent}
+                        </p>
                     </div>
                 </div>
             ))}
