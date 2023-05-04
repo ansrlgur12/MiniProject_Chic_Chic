@@ -14,30 +14,31 @@ import Modal from "../util/Modal";
 const Update = () => {
     const nav = useNavigate();
     const { num } = useParams(); 
-    const [article, setArticle] = useState("");
-
-    useEffect(()=>{
-        const article = async() => {
-            const rsp = await AxiosApi.ariticle(num);
-            console.log(num);
-            setArticle(rsp.data);
-            setAnum(num);
-        }
-        article();
-    }, [num]);
-    const [anum, setAnum] = useState("");
+    // 다음 게시글에 저장될 useState
     const [title, setTitle] = useState("");
     const [pwd, setPwd] = useState("");
     const [bnum, setCategory] = useState(1);
-    const [text, setBoard_content] = useState("");
+    const [text, setText] = useState("");
+
+
     const[modalOpen, setModalOpen] = useState(false);
-  
+
+    useEffect(()=>{
+        const viewArticle = async() => {
+            const rsp = await AxiosApi.ariticle(num);
+            console.log(rsp.data);
+            setTitle(rsp.data[0].title);
+            setText(rsp.data[0].text);
+            setCategory(rsp.data[0].bnum);
+        }
+        viewArticle();
+    },[num]);
+
 
 
     const onChangeTitle = (e) => {
       setTitle(e.target.value);
     }
-  
     const onClickOption = (e) => {
       setCategory(e.target.value);
     }
@@ -46,7 +47,7 @@ const Update = () => {
     }
   
     const submit = async() => {
-      const rsp = await AxiosApi.update(anum, bnum, title, text, pwd);
+      const rsp = await AxiosApi.update(num, bnum, title, text, pwd);
       console.log(rsp);
       nav(-1);
     }
@@ -54,78 +55,60 @@ const Update = () => {
     const onClickSubmit = async() => {
         setModalOpen(true);
     }
-  
     const closeModal = () => {
       setModalOpen(false);
     }
-  
     const goBack = () => {
       nav(-1);
     }
-  
-    return (
-      <>
-      <Header />
-        <Setting>
-        {article && article.map(article => (
+
+      return (
         <>
-        <div className="title">
-          <h2>글 수정</h2>
-          <hr />
-        </div>
-        <blockquote>
-        <div className="setting">
-          <label>카테고리</label>
-          <select value={article.bnum} onChange={onClickOption}>
-            <option value={1}>리뷰</option>
-            <option value={2}>정보공유</option>
-            <option value={3}>회원거래</option>
-          </select>
-        </div>
-        <div className="setting">
-          <label htmlFor="">제목</label>
-          <input className="titleInput" type="text" value={title} onChange={onChangeTitle} />
-        </div>
-        <div className="setting">
-          <label htmlFor="">내용</label>
-          <Container>
-          <CKEditor 
-              editor={ ClassicEditor }
-              data={article.text}
-              onReady={ editor => {
-                  // You can store the "editor" and use when it is needed.
-                   console.log( 'Editor is ready to use!', editor );
-                                  
-              } }
-              onChange={(event, editor) => {
-                  const data = editor.getData();
-                  console.log({ event, editor, data });
-                  setBoard_content(data);
-              }}
-          />
-          </Container>
-        </div>
-        <div className="setting">
-          <label htmlFor="">태그</label>
-          <input type="text" className="titleInput" placeholder="태그와 태그는 쉼표(,)로 구분합니다."/>
-        </div>
-        <div className="setting">
-          <label htmlFor="">비밀번호</label>
-          <input type="password" onChange={onChangePwd} />
-        </div>
-        </blockquote>
-        <div className="submit">
-          <button onClick={onClickSubmit}>수정</button>
-          <button onClick={goBack}>취소</button>
+        <Header />
+          <Setting>
+          <div className="title">
+            <h2>글 수정</h2>
+            <hr />
           </div>
-        <Modal open={modalOpen} type={true} confirm={submit} close={closeModal} header={"확인"}>수정 하시겠습니까?</Modal>
+          <blockquote>
+          <div className="setting">
+            <label>카테고리</label>
+            <select value={bnum} onChange={onClickOption}>
+              <option value={1}>리뷰</option>
+              <option value={2}>정보공유</option>
+              <option value={3}>회원거래</option>
+            </select>
+          </div>
+          <div className="setting">
+            <label htmlFor="">제목</label>
+            <input className="titleInput" type="text" value={title} onChange={onChangeTitle} />
+          </div>
+          <div className="setting">
+            <label htmlFor="">내용</label>
+            <Container>
+            <CKEditor editor={ ClassicEditor } data = {text} onChange={(event, editor) => {
+                    const data = editor.getData();
+                    setText(data);
+            }}/>
+            </Container>
+          </div>
+          <div className="setting">
+            <label htmlFor="">태그</label>
+            <input type="text" className="titleInput" placeholder="태그와 태그는 쉼표(,)로 구분합니다."/>
+          </div>
+          <div className="setting">
+            <label htmlFor="">비밀번호</label>
+            <input type="password" onChange={onChangePwd} />
+          </div>
+          </blockquote>
+          <div className="submit">
+            <button onClick={onClickSubmit}>수정</button>
+            <button onClick={goBack}>취소</button>
+            </div>
+          <Modal open={modalOpen} type={true} confirm={submit} close={closeModal} header={"확인"}>수정 하시겠습니까?</Modal>
+          </Setting>
         </>
-        ))}
-        </Setting>
-        
-        
-      </>
-    );
+      );
 }
 
 export default Update;
