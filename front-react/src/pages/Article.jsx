@@ -116,6 +116,7 @@ const Article = () => {
     const nav = useNavigate();
     const { anum } = useParams(); 
     const[article, setArticle] = useState("");
+    
 
     useEffect(()=>{
         const article = async() => {

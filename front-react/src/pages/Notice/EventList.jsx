@@ -53,6 +53,8 @@ const EventList = (props) => {
         nav(`/eventDesc/${eNum}`);
     };
 
+    
+
     return(
         <EventDescStyle>
             {eventList && eventList.map(event => (

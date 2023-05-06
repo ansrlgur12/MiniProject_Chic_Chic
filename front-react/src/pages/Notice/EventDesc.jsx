@@ -11,7 +11,6 @@ const EventDescStyle = styled.div`
     padding-top: 130px;
     width: 60vw;
     height: auto;
-
 `;
 
 const EventDesc = () => {

@@ -31,6 +31,10 @@ import Login from './pages/Login';
 import SignUp from './pages/SignUp';
 import EventDesc from './pages/Notice/EventDesc';
 import Update from './pages/UpdateArticle';
+<<<<<<< HEAD
+=======
+
+>>>>>>> e8e448f25f056cd4cdbcc30772273c347677efd0
 
 
 function App() {
@@ -67,9 +71,12 @@ function App() {
         <Route path='/Signup' element={<SignUp />} />
         <Route path='/EventDesc/:eNum' element={<EventDesc />} />
         <Route path='/update/:num' element={<Update />} />
+<<<<<<< HEAD
 
 
 
+=======
+>>>>>>> e8e448f25f056cd4cdbcc30772273c347677efd0
 
 
 
