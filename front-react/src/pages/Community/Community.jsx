@@ -2,7 +2,7 @@ import React from "react";
 import styled, {css} from "styled-components";
 import Header from "../../Header/Header";
 import { Link, useNavigate } from "react-router-dom";
-import ArticleLists from "../ArticleLists";
+import ArticleLists from "../Article/ArticleLists";
 import Footer from "../../Footer/Footer";
 
 export const CommunityStyle = styled.div`
