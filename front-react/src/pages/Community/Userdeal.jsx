@@ -2,7 +2,7 @@ import React from "react";
 import Header from "../../Header/Header";
 import { Link, useNavigate } from "react-router-dom";
 import {CommunityStyle} from "./Community";
-import ArticleLists from "../ArticleLists";
+import ArticleLists from "../Article/ArticleLists";
 import Footer from "../../Footer/Footer";
 
 

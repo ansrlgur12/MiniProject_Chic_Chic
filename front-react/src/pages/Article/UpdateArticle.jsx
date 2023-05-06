@@ -2,19 +2,18 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import { useEffect } from "react";
-import AxiosApi from "../api/Axios";
-import Header from "../Header/Header";
+import AxiosApi from "../../api/Axios";
+import Header from "../../Header/Header";
 import { Setting, Container } from './NewArticle';
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
-import Modal from "../util/Modal";
+import Modal from "../../util/Modal";
 
 
 
 const Update = () => {
     const nav = useNavigate();
-    const { num } = useParams(); 
-    // 다음 게시글에 저장될 useState
+    const { num } = useParams();
     const [title, setTitle] = useState("");
     const [pwd, setPwd] = useState("");
     const [bnum, setCategory] = useState(1);

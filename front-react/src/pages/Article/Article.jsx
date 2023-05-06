@@ -1,10 +1,12 @@
 import React from "react";
-import Header from "../Header/Header";
+import Header from "../../Header/Header";
 import styled from "styled-components";
-import AxiosApi from "../api/Axios";
+import AxiosApi from "../../api/Axios";
 import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import OtherArticles from "./OtherArticles";
+import Comment from "./Comment";
+import Modal from "../../util/Modal";
 
 const ArticleStyle = styled.div`
     box-sizing: border-box;
@@ -143,7 +145,7 @@ const Article = () => {
         <Header/>
         <ArticleStyle>
             {article && article.map(article => (
-                <div>
+                <>
                     <div className="container" key={article.anum}>
                         <div className="title">
                             <h2>{article.title}</h2>
@@ -155,23 +157,23 @@ const Article = () => {
                         </div>
                         <div className="main" dangerouslySetInnerHTML={{ __html: article.text }} />
                     </div>
-                <div className="likeDeleteUpdate">
-                    <div className="likes">
-                        <button className="likeBtn"><i class="fa-sharp fa-regular fa-heart"></i></button>
-                        <button className="shareBtn">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-share" viewBox="0 0 16 16">
-                            <path d="M13.5 1a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM11 2.5a2.5 2.5 0 1 1 .603 1.628l-6.718 3.12a2.499 2.499 0 0 1 0 1.504l6.718 3.12a2.5 2.5 0 1 1-.488.876l-6.718-3.12a2.5 2.5 0 1 1 0-3.256l6.718-3.12A2.5 2.5 0 0 1 11 2.5zm-8.5 4a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zm11 5.5a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3z"/>
-                            </svg>
-                        </button>
+                    <div className="likeDeleteUpdate">
+                        <div className="likes">
+                            <button className="likeBtn"><i class="fa-sharp fa-regular fa-heart"></i></button>
+                            <button className="shareBtn">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-share" viewBox="0 0 16 16">
+                                <path d="M13.5 1a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM11 2.5a2.5 2.5 0 1 1 .603 1.628l-6.718 3.12a2.499 2.499 0 0 1 0 1.504l6.718 3.12a2.5 2.5 0 1 1-.488.876l-6.718-3.12a2.5 2.5 0 1 1 0-3.256l6.718-3.12A2.5 2.5 0 0 1 11 2.5zm-8.5 4a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zm11 5.5a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3z"/>
+                                </svg>
+                            </button>
+                        </div>
+                        <div className="deleteUpdate">
+                            <p onClick={()=>onClickUpdate(article.anum)}>수정하기</p>
+                            <p>|</p>
+                            <p onClick={onClickDelete}>삭제하기</p>
+                        </div>
                     </div>
-                    <div className="deleteUpdate">
-                        <p onClick={()=>onClickUpdate(article.anum)}>수정하기</p>
-                        <p>|</p>
-                        <p onClick={onClickDelete}>삭제하기</p>
-                    </div>
-                </div>
-           <OtherArticles bnum={article.bnum} />
-           </div>
+                <OtherArticles bnum={article.bnum} />
+                </>
            ))}
             <br />
             <div className="tag">
@@ -183,18 +185,7 @@ const Article = () => {
                 </div>
             </div>
             <br />
-            <div className="comment">
-                <h3>댓글</h3>
-                <div className="list">
-                <ul>
-                        <li>다른 글</li>
-                        <li>다른 글</li>
-                        <li>다른 글들</li>
-                        <li>다른 글 3</li>
-                        <li>따른 글</li>
-                    </ul>
-                </div>
-            </div>
+            <Comment anum={anum}/>
         </ArticleStyle>
         </>
     );
