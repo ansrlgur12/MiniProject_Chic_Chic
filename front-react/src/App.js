@@ -14,7 +14,7 @@ import ImageTest5 from './pages/imageTest/imageTest5';
 import ImageTest6 from './pages/imageTest/imageTest6';
 import Information from './pages/Community/Infomation';
 import UserDeal from './pages/Community/Userdeal';
-import Article from './pages/Article';
+import Article from './pages/Article/Article';
 import EventPage from './pages/Notice/EventPage';
 import Notice from './pages/Notice/Notice';
 import PerfumePage from './pages/PerfumePage/Perfume';
@@ -23,7 +23,7 @@ import Products from './pages/Products/Products';
 import TestResult from './pages/imageTest/TestResult';
 import NoteFinderMain from './pages/NoteFinder/NoteFinderMain';
 import NoteCategory from './pages/NoteFinder/NoteCategory';
-import Draft from './pages/NewArticle';
+import Draft from './pages/Article/NewArticle';
 import MyPage from './pages/MyPage/MyPage';
 import News from './pages/Notice/News';
 import UserStore from './context/UserInfo';
@@ -31,11 +31,6 @@ import Login from './pages/Login';
 import SignUp from './pages/SignUp';
 import EventDesc from './pages/Notice/EventDesc';
 import Update from './pages/UpdateArticle';
-<<<<<<< HEAD
-=======
-
->>>>>>> e8e448f25f056cd4cdbcc30772273c347677efd0
-
 
 function App() {
   

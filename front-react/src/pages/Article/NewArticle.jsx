@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
-import AxiosApi from "../api/Axios";
+import AxiosApi from "../../api/Axios";
 import styled from "styled-components";
-import Header from "../Header/Header";
+import Header from "../../Header/Header";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import Modal from "../util/Modal";
+import Modal from "../../util/Modal";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 

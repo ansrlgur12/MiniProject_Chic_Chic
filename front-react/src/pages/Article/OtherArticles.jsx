@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { useState, useEffect } from "react";
-import AxiosApi from "../api/Axios";
+import AxiosApi from "../../api/Axios";
 import { useNavigate } from "react-router-dom";
 
 const Container=styled.div`
@@ -72,7 +72,7 @@ const OtherArticles = (props) => {
                 <div className="lists">
                     {article && article.map(article => (
                     <ul>
-                        <li key={article.anum} onClick={()=>nav(`/article/${article.anum}`)}>{article.title}</li>
+                        <li key={article.anum} onClick={()=>{ nav(`/article/${article.anum}`); window.location.reload(); }}>{article.title}</li>
                     </ul>
                     ))}
                 </div>

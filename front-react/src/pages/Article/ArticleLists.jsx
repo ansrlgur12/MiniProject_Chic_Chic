@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router";
 import styled from "styled-components";
-import AxiosApi from "../api/Axios";
+import AxiosApi from "../../api/Axios";
 import { useState, useEffect } from "react";
 import Article from "./Article";
 

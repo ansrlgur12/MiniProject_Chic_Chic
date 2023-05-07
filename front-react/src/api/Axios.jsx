@@ -73,6 +73,7 @@ const AxiosApi = {
         return await axios.post(CHIC_DOMAIN + "/new", member);
     },
 
+    // 게시글 수정
     update : async(anum, bnum, title, text, pwd) => {
         const article = {
             anum : anum.toString(),
@@ -82,11 +83,39 @@ const AxiosApi = {
             pwd : pwd
         };
         return await axios.post(CHIC_DOMAIN + "/update", article);
+    },
+
+    // 댓글 등록
+    newComment : async(anum, text, pwd) => {
+        const comment = {
+            anum : anum.toString(),
+            text : text,
+            pwd : pwd
+        };
+        return await axios.post(CHIC_DOMAIN + "/comment", comment);
+    },
+
+    showComment : async(anum) => { // 댓글 목록 출력
+        
+        return await axios.get(CHIC_DOMAIN + `/showComment/${anum}`);
+    },
+
+    deleteComment : async(commentNum) => { // 댓글 삭제
+        return await axios.get(CHIC_DOMAIN + `/commentDelete/${commentNum}`);
+    },
+
+    viewComment : async(commentNum) => { // 댓글 수정하기 전 가져오기
+        return await axios.get(CHIC_DOMAIN + `/viewComment/${commentNum}`);
+    },
+
+    updateComment : async(commentNum, text, pwd) => { // 댓글 수정 등록
+        const comment = {
+            commentNum : commentNum.toString(),
+            text : text,
+            pwd : pwd
+        };
+        return await axios.post(CHIC_DOMAIN + "/updateComment", comment)
     }
-
-
-
-
 };
 
 export default AxiosApi;
