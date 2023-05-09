@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import AxiosApi from "../../api/Axios";
 import styled from "styled-components";
 import Header from "../../Header/Header";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Modal from "../../util/Modal";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
+import { UserContext } from "../../context/UserInfo";
 
 export const Setting = styled.div`
   padding-top: 160px;
@@ -81,6 +81,8 @@ const Draft = () => {
   const nav = useNavigate();
   const [text, setBoard_content] = useState("");
   const[modalOpen, setModalOpen] = useState(false);
+  const context = useContext(UserContext);
+  const {userId} = context;
 
   useEffect(()=>{
     console.log(text);
@@ -104,7 +106,7 @@ const Draft = () => {
   }
 
   const submit = async() => {
-    const rsp = await AxiosApi.newArticle(bnum, title, text, pwd)
+    const rsp = await AxiosApi.newArticle(userId, bnum, title, text, pwd)
     console.log(rsp);
     nav(-1);
   }
