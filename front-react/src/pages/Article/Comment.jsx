@@ -3,6 +3,8 @@ import styled from "styled-components";
 import AxiosApi from "../../api/Axios";
 import Modal from "../../util/Modal";
 import { useCallback } from "react";
+import { useContext } from "react";
+import { UserContext } from "../../context/UserInfo";
 
 const CommentBox = styled.div`
     padding: 0;
@@ -11,6 +13,7 @@ const CommentBox = styled.div`
         width: 100%;
         padding-bottom: 25px;
         border-bottom: 0.2px solid rgb(161, 161, 161);
+        margin-bottom: 25px;
     }
 
     .listTop{
@@ -74,8 +77,10 @@ const CommentBox = styled.div`
     .space{
         margin: 0px 5px;
     }
-
-
+    
+    .notLoginCommentWrite{
+        display: none;
+    }
 `;
 
 const Comment = (props) => {
@@ -86,6 +91,8 @@ const Comment = (props) => {
     const [commentNum, setCommentNum] = useState(0);
     const [modalOpen, setModalOpen] = useState(false);
     const [isUpdate, setIsUpdate] = useState(false);
+    const context = useContext(UserContext);
+    const {isLogin, userId} = context;
 
     const fetchComment = useCallback(async () => {
         const rsp = await AxiosApi.showComment(props.anum);
@@ -98,7 +105,7 @@ const Comment = (props) => {
 
     const submit = async(commentNum) => { // 댓글 등록하는 부분
         if(!isUpdate) {
-            const rsp = await AxiosApi.newComment(props.anum, text, pwd);
+            const rsp = await AxiosApi.newComment(props.anum, userId ,text, pwd);
             console.log(rsp);
             setPwd("");
             setText("");
@@ -172,7 +179,7 @@ const Comment = (props) => {
                 </div>
                 ))}
                 
-                <div className="commentWrite">
+                <div className={isLogin ? "commentWrite" : "notLoginCommentWrite"}>
                     <div className="writeTop">
                         <input className="pwd" type="password" value={pwd} placeholder="비밀번호" onChange={onChangePwd}/>
                     </div>
