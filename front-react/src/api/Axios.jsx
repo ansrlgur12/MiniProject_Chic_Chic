@@ -124,7 +124,35 @@ const AxiosApi = {
             anum : anum.toString()
         }
         return await axios.post(CHIC_DOMAIN + `/viewCount/`, view);
-    }
+    },
+
+    like : async(anum, id) => {
+        const like = {
+            anum : anum.toString(),
+            id : id
+        }
+        return await axios.post(CHIC_DOMAIN + `/newLike/`, like);
+    },
+
+    dislike : async(anum, id) => {
+        const dislike = {
+            anum : anum.toString(),
+            id : id
+        }
+        return await axios.post(CHIC_DOMAIN + `/disLike/`, dislike);
+    },
+
+    deleteLike : async(anum) => { 
+        return await axios.get(CHIC_DOMAIN + `/deleteLike/${anum}`);
+    },
+
+    isLike : async(anum, id) => {
+        return await axios.get(CHIC_DOMAIN + `/countLike/${anum}/${id}`);
+    },
+
+    // product : async(num) => {
+    //     return await axios.get(CHIC_DOMAIN + `/prduct/${num}`);
+    // }
 };
 
 export default AxiosApi;
