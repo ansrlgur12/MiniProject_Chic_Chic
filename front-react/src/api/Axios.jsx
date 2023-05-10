@@ -153,6 +153,10 @@ const AxiosApi = {
     // product : async(num) => {
     //     return await axios.get(CHIC_DOMAIN + `/prduct/${num}`);
     // }
+    imageTestResult: async (selected) => {
+       
+        return await axios.get(CHIC_DOMAIN + `/ImageTestResult/${selected}`);
+      },
 };
 
 export default AxiosApi;

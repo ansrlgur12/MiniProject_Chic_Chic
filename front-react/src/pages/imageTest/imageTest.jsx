@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useEffect} from "react";
 import styled from "styled-components";
 import Header from "../../Header/Header";
 import Spring from "../../image/spring.png"
@@ -6,7 +6,10 @@ import Summer from "../../image/summer.png"
 import Fall from "../../image/fall.png"
 import Winter from "../../image/winter.png"
 import "../../Header/font.css";
-import { useNavigate } from "react-router-dom";
+import { useNavigate} from "react-router-dom";
+import AxiosApi from "../../api/Axios";
+import axios from "axios";
+import { useState } from "react";
 
 export const Gage = styled.div`
     .gage{
@@ -86,7 +89,17 @@ export const ImageTestStyle = styled.div`
   `
   export const ImageTestStyle1 = styled.div`
   font-family : 'NeoDunggeunmoPro-Regular';
-  
+  .thumbnail{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+			img {
+				display: block;
+				width: 200px;
+				height: 180px;
+				object-fit: cover;
+			}
+  }
   .content {
     padding-bottom: 40px;
     padding-top: 20px;
@@ -217,45 +230,66 @@ export const TextOpt= styled.div`
 `
 
 const ImageTest= () =>{
-const nav= useNavigate();
+  
+  const [selected, setSelected] = useState([]);
+  const nav = useNavigate();
 
+  
+  useEffect(() => {
+    const selectedFromStorage = localStorage.getItem('selected');
+    if (selectedFromStorage) {
+      setSelected(JSON.parse(selectedFromStorage));
+    }
+  }, []);
+
+  const handleOptionClick = (option) => {
+    const newSelected = [...selected, parseInt(option)];
+    setSelected(newSelected);
+    localStorage.setItem('selected', JSON.stringify(newSelected));
+    nav('/imageTest1', { state: { selected: newSelected } });
+  };
+ 
+  
     return(
         <>
         <Header/>
         <ImageTestStyle>
           
           <ImageTestStyle1>
-        <div class="container">
+        <div className="container">
         <Gage>
           <div className="gage">
           <p className="qnum">1/6</p>
-        <div class="qheader">
+        <div className="qheader">
           <div className="bar" style={{width:' 3.2vw',height:'100%', background:'black'}}></div>
           </div>
         </div>
         </Gage>
-        <div class="content">
-          <div class="question">
-            <h2 class="question-title">질문 1</h2>
-            <p class="question-description">당신은 어떤 계절을 좋아하시나요?</p>
+        <div className="content">
+          <div className="question">
+            <h2 className="question-title">질문 1</h2>
+            <p className="question-description">당신은 어떤 계절을 좋아하시나요?</p>
             </div>
-            <div class="options">
+            <div className="options">
               <div className="optionP">
-              <button class="option" onClick={()=>nav("/imageTest1")} style={{ backgroundImage: `url(${Spring})`, backgroundSize: 'cover' }}> </button>
+             
+              <button className="option" onClick={()=>handleOptionClick("1")}  style={{ backgroundImage: `url(${Spring})`, backgroundSize: 'cover' }}> </button>
               <p>봄</p>
               </div>
+              
               <div className="optionP">
-              <button class="option" onClick={()=>nav("/imageTest1")} style={{ backgroundImage: `url(${Summer})`, backgroundSize: 'cover' }}></button>
+              <button className="option" onClick={()=>handleOptionClick("2")} style={{ backgroundImage: `url(${Summer})`, backgroundSize: 'cover' }}></button>
               <p>여름</p>
               </div>
               <div className="optionP">
-              <button class="option" onClick={()=>nav("/imageTest1")} style={{ backgroundImage: `url(${Fall})`, backgroundSize: 'cover' }}></button>
+              <button className="option"onClick={()=>handleOptionClick("3")} style={{ backgroundImage: `url(${Fall})`, backgroundSize: 'cover' }}></button>
               <p>가을</p>
               </div>
               <div className="optionP">
-              <button class="option" onClick={()=>nav("/imageTest1")} style={{ backgroundImage: `url(${Winter})`, backgroundSize: 'cover' }}></button>
+              <button className="option" onClick={()=>handleOptionClick("4")} style={{ backgroundImage: `url(${Winter})`, backgroundSize: 'cover' }}></button>
                <p>겨울</p>
                </div>
+               
             </div>
           </div>
           
