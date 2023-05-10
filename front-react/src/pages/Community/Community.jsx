@@ -95,7 +95,7 @@ const Community = () => {
                 </div>
             </div>
             </CommunityStyle>
-            <Footer />
+            <Footer />[]
           
         </>
     );
