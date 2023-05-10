@@ -42,7 +42,7 @@ const ModalStyled = styled.div`
     .modal section > header button {
         border-style: none;
         position: absolute;
-        top: 15px;
+        top: -40px;
         right: 15px;
         width: 30px;
         font-size: 21px;
@@ -53,7 +53,6 @@ const ModalStyled = styled.div`
     }
     .modal > section > main {
     padding: 16px;
-    border-bottom: 1px solid #dee2e6;
     border-top: 1px solid #dee2e6;
     }
     .modal > section > footer {

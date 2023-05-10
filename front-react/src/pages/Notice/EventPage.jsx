@@ -3,7 +3,7 @@ import styled from "styled-components";
 import Header from "../../Header/Header";
 import Footer from "../../Footer/Footer";
 import { useNavigate } from "react-router-dom";
-import AxiosApi from "../../api/Axios";
+import EventList from "./EventList";
 
 
 
@@ -18,7 +18,7 @@ const EventStyle = styled.div`
 
     .eMain {
         margin: 0, auto;
-        width: 80%;
+        width: 60vw;
         max-width: 1024px;
         height: auto;
         text-align: center;
@@ -65,21 +65,15 @@ const EventStyle = styled.div`
 
 
 const EventPage = () => {
-    const nav = useNavigate();
-    const[eventDesc, setEventDesc] = useState("");
 
-    useEffect(()=> {
-        const eventDesc = async() => {
-            const rsp = await AxiosApi.eventDescGet();
-            setEventDesc(rsp.data);
-            console.log("랜더링");
-        }
-        eventDesc();
-    }, []);
 
-    const onClick = (eNum) => {
-        nav(`/EventDesc/${eNum}`);
-    };
+    const [eNum, setENum] = useState(0);
+
+    const handleENum = (num) => {
+        setENum(num);
+      };
+
+    
 
     return(
         <>
@@ -89,21 +83,15 @@ const EventPage = () => {
                     <div className="eContents">
                         <h2>이벤트</h2>
                         <div className="section">
-                            <div className="eArticle eArticle1">전체 이벤트</div>
-                            <div className="eArticle eArticle2">진행 이벤트</div>
-                            <div className="eArticle eArticle3">예정 이벤트</div>
-                            <div className="eArticle eArticle4">종료 이벤트</div>
+                            <div className="eArticle eArticle1" onClick={() => handleENum(0)}>전체 이벤트</div>
+                            <div className="eArticle eArticle2" onClick={() => handleENum(1)}>진행 이벤트</div>
+                            <div className="eArticle eArticle3" onClick={() => handleENum(2)}>예정 이벤트</div>
+                            <div className="eArticle eArticle4" onClick={() => handleENum(3)}>종료 이벤트</div>
                         </div>
-                        <div className="line"/>
-                        {eventDesc && eventDesc.map(eventDesc => (
-                            <div className="eContainer" key={eventDesc.eNum} onClick={()=>onClick(eventDesc.eNum)}>
-                                <div className="eventPost">
-                                    <p>{eventDesc.eventNum}</p>
-                                    <p>{eventDesc.eTitle}</p>
-                                </div>
-                            </div>
-                        ))}
-                        
+                        <div className="line"/> 
+                        <div className="text">
+                            <EventList eNum={eNum} />
+                        </div>
                     </div>
                 </div>
             </EventStyle>

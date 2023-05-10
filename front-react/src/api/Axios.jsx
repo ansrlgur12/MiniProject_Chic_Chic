@@ -3,17 +3,23 @@ const CHIC_DOMAIN = "http://localhost:8111";
 
 const AxiosApi = {
 
-    articleList : async(anum) => { // 게시글 목록 출력
+    articleList : async(anum, view) => { // 게시글 목록 출력
         
-        return await axios.get(CHIC_DOMAIN + `/article/${anum}`);
+        return await axios.get(CHIC_DOMAIN + `/article/${anum}/${view}`);
+    },
+    smallArticleList : async(anum) => { // 작은 목록 출력
+        
+        return await axios.get(CHIC_DOMAIN + `/smallArticle/${anum}`);
     },
     ariticle : async(num) => { // 게시글 출력
         
         return await axios.get(CHIC_DOMAIN + `/articles/${num}`);
     },
 
-    newArticle : async(bnum, title, text, pwd) => { // 게시글 작성 정보 저장
+
+    newArticle : async(id, bnum, title, text, pwd) => { // 게시글 작성 정보 저장
         const article = {
+            id : id,
             bnum : bnum.toString(),
             title : title,
             text : text,
@@ -32,11 +38,16 @@ const AxiosApi = {
         return await axios.get(CHIC_DOMAIN + `/articleDelete/${anum}`);
     },
 
-    eventDescGet : async(eNum) => { // 이벤트 페이지 async
+    // 이벤트 페이지 리스트
+    eventList : async(eventNum) => {
 
-        return await axios.get(CHIC_DOMAIN + `/EventDesc/${eNum}`);
+        return await axios.get(CHIC_DOMAIN + `/EventPage/${eventNum}`);
     },
 
+    // 이벤트 상세 페이지
+    eventDesc : async(eventNum) => {
+        return await axios.get(CHIC_DOMAIN + `/EventDesc/${eventNum}`)
+    },
 
     // 로그인
     memberLogin : async(id, pw) => {
@@ -66,11 +77,101 @@ const AxiosApi = {
             email : email
         };
         return await axios.post(CHIC_DOMAIN + "/new", member);
-    }
+    },
 
+    // 게시글 수정
+    update : async(anum, bnum, title, text, pwd) => {
+        const article = {
+            anum : anum.toString(),
+            bnum : bnum.toString(),
+            title : title,
+            text : text,
+            pwd : pwd
+        };
+        return await axios.post(CHIC_DOMAIN + "/update", article);
+    },
 
+    // 댓글 등록
+    newComment : async(anum, id, text, pwd) => {
+        const comment = {
+            anum : anum.toString(),
+            id : id,
+            text : text,
+            pwd : pwd
+        };
+        return await axios.post(CHIC_DOMAIN + "/comment", comment);
+    },
 
+    showComment : async(anum) => { // 댓글 목록 출력
+        
+        return await axios.get(CHIC_DOMAIN + `/showComment/${anum}`);
+    },
 
+    deleteComment : async(commentNum) => { // 댓글 삭제
+        return await axios.get(CHIC_DOMAIN + `/commentDelete/${commentNum}`);
+    },
+
+    viewComment : async(commentNum) => { // 댓글 수정하기 전 가져오기
+        return await axios.get(CHIC_DOMAIN + `/viewComment/${commentNum}`);
+    },
+
+    updateComment : async(commentNum, text, pwd) => { // 댓글 수정 등록
+        const comment = {
+            commentNum : commentNum.toString(),
+            text : text,
+            pwd : pwd
+        };
+        return await axios.post(CHIC_DOMAIN + "/updateComment", comment)
+    },
+
+    viewCount : async(anum) => {
+        const view = {
+            anum : anum.toString()
+        }
+        return await axios.post(CHIC_DOMAIN + `/viewCount/`, view);
+    },
+
+    like : async(anum, id) => {
+        const like = {
+            anum : anum.toString(),
+            id : id
+        }
+        return await axios.post(CHIC_DOMAIN + `/newLike/`, like);
+    },
+
+    dislike : async(anum, id) => {
+        const dislike = {
+            anum : anum.toString(),
+            id : id
+        }
+        return await axios.post(CHIC_DOMAIN + `/disLike/`, dislike);
+    },
+
+    deleteLike : async(anum) => { 
+        return await axios.get(CHIC_DOMAIN + `/deleteLike/${anum}`);
+    },
+
+    isLike : async(anum, id) => {
+        return await axios.get(CHIC_DOMAIN + `/countLike/${anum}/${id}`);
+    },
+
+    plusLike : async(anum) => {
+        const plus = {
+            anum : anum.toString()
+        }
+        return await axios.post(CHIC_DOMAIN + `/plusLike/`, plus);
+    },
+
+    minusLike : async(anum) => {
+        const minus = {
+            anum : anum.toString()
+        }
+        return await axios.post(CHIC_DOMAIN + `/minusLike/`, minus);
+    },
+
+    deleteCommentAll : async(anum) => {
+        return await axios.get(CHIC_DOMAIN + `/deleteCommentAll/${anum}`);
+    },
 };
 
 export default AxiosApi;

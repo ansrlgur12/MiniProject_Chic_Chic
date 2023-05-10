@@ -140,12 +140,11 @@ const Input = styled.input`
 
 const Login = () => {
 
-    window.localStorage.setItem("isLogin", "FALSE");
     const nav = useNavigate();
 
     // Context API에 값을 저장
     const context = useContext(UserContext);
-    const {setUserId, setPassword} = context;
+    const {setUserId, setPassword, setIsLogin} = context;
 
     // 키보드 입력 받기
     const[inputId, setInputId] = useState("");
@@ -169,6 +168,7 @@ const Login = () => {
 
     const confirmBtn = () => {
         console.log("확인버튼이 눌려졌습니다.")
+        setModalOpen(false);
     }
 
     const onChangeId = e => {
@@ -204,12 +204,10 @@ const Login = () => {
       console.log(response.data);
 
       if(response.data === true) {
-          window.localStorage.setItem("userId", inputId);
-          window.localStorage.setItem("userPw", inputPw);
-          window.localStorage.setItem("isLogin", "TRUE");
-          nav("/");
           setUserId(inputId);
           setPassword(inputPw);
+          setIsLogin(true);
+          nav(-1);
       } else {
           console.log("로그인 에러");
           setModalOpen(true);

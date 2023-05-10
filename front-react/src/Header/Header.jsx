@@ -3,6 +3,8 @@ import styled, {css} from "styled-components";
 import logoImage from "../image/로고.jpg"
 import { Link, useNavigate } from "react-router-dom";
 import "./font.css";
+import { useContext } from "react";
+import { UserContext } from "../context/UserInfo";
 
 const HeaderStyle = styled.div`
 
@@ -157,9 +159,9 @@ const HeaderStyle = styled.div`
 
 const Header = () => {
 
-    const localId = window.localStorage.getItem("userId");
-    const localPw = window.localStorage.getItem("userPw");
-    const isLogin = window.localStorage.getItem("isLogin");
+  const context = useContext(UserContext);
+  const {setUserId, setPassword, setIsLogin, isLogin} = context;
+
     const nav = useNavigate();
     return(
         <>
