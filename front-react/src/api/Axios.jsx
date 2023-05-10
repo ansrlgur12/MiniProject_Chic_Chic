@@ -38,11 +38,16 @@ const AxiosApi = {
         return await axios.get(CHIC_DOMAIN + `/articleDelete/${anum}`);
     },
 
-    eventList : async(eventNum) => { // 이벤트 페이지 async
+    // 이벤트 페이지 리스트
+    eventList : async(eventNum) => {
 
         return await axios.get(CHIC_DOMAIN + `/EventPage/${eventNum}`);
     },
 
+    // 이벤트 상세 페이지
+    eventDesc : async(eventNum) => {
+        return await axios.get(CHIC_DOMAIN + `/EventDesc/${eventNum}`)
+    },
 
     // 로그인
     memberLogin : async(id, pw) => {
@@ -150,13 +155,27 @@ const AxiosApi = {
         return await axios.get(CHIC_DOMAIN + `/countLike/${anum}/${id}`);
     },
 
-    // product : async(num) => {
-    //     return await axios.get(CHIC_DOMAIN + `/prduct/${num}`);
-    // }
     imageTestResult: async (selected) => {
        
         return await axios.get(CHIC_DOMAIN + `/ImageTestResult/${selected}`);
       },
+    plusLike : async(anum) => {
+        const plus = {
+            anum : anum.toString()
+        }
+        return await axios.post(CHIC_DOMAIN + `/plusLike/`, plus);
+    },
+
+    minusLike : async(anum) => {
+        const minus = {
+            anum : anum.toString()
+        }
+        return await axios.post(CHIC_DOMAIN + `/minusLike/`, minus);
+    },
+
+    deleteCommentAll : async(anum) => {
+        return await axios.get(CHIC_DOMAIN + `/deleteCommentAll/${anum}`);
+    },
 };
 
 export default AxiosApi;

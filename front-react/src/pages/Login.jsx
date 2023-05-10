@@ -207,7 +207,7 @@ const Login = () => {
           setUserId(inputId);
           setPassword(inputPw);
           setIsLogin(true);
-          nav("/");
+          nav(-1);
       } else {
           console.log("로그인 에러");
           setModalOpen(true);

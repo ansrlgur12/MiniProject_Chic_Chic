@@ -51,15 +51,20 @@ font-weight: bold;
     .likes{
         margin-top: 50px;
         border: 1px solid #ccc;
-        width: 100px;
+        width: 110px;
         height: 30px;
         display: flex;
-        justify-content: space-evenly;
-        border-radius: 15px;
+        justify-content: center;
+        border-radius: 20px;
         margin-bottom: 50px;
     }
     .main{
         margin-top: 50px;
+    }
+    .likeCount{
+        margin: .4em 1em .5em .2em;
+        padding: 0px;
+        font-size:small; 
     }
    
 p {
@@ -114,6 +119,9 @@ button{
     font-size: small;
     color: #696969;
 }   
+.notLogindeleteUpdate{
+    display: none;
+}
 `;
 
 const Article = () => {
@@ -122,48 +130,73 @@ const Article = () => {
     const[article, setArticle] = useState("");
     const [isLiked, setIsLiked] = useState(false);
     const context = useContext(UserContext);
-    const {userId} = context;
+    const {isLogin, userId} = context;
+    const[modalOpen, setModalOpen] = useState(false);
+    const[deleteModalOpen, setDeleteModalOpen] = useState(false);
     
 
     useEffect(()=>{
         const article = async() => {
             const rsp = await AxiosApi.ariticle(anum);
             await AxiosApi.viewCount(anum);
-            const isLike = await AxiosApi.isLike(anum, userId);
-            console.log(anum);
-            console.log(isLike);
-            if(isLike.data === 0) {
-                setIsLiked(false);
-            } else {
-                setIsLiked(true);
+            if(userId){
+                const isLike = await AxiosApi.isLike(anum, userId);
+                console.log(anum);
+                console.log(isLike);
+                if(isLike.data === 0) {
+                    setIsLiked(false);
+                } else {
+                    setIsLiked(true);
+                }
             }
+            
             setArticle(rsp.data);
         }
         article();
-    }, [anum]);
+    },[anum, isLiked]);
 
 
+    const onClickDelete = () => {
+        setDeleteModalOpen(true);
+    }
 
-    const onClickDelete = async() => {
+    const deleteArticle = async() => {
         await AxiosApi.deleteLike(anum);
+        await AxiosApi.deleteCommentAll(anum);
         const rsp = await AxiosApi.deleteArticle2(anum);
         console.log(rsp);
-        nav('/community');
+        nav(-1);
     }
+
     const onClickUpdate = (num) => {
         nav(`/update/${num}`);
     }
 
+
     const onClickLike = async() => {
-        if(isLiked){
-            await AxiosApi.dislike(anum, userId);
-            setIsLiked(!isLiked);
+        if(userId){
+            if(isLiked){
+                await AxiosApi.dislike(anum, userId);
+                await AxiosApi.minusLike(anum);
+                setIsLiked(!isLiked);
+            }
+            else{
+                await AxiosApi.like(anum, userId);
+                await AxiosApi.plusLike(anum);
+                setIsLiked(!isLiked);
+            }
+        }else{
+            setModalOpen(true);
         }
-        else{
-            await AxiosApi.like(anum, userId);
-            setIsLiked(!isLiked);
-        }
-      };
+    };
+  
+    const closeModal = () => {
+      setModalOpen(false);
+    }
+
+    const closeDeleteModal = () => {
+        setDeleteModalOpen(false);
+    }
 
     return(
         <>
@@ -184,19 +217,22 @@ const Article = () => {
                         </div>
                         <div className="main" dangerouslySetInnerHTML={{ __html: article.text }} />
                     </div>
-                    <div className="likeDeleteUpdate">
+                    <div className={"likeDeleteUpdate"}>
                         <div className="likes">
-                        <button className="likeBtn" onClick={onClickLike}>{isLiked ? (<i className="fa-solid fa-heart"></i>) : (<i className="fa-sharp fa-regular fa-heart"></i>)}</button>
+                            <button className="likeBtn" onClick={onClickLike}>{isLiked ? (<i className="fa-solid fa-heart"></i>) : (<i className="fa-sharp fa-regular fa-heart"></i>)}</button>
+                            <p className="likeCount">{article.like}</p>
                             <button className="shareBtn">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-share" viewBox="0 0 16 16">
                                 <path d="M13.5 1a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM11 2.5a2.5 2.5 0 1 1 .603 1.628l-6.718 3.12a2.499 2.499 0 0 1 0 1.504l6.718 3.12a2.5 2.5 0 1 1-.488.876l-6.718-3.12a2.5 2.5 0 1 1 0-3.256l6.718-3.12A2.5 2.5 0 0 1 11 2.5zm-8.5 4a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zm11 5.5a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3z"/>
                                 </svg>
                             </button>
+                            <Modal open={modalOpen} type={true} confirm={()=>nav("/Login")} close={closeModal} header={"확인"}>로그인이 필요합니다</Modal>
                         </div>
-                        <div className="deleteUpdate">
+                        <div className={isLogin ? "deleteUpdate" : "notLogindeleteUpdate"}>
                             <p onClick={()=>onClickUpdate(article.anum)}>수정하기</p>
                             <p>|</p>
                             <p onClick={onClickDelete}>삭제하기</p>
+                            <Modal open={deleteModalOpen} type={true} confirm={deleteArticle} close={closeDeleteModal} header={"경고"}>삭제하시겠습니까?</Modal>
                         </div>
                     </div>
                 <OtherArticles bnum={article.bnum} />

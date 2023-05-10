@@ -81,6 +81,10 @@ const CommentBox = styled.div`
     .notLoginCommentWrite{
         display: none;
     }
+
+    .notLoginlistUpdate-Delete{
+        display: none;
+    }
 `;
 
 const Comment = (props) => {
@@ -168,7 +172,7 @@ const Comment = (props) => {
                 <div className="commentList" key={comment.commentNum}> 
                     <div className="listTop">
                         <div className="listName-date">{comment.id} <span className="space">|</span> {comment.date}</div>
-                        <div className="listUpdate-Delete">
+                        <div className={isLogin ? "listUpdate-Delete" : "notLoginlistUpdate-Delete"}>
                             <p onClick={()=>viewComment(comment.commentNum)}>수정</p>
                             <p>|</p>
                             <p onClick={deleteClick}>삭제</p>
