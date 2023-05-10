@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 const ImageTest6 = () =>{
   const nav = useNavigate();
         
-        const [loadingText, setLoadingText] = useState('결과 확인중');
+        const [loadingText, setLoadingText] = useState(false);
         
       
         useEffect(() => {
@@ -17,15 +17,11 @@ const ImageTest6 = () =>{
             setLoadingText(prevText => prevText.length < 13 ? prevText + '.' : '결과 확인중');
           }, 500);
       
-          // 일정 시간 후에 결과 창으로 이동하는 타이머
-          const nextTimer = setTimeout(() => {
-            clearInterval(timer);
-            // 다음 창으로 이동하는 코드
-          }, 3000); // 3초 후에 다음 창으로 이동
+          
       
           return () => {
             clearInterval(timer);
-            clearTimeout(nextTimer);
+          
           }
         }, []);
   
