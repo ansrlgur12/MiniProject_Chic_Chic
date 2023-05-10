@@ -7,6 +7,8 @@ import { useNavigate, useParams } from "react-router-dom";
 import OtherArticles from "./OtherArticles";
 import Comment from "./Comment";
 import Modal from "../../util/Modal";
+import { useContext } from "react";
+import { UserContext } from "../../context/UserInfo";
 
 const ArticleStyle = styled.div`
     box-sizing: border-box;
@@ -119,13 +121,22 @@ const Article = () => {
     const { anum } = useParams(); 
     const[article, setArticle] = useState("");
     const [isLiked, setIsLiked] = useState(false);
+    const context = useContext(UserContext);
+    const {userId} = context;
     
 
     useEffect(()=>{
         const article = async() => {
             const rsp = await AxiosApi.ariticle(anum);
             await AxiosApi.viewCount(anum);
+            const isLike = await AxiosApi.isLike(anum, userId);
             console.log(anum);
+            console.log(isLike);
+            if(isLike.data === 0) {
+                setIsLiked(false);
+            } else {
+                setIsLiked(true);
+            }
             setArticle(rsp.data);
         }
         article();
@@ -134,6 +145,7 @@ const Article = () => {
 
 
     const onClickDelete = async() => {
+        await AxiosApi.deleteLike(anum);
         const rsp = await AxiosApi.deleteArticle2(anum);
         console.log(rsp);
         nav('/community');
@@ -142,8 +154,15 @@ const Article = () => {
         nav(`/update/${num}`);
     }
 
-    const onClickLike = () => {
-        setIsLiked(!isLiked);
+    const onClickLike = async() => {
+        if(isLiked){
+            await AxiosApi.dislike(anum, userId);
+            setIsLiked(!isLiked);
+        }
+        else{
+            await AxiosApi.like(anum, userId);
+            setIsLiked(!isLiked);
+        }
       };
 
     return(
