@@ -1,5 +1,3 @@
-// import logo from './logo.svg';
-// import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Community from './pages/Community/Community';
 import Main from './pages/Main';
@@ -17,9 +15,13 @@ import UserDeal from './pages/Community/Userdeal';
 import Article from './pages/Article';
 import EventPage from './pages/Notice/EventPage';
 import Notice from './pages/Notice/Notice';
-import PerfumePage from './pages/PerfumePage/Perfume';
-import PerfumeListPage from './pages/PerfumePage/ProductsDtail/PerfumeList';
-import Products from './pages/Products/Products';
+
+
+import PerfumeDetail from './pages/PerfumeDetail';
+import Perfume from './pages/Perfume';
+
+
+
 import TestResult from './pages/imageTest/TestResult';
 import NoteFinderMain from './pages/NoteFinder/NoteFinderMain';
 import NoteCategory from './pages/NoteFinder/NoteCategory';
@@ -31,10 +33,13 @@ import Login from './pages/Login';
 import SignUp from './pages/SignUp';
 
 
+import { QueryClient,QueryClientProvider } from 'react-query';
+const queryClient = new QueryClient();
 
 function App() {
   
   return (
+    <QueryClientProvider client={queryClient}>
     <UserStore>
     <Router>
       <Routes>
@@ -49,9 +54,15 @@ function App() {
         <Route path='/Notice' element={<Notice />} />
         <Route path='/imagetest1' element={<ImageTest1 />} />
         <Route path='/imagetest2' element={<ImageTest2 />} />
-        <Route path='/PerfumePage' element={<PerfumePage />} />
-        <Route path='/PerfumeList/:perfumeId' element={<PerfumeListPage />} />
-        <Route path='/Products' element={<Products />} />
+
+
+        <Route path='/Perfume' element={<Perfume />} />
+        <Route path="/perfumeDetail/:perfumeNumber" element={<PerfumeDetail />} />
+      
+     
+
+
+
         <Route path='/imagetest3' element={<ImageTest3 />} />
         <Route path='/imagetest4' element={<ImageTest4 />} />
         <Route path='/imagetest5' element={<ImageTest5 />} />
@@ -64,14 +75,10 @@ function App() {
         <Route path='/News' element={<News />} />
         <Route path='/Login' element={<Login />} />
         <Route path='/Signup' element={<SignUp />} />
-
-
-
-
-
       </Routes>
     </Router>
     </UserStore>
+    </QueryClientProvider>
     
   );
 }
