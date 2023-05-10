@@ -39,9 +39,9 @@ const AxiosApi = {
     },
 
     // 이벤트 페이지 리스트
-    eventList : async(eventNum) => {
+    eventList : async(eventNum, view) => {
 
-        return await axios.get(CHIC_DOMAIN + `/EventPage/${eventNum}`);
+        return await axios.get(CHIC_DOMAIN + `/EventPage/${eventNum}/${view}`);
     },
 
     // 이벤트 상세 페이지

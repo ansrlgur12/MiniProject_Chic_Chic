@@ -31,6 +31,7 @@ import SignUp from './pages/SignUp';
 import EventDesc from './pages/Notice/EventDesc';
 import Update from './pages/Article/UpdateArticle';
 import NoticeList from './pages/Notice/NoticeList';
+import Notice from './pages/Notice/Notice';
 
 function App() {
   
@@ -66,6 +67,7 @@ function App() {
         <Route path='/Signup' element={<SignUp />} />
         <Route path='/EventDesc/:eNum' element={<EventDesc />} />
         <Route path='/update/:num' element={<Update />} />
+        <Route path='/Notice/:anum' element={<Notice />} />
 
       </Routes>
     </Router>

@@ -4,7 +4,7 @@ import styled, { css } from "styled-components";
 import Footer from "../../Footer/Footer";
 import newsimg1 from "../../image/news1.jpg";
 import newsimg2 from "../../image/news2.jpg";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const NewsStyle = styled.div`
     box-sizing: border-box;
