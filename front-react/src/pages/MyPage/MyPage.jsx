@@ -5,6 +5,8 @@ import Header from "../../Header/Header";
 import Footer from "../../Footer/Footer";
 import profileimg from "../../image/face.png"
 import gradeimg5 from "../../image/gradeLv5.png"
+import { UserContext } from "../../context/UserInfo";
+import { useContext } from "react";
 
 export const MyPageStyle = styled.div`
     box-sizing: border-box;
@@ -96,10 +98,18 @@ export const MyPageStyle = styled.div`
 `;
 
 const MyPage = () => {
-
-    console.log("로그인성공");
     const nav = useNavigate();
+    const context = useContext(UserContext);
+    const {userId, setUserId, setPassword, setIsLogin, isLogin} = context;
 
+    const onClickLogout = () => {
+        console.log("로그아웃 버튼 클릭");
+        setUserId("");
+        setPassword("");
+        setIsLogin(false);
+        console.log(isLogin);
+        nav("/");
+    }
     return (
         <>
             <Header/>
@@ -117,9 +127,9 @@ const MyPage = () => {
                                 </div>
                                 <div className="profileC">
                                     <div className="perProfile">
-                                        <div className="nickname">닉네임 : 곰돌이 사육사</div>
+                                        <div className="nickname">아이디 : {userId}</div>
                                         <div className="gradeLv">회원 등급 : <p className="gradeImg" style={{backgroundImage: `url(${gradeimg5})`, backgroundSize: 'contain', backgroundRepeat: 'no-repeat'}}></p></div>
-                                        <div><button>로그아웃</button></div>
+                                        <div><button className="logOut" onClick={onClickLogout}>로그아웃</button></div>
                                     </div>
                                     <div className="textProfile">
                                         <div className="textHistory">내 리뷰</div>

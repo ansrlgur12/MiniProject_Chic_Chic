@@ -3,9 +3,9 @@ const CHIC_DOMAIN = "http://localhost:8111";
 
 const AxiosApi = {
 
-    articleList : async(anum) => { // 게시글 목록 출력
+    articleList : async(anum, view) => { // 게시글 목록 출력
         
-        return await axios.get(CHIC_DOMAIN + `/article/${anum}`);
+        return await axios.get(CHIC_DOMAIN + `/article/${anum}/${view}`);
     },
     smallArticleList : async(anum) => { // 작은 목록 출력
         
@@ -17,8 +17,9 @@ const AxiosApi = {
     },
 
 
-    newArticle : async(bnum, title, text, pwd) => { // 게시글 작성 정보 저장
+    newArticle : async(id, bnum, title, text, pwd) => { // 게시글 작성 정보 저장
         const article = {
+            id : id,
             bnum : bnum.toString(),
             title : title,
             text : text,
@@ -91,9 +92,10 @@ const AxiosApi = {
     },
 
     // 댓글 등록
-    newComment : async(anum, text, pwd) => {
+    newComment : async(anum, id, text, pwd) => {
         const comment = {
             anum : anum.toString(),
+            id : id,
             text : text,
             pwd : pwd
         };
@@ -120,6 +122,13 @@ const AxiosApi = {
             pwd : pwd
         };
         return await axios.post(CHIC_DOMAIN + "/updateComment", comment)
+    },
+
+    viewCount : async(anum) => {
+        const view = {
+            anum : anum.toString()
+        }
+        return await axios.post(CHIC_DOMAIN + `/viewCount/`, view);
     }
 };
 

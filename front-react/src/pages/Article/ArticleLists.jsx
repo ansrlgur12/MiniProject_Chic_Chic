@@ -69,11 +69,12 @@ const ArticleListBlock = styled.div`
 
     useEffect(()=>{
         const article = async() => {
-            const rsp = await AxiosApi.articleList(props.num);
+            console.log("게시판번호, 정렬방식 : " + props.num + props.view);
+            const rsp = await AxiosApi.articleList(props.num, props.view);
             setArticle(rsp.data);
         }
         article();
-    }, []);
+    }, [props.view]);
 
     const onClick = (num) => {
         nav(`/article/${num}`);

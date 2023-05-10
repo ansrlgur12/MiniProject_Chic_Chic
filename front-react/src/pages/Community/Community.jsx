@@ -90,7 +90,7 @@ const Community = () => {
                     </div>
                     <div class="article-list">
                         <div className="line" />
-                        <ArticleLists num={1}/>
+                        <ArticleLists num={1} />
                     </div>
                 </div>
             </div>
