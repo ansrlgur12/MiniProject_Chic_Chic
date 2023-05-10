@@ -4,73 +4,9 @@ import Header from "../../Header/Header";
 import { Link, useNavigate } from "react-router-dom";
 import ArticleLists from "../Article/ArticleLists";
 import Footer from "../../Footer/Footer";
+import { CommunityStyle } from "../Community/Community";
 
-export const CommunityStyle = styled.div`
-    box-sizing: border-box;
-    margin: 0px;
-    height: 1300px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    
-  .main{
-    margin-top: 130px;
-    width: 60vw;
-    height: auto;
-    padding: 70px 0px 0px 0px;
-  }
-  .main .section{
-    height: 15vh;
-    display: flex;
-    flex-direction: column;
-  }
-  .main .section .article-title {
-    
-    display: flex;
-    flex-direction: row;
-    justify-content: right;
-    margin: 20px 0px 20px 0px;
-  }
-
-
-  h2 {
-    color: #804f23;;
-    display: block;
-    font-size: 1.5em;
-    margin-top: 0.83em;
-    margin-bottom: 0.83em;
-    margin-left: 0;
-    margin-right: 0;
-    font-weight: bold;
-  }
-  .select{
-    margin-right: 20px;
-    height: 25px;
-    width: 90px;
-  }
-  .article{
-    cursor:pointer;
-  }
-  .line {
-        border-bottom: 1px solid #afafaf;
-        width: 1fr;
-        margin: 10px 0 20px 0;
-  }
-  
-  .write{
-    height: 30px;
-    width: 90px;
-    border: .5px solid #858585;
-    border-radius: 5px;
-    padding: 3px;
-    text-align: center;
-    line-height: 1.5;
-  }
-  
-    
-`;
-
-const Community = () => {
+const NoticeList = () => {
   const nav = useNavigate();
     return(
         <>
@@ -78,7 +14,7 @@ const Community = () => {
             <CommunityStyle>
             <div class = "main">
                 <div class="section">
-                    <h2>리뷰</h2>
+                    <h2>공지사항</h2>
                     <div class="article-title">
                         <select  className ="select" name="" id="">
                             <option value="전체 글">전체 글</option>
@@ -90,7 +26,7 @@ const Community = () => {
                     </div>
                     <div class="article-list">
                         <div className="line" />
-                        <ArticleLists num={1} />
+                        <ArticleLists num={4}/>
                     </div>
                 </div>
             </div>
@@ -100,4 +36,4 @@ const Community = () => {
         </>
     );
 };
-export default Community;
+export default NoticeList;

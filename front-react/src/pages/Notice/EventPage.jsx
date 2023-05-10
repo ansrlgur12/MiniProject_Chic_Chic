@@ -18,7 +18,7 @@ const EventStyle = styled.div`
 
     .eMain {
         margin: 0, auto;
-        width: 80%;
+        width: 60vw;
         max-width: 1024px;
         height: auto;
         text-align: center;
@@ -65,6 +65,16 @@ const EventStyle = styled.div`
 
 
 const EventPage = () => {
+
+
+    const [eNum, setENum] = useState(0);
+
+    const handleENum = (num) => {
+        setENum(num);
+      };
+
+    
+
     return(
         <>
             <Header />
@@ -73,14 +83,14 @@ const EventPage = () => {
                     <div className="eContents">
                         <h2>이벤트</h2>
                         <div className="section">
-                            <div className="eArticle eArticle1">전체 이벤트</div>
-                            <div className="eArticle eArticle2">진행 이벤트</div>
-                            <div className="eArticle eArticle3">예정 이벤트</div>
-                            <div className="eArticle eArticle4">종료 이벤트</div>
+                            <div className="eArticle eArticle1" onClick={() => handleENum(0)}>전체 이벤트</div>
+                            <div className="eArticle eArticle2" onClick={() => handleENum(1)}>진행 이벤트</div>
+                            <div className="eArticle eArticle3" onClick={() => handleENum(2)}>예정 이벤트</div>
+                            <div className="eArticle eArticle4" onClick={() => handleENum(3)}>종료 이벤트</div>
                         </div>
                         <div className="line"/> 
                         <div className="text">
-                            <EventList eNum={1} />
+                            <EventList eNum={eNum} />
                         </div>
                     </div>
                 </div>
