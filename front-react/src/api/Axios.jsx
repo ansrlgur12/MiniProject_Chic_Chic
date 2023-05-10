@@ -150,9 +150,23 @@ const AxiosApi = {
         return await axios.get(CHIC_DOMAIN + `/countLike/${anum}/${id}`);
     },
 
-    // product : async(num) => {
-    //     return await axios.get(CHIC_DOMAIN + `/prduct/${num}`);
-    // }
+    plusLike : async(anum) => {
+        const plus = {
+            anum : anum.toString()
+        }
+        return await axios.post(CHIC_DOMAIN + `/plusLike/`, plus);
+    },
+
+    minusLike : async(anum) => {
+        const minus = {
+            anum : anum.toString()
+        }
+        return await axios.post(CHIC_DOMAIN + `/minusLike/`, minus);
+    },
+
+    deleteCommentAll : async(anum) => {
+        return await axios.get(CHIC_DOMAIN + `/deleteCommentAll/${anum}`);
+    },
 };
 
 export default AxiosApi;
