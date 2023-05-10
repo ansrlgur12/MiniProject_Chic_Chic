@@ -7,8 +7,7 @@ import Fall from "../../image/fall.png"
 import Winter from "../../image/winter.png"
 import "../../Header/font.css";
 import { useNavigate} from "react-router-dom";
-import AxiosApi from "../../api/Axios";
-import axios from "axios";
+
 import { useState } from "react";
 
 export const Gage = styled.div`
@@ -90,6 +89,8 @@ export const ImageTestStyle = styled.div`
   export const ImageTestStyle1 = styled.div`
   font-family : 'NeoDunggeunmoPro-Regular';
   .thumbnail{
+    border: 2px solid black;
+    padding: 1rem;
     display: flex;
     align-items: center;
     justify-content: center;
