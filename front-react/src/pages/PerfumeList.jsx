@@ -14,7 +14,6 @@ export const PerfumelistStyle = styled.div`
   margin: 0 auto; /* 컨테이너를 화면 가운데 정렬 */
   /* 필요한 경우 높이, 최소 높이, 최대 높이, 마진, 패딩 등을 추가 */
 }
-
 `
 const cardStyle = {
   border: '1px solid #ccc',
@@ -67,7 +66,7 @@ const PerfumeList = () => {
 
   // 호버 상태를 관리하기 위한 state
   const [hoveredIndex, setHoveredIndex] = useState(null);
-  
+
   // 데이터가 준비되지 않은 경우
   if (!data) {
     console.log("Data is not ready yet");
@@ -110,8 +109,8 @@ const PerfumeList = () => {
       ...(hoveredIndex === index ? { transform: 'scale(1.05)', cursor: 'pointer' } : {}),
     };
 
-    
-    
+
+
 
     return (
       <div
@@ -128,11 +127,11 @@ const PerfumeList = () => {
       </div>
   </div>
   );
-  
+
   };
 
   return (
-    
+
     <div>
     <InfiniteLoader
       isItemLoaded={isItemLoaded}

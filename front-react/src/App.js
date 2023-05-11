@@ -19,6 +19,9 @@ import Notice from './pages/Notice/Notice';
 
 import PerfumeDetail from './pages/PerfumeDetail';
 import Perfume from './pages/Perfume';
+import PerfumeSearchFilter from './pages/PerfumeSearchFilter';
+// import PerfumeSearchResults from './pages/PerfumeSearchResults';
+
 
 
 
@@ -31,8 +34,6 @@ import News from './pages/Notice/News';
 import UserStore from './context/UserInfo';
 import Login from './pages/Login';
 import SignUp from './pages/SignUp';
-
-
 import { QueryClient,QueryClientProvider } from 'react-query';
 const queryClient = new QueryClient();
 
@@ -58,9 +59,9 @@ function App() {
 
         <Route path='/Perfume' element={<Perfume />} />
         <Route path="/perfumeDetail/:perfumeNumber" element={<PerfumeDetail />} />
-      
-     
-
+        <Route path='/PerfumeSearchFilter' element={<PerfumeSearchFilter />} />
+        {/* <Route path='/PerfumeSearchResults' element={<PerfumeSearchResults />} /> */}
+  
 
 
         <Route path='/imagetest3' element={<ImageTest3 />} />
