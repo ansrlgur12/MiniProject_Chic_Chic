@@ -133,7 +133,10 @@ const Article = () => {
     const {isLogin, userId} = context;
     const[modalOpen, setModalOpen] = useState(false);
     const[deleteModalOpen, setDeleteModalOpen] = useState(false);
-    
+    const[isUser, setIsUser] = useState(false);
+    console.log("로그인 여부 : " + isLogin);
+    window.scrollTo(0, 0);
+
 
     useEffect(()=>{
         const article = async() => {
@@ -141,12 +144,20 @@ const Article = () => {
             await AxiosApi.viewCount(anum);
             if(userId){
                 const isLike = await AxiosApi.isLike(anum, userId);
+                const userMatch = await AxiosApi.isUser(anum, userId);
                 console.log(anum);
                 console.log(isLike);
+                console.log(userMatch.data);
                 if(isLike.data === 0) {
                     setIsLiked(false);
                 } else {
                     setIsLiked(true);
+                }
+
+                if(userMatch.data === 0) {
+                    setIsUser(false);
+                } else {
+                    setIsUser(true);
                 }
             }
             
@@ -222,17 +233,15 @@ const Article = () => {
                             <button className="likeBtn" onClick={onClickLike}>{isLiked ? (<i className="fa-solid fa-heart"></i>) : (<i className="fa-sharp fa-regular fa-heart"></i>)}</button>
                             <p className="likeCount">{article.like}</p>
                             <button className="shareBtn">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-share" viewBox="0 0 16 16">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-share" viewBox="0 0 16 16">
                                 <path d="M13.5 1a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM11 2.5a2.5 2.5 0 1 1 .603 1.628l-6.718 3.12a2.499 2.499 0 0 1 0 1.504l6.718 3.12a2.5 2.5 0 1 1-.488.876l-6.718-3.12a2.5 2.5 0 1 1 0-3.256l6.718-3.12A2.5 2.5 0 0 1 11 2.5zm-8.5 4a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zm11 5.5a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3z"/>
                                 </svg>
                             </button>
-                            <Modal open={modalOpen} type={true} confirm={()=>nav("/Login")} close={closeModal} header={"확인"}>로그인이 필요합니다</Modal>
                         </div>
-                        <div className={isLogin ? "deleteUpdate" : "notLogindeleteUpdate"}>
+                        <div className={isLogin && isUser ? "deleteUpdate" : "notLogindeleteUpdate"}>
                             <p onClick={()=>onClickUpdate(article.anum)}>수정하기</p>
                             <p>|</p>
                             <p onClick={onClickDelete}>삭제하기</p>
-                            <Modal open={deleteModalOpen} type={true} confirm={deleteArticle} close={closeDeleteModal} header={"경고"}>삭제하시겠습니까?</Modal>
                         </div>
                     </div>
                 <OtherArticles bnum={article.bnum} />
@@ -250,6 +259,8 @@ const Article = () => {
             <br />
             <Comment anum={anum}/>
         </ArticleStyle>
+        <Modal open={modalOpen} type={true} confirm={()=>nav("/Login")} close={closeModal} header={"확인"}>로그인이 필요합니다</Modal>
+        <Modal open={deleteModalOpen} type={true} confirm={deleteArticle} close={closeDeleteModal} header={"경고"}>삭제하시겠습니까?</Modal>
         </>
     );
 }

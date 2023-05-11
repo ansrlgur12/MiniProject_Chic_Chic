@@ -9,6 +9,7 @@ import { UserContext } from "../../context/UserInfo";
 
 
 const UserDeal = () => {
+    window.scrollTo(0, 0);
     const nav = useNavigate();
     const context = useContext(UserContext);
     const {isLogin} = context;
@@ -40,7 +41,6 @@ const UserDeal = () => {
             </div>
             </div>
             </CommunityStyle>
-            <Footer />
         </>
     );
 }

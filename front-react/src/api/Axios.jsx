@@ -176,6 +176,14 @@ const AxiosApi = {
     deleteCommentAll : async(anum) => {
         return await axios.get(CHIC_DOMAIN + `/deleteCommentAll/${anum}`);
     },
+
+    isUser : async(anum, id) => {
+        return await axios.get(CHIC_DOMAIN + `/isUser/${anum}/${id}`);
+    },
+
+    commentMatch : async(commentNum, id, anum) => {
+        return await axios.get(CHIC_DOMAIN + `/commentMatch/${commentNum}/${id}/${anum}`);
+    },
 };
 
 export default AxiosApi;

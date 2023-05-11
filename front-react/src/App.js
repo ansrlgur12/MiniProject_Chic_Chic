@@ -18,18 +18,11 @@ import EventPage from './pages/Notice/EventPage';
 import Notice from './pages/Notice/Notice';
 import PerfumeDetail from './pages/PerfumeDetail';
 import Perfume from './pages/Perfume';
-<<<<<<< HEAD
 import PerfumeSearchFilter from './pages/PerfumeSearchFilter';
 // import PerfumeSearchResults from './pages/PerfumeSearchResults';
-
-
-
-
-=======
 import PerfumePage from './pages/PerfumePage/Perfume';
 import PerfumeListPage from './pages/PerfumePage/ProductsDtail/PerfumeList';
 import Products from './pages/Products/Products';
->>>>>>> 814020f2bf24ba35fdce72aa9966cc9b69cf6cab
 import TestResult from './pages/imageTest/TestResult';
 import NoteFinderMain from './pages/NoteFinder/NoteFinderMain';
 import NoteCategory from './pages/NoteFinder/NoteCategory';
@@ -43,6 +36,8 @@ import { QueryClient,QueryClientProvider } from 'react-query';
 const queryClient = new QueryClient();
 import EventDesc from './pages/Notice/EventDesc';
 import Update from './pages/Article/UpdateArticle';
+import OtherArticles from './pages/Article/OtherArticles';
+import ImageUploader from './pages/imageUploader';
 import NoticeList from './pages/Notice/NoticeList';
 import Notice from './pages/Notice/Notice';
 import NewsL from './pages/Notice/NewsL';
@@ -90,9 +85,12 @@ function App() {
         <Route path='/Signup' element={<SignUp />} />
         <Route path='/EventDesc/:eNum' element={<EventDesc />} />
         <Route path='/update/:num' element={<Update />} />
+        <Route path='/otherArticles' element={<OtherArticles />} />
+        <Route path='/imageUploader' element={<ImageUploader />} />
         <Route path='/Notice/:num' element={<Notice />} />
       </Routes>
     </Router>
+    
     </UserStore>
     </QueryClientProvider>
     

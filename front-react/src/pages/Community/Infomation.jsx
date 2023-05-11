@@ -8,6 +8,7 @@ import { useContext, useState } from "react";
 import { UserContext } from "../../context/UserInfo";
 
 const Information = () => {
+    window.scrollTo(0, 0);
     const nav = useNavigate();
     const context = useContext(UserContext);
     const {isLogin} = context;
@@ -40,7 +41,6 @@ const Information = () => {
             </div>
             </div>
             </CommunityStyle>
-            <Footer />
         </>
     );
 }

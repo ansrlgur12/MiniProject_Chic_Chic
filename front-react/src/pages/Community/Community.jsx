@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled, {css} from "styled-components";
 import Header from "../../Header/Header";
 import { Link, useNavigate } from "react-router-dom";
@@ -10,16 +10,17 @@ import { UserContext } from "../../context/UserInfo";
 export const CommunityStyle = styled.div`
     box-sizing: border-box;
     margin: 0px;
-    height: 1300px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    flex-grow: 1;
     
   .main{
     margin-top: 130px;
     width: 60vw;
-    height: auto;
+    min-height: 1520px;
     padding: 70px 0px 0px 0px;
+    flex-grow: 1;
   }
   .main .section{
     height: 15vh;
@@ -46,9 +47,12 @@ export const CommunityStyle = styled.div`
     font-weight: bold;
   }
   .select{
-    margin-right: 20px;
-    height: 25px;
+    margin-right: 10px;
+    height: 40px;
     width: 90px;
+    border-radius: 0px;
+    border: 0.5px solid #838383;
+    text-align: center;
   }
   .article{
     cursor:pointer;
@@ -60,13 +64,14 @@ export const CommunityStyle = styled.div`
   }
   
   .write{
-    height: 30px;
+    height: 40px;
     width: 90px;
+    border-radius: 0px;
     border: .5px solid #858585;
     border-radius: 5px;
     padding: 3px;
     text-align: center;
-    line-height: 1.5;
+    line-height: 2;
   }
 
   .notLoginWrite{
@@ -77,6 +82,7 @@ export const CommunityStyle = styled.div`
 `;
 
 const Community = () => {
+  window.scrollTo(0, 0);
   const nav = useNavigate();
   const context = useContext(UserContext);
   const {isLogin} = context;
@@ -85,7 +91,12 @@ const Community = () => {
   const onClickOrderBy = (e) => {
     console.log("정렬 방식 : " + e.target.value);
     setOrderBy(e.target.value);
+    
   }
+
+  useEffect(()=> {
+    window.scrollTo(0, 0);
+  },[]);
 
   // 페이지 하나로 수정. 게시판테이블 이용해서 리뷰 대신 {board.boardName} <ArticleLists num={1}> 대신 <ArticleLists num={bnum}> 이런식으로 수정하기
     return(
@@ -110,8 +121,7 @@ const Community = () => {
                 </div>
             </div>
             </CommunityStyle>
-            <Footer />[]
-          
+            <Footer />
         </>
     );
 };
