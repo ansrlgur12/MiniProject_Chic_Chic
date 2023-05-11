@@ -1,23 +1,18 @@
-import React from "react";
-import { useNavigate } from "react-router";
-import styled from "styled-components";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import AxiosApi from "../../api/Axios";
-import { useState, useEffect } from "react";
-import Article from "./Article";
+import styled from "styled-components";
 
-const ArticleListBlock = styled.div`
-
+export const NtcListStyle = styled.div`
     .article{
-        padding: 10px 0px 30px 0px;
+        padding: 10px 0px 10px 0px;
         border-bottom: .5px solid #ccc;
         height: 200px;
         display: flex;
-        flex-direction: row;
+        /* flex-direction: row; */
         justify-content: space-between;
-        
-        
+        align-items: center;
     }
-
     .article .article-image{
         flex-basis: 25%;
         background-color: #ccc;
@@ -27,7 +22,8 @@ const ArticleListBlock = styled.div`
         background-position: center;
     }
     .article-left{
-        overflow:hidden; 
+        box-sizing: border-box;
+        /* overflow:hidden;  */
         text-overflow:ellipsis;
         white-space:nowrap;
         flex-basis: 65%;
@@ -35,35 +31,30 @@ const ArticleListBlock = styled.div`
         line-height: 1;
     }
 
-    .userDate{
+    .userDate {
         font-size: small;
         color: #737373;
     }
-    .text{
+    .text {
         height: 10px;
         display: flex;
         flex-wrap: wrap;
     }
     .text * {
-  /* 모든 하위 요소에 대해 적용됩니다. */
-    text-align: center;
-    color: black;
-    line-height: 1.5;
-    font-size: 16px;
-    font-weight: normal;
-    margin: 0;
-    padding: 0;
-    white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+        text-align: center;
+        color: black;
+        line-height: 1.5;
+        font-size: 16px;
+        font-weight: normal;
+        margin: 0;
+        padding: 0;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+`;
 
-  
-  /* 원하는 속성을 추가하면 됩니다. */
-}
-
-  `;
-
-  const ArticleLists = (props) => {
+const NtcList = (props) => {
     const nav = useNavigate();
     const[article, setArticle] = useState("");
 
@@ -77,12 +68,12 @@ const ArticleListBlock = styled.div`
     }, [props.view]);
 
     const onClick = (num) => {
-            nav(`/article/${num}`);
+            nav(`/Notice/${num}`);
       };
 
     return(
         <>
-            <ArticleListBlock>     
+            <NtcListStyle>     
             {article && article.map(article => (
                 <div class="article" key={article.anum} onClick={()=>onClick(article.anum)}>
               
@@ -97,12 +88,8 @@ const ArticleListBlock = styled.div`
             
             </div>
             ))}
-            </ArticleListBlock>
-
+            </NtcListStyle>
         </>
-
-        
     );
-  }
-
-  export default ArticleLists;
+}
+export default NtcList;

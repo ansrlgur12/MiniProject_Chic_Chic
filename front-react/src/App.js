@@ -35,6 +35,8 @@ const queryClient = new QueryClient();
 import EventDesc from './pages/Notice/EventDesc';
 import Update from './pages/Article/UpdateArticle';
 import NoticeList from './pages/Notice/NoticeList';
+import Notice from './pages/Notice/Notice';
+import NewsL from './pages/Notice/NewsL';
 
 
 function App() {
@@ -73,11 +75,13 @@ function App() {
         <Route path='/notecategory' element={<NoteCategory />} />
         <Route path='/newarticle' element={<Draft />} />
         <Route path='/MyPage' element={<MyPage />} />
-        <Route path='/News' element={<News />} />
+        <Route path='/News' element={<NewsL />} />
+        <Route path='/News/:num' element={<News />} />
         <Route path='/Login' element={<Login />} />
         <Route path='/Signup' element={<SignUp />} />
         <Route path='/EventDesc/:eNum' element={<EventDesc />} />
         <Route path='/update/:num' element={<Update />} />
+        <Route path='/Notice/:num' element={<Notice />} />
       </Routes>
     </Router>
     </UserStore>

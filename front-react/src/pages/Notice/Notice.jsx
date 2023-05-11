@@ -6,17 +6,17 @@ import Header from "../../Header/Header";
 import Footer from "../../Footer/Footer";
 
 
-const EventDescStyle = styled.div`
+const NoticeStyle = styled.div`
     box-sizing: border-box;
     padding-top: 130px;
     height: auto;
     display: flex;
     justify-content: center;
     
-    .descContainer{
+    .noticeCtn{
         text-align: center;
     }
-    .eventDesc{
+    .noticeDesc{
         margin: 70px 0 20px 0;
         display: flex;
         flex-direction: column;
@@ -26,12 +26,6 @@ const EventDescStyle = styled.div`
         border-bottom: 1px solid #afafaf;
         width: 60vw;
         margin: 10px 0 20px 0;
-    }
-    .descImg {
-        width: 50vw;
-        height: 300px;
-        border: 1px solid black;
-        text-align: center;
     }
     .explain {
         width: 50vw;
@@ -48,36 +42,31 @@ const EventDescStyle = styled.div`
 
 
 
-const EventDesc = () => {
-    const { eNum } = useParams();
+const Notice = () => {
+    const { num } = useParams();
     const nav = useNavigate();
+    const[notice, setNotice] = useState("");
 
-    const[eventDesc, setEventDesc] = useState("");
 
-    useEffect(()=>{
-        const eventDesc = async() => {
-            const rsp = await AxiosApi.eventDesc(eNum);
-            setEventDesc(rsp.data);
-            console.log(rsp);
+    useEffect (()=>{
+        const notice = async() => {
+            const rsp = await AxiosApi.ariticle(num);
+            setNotice(rsp.data);
         }
-        eventDesc();
-    }, [eNum]);
+        notice();
+    },[num]);
 
     return(
         <>
             <Header />
-            <EventDescStyle>
-                {eventDesc && eventDesc.map(desc => (
-                    <div className="descContainer" key={desc.eventNum} >
-                        <div className="eventDesc">
-                            <h2>{desc.eventTitle}</h2><br />
-                            <div className="line" /><br />
-                            <div className="descImg">
-                                {desc.eventImg}
-                            </div> <br />
+            <NoticeStyle>
+                {notice && notice.map(noticeText => (
+                    <div className="noticeCtn" key={noticeText.anum} >
+                        <div className="noticeDesc">
+                            <h2>{noticeText.title}</h2><br />
+                            <div className="line" /><br /><br />
                             <div className="explain">
-                                {desc.eventText}<br /><br/>
-                                행사기간 : {desc.startEvent} ~ {desc.endEvent}
+                                {noticeText.text}<br /><br/>
                             </div>
                             
                             <div className="eventList">
@@ -87,9 +76,9 @@ const EventDesc = () => {
                         </div>
                     </div>
                 ))}
-            </EventDescStyle>
+            </NoticeStyle>
             <Footer />
         </>
     );
 }
-export default EventDesc;
+export default Notice;

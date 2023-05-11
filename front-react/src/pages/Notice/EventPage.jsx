@@ -1,12 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import Header from "../../Header/Header";
 import Footer from "../../Footer/Footer";
-import { useNavigate } from "react-router-dom";
 import EventList from "./EventList";
-
-
-
 
 const EventStyle = styled.div`
     box-sizing: border-box;
@@ -40,11 +36,10 @@ const EventStyle = styled.div`
         flex-wrap: wrap;
         justify-content: center;
         align-items: center;
-
     }
     .eventPost {
-        width: 220px;
-        height: 260px;
+        width: 200px;
+        height: 240px;
         margin: 10px;
         border: .5px solid #afafaf;
         background-color: #afafaf;
@@ -63,17 +58,12 @@ const EventStyle = styled.div`
     }
 `;
 
-
 const EventPage = () => {
-
-
-    const [eNum, setENum] = useState(0);
-
-    const handleENum = (num) => {
-        setENum(num);
+    const [orderBy, setOrderBy] = useState(1);
+    const handleENum = (e) => {
+        console.log("정렬 : " + e.target.value);
+        setOrderBy(e.target.value);
       };
-
-    
 
     return(
         <>
@@ -83,14 +73,16 @@ const EventPage = () => {
                     <div className="eContents">
                         <h2>이벤트</h2>
                         <div className="section">
-                            <div className="eArticle eArticle1" onClick={() => handleENum(0)}>전체 이벤트</div>
-                            <div className="eArticle eArticle2" onClick={() => handleENum(1)}>진행 이벤트</div>
-                            <div className="eArticle eArticle3" onClick={() => handleENum(2)}>예정 이벤트</div>
-                            <div className="eArticle eArticle4" onClick={() => handleENum(3)}>종료 이벤트</div>
+                            <select className="select" value={orderBy} onChange={handleENum}>
+                                <option value={1}>전체 이벤트</option>
+                                <option value={2}>진행 이벤트</option>
+                                <option value={3}>예정 이벤트</option>
+                                <option value={4}>종료 이벤트</option>
+                            </select>
                         </div>
                         <div className="line"/> 
                         <div className="text">
-                            <EventList eNum={eNum} />
+                            <EventList eventNum={1} view={orderBy}/>
                         </div>
                     </div>
                 </div>

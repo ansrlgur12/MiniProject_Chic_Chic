@@ -1,28 +1,23 @@
 import React, {useState} from "react";
-import styled from "styled-components";
 import Header from "../../Header/Header";
 import Footer from "../../Footer/Footer";
 import { useNavigate } from "react-router-dom";
-import NtcList from "./NtcList";
+import NewsList from "./NewsList";
+import styled from "styled-components";
 
-
-
-const NoticeListStyle = styled.div`
+const NewsLStyle = styled.div`
     box-sizing: border-box;
     height: auto;
-    margin: 0px;
     display: flex;
+    margin: 0;
     flex-direction: column;
     align-items: center;
 
     .main{
-        margin-top: 130px;
+        margin-top: 200px;
         width: 60vw;
-        height: auto;
-        padding: 70px 0px 0px 0px;
     }
     .main .section{
-        /* height: 15vh; */
         display: flex;
         flex-direction: column;
     }
@@ -42,13 +37,13 @@ const NoticeListStyle = styled.div`
         margin-right: 0;
         font-weight: bold;
     }
+    .article{
+        cursor:pointer;
+    }
     .select{
         margin-right: 20px;
         height: 25px;
         width: 90px;
-    }
-    .article{
-        cursor:pointer;
     }
     .line {
         border-bottom: 1px solid #afafaf;
@@ -64,13 +59,10 @@ const NoticeListStyle = styled.div`
         text-align: center;
         line-height: 1.5;
     }
-    .notLoginWrite{
-        display: none;
-    } 
+    
 `;
 
-const NoticeList = () => {
-
+const NewsL = () => {
     const nav = useNavigate();
     const [orderBy, setOrderBy] = useState(3);
     const onClickOrderBy = (e) => {
@@ -81,10 +73,10 @@ const NoticeList = () => {
     return(
         <>
             <Header />
-            <NoticeListStyle>
+            <NewsLStyle>
             <div class = "main">
                 <div class="section">
-                    <h2>공지사항</h2>
+                    <h2>News</h2>
                     <div class="article-title">
                         <select  className ="select" value={orderBy} onChange={onClickOrderBy}>
                             <option value={1}>조회순</option>
@@ -95,13 +87,13 @@ const NoticeList = () => {
                     </div>
                     <div class="article-list">
                         <div className="line" />
-                        <NtcList num={4} view={orderBy}/>
+                        <NewsList num={5} view={orderBy}/>
                     </div>
                 </div>
             </div>
-            </NoticeListStyle>
+            </NewsLStyle>
             <Footer />
         </>
     );
 };
-export default NoticeList;
+export default NewsL;
