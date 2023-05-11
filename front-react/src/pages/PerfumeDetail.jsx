@@ -5,14 +5,33 @@ import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import styled from 'styled-components';
 
+
 const PerfumeDetailStyled  = styled.div`
 box-sizing: border-box;
 padding-top: 130px;
 width: 70vw;
-height: auto;
+height: 800px;
 margin: auto;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+background-color: #f9f9f9;
+border-radius: 10px;
+box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+`;
 
-`
+const Title = styled.h1`
+color: #333;
+font-size: 4em;
+margin-bottom: 120px;
+`;
+
+const DetailText = styled.p`
+color: #666;
+font-size: 1.5em;
+margin-bottom: 10px;
+`;
 
 const PerfumeDetail = () => {
   const [perfumeDetail, setPerfumeDetail] = useState(null);
@@ -39,18 +58,19 @@ const PerfumeDetail = () => {
     <>
       <Header/>
       <PerfumeDetailStyled>
-      <div>
-        <h1>{perfumeDetail.name}</h1>
-        <p>Perfume Number: {perfumeDetail.perfumeNumber}</p>
-        <p>Launch Date: {perfumeDetail.launchDate}</p>
-        <p>Gender: {perfumeDetail.gender}</p>
-        <p>Price: {perfumeDetail.price}</p>
-        <p>Brand: {perfumeDetail.brandName}</p>
-      </div>
+        <Title><b>{perfumeDetail.name}</b></Title>
+      
+        <DetailText>Brand: {perfumeDetail.brandName}</DetailText>
+        <DetailText>Launch Date: {perfumeDetail.launchDate}</DetailText>
+        <DetailText>Price: {perfumeDetail.price}$</DetailText>
+        <DetailText>Gender: {perfumeDetail.gender}</DetailText>
+        
+       
       </PerfumeDetailStyled>
+      <Footer/>
     </>
   );
-  
 };
+
 
 export default PerfumeDetail;

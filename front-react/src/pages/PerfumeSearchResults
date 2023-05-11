@@ -1,0 +1,25 @@
+// import React from 'react';
+
+// const PerfumeSearchResults = ({ location }) => {
+//   const { data } = location.state;
+
+//   return (
+//     <div>
+//       <h1>Search Results</h1>
+//       {data.length > 0 ? (
+//         data.map((perfume) => (
+//           <div key={perfume.perfumeNumber}>
+//             <h2>{perfume.name}</h2>
+//             <p>{perfume.brandIdentifier}</p>
+//             <p>{perfume.price}</p>
+//             <p>{perfume.launchDate}</p>
+//           </div>
+//         ))
+//       ) : (
+//         <p>No results found.</p>
+//       )}
+//     </div>
+//   );
+// };
+
+// export default PerfumeSearchResults;
