@@ -10,7 +10,6 @@ const EventDescStyle = styled.div`
     justify-content: space-evenly;
     align-items: center;
     flex-wrap: wrap;
-
     
     .eContainer{
         cursor: pointer;
@@ -21,34 +20,30 @@ const EventDescStyle = styled.div`
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        width: 180px;
-        height: 240px;
+        width: 160px;
+        height: 200px;
         margin: 10px;
         border: .5px solid #afafaf;
-        background-color: orangered;
+        background-color: #afafaf;
         font-size: 1.2em;
         font-weight: bold;
     }
-    .edate {
+    .eDate {
         font-size: .8em;
     }
 `;
 
-
-
 const EventList = (props) => {
     const nav = useNavigate();
-
     const[eventList, setEventList] = useState("");
     useEffect(()=> {
         const eventList = async() => {
-            const rsp = await AxiosApi.eventList(props.eNum);
+            const rsp = await AxiosApi.eventList(props.eventNum, props.view);
             setEventList(rsp.data);
             console.log(rsp);
         }
         eventList();
-    }, []);
-
+    }, [props.view]);
     const onClick = (eNum) => {
         nav(`/eventDesc/${eNum}`);
     };
@@ -60,7 +55,7 @@ const EventList = (props) => {
                     <div className="eventPost">
                         {event.eventNum} <br />
                         {event.eventTitle} <br /><br />
-                        <p className="edate">
+                        <p className="eDate">
                         {event.startEvent}<br /> ~ <br /> {event.endEvent}
                         </p>
                     </div>

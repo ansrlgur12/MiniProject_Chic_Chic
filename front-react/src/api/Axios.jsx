@@ -38,11 +38,16 @@ const AxiosApi = {
         return await axios.get(CHIC_DOMAIN + `/articleDelete/${anum}`);
     },
 
-    eventList : async(eventNum) => { // 이벤트 페이지 async
+    // 이벤트 페이지 리스트
+    eventList : async(eventNum, view) => {
 
-        return await axios.get(CHIC_DOMAIN + `/EventPage/${eventNum}`);
+        return await axios.get(CHIC_DOMAIN + `/EventPage/${eventNum}/${view}`);
     },
 
+    // 이벤트 상세 페이지
+    eventDesc : async(eventNum) => {
+        return await axios.get(CHIC_DOMAIN + `/EventDesc/${eventNum}`)
+    },
 
     // 로그인
     memberLogin : async(id, pw) => {
@@ -150,6 +155,10 @@ const AxiosApi = {
         return await axios.get(CHIC_DOMAIN + `/countLike/${anum}/${id}`);
     },
 
+    imageTestResult: async (selected) => {
+       
+        return await axios.get(CHIC_DOMAIN + `/ImageTestResult/${selected}`);
+      },
     plusLike : async(anum) => {
         const plus = {
             anum : anum.toString()

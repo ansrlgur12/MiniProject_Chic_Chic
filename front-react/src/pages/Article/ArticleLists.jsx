@@ -101,7 +101,7 @@ const ArticleListBlock = styled.div`
     }, [props.view]);
 
     const onClick = (num) => {
-        nav(`/article/${num}`);
+            nav(`/article/${num}`);
       };
 
       const handlePageChange = (pageNumber) => {
