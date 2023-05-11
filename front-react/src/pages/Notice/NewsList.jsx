@@ -1,7 +1,6 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import AxiosApi from "../../api/Axios";
-import styled from "styled-components";
 import { NtcListStyle } from "./NtcList";
 
 const NewsList = (props) => {
@@ -15,10 +14,10 @@ const NewsList = (props) => {
             setArticle(rsp.data);
         }
         article();
-    }, [props.view]);
+    }, []);
 
     const onClick = (num) => {
-            nav(`/Notice/${num}`);
+            nav(`/News/${num}`);
       };
 
     return(

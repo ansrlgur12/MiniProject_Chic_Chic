@@ -4,14 +4,14 @@ import AxiosApi from "../../api/Axios";
 import styled from "styled-components";
 
 export const NtcListStyle = styled.div`
-
     .article{
-        padding: 10px 0px 30px 0px;
+        padding: 10px 0px 10px 0px;
         border-bottom: .5px solid #ccc;
         height: 200px;
         display: flex;
-        flex-direction: row;
+        /* flex-direction: row; */
         justify-content: space-between;
+        align-items: center;
     }
     .article .article-image{
         flex-basis: 25%;
@@ -22,7 +22,8 @@ export const NtcListStyle = styled.div`
         background-position: center;
     }
     .article-left{
-        overflow:hidden; 
+        box-sizing: border-box;
+        /* overflow:hidden;  */
         text-overflow:ellipsis;
         white-space:nowrap;
         flex-basis: 65%;

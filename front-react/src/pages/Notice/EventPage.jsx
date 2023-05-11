@@ -38,8 +38,8 @@ const EventStyle = styled.div`
         align-items: center;
     }
     .eventPost {
-        width: 220px;
-        height: 260px;
+        width: 200px;
+        height: 240px;
         margin: 10px;
         border: .5px solid #afafaf;
         background-color: #afafaf;

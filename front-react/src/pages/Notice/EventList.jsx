@@ -20,11 +20,11 @@ const EventDescStyle = styled.div`
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        width: 180px;
-        height: 240px;
+        width: 160px;
+        height: 200px;
         margin: 10px;
         border: .5px solid #afafaf;
-        background-color: orangered;
+        background-color: #afafaf;
         font-size: 1.2em;
         font-weight: bold;
     }
