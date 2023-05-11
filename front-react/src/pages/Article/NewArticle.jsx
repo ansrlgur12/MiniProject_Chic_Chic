@@ -71,6 +71,10 @@ export const Container = styled.div`
     width: 55vw;
     position: static;
     
+    .ck-editor__editable {
+      width: 100%;
+      height: 400px;
+    }
 `;
 
 
@@ -106,10 +110,11 @@ const Draft = () => {
   }
 
   const submit = async() => {
-    const rsp = await AxiosApi.newArticle(userId, bnum, title, text, pwd)
+    const rsp = await AxiosApi.newArticle(userId, bnum, title, text, pwd);
     console.log(rsp);
     nav(-1);
   }
+
 
   const onClickSubmit = async() => {
       setModalOpen(true);

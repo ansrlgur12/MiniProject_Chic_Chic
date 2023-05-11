@@ -1,5 +1,7 @@
 import React from "react";
 import styled from "styled-components";
+import AxiosApi from "../api/Axios";
+import { Navigate } from "react-router-dom";
 
 const ModalStyled = styled.div`
     .modal {
@@ -89,7 +91,13 @@ const ModalStyled = styled.div`
 
 const Modal = (props) => {
 
-    const {open, confirm, close, type, header, children} = props;
+    const {open, confirm, close, type, header, children, option, num} = props;
+
+    const onClickCommentDelete = async() => {
+            await AxiosApi.deleteComment(num);
+            Navigate(0);
+          }
+
 
     return(
         <ModalStyled>
@@ -106,6 +114,7 @@ const Modal = (props) => {
                         <footer>
                             {type && <button onClick={confirm}>확인</button>}
                             <button onClick={close}>취소</button>
+                            {(option === '댓글삭제') ? <button onClick={onClickCommentDelete}></button> : ''}
                         </footer>
                     </section>
                 }

@@ -31,6 +31,8 @@ import Login from './pages/Login';
 import SignUp from './pages/SignUp';
 import EventDesc from './pages/Notice/EventDesc';
 import Update from './pages/Article/UpdateArticle';
+import OtherArticles from './pages/Article/OtherArticles';
+import ImageUploader from './pages/imageUploader';
 
 
 
@@ -68,11 +70,13 @@ function App() {
         <Route path='/Signup' element={<SignUp />} />
         <Route path='/EventDesc/:eNum' element={<EventDesc />} />
         <Route path='/update/:num' element={<Update />} />
-
+        <Route path='/otherArticles' element={<OtherArticles />} />
+        <Route path='/imageUploader' element={<ImageUploader />} />
 
 
       </Routes>
     </Router>
+    
     </UserStore>
     
   );

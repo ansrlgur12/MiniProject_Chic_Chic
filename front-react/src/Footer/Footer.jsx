@@ -6,7 +6,7 @@ const FooterStyled = styled.div`
     width: 100%;
     height: 30vh;
     background-color: #747474;
-    position: static;
+    margin-top: auto;
 `;
 
 const Footer = () => {
