@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router";
 import styled from "styled-components";
-import AxiosApi from "../api/Axios";
+import AxiosApi from "../../api/Axios";
 import { useState, useEffect } from "react";
 import Article from "./Article";
 
@@ -39,6 +39,27 @@ const ArticleListBlock = styled.div`
         font-size: small;
         color: #737373;
     }
+    .text{
+        height: 10px;
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .text * {
+  /* 모든 하위 요소에 대해 적용됩니다. */
+    text-align: center;
+    color: black;
+    line-height: 1.5;
+    font-size: 16px;
+    font-weight: normal;
+    margin: 0;
+    padding: 0;
+    white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  
+  /* 원하는 속성을 추가하면 됩니다. */
+}
 
   `;
 
@@ -48,11 +69,12 @@ const ArticleListBlock = styled.div`
 
     useEffect(()=>{
         const article = async() => {
-            const rsp = await AxiosApi.articleList(props.num);
+            console.log("게시판번호, 정렬방식 : " + props.num + props.view);
+            const rsp = await AxiosApi.articleList(props.num, props.view);
             setArticle(rsp.data);
         }
         article();
-    }, []);
+    }, [props.view]);
 
     const onClick = (num) => {
         nav(`/article/${num}`);
@@ -68,7 +90,7 @@ const ArticleListBlock = styled.div`
                     <h2>{article.title} </h2>
                     <p className="userDate">{article.id}  |  {article.date}</p>
                     <br />
-                    <div dangerouslySetInnerHTML={{ __html: article.text }} >
+                    <div className="text" dangerouslySetInnerHTML={{ __html: article.text }} >
                     </div>
                 </div>
                 <div class="article-image"></div>

@@ -1,3 +1,4 @@
+
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Community from './pages/Community/Community';
 import Main from './pages/Main';
@@ -12,23 +13,27 @@ import ImageTest5 from './pages/imageTest/imageTest5';
 import ImageTest6 from './pages/imageTest/imageTest6';
 import Information from './pages/Community/Infomation';
 import UserDeal from './pages/Community/Userdeal';
-import Article from './pages/Article';
+import Article from './pages/Article/Article';
 import EventPage from './pages/Notice/EventPage';
 import Notice from './pages/Notice/Notice';
-
-
 import PerfumeDetail from './pages/PerfumeDetail';
 import Perfume from './pages/Perfume';
+<<<<<<< HEAD
 import PerfumeSearchFilter from './pages/PerfumeSearchFilter';
 // import PerfumeSearchResults from './pages/PerfumeSearchResults';
 
 
 
 
+=======
+import PerfumePage from './pages/PerfumePage/Perfume';
+import PerfumeListPage from './pages/PerfumePage/ProductsDtail/PerfumeList';
+import Products from './pages/Products/Products';
+>>>>>>> 814020f2bf24ba35fdce72aa9966cc9b69cf6cab
 import TestResult from './pages/imageTest/TestResult';
 import NoteFinderMain from './pages/NoteFinder/NoteFinderMain';
 import NoteCategory from './pages/NoteFinder/NoteCategory';
-import Draft from './pages/NewArticle';
+import Draft from './pages/Article/NewArticle';
 import MyPage from './pages/MyPage/MyPage';
 import News from './pages/Notice/News';
 import UserStore from './context/UserInfo';
@@ -36,6 +41,10 @@ import Login from './pages/Login';
 import SignUp from './pages/SignUp';
 import { QueryClient,QueryClientProvider } from 'react-query';
 const queryClient = new QueryClient();
+import EventDesc from './pages/Notice/EventDesc';
+import Update from './pages/Article/UpdateArticle';
+import NoticeList from './pages/Notice/NoticeList';
+
 
 function App() {
   
@@ -52,7 +61,7 @@ function App() {
         <Route path='/userdeal' element={<UserDeal />} />
         <Route path='/article/:anum' element={<Article />} />
         <Route path='/EventPage' element={<EventPage />} />
-        <Route path='/Notice' element={<Notice />} />
+        <Route path='/Notice' element={<NoticeList />} />
         <Route path='/imagetest1' element={<ImageTest1 />} />
         <Route path='/imagetest2' element={<ImageTest2 />} />
 
@@ -76,6 +85,8 @@ function App() {
         <Route path='/News' element={<News />} />
         <Route path='/Login' element={<Login />} />
         <Route path='/Signup' element={<SignUp />} />
+        <Route path='/EventDesc/:eNum' element={<EventDesc />} />
+        <Route path='/update/:num' element={<Update />} />
       </Routes>
     </Router>
     </UserStore>

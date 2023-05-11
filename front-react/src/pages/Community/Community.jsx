@@ -2,8 +2,10 @@ import React from "react";
 import styled, {css} from "styled-components";
 import Header from "../../Header/Header";
 import { Link, useNavigate } from "react-router-dom";
-import ArticleLists from "../ArticleLists";
+import ArticleLists from "../Article/ArticleLists";
 import Footer from "../../Footer/Footer";
+import { useContext, useState } from "react";
+import { UserContext } from "../../context/UserInfo";
 
 export const CommunityStyle = styled.div`
     box-sizing: border-box;
@@ -66,12 +68,26 @@ export const CommunityStyle = styled.div`
     text-align: center;
     line-height: 1.5;
   }
+
+  .notLoginWrite{
+    display: none;
+  }
   
     
 `;
 
 const Community = () => {
   const nav = useNavigate();
+  const context = useContext(UserContext);
+  const {isLogin} = context;
+  const [orderBy, setOrderBy] = useState(3);
+
+  const onClickOrderBy = (e) => {
+    console.log("정렬 방식 : " + e.target.value);
+    setOrderBy(e.target.value);
+  }
+
+  // 페이지 하나로 수정. 게시판테이블 이용해서 리뷰 대신 {board.boardName} <ArticleLists num={1}> 대신 <ArticleLists num={bnum}> 이런식으로 수정하기
     return(
         <>
             <Header />
@@ -80,22 +96,21 @@ const Community = () => {
                 <div class="section">
                     <h2>리뷰</h2>
                     <div class="article-title">
-                        <select  className ="select" name="" id="">
-                            <option value="전체 글">전체 글</option>
-                            <option value="조회순">조회순</option>
-                            <option value="인기순">인기순</option>
-                            <option value="최신순">최신순</option>
+                        <select  className ="select" value={orderBy} onChange={onClickOrderBy}>
+                            <option value={1}>조회순</option>
+                            <option value={2}>인기순</option>
+                            <option value={3}>최신순</option>
                         </select>
-                        <div><p className="write" onClick={()=>nav("/newarticle")}>작성하기</p></div>
+                        <div><p className={isLogin ? "write" : "notLoginWrite"} onClick={()=>nav("/newarticle")}>작성하기</p></div>
                     </div>
                     <div class="article-list">
                         <div className="line" />
-                        <ArticleLists num={1}/>
+                        <ArticleLists num={1} view={orderBy}/>
                     </div>
                 </div>
             </div>
             </CommunityStyle>
-            <Footer />
+            <Footer />[]
           
         </>
     );

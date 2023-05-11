@@ -1,11 +1,17 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import Header from "../../Header/Header";
 import { ImageTestStyle,ImageTestStyle1 } from "./imageTest";
-
+import Loading from "../Loading";
 
 const TestResult = () => {
-const nav = useNavigate();
+  
+  const location = useLocation();
+  const perfumes = location.state?.perfumes || null;
+  
+  
+
+
 return(
     <>
     <Header/>
@@ -14,17 +20,32 @@ return(
         <div class="container">
         <div class="header">
           <h1 class="title">가장 어울리는 향수는</h1>
+
         </div>
         <div class="content">
           
-           <div className="resultbox"></div>
-            <h2>아무거나</h2> <h3>입니다.</h3>
-            
-             <button class="startBtn" onClick={()=>nav("/imageTest")}>향수 정보</button>
+          
+        {  perfumes && (
+  
+  <div key={perfumes.perfume_number}>
+     <h3>{perfumes.brand}</h3>
+    <div className='thumbnail'>
+  
+          <img src={perfumes.thumbnail} alt="thumbnail" />
+      
+      </div>
+      <h2>{perfumes.name}</h2>
+      <h2>입니다.</h2>
+  </div>
+)}
+                  </div>
+               
+                
+             <button class="startBtn">향수 정보</button>
              
           </div>
           
-        </div>
+
 
         </ImageTestStyle1>
     </ImageTestStyle>
