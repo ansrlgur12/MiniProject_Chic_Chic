@@ -155,6 +155,10 @@ const AxiosApi = {
         return await axios.get(CHIC_DOMAIN + `/countLike/${anum}/${id}`);
     },
 
+    imageTestResult: async (selected) => {
+       
+        return await axios.get(CHIC_DOMAIN + `/ImageTestResult/${selected}`);
+      },
     plusLike : async(anum) => {
         const plus = {
             anum : anum.toString()

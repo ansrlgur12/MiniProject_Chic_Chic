@@ -1,6 +1,5 @@
-// import logo from './logo.svg';
-// import './App.css';
-// import 'bootstrap/dist/css/bootstrap.min.css';
+
+import 'bootstrap/dist/css/bootstrap.min.css';
 import Community from './pages/Community/Community';
 import Main from './pages/Main';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
@@ -16,6 +15,9 @@ import Information from './pages/Community/Infomation';
 import UserDeal from './pages/Community/Userdeal';
 import Article from './pages/Article/Article';
 import EventPage from './pages/Notice/EventPage';
+import Notice from './pages/Notice/Notice';
+import PerfumeDetail from './pages/PerfumeDetail';
+import Perfume from './pages/Perfume';
 import PerfumePage from './pages/PerfumePage/Perfume';
 import PerfumeListPage from './pages/PerfumePage/ProductsDtail/PerfumeList';
 import Products from './pages/Products/Products';
@@ -28,15 +30,19 @@ import News from './pages/Notice/News';
 import UserStore from './context/UserInfo';
 import Login from './pages/Login';
 import SignUp from './pages/SignUp';
+import { QueryClient,QueryClientProvider } from 'react-query';
+const queryClient = new QueryClient();
 import EventDesc from './pages/Notice/EventDesc';
 import Update from './pages/Article/UpdateArticle';
 import NoticeList from './pages/Notice/NoticeList';
 import Notice from './pages/Notice/Notice';
 import NewsL from './pages/Notice/NewsL';
 
+
 function App() {
   
   return (
+    <QueryClientProvider client={queryClient}>
     <UserStore>
     <Router>
       <Routes>
@@ -51,9 +57,15 @@ function App() {
         <Route path='/Notice' element={<NoticeList />} />
         <Route path='/imagetest1' element={<ImageTest1 />} />
         <Route path='/imagetest2' element={<ImageTest2 />} />
-        <Route path='/PerfumePage' element={<PerfumePage />} />
-        <Route path='/PerfumeList/:perfumeId' element={<PerfumeListPage />} />
-        <Route path='/Products' element={<Products />} />
+
+
+        <Route path='/Perfume' element={<Perfume />} />
+        <Route path="/perfumeDetail/:perfumeNumber" element={<PerfumeDetail />} />
+      
+     
+
+
+
         <Route path='/imagetest3' element={<ImageTest3 />} />
         <Route path='/imagetest4' element={<ImageTest4 />} />
         <Route path='/imagetest5' element={<ImageTest5 />} />
@@ -70,10 +82,10 @@ function App() {
         <Route path='/EventDesc/:eNum' element={<EventDesc />} />
         <Route path='/update/:num' element={<Update />} />
         <Route path='/Notice/:num' element={<Notice />} />
-
       </Routes>
     </Router>
     </UserStore>
+    </QueryClientProvider>
     
   );
 }
