@@ -15,7 +15,7 @@ import Information from './pages/Community/Infomation';
 import UserDeal from './pages/Community/Userdeal';
 import Article from './pages/Article/Article';
 import EventPage from './pages/Notice/EventPage';
-import Notice from './pages/Notice/Notice';
+
 import PerfumeDetail from './pages/PerfumeDetail';
 import Perfume from './pages/Perfume';
 import PerfumeSearchFilter from './pages/PerfumeSearchFilter';
@@ -30,6 +30,7 @@ import UserStore from './context/UserInfo';
 import Login from './pages/Login';
 import SignUp from './pages/SignUp';
 import { QueryClient,QueryClientProvider } from 'react-query';
+const queryClient = new QueryClient();
 import EventDesc from './pages/Notice/EventDesc';
 import Update from './pages/Article/UpdateArticle';
 import OtherArticles from './pages/Article/OtherArticles';
@@ -54,7 +55,7 @@ function App() {
         <Route path='/userdeal' element={<UserDeal />} />
         <Route path='/article/:anum' element={<Article />} />
         <Route path='/EventPage' element={<EventPage />} />
-        <Route path='/Notice' element={<NoticeList />} />
+       
         <Route path='/imagetest1' element={<ImageTest1 />} />
         <Route path='/imagetest2' element={<ImageTest2 />} />
 
