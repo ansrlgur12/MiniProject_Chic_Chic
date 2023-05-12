@@ -97,27 +97,28 @@ const Comment = (props) => {
     const [isUpdate, setIsUpdate] = useState(false);
     const context = useContext(UserContext);
     const {isLogin, userId} = context;
+    const [deleteCommentNum, setDeleteCommentNum] = useState(0);
 
-    const fetchComment = useCallback(async () => {
-        const rsp = await AxiosApi.showComment(props.anum);
-        setComment(rsp.data);
-      }, [props.anum]);
-    
       useEffect(() => {
-        fetchComment();
-      }, [fetchComment]);
+        const comment = async() => {
+            const rsp = await AxiosApi.showComment(props.anum);
+            setComment(rsp.data);
+        }
+        comment();
+      }, [props.anum]);
 
     const submit = async(commentNum) => { // 댓글 등록하는 부분
         if(!isUpdate) {
-            const rsp = await AxiosApi.newComment(props.anum, userId ,text, pwd);
-            console.log(rsp);
+            await AxiosApi.newComment(props.anum, userId ,text, pwd);
             setPwd("");
             setText("");
             const newComment = await AxiosApi.showComment(props.anum);
             setComment(newComment.data);
+            console.log(newComment.data);
         }
         else{
             await AxiosApi.updateComment(commentNum, text, pwd);
+            console.log("댓글번호 : " + commentNum);
             setIsUpdate(false);
             setPwd("");
             setText("");
@@ -135,14 +136,13 @@ const Comment = (props) => {
         setText(e.target.value);
     }
 
-    const commentDelete = async(num) => {
+    const commentDelete = async (num) => {
         await AxiosApi.deleteComment(num);
         const updatedComment = comment.filter((c) => c.commentNum !== num);
         setComment(updatedComment);
         setModalOpen(false);
         console.log("삭제완료");
-
-    }
+      }
 
     const viewComment = async(num) => {
         setIsUpdate(true);
@@ -152,14 +152,16 @@ const Comment = (props) => {
         setText(rsp.data[0].commentText);
 
     }
-   
-    const deleteClick = () => {
+
+    const onClickDeleteComment = (num) => {
+        setDeleteCommentNum(num);
         setModalOpen(true);
     }
 
-    const closeModal = () => {
-        setModalOpen(false);
-      }
+
+     const closeModal = () => {
+         setModalOpen(false);
+       }
 
 
     return (
@@ -172,11 +174,10 @@ const Comment = (props) => {
                 <div className="commentList" key={comment.commentNum}> 
                     <div className="listTop">
                         <div className="listName-date">{comment.id} <span className="space">|</span> {comment.date}</div>
-                        <div className={isLogin ? "listUpdate-Delete" : "notLoginlistUpdate-Delete"}>
+                        <div className={isLogin && userId === comment.id ? "listUpdate-Delete" : "notLoginlistUpdate-Delete"}>
                             <p onClick={()=>viewComment(comment.commentNum)}>수정</p>
                             <p>|</p>
-                            <p onClick={deleteClick}>삭제</p>
-                            <Modal open={modalOpen} type={true} confirm={()=>commentDelete(comment.commentNum)} close={closeModal} header={"경고"}>삭제 하시겠습니까?</Modal>
+                            <p onClick={()=>onClickDeleteComment(comment.commentNum)}>삭제</p>
                         </div>
                     </div>
                     <div className="listBot">{comment.commentText}</div>
@@ -195,6 +196,7 @@ const Comment = (props) => {
                     </div>
                 </div>
             </div>
+            <Modal open={modalOpen} type={true} confirm={()=>commentDelete(deleteCommentNum)} close={closeModal} header={"확인"}>삭제하시겠습니까?</Modal>
             
         </CommentBox>
     );

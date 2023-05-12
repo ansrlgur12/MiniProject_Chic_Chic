@@ -1,22 +1,19 @@
 import React from "react";
-import styled, {css} from "styled-components";
+import styled from "styled-components";
 import Header from "../Header/Header";
 import mainImage1 from "../image/메인3.jpg";
 import mainImage2 from "../image/커뮤.jpg";
 import mainImage3 from "../image/커스텀3.jpg";
 import mainImage4 from "../image/공지2.jpg";
 import Footer from "../Footer/Footer";
+import { useNavigate } from "react-router-dom";
 
 const MainStyle = styled.div`
-.main .container{
-    width: 100vw;
-    padding: 130px 0px 0px 0px;
-    margin: 0;
-
-  }
-  .main .container .article{
-    
-    width: 100vw;
+    padding-top: 130px;
+  
+  
+  .article{
+    width: 100%;
     height: 65vh;
   }
   .main-image{
@@ -63,17 +60,20 @@ const MainStyle = styled.div`
 `;
 
 const Main = () => {
+  window.scrollTo(0, 0);
+
+    const nav = useNavigate();
 
     return(
         <>
         <Header/>
         <MainStyle>
         <div class="main">
-            <div class="container">
-                <div class="article 1"><div class="main-image" style={{ backgroundImage: `url(${mainImage1})`, backgroundSize: 'cover' }}><div class="main-desc"><h2>Perfume</h2><p>설명설명 설명설명<br/>설safsdfsfdsasfasdf명설명tjfaud 설명</p></div><button class="main-btn">자세히 보기</button></div></div>
-                <div class="article 2"><div class="main-image" style={{ backgroundImage: `url(${mainImage2})`, backgroundSize: 'cover' }}><div class="main-desc"><h2>Community</h2><p>설명설명 설명설명<br/>설safsdfsfdsasfasdf명설명tjfaud 설명</p></div><button class="main-btn">자세히 보기</button></div></div>
-                <div class="article 3"><div class="main-image" style={{ backgroundImage: `url(${mainImage3})`, backgroundSize: 'cover' }}><div class="main-desc"><h2>Custom</h2><p>설명설명 설명설명<br/>설safsdfsfdsasfasdf명설명tjfaud 설명</p></div><button class="main-btn">자세히 보기</button></div></div>
-                <div class="article 4"><div class="main-image" style={{ backgroundImage: `url(${mainImage4})`, backgroundSize: 'cover' }}><div class="main-desc"><h2>Notice</h2><p>설명설명 설명설명<br/>설safsdfsfdsasfasdf명설명tjfaud 설명</p></div><button class="main-btn">자세히 보기</button></div></div>
+            <div class="articleContainer">
+                <div class="article 1"><div className="main-image" style={{ backgroundImage: `url(${mainImage1})`, backgroundSize: 'cover' }}><div className="main-desc"><h2>Monthly Perfume</h2><p>이번달의 Top3 향수</p></div><button className="main-btn">자세히 보기</button></div></div>
+                <div class="article 2"><div className="main-image" style={{ backgroundImage: `url(${mainImage2})`, backgroundSize: 'cover' }}><div className="main-desc"><h2>Perfume Test</h2><p>향수 이미지테스트를 통한<br/><br/>나만의 향수 추천</p></div><button className="main-btn" onClick={()=>nav("/Testmain")}>자세히 보기</button></div></div>
+                <div class="article 3"><div className="main-image" style={{ backgroundImage: `url(${mainImage3})`, backgroundSize: 'cover' }}><div className="main-desc"><h2>Note Pyramid</h2><p>노트 피라미드<br/>설명 설명 설명 설명 설명</p></div><button className="main-btn" onClick={()=>nav("/NoteFinderMain")}>자세히 보기</button></div></div>
+                <div class="article 4"><div className="main-image" style={{ backgroundImage: `url(${mainImage4})`, backgroundSize: 'cover' }}><div className="main-desc"><h2>Notice</h2><p>새로운 소식과 공지사항을 확인해보세요</p></div><button className="main-btn">자세히 보기</button></div></div>
             </div>
         </div>
         </MainStyle>

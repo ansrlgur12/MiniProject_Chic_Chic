@@ -6,7 +6,8 @@ import Footer from "../../Footer/Footer";
 import profileimg from "../../image/face.png"
 import gradeimg5 from "../../image/gradeLv5.png"
 import { UserContext } from "../../context/UserInfo";
-import { useContext } from "react";
+import { useContext, useState } from "react";
+import { storage } from "../../firebase/firebase";
 
 export const MyPageStyle = styled.div`
     box-sizing: border-box;
@@ -95,12 +96,33 @@ export const MyPageStyle = styled.div`
         border-top: 1px solid black;
         padding-top: 1em;
     }
+    .profileP2{
+        width: 200px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: baseline;
+    }
+    .profileChange button{
+        margin-top: 10px;
+        margin-right: 10px;
+    }
+    .profileChange input{
+        margin-top: 10px;
+        margin-right: 10px;
+    }
+    .noProfileChange{
+        display: none;
+    }
 `;
 
 const MyPage = () => {
     const nav = useNavigate();
     const context = useContext(UserContext);
     const {userId, setUserId, setPassword, setIsLogin, isLogin} = context;
+    const [file, setFile] = useState(null);
+    const [url, setUrl] = useState('');
+    const [updateProfile, setUpdateProfile] = useState(false);
 
     const onClickLogout = () => {
         console.log("로그아웃 버튼 클릭");
@@ -110,6 +132,24 @@ const MyPage = () => {
         console.log(isLogin);
         nav("/");
     }
+
+    const handleFileInputChange = (e) => {
+        setFile(e.target.files[0]);
+        console.log(e.target.files[0]);
+      };
+
+    const handleUploadClick = () => {
+        const storageRef = storage.ref();
+        const fileRef = storageRef.child(file.name);
+        fileRef.put(file).then(() => {
+          console.log('File uploaded successfully!');
+          fileRef.getDownloadURL().then((url) => {
+            console.log("저장경로 확인 : " + url);
+            setUrl(url);
+            setUpdateProfile(false);
+          });
+        });
+      };
     return (
         <>
             <Header/>
@@ -120,9 +160,14 @@ const MyPage = () => {
                         <div className="inside">
                             <div className="up">
                                 <div className="profileP">
-                                    <div className="profileP1" style={{backgroundImage: `url(${profileimg})`, backgroundSize: 'cover', backgroundRepeat: 'no-repeat'}}></div>
+                                    <img className="profileP1" src={url} style={{ backgroundSize: 'cover', backgroundRepeat: 'no-repeat'}}></img>
                                     <div className="profileP2">
-                                        <button>프로필 편집</button>
+                                        <button onClick={()=>setUpdateProfile(true)}>프로필 편집</button>
+                                        <div className={updateProfile ? "profileChange" : "noProfileChange"}>
+                                            <input type="file" onChange={handleFileInputChange} />
+                                            <button onClick={handleUploadClick}>변경</button>
+                                            <button onClick={()=>setUpdateProfile(false)}>취소</button>
+                                        </div>
                                     </div>
                                 </div>
                                 <div className="profileC">

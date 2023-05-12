@@ -19,3 +19,32 @@ export const getPerfumeDetail = async (perfumeNumber) => {
     return null; // On error, return null
   }
 };
+
+export const searchPerfumes = async (brandIdentifier, minPrice, maxPrice, gender) => {
+  try {
+    const response = await axios.get('http://localhost:8111/perfumes/search', {
+      params: {
+        brandIdentifier,
+        minPrice,
+        maxPrice,
+        gender
+      }
+    });
+    return response.data;
+  } catch (error) {
+    console.error(error);
+    return []; // 오류 발생 시 빈 배열 반환
+  }
+};
+
+export const getTopBrands = async () => {
+  try {
+    const response = await axios.get('http://localhost:8111/perfumes/top-brands');
+    return response.data;
+  } catch (error) {
+    console.error(error);
+    return [];
+  }
+};
+
+

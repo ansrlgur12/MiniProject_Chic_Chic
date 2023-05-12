@@ -39,9 +39,9 @@ const AxiosApi = {
     },
 
     // 이벤트 페이지 리스트
-    eventList : async(eventNum) => {
+    eventList : async(eventNum, view) => {
 
-        return await axios.get(CHIC_DOMAIN + `/EventPage/${eventNum}`);
+        return await axios.get(CHIC_DOMAIN + `/EventPage/${eventNum}/${view}`);
     },
 
     // 이벤트 상세 페이지
@@ -175,6 +175,14 @@ const AxiosApi = {
 
     deleteCommentAll : async(anum) => {
         return await axios.get(CHIC_DOMAIN + `/deleteCommentAll/${anum}`);
+    },
+
+    isUser : async(anum, id) => {
+        return await axios.get(CHIC_DOMAIN + `/isUser/${anum}/${id}`);
+    },
+
+    commentMatch : async(commentNum, id, anum) => {
+        return await axios.get(CHIC_DOMAIN + `/commentMatch/${commentNum}/${id}/${anum}`);
     },
 };
 

@@ -52,6 +52,7 @@ button{
 
 const NoteFinderMain = () => {
   const nav = useNavigate();
+  window.scrollTo(0, 0);
   const [selectedValue, setSelectedValue] = useState({
     1: { fragrance: "Click", id: "" },
     2: { fragrance: "Click", id: "" },
@@ -81,6 +82,7 @@ const NoteFinderMain = () => {
   };
 
   return (
+    
     <>
       <Header />
       <ImageTestStyle>

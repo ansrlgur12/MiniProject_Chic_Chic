@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { useState, useEffect } from "react";
 import AxiosApi from "../../api/Axios";
-import { useNavigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 
 const Container=styled.div`
 
@@ -13,8 +13,13 @@ const Container=styled.div`
 
     .list-title{
         padding-left: 15px;
+        padding-top: 15px   ;
         width: 100%;
-        height: 15px;
+        height: 20px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
     }
     
     ul {
@@ -43,12 +48,16 @@ const Container=styled.div`
     margin-bottom: 15px;
     cursor: pointer;
     }
+    .lists{
+        padding-left: 10px;
+    }
 
 `;
 
 const OtherArticles = (props) => {
 
     const[article, setArticle] = useState("");
+    const[latestArticles, setLatestArticles] = useState([]);
     const nav = useNavigate();
 
     useEffect(()=>{
@@ -56,6 +65,7 @@ const OtherArticles = (props) => {
 
             const rsp = await AxiosApi.smallArticleList(props.bnum);
             setArticle(rsp.data);
+            setLatestArticles(rsp.data.slice(0, 5)); // 최신 게시글 5개만 선택
         }
         article();
     }, []);
@@ -70,10 +80,8 @@ const OtherArticles = (props) => {
                 </div>
                 <hr />
                 <div className="lists">
-                    {article && article.map(article => (
-                    <ul>
-                        <li key={article.anum} onClick={()=>{ nav(`/article/${article.anum}`); window.location.reload(); }}>{article.title}</li>
-                    </ul>
+                    {latestArticles.map((article) => (
+                        <li key={article.anum} onClick={()=>nav(`/article/${article.anum}`)}>{article.title}</li>
                     ))}
                 </div>
         </Container>

@@ -166,27 +166,27 @@ const Header = () => {
     return(
         <>
             <HeaderStyle>
-                <div class="top"></div>
-                <div class="logo-line">
-                    <div class="logo-left"></div>
-                    <div class="logo" onClick={()=>nav("/")}><div className="image" style={{ backgroundImage: `url(${logoImage})`, backgroundSize: 'cover' }}></div></div>
-                    <div class="logo-right">
-                        <div class="searchbar">
-                        <input class="search-txt" type="text" placeholder="" />
-                        <div class="search-btn"><i class="fas fa-search"></i></div>
+                <div className="top"></div>
+                <div className="logo-line">
+                    <div className="logo-left"></div>
+                    <div className="logo" onClick={()=>nav("/")}><div className="image" style={{ backgroundImage: `url(${logoImage})`, backgroundSize: 'cover' }}></div></div>
+                    <div className="logo-right">
+                        <div className="searchbar">
+                        <input className="search-txt" type="text" placeholder="" />
+                        <div className="search-btn"><i className="fas fa-search"></i></div>
                     </div>
-                    <span class="material-symbols-outlined" onClick={()=> {isLogin ? nav("/MyPage") : nav("/Login")}}>
+                    <span className="material-symbols-outlined" onClick={()=> {isLogin ? nav("/MyPage") : nav("/Login")}}>
                         person
                     </span>
                 </div>
                 </div>
-                <div class="nav">
-                <div class="menu">
+                <div className="nav">
+                <div className="menu">
                     <p className="menutitle title1">Perfume</p>
                     <p className="menutitle title2">Community</p>
                     <p className="menutitle title3">Custom</p>
                     <p className="menutitle title4">Notice</p>
-                    <div class="caption">
+                    <div className="caption">
                         <div className="caption-title perfume">
                             <p onClick={()=>nav("/Perfume")}>향수</p>
                         </div>
