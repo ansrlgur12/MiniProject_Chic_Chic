@@ -15,7 +15,6 @@ import Information from './pages/Community/Infomation';
 import UserDeal from './pages/Community/Userdeal';
 import Article from './pages/Article/Article';
 import EventPage from './pages/Notice/EventPage';
-
 import PerfumeDetail from './pages/PerfumeDetail';
 import Perfume from './pages/Perfume';
 import PerfumeSearchFilter from './pages/PerfumeSearchFilter';
@@ -30,12 +29,12 @@ import UserStore from './context/UserInfo';
 import Login from './pages/Login';
 import SignUp from './pages/SignUp';
 import { QueryClient,QueryClientProvider } from 'react-query';
-const queryClient = new QueryClient();
 import EventDesc from './pages/Notice/EventDesc';
 import Update from './pages/Article/UpdateArticle';
 import OtherArticles from './pages/Article/OtherArticles';
 import ImageUploader from './pages/imageUploader';
 import NoticeList from './pages/Notice/NoticeList';
+import Notice from './pages/Notice/Notice';
 import NewsL from './pages/Notice/NewsL';
 const queryClient = new QueryClient();
 
