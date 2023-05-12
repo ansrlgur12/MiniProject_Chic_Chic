@@ -1,13 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled, {css} from "styled-components";
 import { Link, useNavigate } from "react-router-dom";
 import Header from "../../Header/Header";
 import Footer from "../../Footer/Footer";
-import profileimg from "../../image/face.png"
 import gradeimg5 from "../../image/gradeLv5.png"
 import { UserContext } from "../../context/UserInfo";
 import { useContext, useState } from "react";
 import { storage } from "../../firebase/firebase";
+import profile from "../../image/기본프로필.jpg";
+import AxiosApi from "../../api/Axios";
+import firebase from 'firebase/app';
+import 'firebase/analytics';
 
 export const MyPageStyle = styled.div`
     box-sizing: border-box;
@@ -123,6 +126,17 @@ const MyPage = () => {
     const [file, setFile] = useState(null);
     const [url, setUrl] = useState('');
     const [updateProfile, setUpdateProfile] = useState(false);
+    const [userImage, setUserImage] = useState('');
+    window.scrollTo(0, 0);
+
+    useEffect(()=> {
+        const userInfo = async() => {
+            const rsp = await AxiosApi.getImage(userId);
+            console.log(rsp);
+            setUrl(rsp.data[0].userImg);
+        }
+        userInfo();
+    },[]);
 
     const onClickLogout = () => {
         console.log("로그아웃 버튼 클릭");
@@ -138,7 +152,7 @@ const MyPage = () => {
         console.log(e.target.files[0]);
       };
 
-    const handleUploadClick = () => {
+    const handleUploadClick = async() => {
         const storageRef = storage.ref();
         const fileRef = storageRef.child(file.name);
         fileRef.put(file).then(() => {
@@ -146,10 +160,20 @@ const MyPage = () => {
           fileRef.getDownloadURL().then((url) => {
             console.log("저장경로 확인 : " + url);
             setUrl(url);
+            setUserImage(url);
             setUpdateProfile(false);
+            const update = async() => {
+                console.log(userImage);
+                await AxiosApi.updateImage(userId, userImage);
+            };
+            update();
           });
         });
+        
       };
+    
+      
+
     return (
         <>
             <Header/>
@@ -160,7 +184,7 @@ const MyPage = () => {
                         <div className="inside">
                             <div className="up">
                                 <div className="profileP">
-                                    <img className="profileP1" src={url} style={{ backgroundSize: 'cover', backgroundRepeat: 'no-repeat'}}></img>
+                                    <img className="profileP1" src={url ? url : profile} style={{ backgroundSize: 'cover', backgroundRepeat: 'no-repeat'}}></img>
                                     <div className="profileP2">
                                         <button onClick={()=>setUpdateProfile(true)}>프로필 편집</button>
                                         <div className={updateProfile ? "profileChange" : "noProfileChange"}>

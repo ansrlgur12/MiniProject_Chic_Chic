@@ -7,6 +7,10 @@ import Modal from "../../util/Modal";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import { UserContext } from "../../context/UserInfo";
+import { storage } from "../../firebase/firebase";
+import firebase from 'firebase/compat/app';
+import 'firebase/compat/storage';
+
 
 export const Setting = styled.div`
   padding-top: 160px;
@@ -28,6 +32,7 @@ export const Setting = styled.div`
 
   .setting{
     display: flex;
+
   }
   
   .submit{
@@ -64,6 +69,16 @@ export const Setting = styled.div`
     .title{
       margin-bottom: 50px;
     }
+
+    .submitBtn{
+      margin: 0px;
+      margin-left: 15px;
+      margin-top: 10px;
+      height: 30px;
+      width: 70px;
+      border-radius: 3px;
+      border: 1px solid #ccc;
+    }
 `;
 
 export const Container = styled.div`
@@ -87,16 +102,10 @@ const Draft = () => {
   const[modalOpen, setModalOpen] = useState(false);
   const context = useContext(UserContext);
   const {userId} = context;
+  const [file, setFile] = useState(null);
+  const [image, setImage] = useState('');
+  const [uploadedImage, setUploadedImage] = useState('');
 
-  useEffect(()=>{
-    console.log(text);
-  },[text]);
-  useEffect(()=>{
-    console.log("제목작성");
-  },[title]);
-  useEffect(()=>{
-    console.log("비밀번호작성");
-  },[pwd]);
 
   const onChangeTitle = (e) => {
     setTitle(e.target.value);
@@ -110,7 +119,7 @@ const Draft = () => {
   }
 
   const submit = async() => {
-    const rsp = await AxiosApi.newArticle(userId, bnum, title, text, pwd);
+    const rsp = await AxiosApi.newArticle(userId, bnum, title, text, pwd, image);
     console.log(rsp);
     nav(-1);
   }
@@ -127,6 +136,69 @@ const Draft = () => {
   const goBack = () => {
     nav(-1);
   }
+
+  const handleFileInputChange = (e) => {
+    setFile(e.target.files[0]);
+    console.log(e.target.files[0]);
+  };
+
+  const handleUploadClick = async() => {
+    const storageRef = storage.ref();
+    const fileRef = storageRef.child(file.name);
+    fileRef.put(file).then(() => {
+      console.log('File uploaded successfully!');
+      fileRef.getDownloadURL().then((url) => {
+        console.log("저장경로 확인 : " + url);
+        setImage(url);
+      });
+    });
+  };
+
+  class FirebaseStorageAdapter {
+    constructor(loader) {
+      this.loader = loader;
+    }
+  
+    upload() {
+      const file = this.loader.file;
+      const storageRef = storage.ref();
+      const fileRef = storageRef.child(file.name);
+  
+      return new Promise((resolve, reject) => {
+        fileRef
+          .put(file)
+          .then(() => fileRef.getDownloadURL())
+          .then((url) => {
+            resolve({
+              default: url,
+            });
+          })
+          .catch((error) => {
+            reject(error);
+          });
+      });
+    }
+  }
+
+
+  const handleUploadImage = async (file) => {
+    return new Promise((resolve, reject) => {
+      const adapter = new FirebaseStorageAdapter({
+        file: file,
+      });
+  
+      ClassicEditor.builtinPlugins
+        .get('FileRepository')
+        .createUploadAdapter((loader) => adapter)
+        .upload()
+        .then((response) => {
+          resolve(response.default);
+        })
+        .catch((error) => {
+          reject(error);
+        });
+    });
+  };
 
   return (
     <>
@@ -150,28 +222,47 @@ const Draft = () => {
         <input className="titleInput" type="text" onChange={onChangeTitle} />
       </div>
       <div className="setting">
+        <label htmlFor="">대표이미지</label>
+        <input type="file" onChange={handleFileInputChange} />
+        <button className="submitBtn" onClick={handleUploadClick}>등록</button>
+      </div>
+      <div className="setting">
         <label htmlFor="">내용</label>
         <Container>
         <CKEditor 
-            editor={ ClassicEditor }
-            data=""
-            onReady={ editor => {
-                // You can store the "editor" and use when it is needed.
-                 console.log( 'Editor is ready to use!', editor );
-                                
-            } }
-            onChange={(event, editor) => {
-                const data = editor.getData();
-                console.log({ event, editor, data });
-                setBoard_content(data);
-            }}
-            onBlur={ ( event, editor ) => {
-                console.log( 'Blur.', editor );
-            } }
-            onFocus={ ( event, editor ) => {
-                console.log( 'Focus.', editor );
-            } }
-        />
+                editor={ClassicEditor}
+                config={{
+                  ckfinder: {
+                    uploadUrl: "gs://chicchic-63182.appspot.com/",
+                  },
+                  image: {
+                    toolbar: ['imageTextAlternative', '|', 'imageStyle:alignLeft', 'imageStyle:full', 'imageStyle:alignRight'],
+                    styles: ['full', 'alignLeft', 'alignRight'],
+                    upload: {
+                      handler: handleUploadImage,
+                    },
+                  },
+                }}
+                data={text}
+                onReady={(editor) => {
+                  console.log('Editor is ready to use!', editor);
+                }}
+                onChange={(event, editor) => {
+                  const data = editor.getData();
+                  console.log({ event, editor, data });
+                  setBoard_content(data);
+                }}
+                onBlur={(event, editor) => {
+                  console.log('Blur.', editor);
+                }}
+                onFocus={(event, editor) => {
+                  console.log('Focus.', editor);
+                }}
+              />
+              {/* <CKEditor editor={ClassicEditor} data={text} onChange={(event, editor) => {
+                        const data = editor.getData();
+                        setBoard_content(data);
+                    }}/> */}
         </Container>
       </div>
       <div className="setting">

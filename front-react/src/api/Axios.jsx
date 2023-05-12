@@ -17,13 +17,14 @@ const AxiosApi = {
     },
 
 
-    newArticle : async(id, bnum, title, text, pwd) => { // 게시글 작성 정보 저장
+    newArticle : async(id, bnum, title, text, pwd, image) => { // 게시글 작성 정보 저장
         const article = {
             id : id,
             bnum : bnum.toString(),
             title : title,
             text : text,
-            pwd : pwd
+            pwd : pwd,
+            image : image
         };
         return await axios.post(CHIC_DOMAIN + "/newArticle", article);
     },
@@ -183,6 +184,18 @@ const AxiosApi = {
 
     commentMatch : async(commentNum, id, anum) => {
         return await axios.get(CHIC_DOMAIN + `/commentMatch/${commentNum}/${id}/${anum}`);
+    },
+
+    getImage : async(id) => {
+        return await axios.get(CHIC_DOMAIN + `/getImage/${id}`);
+    },
+
+    updateImage : async(id, image) => {
+        const updateImg = {
+            id : id,
+            image : image
+        }
+    return await axios.post(CHIC_DOMAIN + `/updateImage`, updateImg);
     },
 };
 
