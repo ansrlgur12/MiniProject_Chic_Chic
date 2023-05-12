@@ -2,7 +2,7 @@ import React from "react";
 import { useLocation } from "react-router-dom";
 import Header from "../../Header/Header";
 import { ImageTestStyle,ImageTestStyle1 } from "./imageTest";
-import Loading from "../Loading";
+
 
 const TestResult = () => {
   
