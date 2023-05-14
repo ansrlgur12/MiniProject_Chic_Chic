@@ -120,6 +120,7 @@ const Draft = () => {
 
   const submit = async() => {
     const rsp = await AxiosApi.newArticle(userId, bnum, title, text, pwd, image);
+    await AxiosApi.saveImage(uploadedImage);
     console.log(rsp);
     nav(-1);
   }
@@ -154,6 +155,17 @@ const Draft = () => {
     });
   };
 
+  // const handleUploadImage = async (file) => {
+  //   const storageRef = storage.ref();
+  //   const fileRef = storageRef.child(file.name);
+  //   fileRef.put(file).then(() => {
+  //     console.log('File uploaded successfully!');
+  //     fileRef.getDownloadURL().then((url) => {
+  //       console.log("저장경로 확인 : " + url);
+  //       setUploadedImage(url);
+  //     });
+  //   });
+  // };
   class FirebaseStorageAdapter {
     constructor(loader) {
       this.loader = loader;
@@ -169,6 +181,7 @@ const Draft = () => {
           .put(file)
           .then(() => fileRef.getDownloadURL())
           .then((url) => {
+            setUploadedImage(url);
             resolve({
               default: url,
             });
@@ -179,12 +192,11 @@ const Draft = () => {
       });
     }
   }
-
-
+  
   const handleUploadImage = async (file) => {
     return new Promise((resolve, reject) => {
       const adapter = new FirebaseStorageAdapter({
-        file: file,
+        loader: file, // 수정: file을 loader로 전달
       });
   
       ClassicEditor.builtinPlugins
@@ -233,10 +245,10 @@ const Draft = () => {
                 editor={ClassicEditor}
                 config={{
                   ckfinder: {
-                    uploadUrl: "gs://chicchic-63182.appspot.com/",
+                    uploadUrl: {storage},
                   },
                   image: {
-                    toolbar: ['imageTextAlternative', '|', 'imageStyle:alignLeft', 'imageStyle:full', 'imageStyle:alignRight'],
+                    toolbar: ['imageTextAlternative', '|', 'imageStyle:alignLeft', 'imageStyle:alignRight'],
                     styles: ['full', 'alignLeft', 'alignRight'],
                     upload: {
                       handler: handleUploadImage,
