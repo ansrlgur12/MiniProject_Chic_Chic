@@ -180,7 +180,7 @@ const MyPage = () => {
                                         <div className="textHistory">내 리뷰</div>
                                         <div className="textHistory">내 댓글</div>
                                         <div className="textHistory">내 좋아요</div>
-                                        <div className="textHistory">내 관심목록</div>
+                                        <div className="textHistory">내 한줄평</div>
                                     </div>
                                 </div>
                             </div>
