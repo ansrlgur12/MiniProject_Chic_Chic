@@ -36,6 +36,7 @@ import ImageUploader from './pages/imageUploader';
 import NoticeList from './pages/Notice/NoticeList';
 import Notice from './pages/Notice/Notice';
 import NewsL from './pages/Notice/NewsL';
+import Search from './pages/Search/Search';
 const queryClient = new QueryClient();
 
 
@@ -84,6 +85,7 @@ function App() {
         <Route path='/otherArticles' element={<OtherArticles />} />
         <Route path='/imageUploader' element={<ImageUploader />} />
         <Route path='/Notice/:num' element={<Notice />} />
+        <Route path='/Search' element={<Search />} />
       </Routes>
     </Router>
     

@@ -6,7 +6,7 @@ import { useState, useEffect } from "react";
 import Footer from "../../Footer/Footer";
 import logoimage from "../../image/로고.jpg";
 
-const ArticleListBlock = styled.div`
+export const ArticleListBlock = styled.div`
 
     height: 1210px;
 
