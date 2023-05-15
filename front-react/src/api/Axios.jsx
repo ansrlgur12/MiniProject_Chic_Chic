@@ -81,13 +81,14 @@ const AxiosApi = {
     },
 
     // 게시글 수정
-    update : async(anum, bnum, title, text, pwd) => {
+    update : async(anum, bnum, title, text, pwd, img) => {
         const article = {
             anum : anum.toString(),
             bnum : bnum.toString(),
             title : title,
             text : text,
-            pwd : pwd
+            pwd : pwd,
+            img : img
         };
         return await axios.post(CHIC_DOMAIN + "/update", article);
     },
@@ -207,6 +208,18 @@ const AxiosApi = {
 
     searchArticle : async(text) => {
         return await axios.get(CHIC_DOMAIN + `/searchArticle/${text}`);
+    },
+
+    memberDelete : async(id) => {
+        const regCheck = {
+            id: id
+        }
+        return await axios.post(CHIC_DOMAIN + "/memberDelete", regCheck);
+    },
+
+    memberArticleDelete : async(id) => {
+
+        return await axios.get(CHIC_DOMAIN + `/memberArticleDelete/${id}`);
     },
 };
 

@@ -11,6 +11,7 @@ import profile from "../../image/기본프로필.jpg";
 import AxiosApi from "../../api/Axios";
 import firebase from 'firebase/app';
 import 'firebase/analytics';
+import Modal from "../../util/Modal";
 
 export const MyPageStyle = styled.div`
     box-sizing: border-box;
@@ -120,6 +121,7 @@ export const MyPageStyle = styled.div`
 `;
 
 const MyPage = () => {
+
     const nav = useNavigate();
     const context = useContext(UserContext);
     const {userId, setUserId, setPassword, setIsLogin, isLogin} = context;
@@ -128,6 +130,7 @@ const MyPage = () => {
     const [updateProfile, setUpdateProfile] = useState(false);
     const [userImage, setUserImage] = useState('');
     window.scrollTo(0, 0);
+    const [modalOpen, setModalOpen] = useState(false);
 
     useEffect(()=> {
         const userInfo = async() => {
@@ -137,6 +140,13 @@ const MyPage = () => {
         }
         userInfo();
     },[]);
+
+    useEffect(() => {
+        if (!isLogin) {
+          nav("/");
+          alert("로그인이 필요합니다.");
+        }
+      }, [isLogin, nav]);
 
     const onClickLogout = () => {
         console.log("로그아웃 버튼 클릭");
@@ -160,18 +170,35 @@ const MyPage = () => {
           fileRef.getDownloadURL().then((url) => {
             console.log("저장경로 확인 : " + url);
             setUrl(url);
-            setUserImage(url);
-            setUpdateProfile(false);
+           
             const update = async() => {
-                console.log(userImage);
-                await AxiosApi.updateImage(userId, userImage);
+                console.log(url);
+                console.log(userId);
+                await AxiosApi.updateImage(userId, url);
             };
             update();
+            setUserImage(url);
+            setUpdateProfile(false);
+
           });
         });
         
       };
-    
+
+    const onClickMemberDelete = () => {
+        setModalOpen(true);
+    }
+
+    const closeModal = () => {
+        setModalOpen(false);
+    };
+
+    const confirmModal = async() => {
+        setModalOpen(false);
+        const memberReg = await AxiosApi.memberDelete(userId);
+        console.log(memberReg.data.result);
+        window.location.replace("/");
+    };
       
 
     return (
@@ -199,6 +226,7 @@ const MyPage = () => {
                                         <div className="nickname">아이디 : {userId}</div>
                                         <div className="gradeLv">회원 등급 : <p className="gradeImg" style={{backgroundImage: `url(${gradeimg5})`, backgroundSize: 'contain', backgroundRepeat: 'no-repeat'}}></p></div>
                                         <div><button className="logOut" onClick={onClickLogout}>로그아웃</button></div>
+                                        <div><button className="logOut" onClick={onClickMemberDelete}>회원탈퇴</button></div>
                                     </div>
                                     <div className="textProfile">
                                         <div className="textHistory">내 리뷰</div>
@@ -219,6 +247,7 @@ const MyPage = () => {
                         
                     </div>
                 </div>
+                <Modal open={modalOpen} confirm={confirmModal} close={closeModal} type={true} header="확인">정말 탈퇴하시겠습니까?</Modal>
             </MyPageStyle>
             <Footer />
         </>

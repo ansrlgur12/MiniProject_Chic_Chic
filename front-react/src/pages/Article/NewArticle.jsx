@@ -155,62 +155,63 @@ const Draft = () => {
     });
   };
 
-  // const handleUploadImage = async (file) => {
-  //   const storageRef = storage.ref();
-  //   const fileRef = storageRef.child(file.name);
-  //   fileRef.put(file).then(() => {
-  //     console.log('File uploaded successfully!');
-  //     fileRef.getDownloadURL().then((url) => {
-  //       console.log("저장경로 확인 : " + url);
-  //       setUploadedImage(url);
-  //     });
-  //   });
-  // };
-  class FirebaseStorageAdapter {
-    constructor(loader) {
-      this.loader = loader;
-    }
-  
-    upload() {
-      const file = this.loader.file;
-      const storageRef = storage.ref();
-      const fileRef = storageRef.child(file.name);
-  
-      return new Promise((resolve, reject) => {
-        fileRef
-          .put(file)
-          .then(() => fileRef.getDownloadURL())
-          .then((url) => {
-            setUploadedImage(url);
-            resolve({
-              default: url,
-            });
-          })
-          .catch((error) => {
-            reject(error);
-          });
-      });
-    }
-  }
-  
   const handleUploadImage = async (file) => {
-    return new Promise((resolve, reject) => {
-      const adapter = new FirebaseStorageAdapter({
-        loader: file, // 수정: file을 loader로 전달
+    const storageRef = storage.ref();
+    const fileRef = storageRef.child(file.name);
+    console.log(file.name);
+    fileRef.put(file).then(() => {
+      console.log('File uploaded successfully!');
+      fileRef.getDownloadURL().then((url) => {
+        console.log("저장경로 확인 : " + url);
+        setUploadedImage(url);
       });
-  
-      ClassicEditor.builtinPlugins
-        .get('FileRepository')
-        .createUploadAdapter((loader) => adapter)
-        .upload()
-        .then((response) => {
-          resolve(response.default);
-        })
-        .catch((error) => {
-          reject(error);
-        });
     });
   };
+  // class FirebaseStorageAdapter {
+  //   constructor(loader) {
+  //     this.loader = loader;
+  //   }
+  
+  //   upload() {
+  //     const file = this.loader.file;
+  //     const storageRef = storage.ref();
+  //     const fileRef = storageRef.child(file.name);
+  
+  //     return new Promise((resolve, reject) => {
+  //       fileRef
+  //         .put(file)
+  //         .then(() => fileRef.getDownloadURL())
+  //         .then((url) => {
+  //           setUploadedImage(url);
+  //           resolve({
+  //             default: url,
+  //           });
+  //         })
+  //         .catch((error) => {
+  //           reject(error);
+  //         });
+  //     });
+  //   }
+  // }
+  
+  // const handleUploadImage = async (file) => {
+  //   return new Promise((resolve, reject) => {
+  //     const adapter = new FirebaseStorageAdapter({
+  //       loader: file, // 수정: file을 loader로 전달
+  //     });
+  
+  //     ClassicEditor.builtinPlugins
+  //       .get('FileRepository')
+  //       .createUploadAdapter((loader) => adapter)
+  //       .upload()
+  //       .then((response) => {
+  //         resolve(response.default);
+  //       })
+  //       .catch((error) => {
+  //         reject(error);
+  //       });
+  //   });
+  // };
 
   return (
     <>
@@ -245,14 +246,12 @@ const Draft = () => {
                 editor={ClassicEditor}
                 config={{
                   ckfinder: {
-                    uploadUrl: {storage},
+                    uploadUrl: "https://firebasestorage.googleapis.com/v0/b/chicchic-63182.appspot.com"
                   },
                   image: {
                     toolbar: ['imageTextAlternative', '|', 'imageStyle:alignLeft', 'imageStyle:alignRight'],
                     styles: ['full', 'alignLeft', 'alignRight'],
-                    upload: {
-                      handler: handleUploadImage,
-                    },
+                    upload: { handler: (file) => handleUploadImage(file), },
                   },
                 }}
                 data={text}
@@ -264,22 +263,18 @@ const Draft = () => {
                   console.log({ event, editor, data });
                   setBoard_content(data);
                 }}
-                onBlur={(event, editor) => {
-                  console.log('Blur.', editor);
-                }}
-                onFocus={(event, editor) => {
-                  console.log('Focus.', editor);
-                }}
+                // onBlur={(event, editor) => {
+                //   console.log('Blur.', editor);
+                // }}
+                // onFocus={(event, editor) => {
+                //   console.log('Focus.', editor);
+                // }}
               />
               {/* <CKEditor editor={ClassicEditor} data={text} onChange={(event, editor) => {
                         const data = editor.getData();
                         setBoard_content(data);
                     }}/> */}
         </Container>
-      </div>
-      <div className="setting">
-        <label htmlFor="">태그</label>
-        <input type="text" className="titleInput" placeholder="태그와 태그는 쉼표(,)로 구분합니다."/>
       </div>
       <div className="setting">
         <label htmlFor="">비밀번호</label>
