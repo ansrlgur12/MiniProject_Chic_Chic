@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { getTopBrands } from '../api/Perfume';
+import { useNavigate  } from 'react-router-dom';
 
 
 const PerfumeSearchFilter = () => {
@@ -15,6 +16,8 @@ const PerfumeSearchFilter = () => {
     getTopBrands().then(setBrands); // 컴포넌트 마운트 시 상위 브랜드 가져오기
   }, []);
 
+  const history = useNavigate ();
+  
   const searchPerfumes = async () => {
     try {
       const response = await axios.get('http://localhost:8111/perfumes/search', {
@@ -26,10 +29,12 @@ const PerfumeSearchFilter = () => {
         }
       });
       setSearchResults(response.data);
+      history(`/searchResults?${encodeURIComponent(JSON.stringify(response.data))}`);
     } catch (error) {
       console.error(error);
     }
   };
+  
 
   return (
     <div>
@@ -74,7 +79,6 @@ const PerfumeSearchFilter = () => {
       </div>
       <button onClick={searchPerfumes}>Search</button>
       <div>
-        <h2>Search Results</h2>
         {searchResults.map((perfume, index) => (
           <div key={index}>
             <h3>{perfume.name}</h3>
