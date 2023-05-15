@@ -244,18 +244,10 @@ const Article = () => {
                             <p onClick={onClickDelete}>삭제하기</p>
                         </div>
                     </div>
+                    <br />
                 <OtherArticles bnum={article.bnum} />
                 </>
            ))}
-            <br />
-            <div className="tag">
-                <h3>태그</h3>
-                <div className="tag-list">
-                    <p className="tagName">#향수</p>
-                    <p className="tagName">#퍼퓸</p>
-                    <p className="tagName">#칙칙</p>
-                </div>
-            </div>
             <br />
             <Comment anum={anum}/>
         </ArticleStyle>

@@ -16,8 +16,6 @@ import UserDeal from './pages/Community/Userdeal';
 import Article from './pages/Article/Article';
 import EventPage from './pages/Notice/EventPage';
 import Notice from './pages/Notice/Notice';
-
-
 import PerfumeDetail from './pages/PerfumeDetail';
 import Perfume from './pages/Perfume';
 import PerfumeSearchFilter from './pages/PerfumeSearchFilter';
@@ -40,7 +38,9 @@ import Update from './pages/Article/UpdateArticle';
 import OtherArticles from './pages/Article/OtherArticles';
 import ImageUploader from './pages/imageUploader';
 import NoticeList from './pages/Notice/NoticeList';
+import Notice from './pages/Notice/Notice';
 import NewsL from './pages/Notice/NewsL';
+import Search from './pages/Search/Search';
 const queryClient = new QueryClient();
 
 
@@ -59,7 +59,7 @@ function App() {
         <Route path='/userdeal' element={<UserDeal />} />
         <Route path='/article/:anum' element={<Article />} />
         <Route path='/EventPage' element={<EventPage />} />
-        <Route path='/Notice' element={<NoticeList />} />
+       
         <Route path='/imagetest1' element={<ImageTest1 />} />
         <Route path='/imagetest2' element={<ImageTest2 />} />
 
@@ -89,6 +89,7 @@ function App() {
         <Route path='/otherArticles' element={<OtherArticles />} />
         <Route path='/imageUploader' element={<ImageUploader />} />
         <Route path='/Notice/:num' element={<Notice />} />
+        <Route path='/Search' element={<Search />} />
       </Routes>
     </Router>
     

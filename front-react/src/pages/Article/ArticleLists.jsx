@@ -4,8 +4,9 @@ import styled from "styled-components";
 import AxiosApi from "../../api/Axios";
 import { useState, useEffect } from "react";
 import Footer from "../../Footer/Footer";
+import logoimage from "../../image/로고.jpg";
 
-const ArticleListBlock = styled.div`
+export const ArticleListBlock = styled.div`
 
     height: 1210px;
 
@@ -22,11 +23,6 @@ const ArticleListBlock = styled.div`
 
     .article .article-image{
         flex-basis: 25%;
-        background-color: #ccc;
-        height: 150px;
-        width: 150px;
-        background-size: cover;
-        background-position: center;
     }
     .article-left{
         overflow:hidden; 
@@ -79,6 +75,10 @@ const ArticleListBlock = styled.div`
     .active{
         background-color:  #5f330d;
         color: white;
+    }
+    .profileP1 {
+        height: 150px;
+        width: 100%;
     }
 
   `;
@@ -144,7 +144,10 @@ const ArticleListBlock = styled.div`
                         <div className="text" dangerouslySetInnerHTML={{ __html: article.text }} >
                         </div>
                     </div>
-                    <div class="article-image"></div>
+                    <div className="article-image">
+                        <img className="profileP1" src={article.img === 'image' ? logoimage : article.img} style={{ backgroundSize: 'cover', backgroundRepeat: 'no-repeat'}}></img>
+                    </div>
+                    
                 </div>
             ))}
             <div className="btnBox">

@@ -1,10 +1,11 @@
-import React from "react";
+import React, {useState} from "react";
 import styled, {css} from "styled-components";
 import logoImage from "../image/로고.jpg"
 import { Link, useNavigate } from "react-router-dom";
 import "./font.css";
 import { useContext } from "react";
 import { UserContext } from "../context/UserInfo";
+import Modal from "../util/Modal";
 
 const HeaderStyle = styled.div`
 
@@ -65,11 +66,7 @@ const HeaderStyle = styled.div`
     background-color: aquamarine;
   }
   
-  .logo-line .logo-right .searchbar .search-txt{
-    height: 30px;
-    margin-right: 15px;
-    display: none;
-  }
+ 
   .nav{
     height: 100%;
     display: flex;
@@ -163,6 +160,16 @@ const Header = () => {
   const {setUserId, setPassword, setIsLogin, isLogin} = context;
 
     const nav = useNavigate();
+    const[modalOpen, setModalOpen] = useState(false);
+
+    const needLogin = () => {
+      setModalOpen(true);
+    }
+
+    const closeModal = () => {
+      setModalOpen(false);
+    }
+
     return(
         <>
             <HeaderStyle>
@@ -172,13 +179,10 @@ const Header = () => {
                     <div className="logo" onClick={()=>nav("/")}><div className="image" style={{ backgroundImage: `url(${logoImage})`, backgroundSize: 'cover' }}></div></div>
                     <div className="logo-right">
                         <div className="searchbar">
-                        <input className="search-txt" type="text" placeholder="" />
-                        <div className="search-btn"><i className="fas fa-search"></i></div>
+                        <div className="search-btn" onClick={()=>nav("/Search")}><i className="fas fa-search"></i></div>
+                        </div>
+                        <span className="material-symbols-outlined" onClick={()=> {isLogin ? nav("/MyPage") : needLogin()}}>person</span>
                     </div>
-                    <span className="material-symbols-outlined" onClick={()=> {isLogin ? nav("/MyPage") : nav("/Login")}}>
-                        person
-                    </span>
-                </div>
                 </div>
                 <div className="nav">
                 <div className="menu">
@@ -208,6 +212,7 @@ const Header = () => {
                 </div>
                 </div>
             </HeaderStyle>
+            <Modal open={modalOpen} type={true} confirm={()=>nav("/Login")} close={closeModal} header={"확인"}>로그인이 필요합니다</Modal>
         </>
     );
 }
