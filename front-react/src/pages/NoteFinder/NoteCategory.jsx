@@ -3,10 +3,11 @@ import Header from "../../Header/Header";
 import { ImageTestStyle,ImageTestStyle1 } from "../imageTest/imageTest";
 import styled from "styled-components";
 import Footer from "../../Footer/Footer";
-import { useState, useEffect } from "react";
+import { useState, } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
-const Btn = styled.div`
+export const Btn = styled.div`
   display: block;
     font-family : 'NeoDunggeunmoPro-Regular';
   margin: 0 auto ;
@@ -93,17 +94,11 @@ const Selfragrance= styled.div`
 
 const NoteCategory = () => {
   const nav = useNavigate()
-  const location = useLocation();
+  const location = useLocation()
   const [selectedCategory, setSelectedCategory] = useState("");
   const [selectedFragrance, setSelectedFragrance] = useState("");
-  const [selectedValue,setSelectedValue]=  useState({
-    fragrance1: "",
-    id1: "",
-    fragrance2: "",
-    id2: "",
-    fragrance3: "",
-    id3: "",
-  });
+  const [selectedValue,setSelectedValue]=  useState([]);
+ 
   const handleCategoryClick = (category) => {
     setSelectedCategory(category);
     setSelectedFragrance("");
@@ -111,32 +106,27 @@ const NoteCategory = () => {
  
   const handleFragranceClick = (fragrance,id,hashtag) => {
     setSelectedFragrance(hashtag);
-    setSelectedValue((prev) => ({
-      ...prev,
-      [`fragrance${id}`]: fragrance,
-      [`id${id}`]: id,
-    }));
-  };
-  const handleSelectClick = () => {
-   
-    nav(`/NoteFinderMain?fragrance1=${selectedValue.fragrance1}&id1=${selectedValue.id1}&fragrance2=${selectedValue.fragrance2}&id2=${selectedValue.id2}&fragrance3=${selectedValue.fragrance3}&id3=${selectedValue.id3}`);
+    setSelectedValue({ fragrance, id });
+};
   
-  };  
+
+  const handleSelectClick = () => {
+    const index = location.state.index;
+  const updatedSelectedValue = { ...location.state.selectedValue };
+  updatedSelectedValue[index] = selectedValue;
+  nav("/NoteFinderMain", { state: { selectedValue: updatedSelectedValue } });
+  };
   useEffect(() => {
-    const state = location.state;
-    setSelectedValue(state?.selectedValue || {
-      fragrance1: "",
-      id1: "",
-      fragrance2: "",
-      id2: "",
-      fragrance3: "",
-      id3: "",
-    });
-  }, [location]);
+    const locationState = location.state;
+    if (locationState && locationState.selectedValue) {
+      setSelectedValue(locationState.selectedValue);
+    }
+  }, [location.state]);
 
 
   return (
-    <>
+
+  <>
     <Header/>
      <ImageTestStyle>
       
@@ -303,7 +293,7 @@ const NoteCategory = () => {
           <div onClick={() => handleFragranceClick("바닐라","920","#아늑한 #부드러운 #어두운")}>
            바닐라
           </div>
-          <div onClick={() => handleFragranceClick("Aldehyde","12","#비누향 #신선한 #플로럴")}>
+          <div onClick={() => handleFragranceClick("알데하이드","12","#비누향 #신선한 #플로럴")}>
            알데하이드
           </div>
           </FragranceContainer>
@@ -337,8 +327,9 @@ const NoteCategory = () => {
         </CategoryContainer>
         
         </Trapezoid>
+        {selectedFragrance && (
         <Btn onClick={()=> handleSelectClick()}>SELECT</Btn>
-   
+        )}
       </div>
       
       

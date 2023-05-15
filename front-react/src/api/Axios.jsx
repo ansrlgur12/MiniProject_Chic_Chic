@@ -160,6 +160,9 @@ const AxiosApi = {
        
         return await axios.get(CHIC_DOMAIN + `/ImageTestResult/${selected}`);
       },
+      NoteFinderResult : async(ids) =>{
+        return await axios.get(CHIC_DOMAIN+ `/NoteFinderResult/${ids}`);
+      },
     plusLike : async(anum) => {
         const plus = {
             anum : anum.toString()

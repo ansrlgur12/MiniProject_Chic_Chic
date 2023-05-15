@@ -4,10 +4,9 @@ import { ImageTestStyle,ImageTestStyle1 } from "../imageTest/imageTest";
 import styled from "styled-components";
 import Footer from "../../Footer/Footer";
 import { useNavigate } from "react-router-dom";
-
-
-
-
+import { useLocation } from "react-router-dom";
+import { Btn } from "./NoteCategory";
+import AxiosApi from "../../api/Axios";
 const Triangle = styled.div`
 .pyramid {
     position: relative;
@@ -50,36 +49,54 @@ button{
 
 
 
-const NoteFinderMain = () => {
-  const nav = useNavigate();
-  window.scrollTo(0, 0);
-  const [selectedValue, setSelectedValue] = useState({
-    1: { fragrance: "Click", id: "" },
-    2: { fragrance: "Click", id: "" },
-    3: { fragrance: "Click", id: "" },
-  });
 
-  useEffect(() => {
-    const searchParams = new URLSearchParams(window.location.search);
-    const fragrance1 = searchParams.get("fragrance1") || "Click";
-    const id1 = searchParams.get("id1") || "";
-    const fragrance2 = searchParams.get("fragrance2") || "Click";
-    const id2 = searchParams.get("id2") || "";
-    const fragrance3 = searchParams.get("fragrance3") || "Click";
-    const id3 = searchParams.get("id3") || "";
-    setSelectedValue({
-      1: { fragrance: fragrance1, id: id1 },
-      2: { fragrance: fragrance2, id: id2 },
-      3: { fragrance: fragrance3, id: id3 },
-    });
-  }, []);
 
-  const handleSelect = (index, fragrance) => {
-    setSelectedValue((prev) => ({
-      ...prev,
-      [index]: { ...prev[index], fragrance },
-    }));
-  };
+
+
+
+  
+  const NoteFinderMain = () => {
+    const nav = useNavigate();
+    const location = useLocation();
+    const [selectedValue, setSelectedValue] = useState({ 0: {}, 1: {}, 2: {} });
+    
+console.log(selectedValue);
+
+
+useEffect(() => {
+  const locationState = location.state;
+  if (locationState && locationState.selectedValue) {
+    setSelectedValue(locationState.selectedValue);
+  }
+}, [location.state]);
+
+const allValuesSelected = () => {
+  return (
+    selectedValue[0]?.fragrance &&
+    selectedValue[1]?.fragrance &&
+    selectedValue[2]?.fragrance
+  );
+};
+
+const handleButtonClick = (index) => {
+  nav("/NoteCategory", { state: { index, selectedValue } });
+};
+
+const fetchPerfumeResult = async () => {
+  const selectedArray = Object.values(selectedValue);
+
+  const ids = selectedArray.map(value => value.id);
+  
+  try {
+    const response = await AxiosApi.NoteFinderResult(ids);
+    console.log(ids);
+    console.log(response.data); 
+    setSelectedValue({ 0: {}, 1: {}, 2: {} });
+  } catch (error) {
+    console.error( error);
+  }
+};
+    
 
   return (
     
@@ -93,26 +110,27 @@ const NoteFinderMain = () => {
               <div class="pyramid">
                 <button
                   class="pyramid__section"
-                  onClick={() => {handleSelect(1, selectedValue[1].fragrance); nav("/NoteCategory");}}
+                  onClick={() => handleButtonClick(0)}
                 >
-                  <div className="value">
-                    {selectedValue[1].fragrance}
-                  </div>
+                {selectedValue[0]?.fragrance ? selectedValue[0]?.fragrance : "Click"}
                 </button>
                 <button
                   class="pyramid__section"
-                  onClick={() => {handleSelect(2, selectedValue[2].fragrance); nav("/NoteCategory");}}
+                  onClick={() => handleButtonClick(1)}
                 >
-                  {selectedValue[2].fragrance}
+                {selectedValue[1]?.fragrance ? selectedValue[1]?.fragrance : "Click"}
                 </button>
                 <button
                   class="pyramid__section"
-                  onClick={() => {handleSelect(3, selectedValue[3].fragrance); nav("/NoteCategory");}}
+                  onClick={() => handleButtonClick(2)}
                 >
-                  {selectedValue[3].fragrance}
+              {selectedValue[2]?.fragrance ? selectedValue[2]?.fragrance : "Click"}
                 </button>
               </div>
             </Triangle>
+            {allValuesSelected() && (
+  <Btn onClick={fetchPerfumeResult}>RESULT</Btn>
+)}
           </div>
         </ImageTestStyle1>
       </ImageTestStyle>
