@@ -133,6 +133,7 @@ const PerfumeList = () => {
   return (
 
     <div>
+      <h2 style={{marginLeft:"100px"}}>향수 목록</h2>
     <InfiniteLoader
       isItemLoaded={isItemLoaded}
       itemCount={itemCount}
