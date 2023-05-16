@@ -80,8 +80,8 @@ if (endPage - startPage < maxPageButtons - 1) {
         <ArticleListBlock>
             <Style>
             {displayedArticles && displayedArticles.map((article) => (
-                <div class="article" key={article.anum} onClick={()=>onClick(article.anum)}>
-                    <div class="article-left" >
+                <div className="article" key={article.anum} onClick={()=>onClick(article.anum)}>
+                    <div className="article-left" >
                         <h2>{article.title} </h2>
                         <p className="userDate">{article.id}  |  {article.date}</p>
                         <br />

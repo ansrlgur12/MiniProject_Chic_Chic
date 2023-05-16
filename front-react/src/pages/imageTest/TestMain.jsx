@@ -13,16 +13,16 @@ const Testmain = () => {
         <Header/>
         <ImageTestStyle>
             <ImageTestStyle1>
-        <div class="container">
-        <div class="header">
-          <h1 class="title">향수 이미지 테스트</h1>
+        <div className="container">
+        <div className="header">
+          <h1 className="title">향수 이미지 테스트</h1>
         </div>
-        <div class="content">
-          <div class="question">
-            <h2 class="question-title">나에게 어울리는 향수는?</h2>
+        <div className="content">
+          <div className="question">
+            <h2 className="question-title">나에게 어울리는 향수는?</h2>
             
             
-             <button class="startBtn" onClick={()=>nav("/imageTest")}>시작하기</button>
+             <button className="startBtn" onClick={()=>nav("/imageTest")}>시작하기</button>
              
           </div>
           

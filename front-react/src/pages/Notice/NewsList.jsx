@@ -24,16 +24,16 @@ const NewsList = (props) => {
         <>
             <NtcListStyle>     
             {article && article.map(article => (
-                <div class="article" key={article.anum} onClick={()=>onClick(article.anum)}>
+                <div className="article" key={article.anum} onClick={()=>onClick(article.anum)}>
               
-                <div class="article-left" >
+                <div className="article-left" >
                     <h2>{article.title} </h2>
                     <p className="userDate">{article.id}  |  {article.date}</p>
                     <br />
                     <div className="text" dangerouslySetInnerHTML={{ __html: article.text }} >
                     </div>
                 </div>
-                <div class="article-image"></div>
+                <div className="article-image"></div>
             
             </div>
             ))}
