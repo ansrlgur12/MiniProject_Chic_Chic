@@ -115,21 +115,21 @@ const fetchPerfumeResult = async () => {
           <div className="container">
             <h2>NOTE FINDER</h2>
             <Triangle>
-              <div class="pyramid">
+              <div className="pyramid">
                 <button
-                  class="pyramid__section"
+                  className="pyramid__section"
                   onClick={() => handleButtonClick(0)}
                 >
                 {selectedValue[0]?.fragrance ? selectedValue[0]?.fragrance : "Click"}
                 </button>
                 <button
-                  class="pyramid__section"
+                  className="pyramid__section"
                   onClick={() => handleButtonClick(1)}
                 >
                 {selectedValue[1]?.fragrance ? selectedValue[1]?.fragrance : "Click"}
                 </button>
                 <button
-                  class="pyramid__section"
+                  className="pyramid__section"
                   onClick={() => handleButtonClick(2)}
                 >
               {selectedValue[2]?.fragrance ? selectedValue[2]?.fragrance : "Click"}
