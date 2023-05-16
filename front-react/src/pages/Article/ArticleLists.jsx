@@ -80,6 +80,9 @@ export const ArticleListBlock = styled.div`
         height: 150px;
         width: 100%;
     }
+    .no-image{
+        display: none;
+    }
 
   `;
 
@@ -144,8 +147,8 @@ export const ArticleListBlock = styled.div`
                         <div className="text" dangerouslySetInnerHTML={{ __html: article.text }} >
                         </div>
                     </div>
-                    <div className="article-image">
-                        <img className="profileP1" src={article.img === 'image' ? logoimage : article.img} style={{ backgroundSize: 'cover', backgroundRepeat: 'no-repeat'}}></img>
+                    <div className={article.img === 'image' || article.img === null ? "no-image" : "article-image"}>
+                        <img className="profileP1" src={article.img} style={{ backgroundSize: 'cover', backgroundRepeat: 'no-repeat'}}></img>
                     </div>
                     
                 </div>

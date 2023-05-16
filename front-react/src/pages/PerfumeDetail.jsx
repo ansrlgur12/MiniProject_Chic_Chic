@@ -5,33 +5,34 @@ import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import styled from 'styled-components';
 
+const PerfumeDetailStyle = styled.div`
+.perfume-detail-container {
+  box-sizing: border-box;
+  padding-top: 300px;
+  height: 1000px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
 
-const PerfumeDetailStyled  = styled.div`
-box-sizing: border-box;
-padding-top: 300px;
-width: 70vw;
-height: 800px;
-margin: auto;
-display: flex;
-flex-direction: column;
-align-items: center;
-justify-content: center;
-background-color: #f9f9f9;
-border-radius: 10px;
-box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-`;
+.perfume-title {
+  color: #333;
+  font-size: 4em;
+  margin-bottom: 50px;
+}
 
-const Title = styled.h1`
-color: #333;
-font-size: 4em;
-margin-bottom: 50px;
-`;
+.detail-text {
+  color: #666;
+  font-size: 1.5em;
+  margin-bottom: 50px;
+}
 
-const DetailText = styled.p`
-color: #666;
-font-size: 1.5em;
-margin-bottom: 50px;
-`;
+`
 
 const PerfumeDetail = () => {
   const [perfumeDetail, setPerfumeDetail] = useState(null);
@@ -58,21 +59,20 @@ const PerfumeDetail = () => {
   return (
     <>
       <Header/>
-      <PerfumeDetailStyled>
-        <Title><b>{perfumeDetail.name}</b></Title>
+      <PerfumeDetailStyle>
+      <div className="perfume-detail-container">
+        <h1 className="perfume-title"><b>{perfumeDetail.name}</b></h1>
         <img src={perfumeDetail.thumbnail} alt="" />
-        
-        <DetailText>Brand: {perfumeDetail.brandName}</DetailText>
-        <DetailText>Launch Date: {perfumeDetail.launchDate}</DetailText>
-        <DetailText>Price: {perfumeDetail.price}$</DetailText>
-        <DetailText>Gender: {perfumeDetail.gender}</DetailText>
-        
-       
-      </PerfumeDetailStyled>
+        <p className="detail-text">Brand: {perfumeDetail.brandName}</p>
+        <p className="detail-text">Launch Date: {perfumeDetail.launchDate}</p>
+        <p className="detail-text">Price: {perfumeDetail.price}$</p>
+        <p className="detail-text">Gender: {perfumeDetail.gender}</p>
+      </div>
+   
+      </PerfumeDetailStyle>
       <Footer/>
     </>
   );
 };
-
 
 export default PerfumeDetail;
