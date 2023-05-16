@@ -8,6 +8,7 @@ import { Setting, Container } from './NewArticle';
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import Modal from "../../util/Modal";
+import { storage } from "../../firebase/firebase";
 
 
 
@@ -18,6 +19,8 @@ const Update = () => {
     const [pwd, setPwd] = useState("");
     const [bnum, setCategory] = useState(1);
     const [text, setText] = useState("");
+    const [file, setFile] = useState(null);
+    const [image, setImage] = useState('');
 
 
     const[modalOpen, setModalOpen] = useState(false);
@@ -29,6 +32,9 @@ const Update = () => {
             setTitle(rsp.data[0].title);
             setText(rsp.data[0].text);
             setCategory(rsp.data[0].bnum);
+            setFile(rsp.data[0].img);
+            console.log(rsp.data[0].img);
+            console.log(file);
         }
         viewArticle();
     },[num]);
@@ -46,7 +52,7 @@ const Update = () => {
     }
   
     const submit = async() => {
-      const rsp = await AxiosApi.update(num, bnum, title, text, pwd);
+      const rsp = await AxiosApi.update(num, bnum, title, text, pwd, image);
       console.log(rsp);
       nav(-1);
     }
@@ -60,6 +66,22 @@ const Update = () => {
     const goBack = () => {
       nav(-1);
     }
+    const handleFileInputChange = (e) => {
+      setFile(e.target.files[0]);
+      console.log(e.target.files[0]);
+    };
+  
+    const handleUploadClick = async() => {
+      const storageRef = storage.ref();
+      const fileRef = storageRef.child(file.name);
+      fileRef.put(file).then(() => {
+        console.log('File uploaded successfully!');
+        fileRef.getDownloadURL().then((url) => {
+          console.log("저장경로 확인 : " + url);
+          setImage(url);
+        });
+      });
+    };
 
       return (
         <>
@@ -83,6 +105,11 @@ const Update = () => {
             <input className="titleInput" type="text" value={title} onChange={onChangeTitle} />
           </div>
           <div className="setting">
+            <label htmlFor="">대표이미지</label>
+            <input type="file" onChange={handleFileInputChange} />
+            <button className="submitBtn" onClick={handleUploadClick}>등록</button>
+          </div>
+          <div className="setting">
             <label htmlFor="">내용</label>
             <Container>
             <CKEditor editor={ ClassicEditor } data = {text} onChange={(event, editor) => {
@@ -90,10 +117,6 @@ const Update = () => {
                     setText(data);
             }}/>
             </Container>
-          </div>
-          <div className="setting">
-            <label htmlFor="">태그</label>
-            <input type="text" className="titleInput" placeholder="태그와 태그는 쉼표(,)로 구분합니다."/>
           </div>
           <div className="setting">
             <label htmlFor="">비밀번호</label>

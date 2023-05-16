@@ -9,7 +9,7 @@ const PerfumeAllSearch = () => {
 
   const searchPerfumes = async () => {
     try {
-      const response = await axios.get(`http://localhost:8111/api/perfumes?name=${query}`);
+      const response = await axios.get(`http://localhost:8111/perfumes/searchByName?name=${query}`);
       setResults(response.data);
       navigate(`/searchResults?${encodeURIComponent(JSON.stringify(response.data))}`);
     } catch (error) {

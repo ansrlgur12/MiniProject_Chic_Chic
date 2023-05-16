@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 const ImageTest6 = () =>{
   const nav = useNavigate();
         
-        const [loadingText, setLoadingText] = useState(false);
+        const [loadingText, setLoadingText] = useState('결과 확인중');
         
       
         useEffect(() => {
@@ -17,13 +17,14 @@ const ImageTest6 = () =>{
             setLoadingText(prevText => prevText.length < 13 ? prevText + '.' : '결과 확인중');
           }, 500);
       
-          
+       
       
           return () => {
             clearInterval(timer);
           
           }
         }, []);
+
   
         return (
            <>

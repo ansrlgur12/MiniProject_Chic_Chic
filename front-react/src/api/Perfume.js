@@ -47,4 +47,22 @@ export const getTopBrands = async () => {
   }
 };
 
+export const getBrands = async () => {
+  try {
+    const response = await axios.get('http://localhost:8111/perfumes/brands-by-numbers');
+    return response.data;
+  } catch (error) {
+    console.error(error);
+    return [];
+  }
+};
 
+export const getSearchByName = async () => {
+  try {
+    const response = await axios.get('http://localhost:8111/perfumes/searchByName');
+    return response.data;
+  } catch (error) {
+    console.error(error);
+    return [];
+  }
+};
