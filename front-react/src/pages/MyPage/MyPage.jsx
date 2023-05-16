@@ -12,6 +12,7 @@ import AxiosApi from "../../api/Axios";
 import firebase from 'firebase/app';
 import 'firebase/analytics';
 import Modal from "../../util/Modal";
+import MyReview from "./MyReview";
 
 export const MyPageStyle = styled.div`
     box-sizing: border-box;
@@ -199,6 +200,11 @@ const MyPage = () => {
         console.log(memberReg.data.result);
         window.location.replace("/");
     };
+
+    const [orderBy, setOrderBy] = useState(1);
+    const handleNum = (e) => {
+        setOrderBy(e.target.value);
+    };
       
 
     return (
@@ -228,17 +234,16 @@ const MyPage = () => {
                                         <div><button className="logOut" onClick={onClickLogout}>로그아웃</button></div>
                                         <div><button className="logOut" onClick={onClickMemberDelete}>회원탈퇴</button></div>
                                     </div>
-                                    <div className="textProfile">
-                                        <div className="textHistory">내 리뷰</div>
-                                        <div className="textHistory">내 댓글</div>
-                                        <div className="textHistory">내 좋아요</div>
-                                        <div className="textHistory">내 한줄평</div>
+                                    <div className="textProfile" value={orderBy} onChange={handleNum}>
+                                        <div className="textHistory" value={1}>내 리뷰</div>
+                                        <div className="textHistory" value={2}>내 댓글</div>
+                                        <div className="textHistory" value={3}>내 좋아요</div>
+                                        <div className="textHistory" value={4}>내 한줄평</div>
                                     </div>
                                 </div>
                             </div>
                             <div className="down">
-                                <div className="pr1"><h4>소개 글</h4></div>
-                                <div className="pr2">안녕하세요 <br />소개 글 작성란입니다.</div>
+                                <MyReview bnum={1} view = {orderBy}/>
                             </div>
                         </div>
                     </div>

@@ -217,6 +217,14 @@ const AxiosApi = {
 
         return await axios.get(CHIC_DOMAIN + `/memberArticleDelete/${id}`);
     },
+
+    // 내가 쓴 리뷰글
+    myHistoryList : async(id) => {
+        return await axios.get(CHIC_DOMAIN + `/MyPage/${id}`);
+    },
+
+
+
 };
 
 export default AxiosApi;
