@@ -19,7 +19,10 @@ import Notice from './pages/Notice/Notice';
 import PerfumeDetail from './pages/PerfumeDetail';
 import Perfume from './pages/Perfume';
 import PerfumeSearchFilter from './pages/PerfumeSearchFilter';
-// import PerfumeSearchResults from './pages/PerfumeSearchResults';
+import PerfumeSearchResults from './pages/PerfumeSearchResults';
+import PerfumeAllSearch from './pages/PerfumeAllSearch';
+
+
 import TestResult from './pages/imageTest/TestResult';
 import NoteFinderMain from './pages/NoteFinder/NoteFinderMain';
 import NoteCategory from './pages/NoteFinder/NoteCategory';
@@ -36,6 +39,8 @@ import OtherArticles from './pages/Article/OtherArticles';
 import ImageUploader from './pages/imageUploader';
 import NoticeList from './pages/Notice/NoticeList';
 import NewsL from './pages/Notice/NewsL';
+import Search from './pages/Search/Search';
+import NtcList from './pages/Notice/NtcList';
 const queryClient = new QueryClient();
 
 
@@ -54,16 +59,16 @@ function App() {
         <Route path='/userdeal' element={<UserDeal />} />
         <Route path='/article/:anum' element={<Article />} />
         <Route path='/EventPage' element={<EventPage />} />
-        <Route path='/Notice' element={<NoticeList />} />
+       
         <Route path='/imagetest1' element={<ImageTest1 />} />
         <Route path='/imagetest2' element={<ImageTest2 />} />
 
 
         <Route path='/Perfume' element={<Perfume />} />
         <Route path="/perfumeDetail/:perfumeNumber" element={<PerfumeDetail />} />
-        <Route path='/PerfumeSearchFilter' element={<PerfumeSearchFilter />} />
-        {/* <Route path='/PerfumeSearchResults' element={<PerfumeSearchResults />} /> */}
-  
+        <Route path="/searchResults" element={<PerfumeSearchResults />} />
+        <Route path="/" element={<PerfumeSearchFilter />} />
+        <Route path='/PerfumeAllSearch' element={<PerfumeAllSearch />} />
 
 
         <Route path='/imagetest3' element={<ImageTest3 />} />
@@ -84,6 +89,8 @@ function App() {
         <Route path='/otherArticles' element={<OtherArticles />} />
         <Route path='/imageUploader' element={<ImageUploader />} />
         <Route path='/Notice/:num' element={<Notice />} />
+        <Route path='/Notice' element={<NoticeList />} />
+        <Route path='/Search' element={<Search />} />
       </Routes>
     </Router>
     

@@ -1,11 +1,12 @@
-import React from "react";
+import React, { useState,useEffect } from "react";
 import Header from "../../Header/Header";
 import { ImageTestStyle,ImageTestStyle1 } from "../imageTest/imageTest";
 import styled from "styled-components";
 import Footer from "../../Footer/Footer";
 import { useNavigate } from "react-router-dom";
-
-
+import { useLocation } from "react-router-dom";
+import { Btn } from "./NoteCategory";
+import AxiosApi from "../../api/Axios";
 const Triangle = styled.div`
 .pyramid {
     position: relative;
@@ -21,6 +22,7 @@ const Triangle = styled.div`
 
 
 .pyramid__section {
+  word-break: break-all;
   flex: 1 1 100%;
   background-color: orangered;
   margin-bottom: 2px;
@@ -35,49 +37,106 @@ const Triangle = styled.div`
 }
 button{
     
+    word-break: break-all;
     color: white;
     font-weight: bold;
     border: none;
     text-align:center;
 }
+
 `;
 
 
 
 
 
-const NoteFinderMain = () => {
+
+
+
+
+  
+  const NoteFinderMain = () => {
     const nav = useNavigate();
-    window.scrollTo(0, 0);
-return(
-    <>
-   <Header/>
-   <ImageTestStyle>
-    <ImageTestStyle1>
-        
-        <div className="container">
-        <h2>NOTE FINDER</h2>
-        <Triangle>
-        
-       
-        <div class="pyramid">
-  <button class="pyramid__section"onClick={()=>nav("/NoteCategory")}>click</button>
-  <button class="pyramid__section">click</button>
-  <button class="pyramid__section">click</button>
-</div>
+    const location = useLocation();
+    const [selectedValue, setSelectedValue] = useState({ 0: {}, 1: {}, 2: {} });
+    
+console.log(selectedValue);
 
 
-     
-        
-        </Triangle>
-   
-        </div>
-    </ImageTestStyle1>
-   </ImageTestStyle>
-   
-   <Footer/>
-    </>
-);
+useEffect(() => {
+  const locationState = location.state;
+  if (locationState && locationState.selectedValue) {
+    setSelectedValue(locationState.selectedValue);
+  }
+}, [location.state]);
+
+const allValuesSelected = () => {
+  return (
+    selectedValue[0]?.fragrance &&
+    selectedValue[1]?.fragrance &&
+    selectedValue[2]?.fragrance
+  );
 };
 
-export default NoteFinderMain;
+const handleButtonClick = (index) => {
+  nav("/NoteCategory", { state: { index, selectedValue } });
+};
+
+const fetchPerfumeResult = async () => {
+  const selectedArray = Object.values(selectedValue);
+
+  const ids = selectedArray.map(value => value.id);
+  
+  try {
+    const response = await AxiosApi.NoteFinderResult(ids);
+    console.log(ids);
+    console.log(response.data); 
+    setSelectedValue({ 0: {}, 1: {}, 2: {} });
+  } catch (error) {
+    console.error( error);
+  }
+};
+    
+
+  return (
+    
+    <>
+      <Header />
+      <ImageTestStyle>
+        <ImageTestStyle1>
+          <div className="container">
+            <h2>NOTE FINDER</h2>
+            <Triangle>
+              <div class="pyramid">
+                <button
+                  class="pyramid__section"
+                  onClick={() => handleButtonClick(0)}
+                >
+                {selectedValue[0]?.fragrance ? selectedValue[0]?.fragrance : "Click"}
+                </button>
+                <button
+                  class="pyramid__section"
+                  onClick={() => handleButtonClick(1)}
+                >
+                {selectedValue[1]?.fragrance ? selectedValue[1]?.fragrance : "Click"}
+                </button>
+                <button
+                  class="pyramid__section"
+                  onClick={() => handleButtonClick(2)}
+                >
+              {selectedValue[2]?.fragrance ? selectedValue[2]?.fragrance : "Click"}
+                </button>
+              </div>
+            </Triangle>
+            {allValuesSelected() && (
+  <Btn onClick={fetchPerfumeResult}>RESULT</Btn>
+)}
+          </div>
+        </ImageTestStyle1>
+      </ImageTestStyle>
+      <Footer />
+    </>
+  );
+};
+
+export default NoteFinderMain

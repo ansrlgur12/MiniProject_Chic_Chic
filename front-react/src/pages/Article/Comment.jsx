@@ -5,6 +5,7 @@ import Modal from "../../util/Modal";
 import { useCallback } from "react";
 import { useContext } from "react";
 import { UserContext } from "../../context/UserInfo";
+import profile from "../../image/기본프로필.jpg";
 
 const CommentBox = styled.div`
     padding: 0;
@@ -14,6 +15,16 @@ const CommentBox = styled.div`
         padding-bottom: 25px;
         border-bottom: 0.2px solid rgb(161, 161, 161);
         margin-bottom: 25px;
+        display: flex;
+        flex-direction: row;
+    }
+
+    .listLeft{
+        padding-top: 25px;
+        flex-basis: 10%;
+    }
+    .listRight{
+        flex-basis: 90%;
     }
 
     .listTop{
@@ -85,6 +96,13 @@ const CommentBox = styled.div`
     .notLoginlistUpdate-Delete{
         display: none;
     }
+    .profile {
+        width: 50px;
+        height: 50px;
+        border: 1px solid #ccc;
+        border-radius: 50%;
+    }
+    
 `;
 
 const Comment = (props) => {
@@ -172,15 +190,20 @@ const Comment = (props) => {
                 </div>
                 {comment && comment.map(comment => (      
                 <div className="commentList" key={comment.commentNum}> 
-                    <div className="listTop">
-                        <div className="listName-date">{comment.id} <span className="space">|</span> {comment.date}</div>
-                        <div className={isLogin && userId === comment.id ? "listUpdate-Delete" : "notLoginlistUpdate-Delete"}>
-                            <p onClick={()=>viewComment(comment.commentNum)}>수정</p>
-                            <p>|</p>
-                            <p onClick={()=>onClickDeleteComment(comment.commentNum)}>삭제</p>
-                        </div>
+                    <div className="listLeft">
+                        <img className="profile" src={comment.userImg ? comment.userImg : profile} style={{ backgroundSize: 'cover', backgroundRepeat: 'no-repeat'} }></img>
                     </div>
-                    <div className="listBot">{comment.commentText}</div>
+                    <div className="listRight">
+                        <div className="listTop">
+                            <div className="listName-date">{comment.id} <span className="space">|</span> {comment.date}</div>
+                            <div className={isLogin && userId === comment.id ? "listUpdate-Delete" : "notLoginlistUpdate-Delete"}>
+                                <p onClick={()=>viewComment(comment.commentNum)}>수정</p>
+                                <p>|</p>
+                                <p onClick={()=>onClickDeleteComment(comment.commentNum)}>삭제</p>
+                            </div>
+                        </div>
+                        <div className="listBot">{comment.commentText}</div>
+                    </div>
                 </div>
                 ))}
                 

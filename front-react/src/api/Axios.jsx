@@ -17,13 +17,14 @@ const AxiosApi = {
     },
 
 
-    newArticle : async(id, bnum, title, text, pwd) => { // 게시글 작성 정보 저장
+    newArticle : async(id, bnum, title, text, pwd, image) => { // 게시글 작성 정보 저장
         const article = {
             id : id,
             bnum : bnum.toString(),
             title : title,
             text : text,
-            pwd : pwd
+            pwd : pwd,
+            image : image
         };
         return await axios.post(CHIC_DOMAIN + "/newArticle", article);
     },
@@ -80,13 +81,14 @@ const AxiosApi = {
     },
 
     // 게시글 수정
-    update : async(anum, bnum, title, text, pwd) => {
+    update : async(anum, bnum, title, text, pwd, img) => {
         const article = {
             anum : anum.toString(),
             bnum : bnum.toString(),
             title : title,
             text : text,
-            pwd : pwd
+            pwd : pwd,
+            img : img
         };
         return await axios.post(CHIC_DOMAIN + "/update", article);
     },
@@ -159,6 +161,9 @@ const AxiosApi = {
        
         return await axios.get(CHIC_DOMAIN + `/ImageTestResult/${selected}`);
       },
+      NoteFinderResult : async(ids) =>{
+        return await axios.get(CHIC_DOMAIN+ `/NoteFinderResult/${ids}`);
+      },
     plusLike : async(anum) => {
         const plus = {
             anum : anum.toString()
@@ -183,6 +188,41 @@ const AxiosApi = {
 
     commentMatch : async(commentNum, id, anum) => {
         return await axios.get(CHIC_DOMAIN + `/commentMatch/${commentNum}/${id}/${anum}`);
+    },
+
+    getImage : async(id) => {
+        return await axios.get(CHIC_DOMAIN + `/getImage/${id}`);
+    },
+
+    updateImage : async(id, image) => {
+        const updateImg = {
+            id : id,
+            image : image
+        }
+    return await axios.post(CHIC_DOMAIN + `/updateImage`, updateImg);
+    },
+
+    saveImage : async(image) => {
+        const save = {
+            image : image
+        }
+    return await axios.post(CHIC_DOMAIN + `/saveImage`, save);
+    },
+
+    searchArticle : async(text) => {
+        return await axios.get(CHIC_DOMAIN + `/searchArticle/${text}`);
+    },
+
+    memberDelete : async(id) => {
+        const regCheck = {
+            id: id
+        }
+        return await axios.post(CHIC_DOMAIN + "/memberDelete", regCheck);
+    },
+
+    memberArticleDelete : async(id) => {
+
+        return await axios.get(CHIC_DOMAIN + `/memberArticleDelete/${id}`);
     },
 };
 
