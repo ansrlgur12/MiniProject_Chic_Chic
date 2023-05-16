@@ -2,15 +2,20 @@ import React from "react";
 import { useLocation } from "react-router-dom";
 import Header from "../../Header/Header";
 import { ImageTestStyle,ImageTestStyle1 } from "./imageTest";
-import Loading from "../../util/Loading";
+import { useNavigate } from "react-router-dom";
 
 const TestResult = () => {
   
   const location = useLocation();
   const perfumes = location.state?.perfumes || null;
+  const nav = useNavigate();
   
+  const goToPerfumeDetail = () => { // add this function
+    if(perfumes){
+      nav(`/perfumeDetail/${perfumes.perfumeNumber}`);
+    }
+  }
   
-
 
 return(
     <>
@@ -27,8 +32,8 @@ return(
           
         {  perfumes && (
   
-  <div key={perfumes.perfume_number}>
-     <h3>{perfumes.brand}</h3>
+  <div key={perfumes.perfumeNumber}>
+     
     <div className='thumbnail'>
   
           <img src={perfumes.thumbnail} alt="thumbnail" />
@@ -41,7 +46,7 @@ return(
                   </div>
                
                 
-             <button class="startBtn">향수 정보</button>
+             <button class="startBtn" onClick={goToPerfumeDetail}>향수 정보</button>
              
           </div>
           

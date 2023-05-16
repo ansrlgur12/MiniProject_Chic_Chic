@@ -10,18 +10,19 @@ import ImageTest2 from './pages/imageTest/imageTest2';
 import ImageTest3 from './pages/imageTest/imageTest3';
 import ImageTest4 from './pages/imageTest/imageTest4';
 import ImageTest5 from './pages/imageTest/imageTest5';
-import ImageTest6 from './pages/imageTest/imageTest6';
+
 import Information from './pages/Community/Infomation';
 import UserDeal from './pages/Community/Userdeal';
 import Article from './pages/Article/Article';
 import EventPage from './pages/Notice/EventPage';
 import Notice from './pages/Notice/Notice';
+
 import PerfumeDetail from './pages/PerfumeDetail';
 import Perfume from './pages/Perfume';
 import PerfumeSearchFilter from './pages/PerfumeSearchFilter';
 import PerfumeSearchResults from './pages/PerfumeSearchResults';
 import PerfumeAllSearch from './pages/PerfumeAllSearch';
-
+import PerfumeList from './pages/PerfumeList';
 
 import TestResult from './pages/imageTest/TestResult';
 import NoteFinderMain from './pages/NoteFinder/NoteFinderMain';
@@ -69,11 +70,11 @@ function App() {
         <Route path="/" element={<PerfumeSearchFilter />} />
         <Route path='/PerfumeAllSearch' element={<PerfumeAllSearch />} />
 
-
+        <Route path='/perfumelist' element={<PerfumeList />} />
         <Route path='/imagetest3' element={<ImageTest3 />} />
         <Route path='/imagetest4' element={<ImageTest4 />} />
         <Route path='/imagetest5' element={<ImageTest5 />} />
-        <Route path='/imagetest6' element={<ImageTest6 />} />
+        
         <Route path='/testresult' element={<TestResult />} />
         <Route path='/notefindermain' element={<NoteFinderMain />} />
         <Route path='/notecategory' element={<NoteCategory />} />

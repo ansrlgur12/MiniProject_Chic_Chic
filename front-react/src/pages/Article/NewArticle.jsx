@@ -228,7 +228,7 @@ const Draft = () => {
                     upload: { handler: (file) => handleUploadImage(file), },
                   },
                 }}
-                data={text}
+                data=""
                 onReady={(editor) => {
                   console.log('Editor is ready to use!', editor);
                 }}

@@ -23,10 +23,10 @@ const Information = () => {
         <>
             <Header />
             <CommunityStyle>
-            <div class = "main">
-            <div class="section">
+            <div className = "main">
+            <div className="section">
                 <h2>정보공유</h2>
-                <div class="article-title">
+                <div className="article-title">
                     <select  className ="select" value={orderBy} onChange={onClickOrderBy}>
                             <option value={1}>조회순</option>
                             <option value={2}>인기순</option>
@@ -34,7 +34,7 @@ const Information = () => {
                         </select>
                     <div><p className={isLogin ? "write" : "notLoginWrite"} onClick={()=>nav("/newarticle")}>작성하기</p></div>
                 </div>
-                <div class="article-list">
+                <div className="article-list">
                     <div className="line" />
                     <ArticleLists num={2} view={orderBy}/>
                 </div>

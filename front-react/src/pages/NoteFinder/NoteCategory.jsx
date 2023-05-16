@@ -174,16 +174,16 @@ const NoteCategory = () => {
       {selectedCategory === "Floral" && (
         <>
         <FragranceContainer>
-          <div  onClick={() => handleFragranceClick("장미","785","#꽃의왕 #우디 #파우더리")}>
+          <div  onClick={() => handleFragranceClick("장미","785","#꽃의왕 #베르가못 #미들노트")}>
         장미
       </div>
-          <div  onClick={() => handleFragranceClick("자스민","472","#달콤 #관능적인 #화이트")}>
+          <div  onClick={() => handleFragranceClick("자스민","472","#관능적인 #난초 #베이스노트")}>
             자스민
           </div>
-          <div  onClick={() => handleFragranceClick("은방울꽃","529","#은은한 #따스한 #맑은")}>
+          <div  onClick={() => handleFragranceClick("은방울꽃","529","#은은한 #자몽 #미들노트")}>
             은방울꽃
           </div>
-          <div  onClick={() => handleFragranceClick("라벤더","512","#부드러운 #상쾌한 #스파이시")}>
+          <div  onClick={() => handleFragranceClick("라벤더","512","#상쾌한 #시더 #탑노트")}>
             라벤더
           </div>
           </FragranceContainer>
@@ -193,13 +193,13 @@ const NoteCategory = () => {
       {selectedCategory === "Woody" && (
         <>
         <FragranceContainer>
-          <div onClick={() => handleFragranceClick("시더우드","193","#따뜻한 #깊은 #자스민")}>
+          <div onClick={() => handleFragranceClick("시더우드","193","#깊은 #시나몬 #베이스노트")}>
             시더우드
           </div>
-          <div onClick={() => handleFragranceClick("샌달우드","808","#부드러움 #견고함 #그린")}>
+          <div onClick={() => handleFragranceClick("샌달우드","808","#부드러움 #레몬 #베이스노트")}>
             샌달우드
           </div>
-          <div onClick={() => handleFragranceClick("패출리","692","#달콤한 #그린 #스파이시")}>
+          <div onClick={() => handleFragranceClick("패출리","692","#달콤한 #자몽 #베이스노트")}>
             패출리
           </div>
           </FragranceContainer>
@@ -210,16 +210,16 @@ const NoteCategory = () => {
       {selectedCategory === "Citrus" && (
         <>
         <FragranceContainer>
-          <div onClick={() => handleFragranceClick("레몬","515","#신맛 #활기찬 #씁쓸한")}>
+          <div onClick={() => handleFragranceClick("레몬","515","#신맛 #샌달우드 #탑노트")}>
             레몬
           </div>
-          <div onClick={() => handleFragranceClick("라임","530","#달콤 #건조한 #오렌지")}>
-            라임
+          <div onClick={() => handleFragranceClick("애플","45","#달콤 #시더 #미들노트")}>
+            애플
           </div>
-          <div onClick={() => handleFragranceClick("오렌지","660","#달콤 #씁쓸한 #라임")}>
-           오렌지
+          <div onClick={() => handleFragranceClick("베르가못","660","#귤향 #난초 #탑노트")}>
+           베르가못
           </div>
-          <div onClick={() => handleFragranceClick("자몽","388","#쓴 #상큼한 #민트")}>
+          <div onClick={() => handleFragranceClick("자몽","388","#쓴 #오렌지 #탑노트")}>
            자몽
           </div>
           </FragranceContainer>
@@ -229,13 +229,13 @@ const NoteCategory = () => {
         {selectedCategory === "Spicy" && (
         <>
         <FragranceContainer>
-          <div onClick={() => handleFragranceClick("시나몬","224","#무거운 #스파이시 #미들노트")}>
+          <div onClick={() => handleFragranceClick("시나몬","224","#무거운 #레몬 #미들노트")}>
             시나몬
           </div>
-          <div onClick={() => handleFragranceClick("정향","237","#자극적 #선명한 #프루티")}>
+          <div onClick={() => handleFragranceClick("정향","237","#자극적 #자몽 #미들노트")}>
             정향
           </div>
-          <div onClick={() => handleFragranceClick("육두구","646","#부드러운 #달콤한 #머스크")}>
+          <div onClick={() => handleFragranceClick("육두구","646","#달콤한 #라벤더 #미들노트")}>
            육두구
           </div>
          
@@ -246,16 +246,16 @@ const NoteCategory = () => {
         {selectedCategory === "Fruity" && (
         <>
         <FragranceContainer>
-          <div onClick={() => handleFragranceClick("복숭아","694","#달콤한 #상큼한 #파우더리")}>
+          <div onClick={() => handleFragranceClick("복숭아","694","#상큼한 #난초 #탑노트")}>
             복숭아
           </div>
-          <div onClick={() => handleFragranceClick("딸기","858","#달콤한 #상큼한 #장미")}>
+          <div onClick={() => handleFragranceClick("딸기","858","#달콤한 #장미 #탑노트")}>
             딸기
           </div>
-          <div onClick={() => handleFragranceClick("포도","390","#달콤한 #포근한 #아로마틱")}>
-           포도
+          <div onClick={() => handleFragranceClick("라즈베리","765","#신선한 #난초 #탑노트")}>
+           라즈베리
           </div>
-          <div onClick={() => handleFragranceClick("무화과","343","#부드러운 #씁쓸한 #우디")}>
+          <div onClick={() => handleFragranceClick("무화과","343","#부드러운 #씁쓸한 #미들노트")}>
            무화과
           </div>
           </FragranceContainer>
@@ -265,17 +265,17 @@ const NoteCategory = () => {
         {selectedCategory === "Green" && (
         <>
         <FragranceContainer>
-          <div onClick={() => handleFragranceClick("세이지","802","#흐리멍텅한 #후추 #부드러운")}>
+          <div onClick={() => handleFragranceClick("세이지","802","#흐리멍텅한 #자몽 #미들노트")}>
             세이지
           </div>
-          <div onClick={() => handleFragranceClick("민트","604","#시원한 #상큼한 #후추")}>
+          <div onClick={() => handleFragranceClick("민트","604","#시원한 #시나몬 #탑노트")}>
             민트
           </div>
-          <div onClick={() => handleFragranceClick("풀","522","#강렬한 #허브 #스파이시")}>
+          <div onClick={() => handleFragranceClick("풀","522","#신선한 #난초 #탑노트")}>
            풀
           </div>
-          <div onClick={() => handleFragranceClick("알로에베라","19","#활기찬 #아쿠아틱 #포도")}>
-           알로에베라
+          <div onClick={() => handleFragranceClick("갈바니움","366","#미나리향 #장미 #탑노트")}>
+           갈바니움
           </div>
           </FragranceContainer>
           <Selfragrance>{selectedFragrance}</Selfragrance>
@@ -303,7 +303,7 @@ const NoteCategory = () => {
         {selectedCategory === "Oriental" && (
         <>
         <FragranceContainer>
-          <div onClick={() => handleFragranceClick("난초","664","#담백한 #화려한 #플로럴")}>
+          <div onClick={() => handleFragranceClick("난초","473","#담백한 #미들노트 #베르가못")}>
             난초
           </div>
           <div onClick={() => handleFragranceClick("머스크","624","#따뜻한 #몽환적인 #묵직한")}>
