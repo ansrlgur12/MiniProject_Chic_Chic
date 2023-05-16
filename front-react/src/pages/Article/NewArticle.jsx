@@ -120,7 +120,6 @@ const Draft = () => {
 
   const submit = async() => {
     const rsp = await AxiosApi.newArticle(userId, bnum, title, text, pwd, image);
-    await AxiosApi.saveImage(uploadedImage);
     console.log(rsp);
     nav(-1);
   }

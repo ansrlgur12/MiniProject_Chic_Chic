@@ -202,13 +202,6 @@ const AxiosApi = {
     return await axios.post(CHIC_DOMAIN + `/updateImage`, updateImg);
     },
 
-    saveImage : async(image) => {
-        const save = {
-            image : image
-        }
-    return await axios.post(CHIC_DOMAIN + `/saveImage`, save);
-    },
-
     searchArticle : async(text) => {
         return await axios.get(CHIC_DOMAIN + `/searchArticle/${text}`);
     },
