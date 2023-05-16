@@ -85,7 +85,6 @@ const Container = styled.div`
     font-weight: 700;
   }
   .enable-button:active {
-    margin-top: 50px;
     margin-left: 30px;
     margin-right: 30px;
     font-family: 'Noto Sans KR', sans-serif;
@@ -158,6 +157,7 @@ const SignUp = () => {
      
      // 팝업
      const [modalOpen, setModalOpen] = useState(false);
+     const [finishModal, setFinishModal] = useState(false);
      const [modalText, setModelText] = useState("중복된 아이디 입니다.");
 
      const closeModal = () => {
@@ -206,8 +206,17 @@ const SignUp = () => {
         setIsName(true);
     }
     const onChangeMail = (e) => {
-        setInputEmail(e.target.value);
-        setIsMail(true);
+        const emailRegex = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
+        const emailCurrent = e.target.value ;
+        setInputEmail(emailCurrent);
+        
+        if (!emailRegex.test(emailCurrent)) {
+            setMailMessage('이메일을 확인하세요')
+            setIsMail(false);
+        } else {
+            setMailMessage('이메일 입력 완료 !')
+            setIsMail(true);
+        }        
     }
 
     const onClickLogin = async() => {
@@ -222,7 +231,7 @@ const SignUp = () => {
             const memberReg = await AxiosApi.memberReg(inputId, inputPw, inputName, inputEmail);
             console.log(memberReg.data);
             if(memberReg.data === true) {
-                nav('/');
+                setFinishModal(true);
             } else {
                 setModalOpen(true);
                 setModelText("회원 가입에 실패 했습니다.");
@@ -269,12 +278,17 @@ const SignUp = () => {
             <div className="item2">
                 <Input type="email" placeholder="이메일" value ={inputEmail} onChange={onChangeMail}/>
             </div>
+            <div className="hint">
+                    {inputPw.length > 0 && (
+                    <span className={`message ${isMail ? 'success' : 'error'}`}>{mailMessage}</span>)}
+            </div>
 
             <div className="item2">
                 {(isId && isPw && isConPw && isName && isMail) ? 
                 <button className="enable-button" onClick={onClickLogin}>NEXT</button> :
                 <button className="disable-button">NEXT</button>}
-                <Modal open={modalOpen} close={closeModal} header="오류">{modalText}</Modal>
+                <Modal open={modalOpen} close={closeModal} type={true} header="오류">{modalText}</Modal>
+                <Modal open={finishModal} confirm={()=>nav("/")} justConfirm={true} header="오류">회원가입에 성공했습니다!</Modal>
             </div>
         </Container>
         </>

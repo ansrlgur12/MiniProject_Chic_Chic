@@ -53,6 +53,7 @@
     ]
   },
   "devDependencies": {
-    "cross-env": "^7.0.3"
+    "cross-env": "^7.0.3",
+    "webpack-dev-server": "^4.15.0"
   }
 }

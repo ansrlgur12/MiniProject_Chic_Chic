@@ -131,6 +131,7 @@ const MyPage = () => {
     const [userImage, setUserImage] = useState('');
     window.scrollTo(0, 0);
     const [modalOpen, setModalOpen] = useState(false);
+    const [deleteModalOpen, setDeleteModalOpen] = useState(false);
 
     useEffect(()=> {
         const userInfo = async() => {
@@ -193,11 +194,17 @@ const MyPage = () => {
         setModalOpen(false);
     };
 
+    
+
     const confirmModal = async() => {
         setModalOpen(false);
-        const memberReg = await AxiosApi.memberDelete(userId);
-        console.log(memberReg.data.result);
-        window.location.replace("/");
+        const deleteMember = async() => {
+            const memberReg = await AxiosApi.memberDelete(userId);
+            console.log(memberReg.data.result);
+            setDeleteModalOpen(true);
+        };
+        await deleteMember();
+        
     };
       
 
@@ -248,6 +255,7 @@ const MyPage = () => {
                     </div>
                 </div>
                 <Modal open={modalOpen} confirm={confirmModal} close={closeModal} type={true} header="확인">정말 탈퇴하시겠습니까?</Modal>
+                <Modal open={deleteModalOpen} confirm={()=>window.location.replace("/")} justConfirm={true} header="확인">회원 탈퇴가 완료되었습니다.</Modal>
             </MyPageStyle>
             <Footer />
         </>
