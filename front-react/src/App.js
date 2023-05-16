@@ -21,7 +21,7 @@ import Perfume from './pages/Perfume';
 import PerfumeSearchFilter from './pages/PerfumeSearchFilter';
 import PerfumeSearchResults from './pages/PerfumeSearchResults';
 import PerfumeAllSearch from './pages/PerfumeAllSearch';
-
+import PerfumeList from './pages/PerfumeList';
 
 import TestResult from './pages/imageTest/TestResult';
 import NoteFinderMain from './pages/NoteFinder/NoteFinderMain';
@@ -38,7 +38,7 @@ import Update from './pages/Article/UpdateArticle';
 import OtherArticles from './pages/Article/OtherArticles';
 import ImageUploader from './pages/imageUploader';
 import NoticeList from './pages/Notice/NoticeList';
-import Notice from './pages/Notice/Notice';
+
 import NewsL from './pages/Notice/NewsL';
 import Search from './pages/Search/Search';
 const queryClient = new QueryClient();
@@ -70,7 +70,7 @@ function App() {
         <Route path="/" element={<PerfumeSearchFilter />} />
         <Route path='/PerfumeAllSearch' element={<PerfumeAllSearch />} />
 
-
+        <Route path='/perfumelist' element={<PerfumeList />} />
         <Route path='/imagetest3' element={<ImageTest3 />} />
         <Route path='/imagetest4' element={<ImageTest4 />} />
         <Route path='/imagetest5' element={<ImageTest5 />} />

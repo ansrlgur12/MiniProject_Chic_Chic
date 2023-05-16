@@ -53,7 +53,7 @@ const fetchPerfumes = async ({ pageParam = 0 }) => {
   };
 };
 
-const PerfumeList = () => {
+const PerfumeList = ({perfumes}) => {
   // useInfiniteQuery hook을 사용하여 데이터 가져오기
   const {
     data,
@@ -62,6 +62,7 @@ const PerfumeList = () => {
     isFetchingNextPage,
   } = useInfiniteQuery('perfumes', fetchPerfumes, {
     getNextPageParam: (lastPage) => lastPage.nextPage,
+    enabled:!perfumes,
   });
 
   // 호버 상태를 관리하기 위한 state
@@ -76,7 +77,7 @@ const PerfumeList = () => {
   console.log("Data pages:", data.pages);
 
   // 아이템 개수 계산
-  const itemCount = hasNextPage ? (data.pages.length + 1) * 10 : data.pages.length * 10;
+  const itemCount =perfumes ? perfumes.length : hasNextPage ? (data.pages.length + 1) * 10 : data.pages.length * 10;
 
   // 더 많은 아이템을 로드하기 위한 함수
   const loadMoreItems = isFetchingNextPage ? () => {} : fetchNextPage;
@@ -96,11 +97,18 @@ const PerfumeList = () => {
   // 아이템을 렌더링하는 함수
   const renderItem = ({ columnIndex, rowIndex, style }) => {
     const index = rowIndex * 4 + columnIndex; 
-    if (!isItemLoaded(index)) return <div style={style}>Loading...</div>;
+    // perfumes props가 제공되면 그것을 사용하고, 그렇지 않으면 기존 방식대로 API 데이터를 사용합니다.
+    const perfume = perfumes ? perfumes[index] : !isItemLoaded(index) ? null : getPerfumeFromData(index, data);
 
-    const page = Math.floor(index / 10);
-    const itemIndex = index % 10;
-    const perfume = data.pages[page].content[itemIndex];
+    // 만약 향수 정보가 없으면 로딩 상태를 표시합니다.
+    if (!perfume) return <div style={style}>Loading...</div>;
+    function getPerfumeFromData(index,data){
+      const page = Math.floor(index / 10);
+      const itemIndex = index % 10;
+      return data.pages[page].content[itemIndex];
+    } 
+    
+    
 
     const itemStyle = {
       ...style,
@@ -168,3 +176,4 @@ const PerfumeList = () => {
 };
 
 export default PerfumeList;
+
