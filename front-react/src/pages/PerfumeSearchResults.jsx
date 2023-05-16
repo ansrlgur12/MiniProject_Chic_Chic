@@ -15,6 +15,13 @@ const PerfumeSearchResultsStyle = styled.div`
     align-items: center;
   }
 
+  .search-result {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    align-items: center; 
+  }
+
   .go-back-button {
     margin-bottom: 20px;
     font-size: 1.2rem;
@@ -77,9 +84,9 @@ const PerfumeSearchResults = () => {
     return (
       <Link to={`/perfumeDetail/${perfume.perfumeNumber}`} style={{ textDecoration: 'none', color: 'black' }}>
         <div className="search-result" style={style}>
-          <h3>{perfume.name}</h3>
-          <p>{perfume.price}</p>
-          <img src={perfume.thumbnail} alt="Perfume Thumbnail" style={{ maxWidth: '60%', maxHeight: '70%', objectFit: 'contain' }} />
+        <h3 style={{ fontSize: '20px' }}>{perfume.name}</h3>
+          <p>{perfume.price}$</p>
+          <img src={perfume.thumbnail} alt="Perfume Thumbnail" style={{ maxWidth: '70%', maxHeight: '50%', objectFit: 'contain' }} />
         </div>
       </Link>
     );

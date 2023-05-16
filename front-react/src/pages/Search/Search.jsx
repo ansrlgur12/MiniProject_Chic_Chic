@@ -1,19 +1,20 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import Header from "../../Header/Header";
 import SearchCommunity from "./SearchCommunity";
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const SearchStyle = styled.div`
     padding-top: 130px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    
 
     .searchContainer {
         display: flex;
         align-items: center;
-        position: relative; /* 추가 */
+        position: relative;
     }
 
     .searchBar{
@@ -24,7 +25,7 @@ const SearchStyle = styled.div`
         border-radius: 20px;
         border: 3px solid #ccc;
         flex-grow: 1;
-        padding-right: 40px; /* 추가 */
+        padding-right: 40px;
     }
 
     .searchBtn {
@@ -80,14 +81,18 @@ const SearchStyle = styled.div`
 `;
 
 const Search = () => {
-
     const [searchValue, setSearchValue] = useState(""); 
     const [isSearched, setIsSearched] = useState(false);
     const [selectedCategory, setSelectedCategory] = useState('');
     const [change, setChange] = useState(0);
+    const [results, setResults] = useState([]);
+    const navigate = useNavigate();
 
-    const handleCategoryClick = (category) => {
+    const handleCategoryClick = async (category) => {
         setSelectedCategory(category);
+        if (category === 'perfume' && searchValue !== '') {
+            await searchPerfumes();
+        }
     };
 
     const searchBarChange = (e) => {
@@ -99,6 +104,17 @@ const Search = () => {
         setIsSearched(true);
         setChange(1);
     }
+
+    const searchPerfumes = async () => {
+      try {
+        const response = await axios.get(`http://localhost:8111/perfumes/searchByName?name=${searchValue}`);
+        setResults(response.data);
+        navigate(`/searchResults?${encodeURIComponent(JSON.stringify(response.data))}`);
+      } catch (error) {
+        console.error('Error searching perfumes:', error);
+      }
+    };
+
     return(
         <>
         <Header />
@@ -116,6 +132,12 @@ const Search = () => {
                 <div className={selectedCategory === 'perfume' ?  "perfumeList" : 'noSelected'}>
                     <hr />
                     <p>"perfume 검색 결과"</p>
+                    {results.map((perfume, index) => (
+                        <div key={index}>
+                            <h3>{perfume.name}</h3>
+                            <p>{perfume.description}</p>
+                        </div>
+                    ))}
                 </div>
                 <div className={selectedCategory === 'community' ?  "communityList" : 'noSelected'}>
                     <hr />
