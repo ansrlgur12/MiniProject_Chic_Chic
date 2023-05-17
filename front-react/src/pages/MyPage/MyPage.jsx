@@ -12,7 +12,9 @@ import AxiosApi from "../../api/Axios";
 import firebase from 'firebase/app';
 import 'firebase/analytics';
 import Modal from "../../util/Modal";
+import MyReview from "./MyReview";
 import Tooltip from "../../util/ToolTip";
+
 
 export const MyPageStyle = styled.div`
     box-sizing: border-box;
@@ -109,6 +111,8 @@ export const MyPageStyle = styled.div`
         margin-top: 2em;
         border-top: 1px solid black;
         padding-top: 1em;
+        display: flex;
+        justify-content: center;
     }
     .profileP2{
         width: 200px;
@@ -217,6 +221,13 @@ const MyPage = () => {
         await deleteMember();
         
     };
+
+    const [orderBy, setOrderBy] = useState("");
+
+    const handleNum = (e) => {
+        setOrderBy(e.target.dataset.value);
+        console.log(e.target.dataset.value);
+    };
       
 
     return (
@@ -248,16 +259,15 @@ const MyPage = () => {
                                         <div><button className="logOut" onClick={onClickMemberDelete}>회원탈퇴</button></div>
                                     </div>
                                     <div className="textProfile">
-                                        <div className="textHistory">내 리뷰</div>
-                                        <div className="textHistory">내 댓글</div>
-                                        <div className="textHistory">내 좋아요</div>
-                                        <div className="textHistory">내 관심목록</div>
+                                        <button className="textHistory" data-value={1} onClick={handleNum}>내 리뷰</button>
+                                        <button className="textHistory" data-value={2} onClick={handleNum}>내 댓글</button>
+                                        <button className="textHistory" data-value={3} onClick={handleNum}>내 좋아요</button>
+                                        <button className="textHistory" data-value={4} onClick={handleNum}>내 한줄평</button>
                                     </div>
                                 </div>
                             </div>
                             <div className="down">
-                                <div className="pr1"><h4>소개 글</h4></div>
-                                <div className="pr2">안녕하세요 <br />소개 글 작성란입니다.</div>
+                                <MyReview id={userId} views={orderBy}/>
                             </div>
                         </div>
                     </div>
