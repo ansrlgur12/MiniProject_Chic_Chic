@@ -124,11 +124,11 @@ const MyPage = () => {
 
     const nav = useNavigate();
     const context = useContext(UserContext);
-    const {userId, setUserId, setPassword, setIsLogin, isLogin} = context;
+    const {userId, setUserId, setPassword, setIsLogin, isLogin,userImage,setUserImage} = context;
     const [file, setFile] = useState(null);
     const [url, setUrl] = useState('');
     const [updateProfile, setUpdateProfile] = useState(false);
-    const [userImage, setUserImage] = useState('');
+    
     window.scrollTo(0, 0);
     const [modalOpen, setModalOpen] = useState(false);
     const [deleteModalOpen, setDeleteModalOpen] = useState(false);
@@ -138,6 +138,7 @@ const MyPage = () => {
             const rsp = await AxiosApi.getImage(userId);
             console.log(rsp);
             setUrl(rsp.data[0].userImg);
+            setUserImage(rsp.data[0].userImg);
         }
         userInfo();
     },[]);
