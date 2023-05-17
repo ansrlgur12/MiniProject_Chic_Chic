@@ -8,6 +8,7 @@ import PerfumeSearchResults from './PerfumeSearchResults';
 import PerfumeAllSearch from './PerfumeAllSearch';
 
 export const PerfumeStyled  = styled.div`
+
 box-sizing: border-box;
 padding-top: 200px;
 width: 70vw;

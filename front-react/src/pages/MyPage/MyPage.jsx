@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import styled, {css} from "styled-components";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import Header from "../../Header/Header";
 import Footer from "../../Footer/Footer";
 import gradeimg5 from "../../image/gradeLv5.png"
@@ -13,6 +13,8 @@ import firebase from 'firebase/app';
 import 'firebase/analytics';
 import Modal from "../../util/Modal";
 import MyReview from "./MyReview";
+import Tooltip from "../../util/ToolTip";
+
 
 export const MyPageStyle = styled.div`
     box-sizing: border-box;
@@ -22,6 +24,15 @@ export const MyPageStyle = styled.div`
     flex-direction: column;
     align-items: center;
 
+    .hintBtn {
+        border-radius: 50px;
+        width: 25px;
+        height: 25px;
+        background-color: white;
+        border: 1px solid black;
+        text-align: center;
+        line-height: 1;
+    }
     .container {
         width: 960px;
         height: auto;
@@ -139,6 +150,7 @@ const MyPage = () => {
     useEffect(()=> {
         const userInfo = async() => {
             const rsp = await AxiosApi.getImage(userId);
+            await AxiosApi.myGrade(userId);
             console.log(rsp);
             setUrl(rsp.data[0].userImg);
         }
@@ -242,6 +254,7 @@ const MyPage = () => {
                                     <div className="perProfile">
                                         <div className="nickname">아이디 : {userId}</div>
                                         <div className="gradeLv">회원 등급 : <p className="gradeImg" style={{backgroundImage: `url(${gradeimg5})`, backgroundSize: 'contain', backgroundRepeat: 'no-repeat'}}></p></div>
+                                        <Tooltip content="회원등급 설정방식 : dsfds"><button className="hintBtn">?</button></Tooltip>
                                         <div><button className="logOut" onClick={onClickLogout}>로그아웃</button></div>
                                         <div><button className="logOut" onClick={onClickMemberDelete}>회원탈퇴</button></div>
                                     </div>
@@ -265,6 +278,7 @@ const MyPage = () => {
                 </div>
                 <Modal open={modalOpen} confirm={confirmModal} close={closeModal} type={true} header="확인">정말 탈퇴하시겠습니까?</Modal>
                 <Modal open={deleteModalOpen} confirm={()=>window.location.replace("/")} justConfirm={true} header="확인">회원 탈퇴가 완료되었습니다.</Modal>
+                
             </MyPageStyle>
             <Footer />
         </>
