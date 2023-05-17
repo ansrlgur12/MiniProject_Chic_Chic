@@ -128,6 +128,8 @@ const Comment = (props) => {
     const submit = async(commentNum) => { // 댓글 등록하는 부분
         if(!isUpdate) {
             await AxiosApi.newComment(props.anum, userId ,text, pwd);
+            await AxiosApi.plusOnePoint(userId);
+            await AxiosApi.myGrade(userId);
             setPwd("");
             setText("");
             const newComment = await AxiosApi.showComment(props.anum);

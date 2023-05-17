@@ -10,6 +10,9 @@ export const ArticleListBlock = styled.div`
 
     height: 1210px;
 
+    h2{
+        font-family: 'KIMM_Bold';
+    }
     .article{
         padding: 10px 0px 30px 0px;
         border-bottom: .5px solid #ccc;

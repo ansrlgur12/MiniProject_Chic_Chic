@@ -8,12 +8,16 @@ import styled from 'styled-components';
 
 // CSS 클래스 정의
 export const PerfumelistStyle = styled.div`
+
 .main-container {
   width: 100%; /* 너비를 원하는 값으로 변경 */
   max-width: 10px; /* 최대 너비를 원하는 값으로 변경 */
   margin: 0 auto; /* 컨테이너를 화면 가운데 정렬 */
   /* 필요한 경우 높이, 최소 높이, 최대 높이, 마진, 패딩 등을 추가 */
 }
+
+font-family: 'KIMM_Bold';
+
 `
 const cardStyle = {
   border: '1px solid #ccc',
@@ -121,6 +125,7 @@ const PerfumeList = ({perfumes}) => {
 
 
     return (
+      <PerfumelistStyle>
       <div
       style={itemStyle}
       onMouseEnter={() => handleMouseEnter(index)}
@@ -134,6 +139,7 @@ const PerfumeList = ({perfumes}) => {
           <img src={perfume.thumbnail} alt="Perfume Thumbnail" style={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain' }} />
       </div>
   </div>
+  </PerfumelistStyle>
   );
 
   };
