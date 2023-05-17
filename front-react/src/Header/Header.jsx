@@ -21,7 +21,7 @@ const HeaderStyle = styled.div`
     
     border-bottom: 1px solid #ccc;
     .profileP1 {
-        width: 4.2vw;
+        width: 4vw;
         height: 100%;
         border: 1px solid black;
         border-radius: 50%;
