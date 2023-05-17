@@ -9,8 +9,11 @@ import Comment from "./Comment";
 import Modal from "../../util/Modal";
 import { useContext } from "react";
 import { UserContext } from "../../context/UserInfo";
+import ShareButton from "../../util/ShareKakao";
+import { initKakao } from "kakao-js-sdk";
 
 const ArticleStyle = styled.div`
+    
     box-sizing: border-box;
     padding-top: 130px;
     width: 60vw;
@@ -18,6 +21,7 @@ const ArticleStyle = styled.div`
     margin: auto;
 
     h2 {
+        font-family: 'KIMM_Bold';
     display: block;
     font-size: 1.5em;
     margin-top: 0.83em;
@@ -146,6 +150,8 @@ const Article = () => {
     const[modalOpen, setModalOpen] = useState(false);
     const[deleteModalOpen, setDeleteModalOpen] = useState(false);
     const[isUser, setIsUser] = useState(false);
+    const[title, setTitle] = useState("");
+    const[image, setImage] = useState("");
     console.log("로그인 여부 : " + isLogin);
     window.scrollTo(0, 0);
 
@@ -154,6 +160,9 @@ const Article = () => {
         const article = async() => {
             const rsp = await AxiosApi.ariticle(anum);
             console.log(rsp.data);
+            setTitle(rsp.data[0].title);
+            setImage(rsp.data[0].img);
+
             await AxiosApi.viewCount(anum);
             if(userId){
                 const isLike = await AxiosApi.isLike(anum, userId);
@@ -221,6 +230,9 @@ const Article = () => {
     const closeDeleteModal = () => {
         setDeleteModalOpen(false);
     }
+
+    
+        
 
     return(
         <>

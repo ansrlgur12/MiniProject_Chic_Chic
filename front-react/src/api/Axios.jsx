@@ -214,6 +214,27 @@ const AxiosApi = {
         return await axios.post(CHIC_DOMAIN + "/memberDelete", regCheck);
     },
 
+    plusThreePoint : async(id) => {
+        const threePoint = {
+            id : id
+        }
+        return await axios.post(CHIC_DOMAIN + `/plusThreePoint`, threePoint);
+    },
+
+    plusOnePoint : async(id) => {
+        const onePoint = {
+            id : id
+        }
+        return await axios.post(CHIC_DOMAIN + `/plusOnePoint`, onePoint);
+    },
+
+    myGrade : async(id) => {
+        const grade = {
+            id : id
+        }
+        return await axios.post(CHIC_DOMAIN + `/myGrade`, grade);
+    },
+
 };
 
 export default AxiosApi;
