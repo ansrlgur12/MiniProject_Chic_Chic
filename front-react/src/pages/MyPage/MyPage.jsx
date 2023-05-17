@@ -100,6 +100,8 @@ export const MyPageStyle = styled.div`
         margin-top: 2em;
         border-top: 1px solid black;
         padding-top: 1em;
+        display: flex;
+        justify-content: center;
     }
     .profileP2{
         width: 200px;
@@ -132,6 +134,7 @@ const MyPage = () => {
     const [userImage, setUserImage] = useState('');
     window.scrollTo(0, 0);
     const [modalOpen, setModalOpen] = useState(false);
+    const [deleteModalOpen, setDeleteModalOpen] = useState(false);
 
     useEffect(()=> {
         const userInfo = async() => {
@@ -194,16 +197,24 @@ const MyPage = () => {
         setModalOpen(false);
     };
 
+    
+
     const confirmModal = async() => {
         setModalOpen(false);
-        const memberReg = await AxiosApi.memberDelete(userId);
-        console.log(memberReg.data.result);
-        window.location.replace("/");
+        const deleteMember = async() => {
+            const memberReg = await AxiosApi.memberDelete(userId);
+            console.log(memberReg.data.result);
+            setDeleteModalOpen(true);
+        };
+        await deleteMember();
+        
     };
 
-    const [orderBy, setOrderBy] = useState(1);
+    const [orderBy, setOrderBy] = useState("");
+
     const handleNum = (e) => {
-        setOrderBy(e.target.value);
+        setOrderBy(e.target.dataset.value);
+        console.log(e.target.dataset.value);
     };
       
 
@@ -234,16 +245,16 @@ const MyPage = () => {
                                         <div><button className="logOut" onClick={onClickLogout}>로그아웃</button></div>
                                         <div><button className="logOut" onClick={onClickMemberDelete}>회원탈퇴</button></div>
                                     </div>
-                                    <div className="textProfile" value={orderBy} onChange={handleNum}>
-                                        <div className="textHistory" value={1}>내 리뷰</div>
-                                        <div className="textHistory" value={2}>내 댓글</div>
-                                        <div className="textHistory" value={3}>내 좋아요</div>
-                                        <div className="textHistory" value={4}>내 한줄평</div>
+                                    <div className="textProfile">
+                                        <button className="textHistory" data-value={1} onClick={handleNum}>내 리뷰</button>
+                                        <button className="textHistory" data-value={2} onClick={handleNum}>내 댓글</button>
+                                        <button className="textHistory" data-value={3} onClick={handleNum}>내 좋아요</button>
+                                        <button className="textHistory" data-value={4} onClick={handleNum}>내 한줄평</button>
                                     </div>
                                 </div>
                             </div>
                             <div className="down">
-                                <MyReview bnum={1} view = {orderBy}/>
+                                <MyReview id={userId} views={orderBy}/>
                             </div>
                         </div>
                     </div>
@@ -253,6 +264,7 @@ const MyPage = () => {
                     </div>
                 </div>
                 <Modal open={modalOpen} confirm={confirmModal} close={closeModal} type={true} header="확인">정말 탈퇴하시겠습니까?</Modal>
+                <Modal open={deleteModalOpen} confirm={()=>window.location.replace("/")} justConfirm={true} header="확인">회원 탈퇴가 완료되었습니다.</Modal>
             </MyPageStyle>
             <Footer />
         </>

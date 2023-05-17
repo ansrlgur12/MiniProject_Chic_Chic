@@ -74,10 +74,10 @@ const NewsL = () => {
         <>
             <Header />
             <NewsLStyle>
-            <div class = "main">
-                <div class="section">
+            <div className = "main">
+                <div className="section">
                     <h2>News</h2>
-                    <div class="article-title">
+                    <div className="article-title">
                         <select  className ="select" value={orderBy} onChange={onClickOrderBy}>
                             <option value={1}>조회순</option>
                             <option value={2}>인기순</option>
@@ -85,7 +85,7 @@ const NewsL = () => {
                         </select>
                         <div><p className="write" onClick={()=>nav("/newarticle")}>작성하기</p></div>
                     </div>
-                    <div class="article-list">
+                    <div className="article-list">
                         <div className="line" />
                         <NewsList num={5} view={orderBy}/>
                     </div>

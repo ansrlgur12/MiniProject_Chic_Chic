@@ -79,6 +79,16 @@ export const Setting = styled.div`
       border-radius: 3px;
       border: 1px solid #ccc;
     }
+
+    .noImage{
+      display: none;
+    }
+
+    .imagePreview{
+      width: 80px;
+      margin-bottom: 15px;
+    }
+
 `;
 
 export const Container = styled.div`
@@ -166,51 +176,11 @@ const Draft = () => {
       });
     });
   };
-  // class FirebaseStorageAdapter {
-  //   constructor(loader) {
-  //     this.loader = loader;
-  //   }
-  
-  //   upload() {
-  //     const file = this.loader.file;
-  //     const storageRef = storage.ref();
-  //     const fileRef = storageRef.child(file.name);
-  
-  //     return new Promise((resolve, reject) => {
-  //       fileRef
-  //         .put(file)
-  //         .then(() => fileRef.getDownloadURL())
-  //         .then((url) => {
-  //           setUploadedImage(url);
-  //           resolve({
-  //             default: url,
-  //           });
-  //         })
-  //         .catch((error) => {
-  //           reject(error);
-  //         });
-  //     });
-  //   }
-  // }
-  
-  // const handleUploadImage = async (file) => {
-  //   return new Promise((resolve, reject) => {
-  //     const adapter = new FirebaseStorageAdapter({
-  //       loader: file, // 수정: file을 loader로 전달
-  //     });
-  
-  //     ClassicEditor.builtinPlugins
-  //       .get('FileRepository')
-  //       .createUploadAdapter((loader) => adapter)
-  //       .upload()
-  //       .then((response) => {
-  //         resolve(response.default);
-  //       })
-  //       .catch((error) => {
-  //         reject(error);
-  //       });
-  //   });
-  // };
+
+  const handleUploadDelete = () => {
+    setImage('');
+  }
+
 
   return (
     <>
@@ -237,6 +207,11 @@ const Draft = () => {
         <label htmlFor="">대표이미지</label>
         <input type="file" onChange={handleFileInputChange} />
         <button className="submitBtn" onClick={handleUploadClick}>등록</button>
+        <button className="submitBtn" onClick={handleUploadDelete}>삭제</button>
+      </div>
+      <div className="setting">
+        <label htmlFor="">이미지 미리보기</label>
+        <img className = {image ? "imagePreview" : "noImage" } src={image} alt="image" style={{ backgroundSize: 'cover', backgroundRepeat: 'no-repeat'}} />
       </div>
       <div className="setting">
         <label htmlFor="">내용</label>
@@ -269,10 +244,6 @@ const Draft = () => {
                 //   console.log('Focus.', editor);
                 // }}
               />
-              {/* <CKEditor editor={ClassicEditor} data={text} onChange={(event, editor) => {
-                        const data = editor.getData();
-                        setBoard_content(data);
-                    }}/> */}
         </Container>
       </div>
       <div className="setting">

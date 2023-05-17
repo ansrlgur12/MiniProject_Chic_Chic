@@ -142,6 +142,12 @@ const Login = () => {
 
     const nav = useNavigate();
 
+    const onKeyPress = (e) => {
+      if (e.key === 'Enter') {
+        onClickLogin();
+      }
+    };
+
     // Context API에 값을 저장
     const context = useContext(UserContext);
     const {setUserId, setPassword, setIsLogin} = context;
@@ -160,16 +166,13 @@ const Login = () => {
 
     // 팝업처리(모달)
     const[modalOpen, setModalOpen] = useState(false);
+    const[loginFinishOpen, setLoginFinishOpen] = useState(false);
 
   
     const closeModal = () => {
         setModalOpen(false);
     }
 
-    const confirmBtn = () => {
-        console.log("확인버튼이 눌려졌습니다.")
-        setModalOpen(false);
-    }
 
     const onChangeId = e => {
         // 5 ~ 20자리의 영문자, 숫자, 언더스코어로 이루어진 문자열 체크
@@ -204,10 +207,11 @@ const Login = () => {
       console.log(response.data);
 
       if(response.data === true) {
+          setLoginFinishOpen(true);
           setUserId(inputId);
           setPassword(inputPw);
           setIsLogin(true);
-          nav(-1);
+          
       } else {
           console.log("로그인 에러");
           setModalOpen(true);
@@ -229,7 +233,7 @@ const Login = () => {
                 {inputId.length > 0 && <span className= {`${isId ? "success" : "error"}`}>{idMessage}</span>}
             </div>
             <div className="item2">
-                <Input type="password" placeholder="비밀번호" value={inputPw} onChange={onChangePw}/>
+                <Input type="password" placeholder="비밀번호" value={inputPw} onChange={onChangePw} onKeyPress={onKeyPress}/>
             </div>
             <div className="hint">
                 {inputId.length > 0 && <span className= {`${isPw ? "success" : "error"}`}>{pwMessage}</span>}
@@ -239,7 +243,8 @@ const Login = () => {
               <button className="enable-button"onClick={onClickLogin}>SING IN</button>  :
               <button className="disable-button"onClick={onClickLogin}>SING IN</button>}
             </div>
-            <Modal open={modalOpen} type={true} confirm={confirmBtn} close={closeModal} header={"오류"}>아이디 및 패스워드를 확인해주세요.</Modal>
+            <Modal open={modalOpen} confirm={closeModal} justConfirm = {true} header={"오류"}>아이디 및 패스워드를 확인해주세요.</Modal>
+            <Modal open={loginFinishOpen} confirm={()=>nav(-1)} justConfirm = {true} header={"오류"}>로그인이 성공했습니다.</Modal>
             <div className="signup">
                 <div className="link_style" onClick={() => nav("/SignUp")}>회원가입</div>
             </div>
