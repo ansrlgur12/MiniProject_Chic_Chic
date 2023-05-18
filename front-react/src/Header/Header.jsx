@@ -21,9 +21,9 @@ const HeaderStyle = styled.div`
     
     border-bottom: 1px solid #ccc;
     .profileP1 {
-        width: 4vw;
+        width: 3.5vw;
         height: 100%;
-        border: 1px solid black;
+        border: 2px solid black;
         border-radius: 50%;
     }
  .top{
@@ -178,7 +178,7 @@ const HeaderStyle = styled.div`
     .memBtn{
       background-color: #fff;
       font-family: 'NeoDunggeunmoPro-Regular';
-      border: none;
+      border: 1px solid black;
 
     }
 `;
@@ -220,6 +220,7 @@ const Header = () => {
       onClick={()=> {isLogin ? nav("/MyPage") : needLogin()}}
       style={{ backgroundSize: 'cover', backgroundRepeat: 'no-repeat',cursor:"pointer" }}
     />
+   
     <button className="memBtn" onClick={() => { setUserId(""); setPassword(""); setIsLogin(false); }}>Logout</button>
   </div>
 ) : (
