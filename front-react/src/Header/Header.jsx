@@ -178,7 +178,7 @@ const HeaderStyle = styled.div`
     .memBtn{
       background-color: #fff;
       font-family: 'NeoDunggeunmoPro-Regular';
-      border: none;
+      border: 1px solid black;
 
     }
 `;
