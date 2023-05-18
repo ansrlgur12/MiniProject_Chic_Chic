@@ -3,9 +3,10 @@ import styled, {css} from "styled-components";
 import logoImage from "../image/로고.jpg"
 import { Link, useNavigate } from "react-router-dom";
 import "./font.css";
-import { useContext } from "react";
+import { useContext,useEffect } from "react";
 import { UserContext } from "../context/UserInfo";
 import Modal from "../util/Modal";
+import profile from "../image/기본프로필.jpg"
 
 const HeaderStyle = styled.div`
 
@@ -19,6 +20,12 @@ const HeaderStyle = styled.div`
     z-index: 10;
     
     border-bottom: 1px solid #ccc;
+    .profileP1 {
+        width: 4vw;
+        height: 100%;
+        border: 1px solid black;
+        border-radius: 50%;
+    }
  .top{
     height: 15px;
     background-color: #42240a;
@@ -46,7 +53,7 @@ const HeaderStyle = styled.div`
     background-position: center;
   }
   .logo-line .logo-right{
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
     flex-basis: 20%;
     display: flex;
@@ -61,6 +68,7 @@ const HeaderStyle = styled.div`
   }
   .logo-line .logo-right .searchbar .search-btn{
     margin-right: 15px;
+    cursor: pointer;
   }
   .logo-line .logo-right .searchbar .search-btn:active{
     background-color: aquamarine;
@@ -152,15 +160,38 @@ const HeaderStyle = styled.div`
         position: absolute;
         left: 15px;
     }
+  
+    .user-profile{
+      width:140px;
+      height: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .BtnCon{
+      width:120px;
+      height: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .memBtn{
+      background-color: #fff;
+      font-family: 'NeoDunggeunmoPro-Regular';
+      border: none;
+
+    }
 `;
 
 const Header = () => {
 
   const context = useContext(UserContext);
-  const {setUserId, setPassword, setIsLogin, isLogin} = context;
-
+  const {setUserId, setPassword, setIsLogin, isLogin, url, userImage} = context;
+  
     const nav = useNavigate();
     const[modalOpen, setModalOpen] = useState(false);
+
+   
 
     const needLogin = () => {
       setModalOpen(true);
@@ -181,7 +212,22 @@ const Header = () => {
                         <div className="searchbar">
                         <div className="search-btn" onClick={()=>nav("/Search")}><i className="fas fa-search"></i></div>
                         </div>
-                        <span className="material-symbols-outlined" onClick={()=> {isLogin ? nav("/MyPage") : needLogin()}}>person</span>
+                        {isLogin ? (
+  <div className="user-profile">
+    <img
+      className="profileP1"
+      src={userImage || profile}
+      onClick={()=> {isLogin ? nav("/MyPage") : needLogin()}}
+      style={{ backgroundSize: 'cover', backgroundRepeat: 'no-repeat',cursor:"pointer" }}
+    />
+    <button className="memBtn" onClick={() => { setUserId(""); setPassword(""); setIsLogin(false); }}>Logout</button>
+  </div>
+) : (
+  <div className="BtnCon">
+  <button className="memBtn" onClick={() => {  nav("/Login")  }}>Login</button>
+  <button className="memBtn" onClick={() => {  nav("/Signup")  }}>Sign Up</button>
+  </div>
+)}
                     </div>
                 </div>
                 <div className="nav">

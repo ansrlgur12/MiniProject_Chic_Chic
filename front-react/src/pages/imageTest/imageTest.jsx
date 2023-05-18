@@ -56,7 +56,7 @@ export const ImageTestStyle = styled.div`
 
   .container {
     
-    border: 1px solid black;
+   
     width: 375px;
     height: 77vh;
     margin: 0px auto;

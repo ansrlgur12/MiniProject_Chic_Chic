@@ -1,6 +1,6 @@
 import React from "react";
 import Header from "../../Header/Header";
-import styled from "styled-components";
+
 import {ImageTestStyle} from "./imageTest";
 import{ImageTestStyle1}  from "./imageTest";
 import { useNavigate } from "react-router-dom";
