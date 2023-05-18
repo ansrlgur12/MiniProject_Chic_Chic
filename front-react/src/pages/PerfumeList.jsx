@@ -62,7 +62,7 @@ const PerfumeList = ({perfumes}) => {
     isFetchingNextPage,
   } = useInfiniteQuery('perfumes', fetchPerfumes, {
     getNextPageParam: (lastPage) => lastPage.nextPage,
-    enabled:!perfumes,
+    enabled:true
   });
 
   // 호버 상태를 관리하기 위한 state
