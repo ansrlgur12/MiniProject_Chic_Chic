@@ -44,6 +44,7 @@ import NoticeList from './pages/Notice/NoticeList';
 import NewsL from './pages/Notice/NewsL';
 import Search from './pages/Search/Search';
 import NtcList from './pages/Notice/NtcList';
+import UserProfile from './pages/MyPage/UserProfile';
 import NewNotice from './pages/Notice/NewNotice';
 
 const queryClient = new QueryClient();
@@ -96,6 +97,7 @@ function App() {
         <Route path='/Notice/:num' element={<Notice />} />
         <Route path='/Notice' element={<NoticeList />} />
         <Route path='/Search' element={<Search />} />
+        <Route path='/userProfile/:id' element={<UserProfile />} />
         <Route path='/MyPage/:unum' element={<MyPageStyle />} />
         <Route path='/NewNotice' element={<NewNotice />} />
       </Routes>

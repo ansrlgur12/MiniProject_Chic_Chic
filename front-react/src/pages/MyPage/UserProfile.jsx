@@ -1,24 +1,18 @@
 import React, { useEffect } from "react";
-import styled, {css} from "styled-components";
-import { Link, useNavigate } from "react-router-dom";
+import styled from "styled-components";
+import {useNavigate, useParams } from "react-router-dom";
 import Header from "../../Header/Header";
 import Footer from "../../Footer/Footer";
-import gradeimg5 from "../../image/gradeLv5.png"
-import { UserContext } from "../../context/UserInfo";
-import { useContext, useState } from "react";
-import { storage } from "../../firebase/firebase";
+import { useState } from "react";
 import profile from "../../image/기본프로필.jpg";
 import AxiosApi from "../../api/Axios";
-import firebase from 'firebase/app';
 import 'firebase/analytics';
-import Modal from "../../util/Modal";
 import MyReview from "./MyReview";
 import Tooltip from "../../util/ToolTip";
 import grade from "../../image/향수등급.png";
 import gradeGold from "../../image/금.png";
 import gradeSilver from "../../image/은.png";
 import gradeBronze from "../../image/동.png";
-import MyComment from "./MyComment";
 
 
 export const MyPageStyle = styled.div`
@@ -140,96 +134,29 @@ export const MyPageStyle = styled.div`
     .noClicked{
         display: none;
     }
-
 `;
 
-const MyPage = () => {
+const UserProfile = () => {
+
+    const { id } = useParams(); 
 
     const nav = useNavigate();
-    const context = useContext(UserContext);
-    const {userId, setUserId, setPassword, setIsLogin, isLogin,userImage,setUserImage} = context;
-    const [file, setFile] = useState(null);
     const [url, setUrl] = useState('');
-    const [updateProfile, setUpdateProfile] = useState(false);
     window.scrollTo(0, 0);
-    const [modalOpen, setModalOpen] = useState(false);
-    const [deleteModalOpen, setDeleteModalOpen] = useState(false);
     const [userGrade, setUserGrade] = useState(1);
     const [clicked, setClicked] = useState(false);
 
     useEffect(()=> {
         const userInfo = async() => {
-            const rsp = await AxiosApi.getImage(userId);
-            await AxiosApi.myGrade(userId);
+            console.log(id);
+            const rsp = await AxiosApi.getImage(id);
             console.log(rsp);
             setUserGrade(rsp.data[0].userGrade);
             setUrl(rsp.data[0].userImg);
-            setUserImage(rsp.data[0].userImg);
         }
         userInfo();
-    },[]);
+    },[id]);
 
-    useEffect(() => {
-        if (!isLogin) {
-          nav("/");
-          alert("로그인이 필요합니다.");
-        }
-      }, [isLogin, nav]);
-
-    const onClickLogout = () => {
-        console.log("로그아웃 버튼 클릭");
-        setUserId("");
-        setPassword("");
-        setIsLogin(false);
-        console.log(isLogin);
-        nav("/");
-    }
-
-    const handleFileInputChange = (e) => {
-        setFile(e.target.files[0]);
-        console.log(e.target.files[0]);
-      };
-
-    const handleUploadClick = async() => {
-        const storageRef = storage.ref();
-        const fileRef = storageRef.child(file.name);
-        fileRef.put(file).then(() => {
-          console.log('File uploaded successfully!');
-          fileRef.getDownloadURL().then((url) => {
-            console.log("저장경로 확인 : " + url);
-            setUrl(url);
-           
-            const update = async() => {
-                console.log(url);
-                console.log(userId);
-                await AxiosApi.updateImage(userId, url);
-            };
-            update();
-            setUserImage(url);
-            setUpdateProfile(false);
-
-          });
-        });
-        
-      };
-
-    const onClickMemberDelete = () => {
-        setModalOpen(true);
-    }
-
-    const closeModal = () => {
-        setModalOpen(false);
-    };
-
-    const confirmModal = async() => {
-        setModalOpen(false);
-        const deleteMember = async() => {
-            const memberReg = await AxiosApi.memberDelete(userId);
-            console.log(memberReg.data.result);
-            setDeleteModalOpen(true);
-        };
-        await deleteMember();
-    };
 
     const [orderBy, setOrderBy] = useState(1);
 
@@ -260,22 +187,12 @@ const MyPage = () => {
                             <div className="up">
                                 <div className="profileP">
                                     <img className="profileP1" src={url ? url : profile} style={{ backgroundSize: 'cover', backgroundRepeat: 'no-repeat'}}></img>
-                                    <div className="profileP2">
-                                        <button onClick={()=>setUpdateProfile(true)}>프로필 편집</button>
-                                        <div className={updateProfile ? "profileChange" : "noProfileChange"}>
-                                            <input type="file" onChange={handleFileInputChange} />
-                                            <button onClick={handleUploadClick}>변경</button>
-                                            <button onClick={()=>setUpdateProfile(false)}>취소</button>
-                                        </div>
-                                    </div>
                                 </div>
                                 <div className="profileC">
                                     <div className="perProfile">
-                                        <div className="nickname">아이디 : {userId}</div>
+                                        <div className="nickname">아이디 : {id}</div>
                                         <div className="gradeLv">회원 등급 : <p className="gradeImg" style={{backgroundImage: `url(${gradeImage})`, backgroundSize: 'contain', backgroundRepeat: 'no-repeat', }}></p></div>
-                                        <Tooltip image1={grade} image2={gradeBronze} image3={gradeSilver} image4={gradeGold}><button className="hintBtn">?</button></Tooltip>
-                                        <div><button className="logOut" onClick={onClickLogout}>로그아웃</button></div>
-                                        <div><button className="logOut" onClick={onClickMemberDelete}>회원탈퇴</button></div>
+                                        <Tooltip content="회원등급 설정방식 : dsfds"><button className="hintBtn">?</button></Tooltip>
                                     </div>
                                     <div className="textProfile">
                                         <button className="textHistory" data-value={1} onClick={handleNum}>내 리뷰</button>
@@ -286,8 +203,7 @@ const MyPage = () => {
                                 </div>
                             </div>
                             <div className= {clicked ? "down" : "noClicked"}>
-                                <MyReview id={userId} views={orderBy}/>
-                                {/* <MyComment id={userId} views={orderBy}/> */}
+                                <MyReview id={id} views={orderBy}/>
                             </div>
                         </div>
                     </div>
@@ -296,8 +212,6 @@ const MyPage = () => {
                         
                     </div>
                 </div>
-                <Modal open={modalOpen} confirm={confirmModal} close={closeModal} type={true} header="확인">정말 탈퇴하시겠습니까?</Modal>
-                <Modal open={deleteModalOpen} confirm={()=>window.location.replace("/")} justConfirm={true} header="확인">회원 탈퇴가 완료되었습니다.</Modal>
                 
             </MyPageStyle>
             <Footer />
@@ -305,4 +219,4 @@ const MyPage = () => {
     );
 }
 
-export default MyPage;
+export default UserProfile;
