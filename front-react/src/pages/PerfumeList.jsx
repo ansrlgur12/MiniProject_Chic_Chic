@@ -6,7 +6,7 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
-// CSS 클래스 정의
+
 export const PerfumelistStyle = styled.div`
 .main-container {
   width: 100%; /* 너비를 원하는 값으로 변경 */
@@ -54,7 +54,7 @@ const fetchPerfumes = async ({ pageParam = 0 }) => {
 };
 
 const PerfumeList = () => {
-  // useInfiniteQuery hook을 사용하여 데이터 가져오기
+
   const {
     data,
     hasNextPage,
@@ -64,10 +64,10 @@ const PerfumeList = () => {
     getNextPageParam: (lastPage) => lastPage.nextPage,
   });
 
-  // 호버 상태를 관리하기 위한 state
+
   const [hoveredIndex, setHoveredIndex] = useState(null);
 
-  // 데이터가 준비되지 않은 경우
+
   if (!data) {
     console.log("Data is not ready yet");
     return <div>Loading...</div>;

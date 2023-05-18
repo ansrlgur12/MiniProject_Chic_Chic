@@ -68,7 +68,7 @@ const Container = styled.div`
   }
 
   .enable-button {
-    margin-top: 100px;
+    margin-top: 50px;
     margin-left: 30px;
     margin-right: 30px;
     font-family: 'Noto Sans KR', sans-serif;
@@ -281,4 +281,4 @@ const SignUp = () => {
     );
 }
 
-export default SignUp;
+export default SignUp
