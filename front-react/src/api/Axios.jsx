@@ -221,8 +221,9 @@ const AxiosApi = {
 
     // 내가 쓴 리뷰글
     myHistoryList : async(id, views) => {
-        return await axios.get(CHIC_DOMAIN + `/MyPage/${id}/${views}`);
+        return await axios.get(CHIC_DOMAIN + `/myHistoryList/${id}/${views}`);
 
+    },
     plusThreePoint : async(id) => {
         const threePoint = {
             id : id
