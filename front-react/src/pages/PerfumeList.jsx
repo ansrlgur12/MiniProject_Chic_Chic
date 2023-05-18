@@ -8,16 +8,12 @@ import styled from 'styled-components';
 
 
 export const PerfumelistStyle = styled.div`
-
 .main-container {
   width: 100%; /* 너비를 원하는 값으로 변경 */
   max-width: 10px; /* 최대 너비를 원하는 값으로 변경 */
   margin: 0 auto; /* 컨테이너를 화면 가운데 정렬 */
   /* 필요한 경우 높이, 최소 높이, 최대 높이, 마진, 패딩 등을 추가 */
 }
-
-font-family: 'KIMM_Bold';
-
 `
 const cardStyle = {
   border: '1px solid #ccc',
@@ -66,7 +62,6 @@ const PerfumeList = () => {
     isFetchingNextPage,
   } = useInfiniteQuery('perfumes', fetchPerfumes, {
     getNextPageParam: (lastPage) => lastPage.nextPage,
-    enabled:!perfumes,
   });
 
 
@@ -81,7 +76,7 @@ const PerfumeList = () => {
   console.log("Data pages:", data.pages);
 
   // 아이템 개수 계산
-  const itemCount =perfumes ? perfumes.length : hasNextPage ? (data.pages.length + 1) * 10 : data.pages.length * 10;
+  const itemCount = hasNextPage ? (data.pages.length + 1) * 10 : data.pages.length * 10;
 
   // 더 많은 아이템을 로드하기 위한 함수
   const loadMoreItems = isFetchingNextPage ? () => {} : fetchNextPage;
@@ -101,18 +96,11 @@ const PerfumeList = () => {
   // 아이템을 렌더링하는 함수
   const renderItem = ({ columnIndex, rowIndex, style }) => {
     const index = rowIndex * 4 + columnIndex; 
-    // perfumes props가 제공되면 그것을 사용하고, 그렇지 않으면 기존 방식대로 API 데이터를 사용합니다.
-    const perfume = perfumes ? perfumes[index] : !isItemLoaded(index) ? null : getPerfumeFromData(index, data);
+    if (!isItemLoaded(index)) return <div style={style}>Loading...</div>;
 
-    // 만약 향수 정보가 없으면 로딩 상태를 표시합니다.
-    if (!perfume) return <div style={style}>Loading...</div>;
-    function getPerfumeFromData(index,data){
-      const page = Math.floor(index / 10);
-      const itemIndex = index % 10;
-      return data.pages[page].content[itemIndex];
-    } 
-    
-    
+    const page = Math.floor(index / 10);
+    const itemIndex = index % 10;
+    const perfume = data.pages[page].content[itemIndex];
 
     const itemStyle = {
       ...style,
@@ -125,7 +113,6 @@ const PerfumeList = () => {
 
 
     return (
-      <PerfumelistStyle>
       <div
       style={itemStyle}
       onMouseEnter={() => handleMouseEnter(index)}
@@ -139,7 +126,6 @@ const PerfumeList = () => {
           <img src={perfume.thumbnail} alt="Perfume Thumbnail" style={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain' }} />
       </div>
   </div>
-  </PerfumelistStyle>
   );
 
   };
@@ -182,4 +168,3 @@ const PerfumeList = () => {
 };
 
 export default PerfumeList;
-
