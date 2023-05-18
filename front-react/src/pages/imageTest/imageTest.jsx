@@ -53,6 +53,7 @@ export const ImageTestStyle = styled.div`
     height: 150px;
     border: 2px solid black;
   }
+ 
 
   .container {
     
@@ -144,15 +145,18 @@ export const ImageTestStyle = styled.div`
   margin: 0 auto ;
   padding: 1rem 4rem;
   
-  border: none;
+  border: 1px solid black;
   border-radius: 8px;
-  background-color: #1fdba9;
-  color: white;
+  background-color: #fff;
+  color: #333;
   font-size: 1.5rem;
   position: absolute;
   bottom: 2rem;
   cursor: pointer;
   
+  }
+  .startBtn:active{
+    background-color:beige;
   }
   
   .option {
