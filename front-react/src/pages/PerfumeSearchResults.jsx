@@ -64,7 +64,7 @@ const PerfumeSearchResults = () => {
   }, [location]);
 
   const handleGoBack = () => {
-    navigate(-1); // Go back to the previous page
+    navigate(-1); 
   };
 
   const itemCount = searchResults.length;

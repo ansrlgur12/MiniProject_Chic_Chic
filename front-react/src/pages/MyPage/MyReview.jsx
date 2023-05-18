@@ -54,7 +54,7 @@ const MyReview = (props) => {
         setReviews(rsp.data);
     }
     reviews();
-    }, [props.views]);
+    }, [props.id]);
     
     const onClick = (anum) => {
         nav(`/article/${anum}`);

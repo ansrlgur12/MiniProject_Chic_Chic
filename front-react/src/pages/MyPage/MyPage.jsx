@@ -18,6 +18,7 @@ import grade from "../../image/향수등급.png";
 import gradeGold from "../../image/금.png";
 import gradeSilver from "../../image/은.png";
 import gradeBronze from "../../image/동.png";
+import MyComment from "./MyComment";
 
 
 export const MyPageStyle = styled.div`
@@ -139,6 +140,7 @@ export const MyPageStyle = styled.div`
     .noClicked{
         display: none;
     }
+
 `;
 
 const MyPage = () => {
@@ -219,8 +221,6 @@ const MyPage = () => {
         setModalOpen(false);
     };
 
-    
-
     const confirmModal = async() => {
         setModalOpen(false);
         const deleteMember = async() => {
@@ -229,7 +229,6 @@ const MyPage = () => {
             setDeleteModalOpen(true);
         };
         await deleteMember();
-        
     };
 
     const [orderBy, setOrderBy] = useState(1);
@@ -288,6 +287,7 @@ const MyPage = () => {
                             </div>
                             <div className= {clicked ? "down" : "noClicked"}>
                                 <MyReview id={userId} views={orderBy}/>
+                                {/* <MyComment id={userId} views={orderBy}/> */}
                             </div>
                         </div>
                     </div>

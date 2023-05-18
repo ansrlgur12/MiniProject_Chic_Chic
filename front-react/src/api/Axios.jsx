@@ -1,5 +1,5 @@
 import axios from "axios";
-const CHIC_DOMAIN = "http://localhost:8111";
+export const CHIC_DOMAIN = "http://localhost:8111";
 
 const AxiosApi = {
 
@@ -29,6 +29,19 @@ const AxiosApi = {
         return await axios.post(CHIC_DOMAIN + "/newArticle", article);
     },
     
+    // 공지사항, 새소식 글작성
+    newNotice : async(bnum, id, title, text, pwd, image) => {
+        const notice = {
+            bnum : bnum.toString(),
+            id : id,
+            title : title,
+            text : text,
+            pwd : pwd,
+            image : image
+        };
+        return await axios.post(CHIC_DOMAIN + "/NewNotice", notice);
+    },
+
     // deleteArticle : async(deleteNum) => { // 게시글 삭제
 
     //     return await axios.get(CHIC_DOMAIN + `/articleDelete/${deleteNum}`);
@@ -104,6 +117,34 @@ const AxiosApi = {
         return await axios.post(CHIC_DOMAIN + "/comment", comment);
     },
 
+        newReview : async(perfumeNumber, userId, starRating, review) => { // 향수 상세페이지 한줄평 등록
+            if(perfumeNumber === undefined || starRating === undefined){
+                throw new Error('perfumeNumber or starRating is undefined');
+            }
+            const reviews = {
+                perfumeNumber : perfumeNumber.toString(),
+                userId : userId,
+                starRating : starRating.toString(),
+                review :review
+            };
+            return await axios.post(CHIC_DOMAIN + "/reviews", reviews);
+        },
+
+        viewReview : async (perfumeNumber) => { // 향수 상세페이지 한줄평 보기
+            if(perfumeNumber === undefined){
+                throw new Error('perfumeNumber is undefined');
+            }
+            return await axios.get(CHIC_DOMAIN + `/reviews/${perfumeNumber}`);
+        }
+        ,
+    
+        getReviews: async (perfumeNumber) => {
+            if(perfumeNumber === undefined){
+                throw new Error('perfumeNumber is undefined');
+            }
+            return await axios.get(CHIC_DOMAIN + `/reviews/${perfumeNumber}`);
+        },
+      
     showComment : async(anum) => { // 댓글 목록 출력
         
         return await axios.get(CHIC_DOMAIN + `/showComment/${anum}`);
@@ -221,9 +262,9 @@ const AxiosApi = {
 
     // 내가 쓴 리뷰글
     myHistoryList : async(id, views) => {
-        return await axios.get(CHIC_DOMAIN + `/myHistoryList/${id}/${views}`);
-
+        return await axios.get(CHIC_DOMAIN + `/MyPage/${id}/${views}`);
     },
+  
     plusThreePoint : async(id) => {
         const threePoint = {
             id : id

@@ -24,6 +24,8 @@ import PerfumeSearchResults from './pages/PerfumeSearchResults';
 import PerfumeAllSearch from './pages/PerfumeAllSearch';
 import PerfumeList from './pages/PerfumeList';
 
+
+
 import TestResult from './pages/imageTest/TestResult';
 import NoteFinderMain from './pages/NoteFinder/NoteFinderMain';
 import NoteCategory from './pages/NoteFinder/NoteCategory';
@@ -43,6 +45,7 @@ import NewsL from './pages/Notice/NewsL';
 import Search from './pages/Search/Search';
 import NtcList from './pages/Notice/NtcList';
 import UserProfile from './pages/MyPage/UserProfile';
+import NewNotice from './pages/Notice/NewNotice';
 
 const queryClient = new QueryClient();
 
@@ -95,6 +98,8 @@ function App() {
         <Route path='/Notice' element={<NoticeList />} />
         <Route path='/Search' element={<Search />} />
         <Route path='/userProfile/:id' element={<UserProfile />} />
+        <Route path='/MyPage/:unum' element={<MyPageStyle />} />
+        <Route path='/NewNotice' element={<NewNotice />} />
       </Routes>
     </Router>
     

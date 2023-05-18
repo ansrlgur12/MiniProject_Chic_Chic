@@ -83,7 +83,7 @@ const NewsL = () => {
                             <option value={2}>인기순</option>
                             <option value={3}>최신순</option>
                         </select>
-                        <div><p className="write" onClick={()=>nav("/newarticle")}>작성하기</p></div>
+                        <div><p className="write" onClick={()=>nav("/newNotice")}>작성하기</p></div>
                     </div>
                     <div className="article-list">
                         <div className="line" />

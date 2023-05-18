@@ -22,12 +22,12 @@ return(
     <Header/>
     <ImageTestStyle>
         <ImageTestStyle1>
-        <div class="container">
-        <div class="header">
-          <h1 class="title">가장 어울리는 향수는</h1>
+        <div className="container">
+        <div className="header">
+          <h1 className="title">가장 어울리는 향수는</h1>
 
         </div>
-        <div class="content">
+        <div className="content">
           
           
         {  perfumes && (
@@ -46,7 +46,7 @@ return(
                   </div>
                
                 
-             <button class="startBtn" onClick={goToPerfumeDetail}>향수 정보</button>
+             <button className="startBtn" onClick={goToPerfumeDetail}>향수 정보</button>
              
           </div>
           
