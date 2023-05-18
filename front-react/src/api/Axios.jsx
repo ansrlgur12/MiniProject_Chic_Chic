@@ -29,6 +29,19 @@ const AxiosApi = {
         return await axios.post(CHIC_DOMAIN + "/newArticle", article);
     },
     
+    // 공지사항, 새소식 글작성
+    newNotice : async(bnum, id, title, text, pwd, image) => {
+        const notice = {
+            bnum : bnum.toString(),
+            id : id,
+            title : title,
+            text : text,
+            pwd : pwd,
+            image : image
+        };
+        return await axios.post(CHIC_DOMAIN + "/NewNotice", notice);
+    },
+
     // deleteArticle : async(deleteNum) => { // 게시글 삭제
 
     //     return await axios.get(CHIC_DOMAIN + `/articleDelete/${deleteNum}`);
@@ -221,7 +234,9 @@ const AxiosApi = {
 
     // 내가 쓴 리뷰글
     myHistoryList : async(id, views) => {
+
         return await axios.get(CHIC_DOMAIN + `/MyPage/${id}/${views}`);
+    },
 
     plusThreePoint : async(id) => {
         const threePoint = {

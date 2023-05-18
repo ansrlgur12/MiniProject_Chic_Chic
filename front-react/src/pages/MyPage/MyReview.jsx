@@ -54,7 +54,7 @@ const MyReview = (props) => {
         setReviews(rsp.data);
     }
     reviews();
-    }, [props.views]);
+    }, [props.id]);
     
     const onClick = (anum) => {
         nav(`/article/${anum}`);
@@ -98,7 +98,7 @@ const MyReview = (props) => {
                             <th className="th5">등록일</th>
                         </tr>
                     {displayedReviews && displayedReviews.map((review)=> (
-                        <tr className="trb" key={review.unum}>
+                        <tr className="trb" key={review.anum}>
                             <td className="td1">{review.bnum}</td>
                             <td className="td2" onClick={()=>onClick(review.anum)}>{review.title}</td>
                             <td className="td3">{review.view}</td>

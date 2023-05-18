@@ -14,6 +14,7 @@ import 'firebase/analytics';
 import Modal from "../../util/Modal";
 import MyReview from "./MyReview";
 import Tooltip from "../../util/ToolTip";
+import MyComment from "./MyComment";
 
 
 export const MyPageStyle = styled.div`
@@ -132,6 +133,7 @@ export const MyPageStyle = styled.div`
     .noProfileChange{
         display: none;
     }
+
 `;
 
 const MyPage = () => {
@@ -209,8 +211,6 @@ const MyPage = () => {
         setModalOpen(false);
     };
 
-    
-
     const confirmModal = async() => {
         setModalOpen(false);
         const deleteMember = async() => {
@@ -219,10 +219,9 @@ const MyPage = () => {
             setDeleteModalOpen(true);
         };
         await deleteMember();
-        
     };
 
-    const [orderBy, setOrderBy] = useState("");
+    const [orderBy, setOrderBy] = useState(1);
 
     const handleNum = (e) => {
         setOrderBy(e.target.dataset.value);
@@ -268,6 +267,7 @@ const MyPage = () => {
                             </div>
                             <div className="down">
                                 <MyReview id={userId} views={orderBy}/>
+                                {/* <MyComment id={userId} views={orderBy}/> */}
                             </div>
                         </div>
                     </div>
