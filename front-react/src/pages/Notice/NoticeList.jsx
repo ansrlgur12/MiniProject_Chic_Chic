@@ -1,9 +1,10 @@
-import React, {useState} from "react";
+import React, {useContext, useState} from "react";
 import styled from "styled-components";
 import Header from "../../Header/Header";
 import Footer from "../../Footer/Footer";
 import { useNavigate } from "react-router-dom";
 import NtcList from "./NtcList";
+import { UserContext } from "../../context/UserInfo";
 
 
 
@@ -30,7 +31,7 @@ const NoticeListStyle = styled.div`
         display: flex;
         flex-direction: row;
         justify-content: right;
-        /* margin: 20px 0px 20px 0px; */
+        margin: 20px 0px;
     }
     h2 {
         color: #804f23;;
@@ -43,9 +44,12 @@ const NoticeListStyle = styled.div`
         font-weight: bold;
     }
     .select{
-        margin-right: 20px;
-        height: 25px;
+        margin-right: 10px;
+        height: 40px;
         width: 90px;
+        border-radius: 0px;
+        border: 0.5px solid rgb(131, 131, 131);
+        text-align: center;
     }
     .article{
         cursor:pointer;
@@ -53,16 +57,16 @@ const NoticeListStyle = styled.div`
     .line {
         border-bottom: 1px solid #afafaf;
         width: 1fr;
-        /* margin: 10px 0 20px 0; */
+        margin: 10px 0 20px 0;
     }
     .write{
-        height: 30px;
+        height: 40px;
         width: 90px;
-        border: .5px solid #858585;
+        border: 0.5px solid rgb(133, 133, 133);
         border-radius: 5px;
         padding: 3px;
         text-align: center;
-        line-height: 1.5;
+        line-height: 2;
     }
     .notLoginWrite{
         display: none;
@@ -72,11 +76,16 @@ const NoticeListStyle = styled.div`
 const NoticeList = () => {
 
     const nav = useNavigate();
+    const context = useContext(UserContext);
+    const {isLogin, userId} = context;
     const [orderBy, setOrderBy] = useState(3);
+
     const onClickOrderBy = (e) => {
     console.log("정렬 방식 : " + e.target.value);
     setOrderBy(e.target.value);
     }
+
+    const showWriteButton = userId === "master";
 
     return(
         <>
@@ -91,7 +100,9 @@ const NoticeList = () => {
                             <option value={2}>인기순</option>
                             <option value={3}>최신순</option>
                         </select>
-                        <div><p className="write" onClick={()=>nav("/NewNotice")}>작성하기</p></div>
+                        {isLogin && showWriteButton && (
+                        <div><p className={isLogin ? "write" : "notLoginWrite"} onClick={()=>nav("/newNotice")}>작성하기</p></div>
+                        )}
                     </div>
                     <div className="article-list">
                         <div className="line" />

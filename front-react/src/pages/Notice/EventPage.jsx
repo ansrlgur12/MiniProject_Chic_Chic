@@ -80,6 +80,7 @@ const EventPage = () => {
                                 <option value={4}>종료 이벤트</option>
                             </select>
                         </div>
+                        
                         <div className="line"/> 
                         <div className="text">
                             <EventList eventNum={1} view={orderBy}/>
