@@ -9,7 +9,9 @@ import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import Modal from "../../util/Modal";
 import { storage } from "../../firebase/firebase";
-
+import styled from "styled-components";
+const InputStyle = styled.div`
+`;
 
 
 const Update = () => {
@@ -28,13 +30,13 @@ const Update = () => {
     useEffect(()=>{
         const viewArticle = async() => {
             const rsp = await AxiosApi.ariticle(num);
-            console.log(rsp.data);
+            console.log(rsp.data[0]);
             setTitle(rsp.data[0].title);
             setText(rsp.data[0].text);
             setCategory(rsp.data[0].bnum);
-            setFile(rsp.data[0].img);
+            setImage(rsp.data[0].img);
             console.log(rsp.data[0].img);
-            console.log(file);
+            console.log(image);
         }
         viewArticle();
     },[num]);
@@ -83,6 +85,10 @@ const Update = () => {
       });
     };
 
+    const handleUploadDelete = () => {
+      setImage('');
+    }
+
       return (
         <>
         <Header />
@@ -106,17 +112,37 @@ const Update = () => {
           </div>
           <div className="setting">
             <label htmlFor="">대표이미지</label>
-            <input type="file" onChange={handleFileInputChange} />
+            <input type="file" onChange={handleFileInputChange}/>
             <button className="submitBtn" onClick={handleUploadClick}>등록</button>
+            <button className="submitBtn" onClick={handleUploadDelete}>삭제</button>
+          </div>
+          <div className="setting">
+            <label htmlFor="">이미지 미리보기</label>
+            <img className = {image ? "imagePreview" : "noImage" } src={image} alt="image" style={{ backgroundSize: 'cover', backgroundRepeat: 'no-repeat'}} />
           </div>
           <div className="setting">
             <label htmlFor="">내용</label>
             <Container>
-            <CKEditor editor={ ClassicEditor } data = {text} onChange={(event, editor) => {
-                    const data = editor.getData();
-                    setText(data);
-            }}/>
-            </Container>
+        <CKEditor 
+                editor={ClassicEditor}
+                
+                data={text}
+                onReady={(editor) => {
+                  console.log('Editor is ready to use!', editor);
+                }}
+                onChange={(event, editor) => {
+                  const data = editor.getData();
+                  console.log({ event, editor, data });
+                  setText(data);
+                }}
+                // onBlur={(event, editor) => {
+                //   console.log('Blur.', editor);
+                // }}
+                // onFocus={(event, editor) => {
+                //   console.log('Focus.', editor);
+                // }}
+              />
+        </Container>
           </div>
           <div className="setting">
             <label htmlFor="">비밀번호</label>

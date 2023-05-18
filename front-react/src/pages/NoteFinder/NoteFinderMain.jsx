@@ -7,6 +7,8 @@ import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import { Btn } from "./NoteCategory";
 import AxiosApi from "../../api/Axios";
+import PerfumeList from "../PerfumeList";
+import { PerfumeStyled } from "../Perfume";
 const Triangle = styled.div`
 .pyramid {
     position: relative;
@@ -58,8 +60,9 @@ button{
   const NoteFinderMain = () => {
     const nav = useNavigate();
     const location = useLocation();
+    const {state} = useLocation();
     const [selectedValue, setSelectedValue] = useState({ 0: {}, 1: {}, 2: {} });
-    
+    const [perfumes, setPerfumes] = useState(null);
 console.log(selectedValue);
 
 
@@ -91,37 +94,42 @@ const fetchPerfumeResult = async () => {
     const response = await AxiosApi.NoteFinderResult(ids);
     console.log(ids);
     console.log(response.data); 
+    setPerfumes(response.data)
+    
     setSelectedValue({ 0: {}, 1: {}, 2: {} });
   } catch (error) {
     console.error( error);
   }
 };
+
+
     
 
   return (
     
     <>
       <Header />
+      {perfumes === null? (
       <ImageTestStyle>
         <ImageTestStyle1>
           <div className="container">
             <h2>NOTE FINDER</h2>
             <Triangle>
-              <div class="pyramid">
+              <div className="pyramid">
                 <button
-                  class="pyramid__section"
+                  className="pyramid__section"
                   onClick={() => handleButtonClick(0)}
                 >
                 {selectedValue[0]?.fragrance ? selectedValue[0]?.fragrance : "Click"}
                 </button>
                 <button
-                  class="pyramid__section"
+                  className="pyramid__section"
                   onClick={() => handleButtonClick(1)}
                 >
                 {selectedValue[1]?.fragrance ? selectedValue[1]?.fragrance : "Click"}
                 </button>
                 <button
-                  class="pyramid__section"
+                  className="pyramid__section"
                   onClick={() => handleButtonClick(2)}
                 >
               {selectedValue[2]?.fragrance ? selectedValue[2]?.fragrance : "Click"}
@@ -134,9 +142,13 @@ const fetchPerfumeResult = async () => {
           </div>
         </ImageTestStyle1>
       </ImageTestStyle>
+      ): (
+      <PerfumeStyled>
+      <PerfumeList perfumes = {perfumes}/>
+      </PerfumeStyled>)}
       <Footer />
     </>
   );
 };
 
-export default NoteFinderMain
+export default NoteFinderMain;

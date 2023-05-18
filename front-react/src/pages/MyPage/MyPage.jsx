@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import styled, {css} from "styled-components";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import Header from "../../Header/Header";
 import Footer from "../../Footer/Footer";
 import gradeimg5 from "../../image/gradeLv5.png"
@@ -12,6 +12,9 @@ import AxiosApi from "../../api/Axios";
 import firebase from 'firebase/app';
 import 'firebase/analytics';
 import Modal from "../../util/Modal";
+import MyReview from "./MyReview";
+import Tooltip from "../../util/ToolTip";
+
 
 export const MyPageStyle = styled.div`
     box-sizing: border-box;
@@ -21,6 +24,15 @@ export const MyPageStyle = styled.div`
     flex-direction: column;
     align-items: center;
 
+    .hintBtn {
+        border-radius: 50px;
+        width: 25px;
+        height: 25px;
+        background-color: white;
+        border: 1px solid black;
+        text-align: center;
+        line-height: 1;
+    }
     .container {
         width: 960px;
         height: auto;
@@ -99,6 +111,8 @@ export const MyPageStyle = styled.div`
         margin-top: 2em;
         border-top: 1px solid black;
         padding-top: 1em;
+        display: flex;
+        justify-content: center;
     }
     .profileP2{
         width: 200px;
@@ -124,19 +138,22 @@ const MyPage = () => {
 
     const nav = useNavigate();
     const context = useContext(UserContext);
-    const {userId, setUserId, setPassword, setIsLogin, isLogin} = context;
+    const {userId, setUserId, setPassword, setIsLogin, isLogin,userImage,setUserImage} = context;
     const [file, setFile] = useState(null);
     const [url, setUrl] = useState('');
     const [updateProfile, setUpdateProfile] = useState(false);
-    const [userImage, setUserImage] = useState('');
+    
     window.scrollTo(0, 0);
     const [modalOpen, setModalOpen] = useState(false);
+    const [deleteModalOpen, setDeleteModalOpen] = useState(false);
 
     useEffect(()=> {
         const userInfo = async() => {
             const rsp = await AxiosApi.getImage(userId);
+            await AxiosApi.myGrade(userId);
             console.log(rsp);
             setUrl(rsp.data[0].userImg);
+            setUserImage(rsp.data[0].userImg);
         }
         userInfo();
     },[]);
@@ -193,11 +210,24 @@ const MyPage = () => {
         setModalOpen(false);
     };
 
+    
+
     const confirmModal = async() => {
         setModalOpen(false);
-        const memberReg = await AxiosApi.memberDelete(userId);
-        console.log(memberReg.data.result);
-        window.location.replace("/");
+        const deleteMember = async() => {
+            const memberReg = await AxiosApi.memberDelete(userId);
+            console.log(memberReg.data.result);
+            setDeleteModalOpen(true);
+        };
+        await deleteMember();
+        
+    };
+
+    const [orderBy, setOrderBy] = useState("");
+
+    const handleNum = (e) => {
+        setOrderBy(e.target.dataset.value);
+        console.log(e.target.dataset.value);
     };
       
 
@@ -225,20 +255,20 @@ const MyPage = () => {
                                     <div className="perProfile">
                                         <div className="nickname">아이디 : {userId}</div>
                                         <div className="gradeLv">회원 등급 : <p className="gradeImg" style={{backgroundImage: `url(${gradeimg5})`, backgroundSize: 'contain', backgroundRepeat: 'no-repeat'}}></p></div>
+                                        <Tooltip content="회원등급 설정방식 : dsfds"><button className="hintBtn">?</button></Tooltip>
                                         <div><button className="logOut" onClick={onClickLogout}>로그아웃</button></div>
                                         <div><button className="logOut" onClick={onClickMemberDelete}>회원탈퇴</button></div>
                                     </div>
                                     <div className="textProfile">
-                                        <div className="textHistory">내 리뷰</div>
-                                        <div className="textHistory">내 댓글</div>
-                                        <div className="textHistory">내 좋아요</div>
-                                        <div className="textHistory">내 관심목록</div>
+                                        <button className="textHistory" data-value={1} onClick={handleNum}>내 리뷰</button>
+                                        <button className="textHistory" data-value={2} onClick={handleNum}>내 댓글</button>
+                                        <button className="textHistory" data-value={3} onClick={handleNum}>내 좋아요</button>
+                                        <button className="textHistory" data-value={4} onClick={handleNum}>내 한줄평</button>
                                     </div>
                                 </div>
                             </div>
                             <div className="down">
-                                <div className="pr1"><h4>소개 글</h4></div>
-                                <div className="pr2">안녕하세요 <br />소개 글 작성란입니다.</div>
+                                <MyReview id={userId} views={orderBy}/>
                             </div>
                         </div>
                     </div>
@@ -248,6 +278,8 @@ const MyPage = () => {
                     </div>
                 </div>
                 <Modal open={modalOpen} confirm={confirmModal} close={closeModal} type={true} header="확인">정말 탈퇴하시겠습니까?</Modal>
+                <Modal open={deleteModalOpen} confirm={()=>window.location.replace("/")} justConfirm={true} header="확인">회원 탈퇴가 완료되었습니다.</Modal>
+                
             </MyPageStyle>
             <Footer />
         </>

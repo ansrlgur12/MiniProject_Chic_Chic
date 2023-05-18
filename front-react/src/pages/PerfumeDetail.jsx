@@ -68,10 +68,13 @@ const PerfumeDetail = () => {
         <p className="detail-text">Launch Date: {perfumeDetail.launchDate}</p>
         <p className="detail-text">Price: {perfumeDetail.price}$</p>
         <p className="detail-text">Gender: {perfumeDetail.gender}</p>
+        <p className="detail-text">Top Notes: {perfumeDetail.topNote.join(', ')}</p>
+        <p className="detail-text">Middle Notes: {perfumeDetail.middleNote.join(', ')}</p>
+        <p className="detail-text">Base Notes: {perfumeDetail.baseNote.join(', ')}</p>
+        <p className="detail-text">Seasons: {perfumeDetail.seasons.join(', ')}</p>
       </div>
       <PerfumeReview/>
       </PerfumeDetailStyle>
-    
       {/* <Footer/> */}
     </>
   );
