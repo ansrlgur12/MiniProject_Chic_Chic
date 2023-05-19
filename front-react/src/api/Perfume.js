@@ -65,7 +65,4 @@ export const getSearchByName = async () => {
     console.error(error);
     return [];
   }
-
 };
-
-

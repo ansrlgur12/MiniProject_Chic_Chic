@@ -21,9 +21,9 @@ const HeaderStyle = styled.div`
     
     border-bottom: 1px solid #ccc;
     .profileP1 {
-        width: 3.5vw;
-        height: 100%;
-        border: 2px solid black;
+        width: 50px;
+        height: 50px;
+        border: 1px solid #ccc;
         border-radius: 50%;
     }
  .top{
@@ -210,7 +210,7 @@ const Header = () => {
                     <div className="logo" onClick={()=>nav("/")}><div className="image" style={{ backgroundImage: `url(${logoImage})`, backgroundSize: 'cover' }}></div></div>
                     <div className="logo-right">
                         <div className="searchbar">
-                        <div className="search-btn" onClick={()=>nav("/Search")}><i className="fas fa-search"></i></div>
+                        <div className="search-btn" onClick={()=>nav("/Search")}><span>search</span><i className="fas fa-search"></i></div>
                         </div>
                         {isLogin ? (
   <div className="user-profile">
@@ -221,7 +221,7 @@ const Header = () => {
       style={{ backgroundSize: 'cover', backgroundRepeat: 'no-repeat',cursor:"pointer" }}
     />
    
-    <button className="memBtn" onClick={() => { setUserId(""); setPassword(""); setIsLogin(false); }}>Logout</button>
+    <button className="memBtn" onClick={() => { setUserId(""); setPassword(""); setIsLogin(false); nav("/"); }}>Logout</button>
   </div>
 ) : (
   <div className="BtnCon">

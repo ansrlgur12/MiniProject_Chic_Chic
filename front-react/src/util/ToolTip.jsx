@@ -9,6 +9,7 @@ const Sytled = styled.div`
 
     .gradeImg{
         width: 100%;
+        display: flex;
     }
 
     p{
