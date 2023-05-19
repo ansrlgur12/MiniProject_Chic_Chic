@@ -88,7 +88,7 @@ const PerfumeSearchFilter = () => {
           </label>
         ))}
         <br />
-        {/* Add getBrands radio buttons */}
+     
         <h3>유명브랜드</h3>
         {brandNumbers.map((brand, index) => (
           <label key={index}>

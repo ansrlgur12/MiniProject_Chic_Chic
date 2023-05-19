@@ -101,7 +101,7 @@ const MyComment = (props) => {
                             <td className="td1">{comment.bnum}</td>
                             <td className="td2" onClick={()=>onClick(comment.anum)}>{comment.title}</td>
                             <td className="td3">{comment.commentText}</td>
-                            <td className="td5">{comment.date}</td>
+                            <td className="td5">{comment.commentDate}</td>
                         </tr>
                     ))}
                     </table>

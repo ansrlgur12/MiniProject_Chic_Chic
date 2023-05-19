@@ -16,7 +16,7 @@ export const getPerfumeDetail = async (perfumeNumber) => {
     return response.data;
   } catch (error) {
     console.error(error);
-    return null; // On error, return null
+    return null; 
   }
 };
 

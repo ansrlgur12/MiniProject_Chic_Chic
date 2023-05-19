@@ -12,10 +12,10 @@ const NewsStyle = styled.div`
     display: flex;
     justify-content: center;
     
-    .noticeCtn{
+    .newsContainer{
         text-align: center;
     }
-    .noticeDesc{
+    .newsDesc{
         margin: 70px 0 20px 0;
         display: flex;
         flex-direction: column;
@@ -58,7 +58,7 @@ const News = () => {
         <Header />
         <NewsStyle>
             {news && news.map(newsText => (
-                <div className="newContainer" key={newsText.anum}>
+                <div className="newsContainer" key={newsText.anum}>
                     <div className="newsDesc">
                         <h2>{newsText.title}</h2><br />
                         <div className="line" /><br /><br />
