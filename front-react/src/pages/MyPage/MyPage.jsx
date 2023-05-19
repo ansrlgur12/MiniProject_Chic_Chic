@@ -116,7 +116,7 @@ export const MyPageStyle = styled.div`
         margin-top: 2em;
         border-top: 1px solid black;
         padding-top: 1em;
-        display: flex;
+        /* display: flex; */
         justify-content: center;
     }
     .profileP2{
@@ -285,10 +285,9 @@ const MyPage = () => {
                                     </div>
                                 </div>
                             </div>
-                            <div className= {clicked ? "down" : "noClicked"}>
-                                <MyReview id={userId} views={orderBy}/>
-                                {/* <MyComment id={userId} views={orderBy}/> */}
-                            </div>
+                            <div className="down">
+                                <MyReview id={userId} views={orderBy} className="" />
+                                <MyComment id={userId} views={orderBy} className="" />
                         </div>
                     </div>
                     <div className="line"></div>

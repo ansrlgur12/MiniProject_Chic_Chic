@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import styled from "styled-components";
 import Header from "../../Header/Header";
 import Footer from "../../Footer/Footer";
 import EventList from "./EventList";
+import { useNavigate } from "react-router-dom";
+import { UserContext } from "../../context/UserInfo";
 
 const EventStyle = styled.div`
     box-sizing: border-box;
@@ -28,7 +30,6 @@ const EventStyle = styled.div`
     .section {
         text-align: right;
         display: flex;
-        font-size: 0.8em;
         justify-content: right;
     }
     .eContainer{
@@ -56,10 +57,35 @@ const EventStyle = styled.div`
         width: 1fr;
         margin: 10px 0 20px 0;
     }
+    .notLoginWrite{
+        display: none;
+    }
+    .write{
+        height: 40px;
+        width: 90px;
+        border: 0.5px solid rgb(133, 133, 133);
+        border-radius: 5px;
+        padding: 3px;
+        text-align: center;
+        line-height: 2;
+    }
+    .select{
+        margin-right: 10px;
+        height: 40px;
+        width: 90px;
+        border-radius: 0px;
+        border: 0.5px solid rgb(131, 131, 131);
+        text-align: center;
+    }
 `;
 
 const EventPage = () => {
+    const nav = useNavigate();
+    const context = useContext(UserContext);
     const [orderBy, setOrderBy] = useState(1);
+    const {isLogin, userId} = context;
+    const showWriteButton = userId === "master";
+
     const handleENum = (e) => {
         console.log("정렬 : " + e.target.value);
         setOrderBy(e.target.value);
@@ -79,6 +105,9 @@ const EventPage = () => {
                                 <option value={3}>예정 이벤트</option>
                                 <option value={4}>종료 이벤트</option>
                             </select>
+                            {isLogin && showWriteButton && (
+                            <div><p className={isLogin ? "write" : "notLoginWrite"} onClick={()=>nav("/newNotice")}>작성하기</p></div>
+                            )}
                         </div>
                         <div className="line"/> 
                         <div className="text">
