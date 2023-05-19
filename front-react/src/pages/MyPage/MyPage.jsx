@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import styled, {css} from "styled-components";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Header from "../../Header/Header";
 import Footer from "../../Footer/Footer";
 import gradeimg5 from "../../image/gradeLv5.png"
@@ -14,6 +14,10 @@ import 'firebase/analytics';
 import Modal from "../../util/Modal";
 import MyReview from "./MyReview";
 import Tooltip from "../../util/ToolTip";
+import grade from "../../image/향수등급.png";
+import gradeGold from "../../image/금.png";
+import gradeSilver from "../../image/은.png";
+import gradeBronze from "../../image/동.png";
 import MyComment from "./MyComment";
 
 
@@ -133,6 +137,9 @@ export const MyPageStyle = styled.div`
     .noProfileChange{
         display: none;
     }
+    .noClicked{
+        display: none;
+    }
 
 `;
 
@@ -140,21 +147,24 @@ const MyPage = () => {
 
     const nav = useNavigate();
     const context = useContext(UserContext);
-    const {userId, setUserId, setPassword, setIsLogin, isLogin} = context;
+    const {userId, setUserId, setPassword, setIsLogin, isLogin,userImage,setUserImage} = context;
     const [file, setFile] = useState(null);
     const [url, setUrl] = useState('');
     const [updateProfile, setUpdateProfile] = useState(false);
-    const [userImage, setUserImage] = useState('');
     window.scrollTo(0, 0);
     const [modalOpen, setModalOpen] = useState(false);
     const [deleteModalOpen, setDeleteModalOpen] = useState(false);
+    const [userGrade, setUserGrade] = useState(1);
+    const [clicked, setClicked] = useState(false);
 
     useEffect(()=> {
         const userInfo = async() => {
             const rsp = await AxiosApi.getImage(userId);
             await AxiosApi.myGrade(userId);
             console.log(rsp);
+            setUserGrade(rsp.data[0].userGrade);
             setUrl(rsp.data[0].userImg);
+            setUserImage(rsp.data[0].userImg);
         }
         userInfo();
     },[]);
@@ -226,8 +236,18 @@ const MyPage = () => {
     const handleNum = (e) => {
         setOrderBy(e.target.dataset.value);
         console.log(e.target.dataset.value);
+        setClicked(true);
     };
       
+    let gradeImage = "";
+
+    switch(userGrade) {
+        case 0 : gradeImage = grade; break;
+        case 1 : gradeImage = gradeBronze; break;
+        case 2 : gradeImage = gradeSilver; break;
+        case 3 : gradeImage = gradeGold; break;
+        default : gradeImage = gradeGold; break;
+    }
 
     return (
         <>
@@ -252,8 +272,8 @@ const MyPage = () => {
                                 <div className="profileC">
                                     <div className="perProfile">
                                         <div className="nickname">아이디 : {userId}</div>
-                                        <div className="gradeLv">회원 등급 : <p className="gradeImg" style={{backgroundImage: `url(${gradeimg5})`, backgroundSize: 'contain', backgroundRepeat: 'no-repeat'}}></p></div>
-                                        <Tooltip content="회원등급 설정방식 : dsfds"><button className="hintBtn">?</button></Tooltip>
+                                        <div className="gradeLv">회원 등급 : <p className="gradeImg" style={{backgroundImage: `url(${gradeImage})`, backgroundSize: 'contain', backgroundRepeat: 'no-repeat', }}></p></div>
+                                        <Tooltip image1={grade} image2={gradeBronze} image3={gradeSilver} image4={gradeGold}><button className="hintBtn">?</button></Tooltip>
                                         <div><button className="logOut" onClick={onClickLogout}>로그아웃</button></div>
                                         <div><button className="logOut" onClick={onClickMemberDelete}>회원탈퇴</button></div>
                                     </div>
@@ -268,7 +288,6 @@ const MyPage = () => {
                             <div className="down">
                                 <MyReview id={userId} views={orderBy} className="" />
                                 <MyComment id={userId} views={orderBy} className="" />
-                            </div>
                         </div>
                     </div>
                     <div className="line"></div>
