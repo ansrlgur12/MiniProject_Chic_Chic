@@ -186,7 +186,7 @@ const HeaderStyle = styled.div`
 const Header = () => {
 
   const context = useContext(UserContext);
-  const {setUserId, setPassword, setIsLogin, isLogin, url, userImage} = context;
+  const {setUserId, setPassword, setIsLogin, isLogin, userImage} = context;
   
     const nav = useNavigate();
     const[modalOpen, setModalOpen] = useState(false);
