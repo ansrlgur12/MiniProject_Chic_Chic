@@ -52,7 +52,8 @@ const MainStyle = styled.div`
     font-weight: bold;
     color: white;
   }
-  p{
+
+  .main-desc p{
     text-align: center;
     color: white;
     font-weight: bold;

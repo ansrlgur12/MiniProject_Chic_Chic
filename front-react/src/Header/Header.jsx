@@ -19,7 +19,7 @@ const HeaderStyle = styled.div`
     flex-direction: column;
     z-index: 10;
     
-    border-bottom: 1px solid #ccc;
+    border-bottom: .5px solid #9E7676;
     .profileP1 {
         width: 50px;
         height: 50px;
@@ -67,11 +67,8 @@ const HeaderStyle = styled.div`
     align-items: center;
   }
   .logo-line .logo-right .searchbar .search-btn{
-    margin-right: 15px;
+    /* margin-right: 15px; */
     cursor: pointer;
-  }
-  .logo-line .logo-right .searchbar .search-btn:active{
-    background-color: aquamarine;
   }
   
  
@@ -106,6 +103,8 @@ const HeaderStyle = styled.div`
   }
 
   .caption{
+            border: .5px solid #9E7676;
+            border-top: none;
             color: #42240a;
             position: absolute;
             overflow: hidden;
@@ -162,10 +161,10 @@ const HeaderStyle = styled.div`
     }
   
     .user-profile{
-      width:140px;
+      width:80%;
       height: 100%;
       display: flex;
-      justify-content: space-between;
+      justify-content: space-around;
       align-items: center;
     }
     .BtnCon{
@@ -209,24 +208,24 @@ const Header = () => {
                     <div className="logo-left"></div>
                     <div className="logo" onClick={()=>nav("/")}><div className="image" style={{ backgroundImage: `url(${logoImage})`, backgroundSize: 'cover' }}></div></div>
                     <div className="logo-right">
-                        <div className="searchbar">
-                        <div className="search-btn" onClick={()=>nav("/Search")}><span>search</span><i className="fas fa-search"></i></div>
-                        </div>
+                        
+                        
                         {isLogin ? (
-  <div className="user-profile">
-    <img
-      className="profileP1"
-      src={userImage || profile}
-      onClick={()=> {isLogin ? nav("/MyPage") : needLogin()}}
-      style={{ backgroundSize: 'cover', backgroundRepeat: 'no-repeat',cursor:"pointer" }}
-    />
-   
-    <button className="memBtn" onClick={() => { setUserId(""); setPassword(""); setIsLogin(false); nav("/"); }}>Logout</button>
-  </div>
-) : (
-  <div className="BtnCon">
-  <button className="memBtn" onClick={() => {  nav("/Login")  }}>Login</button>
-  </div>
+                          <div className="user-profile">
+                            <div className="search-btn" onClick={()=>nav("/Search")}><i className="fas fa-search"></i></div>
+                            <img
+                              className="profileP1"
+                              src={userImage || profile}
+                              onClick={()=> {isLogin ? nav("/MyPage") : needLogin()}}
+                              style={{ backgroundSize: 'cover', backgroundRepeat: 'no-repeat',cursor:"pointer" }}/>
+                              <button className="memBtn" onClick={() => { setUserId(""); setPassword(""); setIsLogin(false); nav("/"); }}>Logout</button>
+                              </div>
+                            ) : (
+                              
+                              <div className="BtnCon">
+                              <div className="search-btn" onClick={()=>nav("/Search")}><i className="fas fa-search"></i></div>
+                              <button className="memBtn" onClick={() => {  nav("/Login")  }}>Login</button>
+                              </div>
 )}
                     </div>
                 </div>
@@ -242,12 +241,12 @@ const Header = () => {
                         </div>
                         <div className="caption-title review">
                             <p onClick={()=>nav("/Community")}>리뷰</p>
-                            <p onClick={()=>nav("/Information")}>정보공유</p>
+                            <p onClick={()=>nav("/Information")}>자유게시판</p>
                             <p onClick={()=>nav("/UserDeal")}>회원거래</p>
                         </div>
                         <div className="caption-title custom">
                             <p onClick={()=>nav("/testmain")}>향수 테스트</p>
-                            <p onClick={()=>nav("/NoteFinderMain")} >노트 피라미드</p>
+                            <p onClick={()=>nav("/NoteFinderMain")} >노트 파인더</p>
                         </div>
                         <div className="caption-title notice">
                             <p onClick={()=>nav("/Notice")}>공지사항</p>

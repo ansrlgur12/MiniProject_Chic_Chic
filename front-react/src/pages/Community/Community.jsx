@@ -8,6 +8,8 @@ import { useContext, useState } from "react";
 import { UserContext } from "../../context/UserInfo";
 
 export const CommunityStyle = styled.div`
+    font-family: 'KorailRoundGothicBold';
+    background-color: #9c8d83;
     box-sizing: border-box;
     margin: 0px;
     display: flex;
@@ -16,10 +18,12 @@ export const CommunityStyle = styled.div`
     flex-grow: 1;
     
   .main{
-    margin-top: 130px;
-    width: 60vw;
+    border-radius: 15px;
+    background-color: white;
+    margin-top: 200px;
+    width: 65vw;
     min-height: 1520px;
-    padding: 70px 0px 0px 0px;
+    padding: 60px 60px 0px 60px;
     flex-grow: 1;
   }
   .main .section{
@@ -32,7 +36,7 @@ export const CommunityStyle = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: right;
-    margin: 20px 0px 20px 0px;
+    /* margin: 20px 0px 20px 0px; */
   }
 
 
@@ -40,17 +44,21 @@ export const CommunityStyle = styled.div`
     color: #804f23;;
     display: block;
     font-size: 1.5em;
-    margin-top: 0.83em;
-    margin-bottom: 0.83em;
     margin-left: 0;
     margin-right: 0;
     font-weight: bold;
   }
+
+  .sectionTitle h2{
+    font-size: 1.8em;
+    /* font-family: 'KIMM_Bold'; */
+  }
+
   .select{
     margin-right: 10px;
     height: 40px;
     width: 90px;
-    border-radius: 0px;
+    border-radius: 5px;
     border: 0.5px solid #838383;
     text-align: center;
   }
@@ -58,15 +66,16 @@ export const CommunityStyle = styled.div`
     cursor:pointer;
   }
   .line {
-        border-bottom: 1px solid #afafaf;
+        border-bottom: .5px solid #838383;
         width: 1fr;
         margin: 10px 0 20px 0;
   }
   
   .write{
+    background-color: #815B5B;
+    color: white;
     height: 40px;
     width: 90px;
-    border-radius: 0px;
     border: .5px solid #858585;
     border-radius: 5px;
     padding: 3px;
@@ -105,7 +114,7 @@ const Community = () => {
             <CommunityStyle>
             <div className = "main">
                 <div className="section">
-                    <h2>리뷰</h2>
+                    <div className="sectionTitle"><h2>리뷰</h2></div>
                     <div className="article-title">
                         <select  className ="select" value={orderBy} onChange={onClickOrderBy}>
                             <option value={1}>조회순</option>
