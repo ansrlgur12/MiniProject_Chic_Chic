@@ -33,7 +33,6 @@ export const Setting = styled.div`
     .setting{
         display: flex;    
     }
-
     .submit{
         width: 100%;
         display: flex;
@@ -96,10 +95,10 @@ export const Container = styled.div`
 `;
 
 
-const NewNotice = () => {
+const NewEvent = () => {
     const [title, setTitle] = useState("");
     const [pwd, setPwd] = useState("");
-    const [bnum, setCategory] = useState(1);
+    const [bnum, setCategory] = useState(4);
     const nav = useNavigate();
     const [text, setBoard_content] = useState("");
     const [modalOpen, setModalOpen] = useState(false);
@@ -121,7 +120,7 @@ const NewNotice = () => {
     }
 
     const submit = async() => {
-        const rsp = await AxiosApi.newNotice(bnum, userId, title, text, pwd, image);
+        const rsp = await AxiosApi.newEvent(bnum, userId, title, text, pwd, image);
         await AxiosApi.plusThreePoint(userId);
         await AxiosApi.myGrade(userId);
         console.log("submit : " + rsp);
@@ -187,7 +186,8 @@ const NewNotice = () => {
         <div className="setting">
             <label>카테고리</label>
             <select value={bnum} onChange={onClickOption}>
-            <option value={1}>이벤트</option>
+            <option value={4}>공지사항</option>
+            <option value={5}>News</option>
             </select>
         </div>
         <div className="setting">
@@ -252,4 +252,4 @@ const NewNotice = () => {
     );
 };
 
-export default NewNotice;
+export default NewEvent;
