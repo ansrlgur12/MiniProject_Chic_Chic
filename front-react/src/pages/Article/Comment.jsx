@@ -6,6 +6,7 @@ import { useCallback } from "react";
 import { useContext } from "react";
 import { UserContext } from "../../context/UserInfo";
 import profile from "../../image/기본프로필.jpg";
+import { useNavigate } from "react-router-dom";
 
 const CommentBox = styled.div`
     padding: 0;
@@ -107,6 +108,7 @@ const CommentBox = styled.div`
 
 const Comment = (props) => {
     
+    const nav = useNavigate();
     const [pwd, setPwd] = useState("");
     const [text, setText] = useState("");
     const [comment, setComment] = useState("");
@@ -121,6 +123,7 @@ const Comment = (props) => {
         const comment = async() => {
             const rsp = await AxiosApi.showComment(props.anum);
             setComment(rsp.data);
+            console.log(rsp.data);
         }
         comment();
       }, [props.anum]);
@@ -128,6 +131,8 @@ const Comment = (props) => {
     const submit = async(commentNum) => { // 댓글 등록하는 부분
         if(!isUpdate) {
             await AxiosApi.newComment(props.anum, userId ,text, pwd);
+            await AxiosApi.plusOnePoint(userId);
+            await AxiosApi.myGrade(userId);
             setPwd("");
             setText("");
             const newComment = await AxiosApi.showComment(props.anum);
@@ -181,6 +186,10 @@ const Comment = (props) => {
          setModalOpen(false);
        }
 
+    const onClickId = (id) => {
+        nav(`/userProfile/${id}`);
+    };
+
 
     return (
         <CommentBox>
@@ -190,12 +199,12 @@ const Comment = (props) => {
                 </div>
                 {comment && comment.map(comment => (      
                 <div className="commentList" key={comment.commentNum}> 
-                    <div className="listLeft">
+                    <div className="listLeft" onClick={()=>onClickId(comment.id)}>
                         <img className="profile" src={comment.userImg ? comment.userImg : profile} style={{ backgroundSize: 'cover', backgroundRepeat: 'no-repeat'} }></img>
                     </div>
                     <div className="listRight">
                         <div className="listTop">
-                            <div className="listName-date">{comment.id} <span className="space">|</span> {comment.date}</div>
+                            <div className="listName-date" onClick={()=>onClickId(comment.id)}>{comment.id} <span className="space">|</span> {comment.date2}</div>
                             <div className={isLogin && userId === comment.id ? "listUpdate-Delete" : "notLoginlistUpdate-Delete"}>
                                 <p onClick={()=>viewComment(comment.commentNum)}>수정</p>
                                 <p>|</p>

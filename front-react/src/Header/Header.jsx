@@ -226,7 +226,6 @@ const Header = () => {
 ) : (
   <div className="BtnCon">
   <button className="memBtn" onClick={() => {  nav("/Login")  }}>Login</button>
-
   </div>
 )}
                     </div>

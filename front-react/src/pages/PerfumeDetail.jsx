@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import styled from 'styled-components';
+import PerfumeReview from './PerfumeReview';
 
 const PerfumeDetailStyle = styled.div`
 .perfume-detail-container {
@@ -72,9 +73,9 @@ const PerfumeDetail = () => {
         <p className="detail-text">Base Notes: {perfumeDetail.baseNote.join(', ')}</p>
         <p className="detail-text">Seasons: {perfumeDetail.seasons.join(', ')}</p>
       </div>
-   
+      <PerfumeReview/>
       </PerfumeDetailStyle>
-      
+      {/* <Footer/> */}
     </>
   );
 };

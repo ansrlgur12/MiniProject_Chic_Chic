@@ -10,6 +10,7 @@ import { useNavigate } from "react-router-dom";
 
 const MainStyle = styled.div`
     padding-top: 130px;
+    font-family: 'KIMM_Bold';
   
   
   .article{

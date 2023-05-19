@@ -130,6 +130,8 @@ const Draft = () => {
 
   const submit = async() => {
     const rsp = await AxiosApi.newArticle(userId, bnum, title, text, pwd, image);
+    await AxiosApi.plusThreePoint(userId);
+    await AxiosApi.myGrade(userId);
     console.log(rsp);
     nav(-1);
   }

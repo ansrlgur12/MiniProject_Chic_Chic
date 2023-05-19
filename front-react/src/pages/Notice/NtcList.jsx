@@ -52,6 +52,10 @@ export const NtcListStyle = styled.div`
         overflow: hidden;
         text-overflow: ellipsis;
     }
+    .profileP1 {
+        height: 150px;
+        width: 100%;
+    }
 `;
 
 const NtcList = (props) => {
@@ -84,7 +88,9 @@ const NtcList = (props) => {
                     <div className="text" dangerouslySetInnerHTML={{ __html: article.text }} >
                     </div>
                 </div>
-                <div className="article-image"></div>
+                <div className={article.img === 'image' || article.img === null ? "no-image" : "article-image"}>
+                        <img className="profileP1" src={article.img} style={{ backgroundSize: 'cover', backgroundRepeat: 'no-repeat'}}></img>
+                </div>
             
             </div>
             ))}
