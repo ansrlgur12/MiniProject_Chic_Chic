@@ -7,14 +7,14 @@ import Footer from "../../Footer/Footer";
 import logoimage from "../../image/로고.jpg";
 
 export const ArticleListBlock = styled.div`
-
+    font-family: 'KorailRoundGothicBold';
     height: 1210px;
 
     h2{
         font-family: 'KIMM_Bold';
     }
     .article{
-        padding: 10px 0px 30px 0px;
+        padding: 20px 0px 30px 0px;
         border-bottom: .5px solid #ccc;
         height: 200px;
         display: flex;

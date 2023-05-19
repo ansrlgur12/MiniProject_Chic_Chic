@@ -12,7 +12,7 @@ const MyPageStyle = styled.div`
     }
     table {
         text-align: center;
-        width: 59vw;
+        width: 100%;
     }
     .btnBox{
         display: flex;
@@ -22,19 +22,28 @@ const MyPageStyle = styled.div`
     .th1{
         width: 10vw;
     }
-    .th1 .th3 .th4 .th5{
-        width: 10vw;
+    .th4{
+        width: 9vw;
+    }
+    .th5{
+        width: 11vw;
+    }
+    .th3{
+        width: 9vw;
     }
     .th2{
-        width: 30vw;
+        width: 26vw;
     }
     .td2{
         cursor: pointer;
         display: flex;
+        justify-content: center;
     }
     .trt{
         border-top: 1px solid black;
         border-bottom: 1px solid black;
+        background-color: hsl(32.72727272727272, 9.821428571428575%, 43.92156862745098%);
+        color: white;
     }
 `;
 

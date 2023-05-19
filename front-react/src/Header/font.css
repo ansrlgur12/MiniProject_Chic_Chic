@@ -10,3 +10,9 @@
     font-weight: 700;
     font-style: normal;
 }
+@font-face {
+    font-family: 'KorailRoundGothicBold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2212@1.0/KorailRoundGothicMedium.woff2') format('woff2');
+    font-weight: 500;
+    font-style: normal;
+}

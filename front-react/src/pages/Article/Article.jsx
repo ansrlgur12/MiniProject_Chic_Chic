@@ -17,17 +17,30 @@ import gradeSilver from "../../image/은.png";
 import gradeBronze from "../../image/동.png";
 
 const ArticleStyle = styled.div`
-    
+    font-family: 'KorailRoundGothicBold';
+    background-color: #9c8d83 ;
     box-sizing: border-box;
-    padding-top: 130px;
-    width: 60vw;
-    height: auto;
-    margin: auto;
+    padding-bottom: 60px;
+    padding-top: 200px;
+    
 
-    h2 {
+    .articleMain{
+        background-color: white;
+        padding-top: 30px;
+        border-radius: 15px;
+        width: 65vw;
+        height: auto;
+        margin: auto;
+        padding-left: 60px;
+        padding-right: 60px;
+        padding-bottom: 30px;
+        
+    }
+
+    .articleTitle h2 {
         font-family: 'KIMM_Bold';
     display: block;
-    font-size: 1.5em;
+    font-size: 1.7em;
     margin-top: 0.83em;
     margin-bottom: 0.83em;
     margin-left: 0;
@@ -288,11 +301,12 @@ const Article = () => {
         <>
         <Header/>
         <ArticleStyle>
+            <div className="articleMain">
             {article && article.map(article => (
                 <>
                     <div className="container" key={article.anum}>
                         <div className="title">
-                            <h2>{article.title}</h2>
+                            <div className="articleTitle"><h2>{article.title}</h2></div>
                             <div className="titleInfo">
                                 <div className="gradeLv"><p className="gradeImg" style={{backgroundImage: `url(${gradeImage})`, backgroundSize: 'contain', backgroundRepeat: 'no-repeat', }}></p></div>
                                 <p onClick={()=>onClickId(article.id)}>{article.id}</p>
@@ -327,6 +341,7 @@ const Article = () => {
            ))}
             <br />
             <Comment anum={anum}/>
+            </div>
         </ArticleStyle>
         <Modal open={modalOpen} type={true} confirm={()=>nav("/Login")} close={closeModal} header={"확인"}>로그인이 필요합니다</Modal>
         <Modal open={deleteModalOpen} type={true} confirm={deleteArticle} close={closeDeleteModal} header={"경고"}>삭제하시겠습니까?</Modal>

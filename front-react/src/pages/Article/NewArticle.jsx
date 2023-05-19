@@ -13,12 +13,26 @@ import 'firebase/compat/storage';
 
 
 export const Setting = styled.div`
-  padding-top: 160px;
-  width: 60vw;
-  height: 15vh;
-  display: flex;
-  flex-direction: column;
-  margin: 0 auto;
+    font-family: 'KorailRoundGothicBold';
+    background-color: #9c8d83 ;
+    height: auto;
+    padding-top: 180px;
+    padding-bottom: 60px;
+    
+
+  .writeArticle{
+    border-radius: 15px;
+    background-color: white;
+    padding: 60px;
+    margin-top: 60px;
+    width: 65vw;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+  }
+
+
   h2 {
     color: #804f23;;
     display: block;
@@ -87,6 +101,9 @@ export const Setting = styled.div`
     .imagePreview{
       width: 80px;
       margin-bottom: 15px;
+    }
+    .pwd{
+      font-family: none;
     }
 
 `;
@@ -188,6 +205,7 @@ const Draft = () => {
     <>
     <Header />
       <Setting>
+      <div className="writeArticle">
       <div className="title">
         <h2>글 작성</h2>
         <hr />
@@ -197,7 +215,7 @@ const Draft = () => {
         <label>카테고리</label>
         <select value={bnum} onChange={onClickOption}>
           <option value={1}>리뷰</option>
-          <option value={2}>정보공유</option>
+          <option value={2}>자유게시판</option>
           <option value={3}>회원거래</option>
         </select>
       </div>
@@ -250,12 +268,13 @@ const Draft = () => {
       </div>
       <div className="setting">
         <label htmlFor="">비밀번호</label>
-        <input type="password" onChange={onChangePwd} />
+        <input className="pwd" type="password" onChange={onChangePwd} />
       </div>
       </blockquote>
       <div className="submit">
         <button onClick={onClickSubmit}>등록</button>
         <button onClick={goBack}>취소</button>
+        </div>
         </div>
       <Modal open={modalOpen} type={true} confirm={submit} close={closeModal} header={"확인"}>등록 하시겠습니까?</Modal>
       </Setting>

@@ -8,8 +8,9 @@ const Sytled = styled.div`
     margin-left: 10px;
 
     .gradeImg{
-        width: 100%;
+        width: 120%;
         display: flex;
+        flex-direction: row;
     }
 
     p{
@@ -47,7 +48,7 @@ const Tooltip = ({ content, children , image1, image2, image3, image4, image5}) 
       {isTooltipVisible && (
         <div
           style={{
-            width : '150px',
+            width : '180px',
             height : 'auto',
             position: 'absolute',
             top: '100%',

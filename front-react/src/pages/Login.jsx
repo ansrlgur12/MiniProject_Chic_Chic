@@ -8,14 +8,29 @@ import { UserContext } from "../context/UserInfo";
 import Header from "../Header/Header";
 
 const Container = styled.div`
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
-    justify-content: space-evenly;
-    padding-top: 200px;
-    
-    margin: 0 auto;
-    width: 40%; /* 원하는 너비 설정 */
+  background-color: #9c8d83 ;
+  height: 100vh;
+  padding-top: 200px;
+
+    .title{
+      font-family: 'KorailRoundGothicBold';
+      padding-left: 40px;
+      margin-bottom: 20px;
+      font-weight: bold;
+    }
+
+    .loginContainer{
+      border-radius: 15px;
+      background-color: white;
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: column;
+      justify-content: space-evenly;
+      padding: 80px 40px 40px 40px;
+      margin: 0 auto;
+      width: 50vw; /* 원하는 너비 설정 */
+
+    }
 
     .item1 {
     margin-top: 100px;
@@ -43,6 +58,7 @@ const Container = styled.div`
   }
 
   .hint {
+    font-family: 'KorailRoundGothicBold';
       display: flex;
       margin-top: -5px;
       margin-bottom: 10px;
@@ -60,7 +76,7 @@ const Container = styled.div`
   }
 
   .enable-button {
-    margin-top: 50px;
+    margin-top: 30px;
     margin-left: 30px;
     margin-right: 30px;
     font-family: 'Noto Sans KR', sans-serif;
@@ -69,7 +85,7 @@ const Container = styled.div`
     width: 100%; /* 원하는 너비 설정 */
     height: 50px;
     color: white;
-    background-color: orange;
+    background-color: #815B5B;
     font-size: 15px;
     font-weight: 400;
     border-radius: 18px;
@@ -77,7 +93,7 @@ const Container = styled.div`
     font-weight: 700;
   }
   .enable-button:active {
-    margin-top: 50px;
+    margin-top: 30px;
     margin-left: 30px;
     margin-right: 30px;
     font-family: 'Noto Sans KR', sans-serif;
@@ -94,7 +110,7 @@ const Container = styled.div`
     font-weight: 700;
   }
   .disable-button {
-    margin-top: 50px;
+    margin-top: 30px;
     margin-left: 30px;
     margin-right: 30px;
     font-family: 'Noto Sans KR', sans-serif;
@@ -110,13 +126,14 @@ const Container = styled.div`
     border: orange;
   }	
   .signup {
+    font-family: 'KorailRoundGothicBold';
     display: flex;
-    justify-content: right;
+    justify-content: left;
     align-items: center;
     color: orange;
     font-weight: 700;
     margin-top: 10px;
-    margin-right: 40px;
+    margin-left: 40px;
     font-size: 14px;
     .link_style {
       color: orange;
@@ -227,6 +244,10 @@ const Login = () => {
       <>
       <Header/>
         <Container>
+          <div className="loginContainer">
+            <div className="title">
+              <h2>Login</h2>
+            </div>
             <div className="item2">
                 <Input placeholder="아이디" value={inputId} onChange={onChangeId}/>
             </div>
@@ -241,13 +262,14 @@ const Login = () => {
             </div>
             <div className="item2">
             {(isId && isPw) ?
-              <button className="enable-button"onClick={onClickLogin}>SING IN</button>  :
-              <button className="disable-button"onClick={onClickLogin}>SING IN</button>}
+              <button className="enable-button"onClick={onClickLogin}>로그인</button>  :
+              <button className="disable-button"onClick={onClickLogin}>로그인</button>}
             </div>
             <Modal open={modalOpen} confirm={closeModal} justConfirm = {true} header={"오류"}>아이디 및 패스워드를 확인해주세요.</Modal>
             <Modal open={loginFinishOpen} confirm={()=>nav(-1)} justConfirm = {true} header={"오류"}>로그인이 성공했습니다.</Modal>
             <div className="signup">
-                <div className="link_style" onClick={() => nav("/SignUp")}>회원가입</div>
+                <div className="link_style" onClick={() => nav("/SignUp")}>아직 회원이 아니세요?</div>
+            </div>
             </div>
         </Container>
         </>

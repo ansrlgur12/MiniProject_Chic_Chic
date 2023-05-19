@@ -54,6 +54,7 @@ const CommentBox = styled.div`
     }
 
     .pwd{
+        font-family: none;
         height: 2.5em;
         width: 120px;
         padding: 0.4em;

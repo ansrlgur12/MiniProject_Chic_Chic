@@ -1,6 +1,6 @@
 import React from "react";
 import Header from "../../Header/Header";
-import {CommunityStyle} from "./Community";
+import { CommunityStyle } from "./Community";
 import { Link, useNavigate } from "react-router-dom";
 import ArticleLists from "../Article/ArticleLists";
 import Footer from "../../Footer/Footer";
@@ -25,7 +25,7 @@ const Information = () => {
             <CommunityStyle>
             <div className = "main">
             <div className="section">
-                <h2>정보공유</h2>
+                <div className="sectionTitle"><h2>자유게시판</h2></div>
                 <div className="article-title">
                     <select  className ="select" value={orderBy} onChange={onClickOrderBy}>
                             <option value={1}>조회순</option>
