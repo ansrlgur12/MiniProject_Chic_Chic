@@ -7,8 +7,23 @@ const Sytled = styled.div`
     width: 50px;
     margin-left: 10px;
 
+
+    .toolTip{
+        width : 180px;
+        height : auto;
+        position: absolute;
+        top: 100%;
+        left: 250%;
+        transform: translateX(-50%);
+        background-color: rgb(255, 255, 255);
+        border: .5px solid black;
+        color: black;
+        padding: 10px;
+        border-radius: 4px;
+    }
+
     .gradeImg{
-        width: 120%;
+        width: 100%;
         display: flex;
         flex-direction: row;
     }
@@ -46,28 +61,12 @@ const Tooltip = ({ content, children , image1, image2, image3, image4, image5}) 
     >
       {children}
       {isTooltipVisible && (
-        <div
-          style={{
-            width : '180px',
-            height : 'auto',
-            position: 'absolute',
-            top: '100%',
-            left: '250%',
-            transform: 'translateX(-50%)',
-            backgroundColor: 'rgb(255, 255, 255)',
-            border: '.5px solid black',
-            color: 'black',
-            padding: '10px',
-            borderRadius: '4px',
-            
-          }}
-        >
+        <div className='toolTip'>
           <span style={{ color: 'black' }}>{content}</span>
           <div className="gradeImg" style={{backgroundImage: `url(${image1})`, backgroundSize: 'contain', backgroundRepeat: 'no-repeat', }}><p>1등급</p></div>
           <div className="gradeImg" style={{backgroundImage: `url(${image2})`, backgroundSize: 'contain', backgroundRepeat: 'no-repeat', }}><p>2등급</p></div>
           <div className="gradeImg" style={{backgroundImage: `url(${image3})`, backgroundSize: 'contain', backgroundRepeat: 'no-repeat', }}><p>3등급</p></div>
           <div className="gradeImg" style={{backgroundImage: `url(${image4})`, backgroundSize: 'contain', backgroundRepeat: 'no-repeat', }}><p>4등급</p></div>
-          
         </div>
       )}
     </div>
