@@ -33,25 +33,28 @@ export const MyPageStyle = styled.div`
         line-height: 1;
     }
     .container {
-        width: 960px;
+        width: 60%;
         height: auto;
         display: inline-block;
         margin-top: 130px;
     }
+    
+
     h2 {
         text-align: center;
         margin: 1em;
     }
     .top {
         width: 1fr;
-        height: auto;
+        height: 100%;
         border: 1px solid black;
-        padding: 20px;
+        /* padding: 20px; */
+        padding: 0px 20px;
         border-radius: 10px;
     }
     .profileP1 {
-        width: 100px;
-        height: 100px;
+        width: 130px;
+        height: 130px;
         border: 1px solid black;
         border-radius: 50%;
     }
@@ -63,9 +66,12 @@ export const MyPageStyle = styled.div`
         margin-top: 10px;
     }
     .up {
+        padding-left: 30px;
         display: flex;
-        justify-content: space-evenly;
+        flex-direction: row;
+        width: 100%;
         align-items: center;
+        height: 50%;
 
     }
     .textProfile {
@@ -74,10 +80,11 @@ export const MyPageStyle = styled.div`
         align-items: center;
     }
     .textHistory {
-        border: 1px solid black;
+        border: .5px solid #878787;
+        width: 80px;
         margin: 16px;
         padding: 4px 8px;
-        border-radius: 5px;
+        border-radius: 15px;
         cursor: pointer;
     }
     .gradeImg {
@@ -90,11 +97,17 @@ export const MyPageStyle = styled.div`
     }
     .perProfile {
         display: flex;
+        flex-direction: column;
         justify-content: space-around;
     }
     .inside {
-        border-bottom: 1px solid #afafaf;
-        margin: 20px 0;
+        display: flex;
+        flex-direction: column;
+        /* border-bottom: 1px solid #afafaf; */
+        height: auto;
+        margin-top: 20px;
+        /* padding-bottom: 15px; */
+        /* background-color: royalblue; */
 
     }
     .pr1 .pr2 {
@@ -107,9 +120,10 @@ export const MyPageStyle = styled.div`
         padding: 10px;
     }
     .down {
-        margin-top: 2em;
-        border-top: 1px solid black;
-        padding-top: 1em;
+        /* margin-top: 2em; */
+        /* border-top: 1px solid black; */
+        /* padding-top: 1em; */
+        height: 130px;
         display: flex;
         justify-content: center;
     }
@@ -134,6 +148,47 @@ export const MyPageStyle = styled.div`
     .noClicked{
         display: none;
     }
+    .profileP{
+        flex-basis: 25%;
+    }
+    .profileC{
+        
+        flex-basis: 60%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        
+        
+    }
+    .profileS{
+        flex-basis: 10%;
+        background-color: red;
+        height: 100%;
+    }
+    .nickname{
+        font-family: 'KIMM_Bold';
+        font-size: large;
+        height: 50%;
+        margin-bottom: 15px;
+    }
+    .grade{
+        height: 50%;
+        display: flex;
+        flex-direction: row;
+    }
+    .clickedTextHistory{
+        border: .5px solid #878787;
+        width: 80px;
+        margin: 16px;
+        padding: 4px 8px;
+        border-radius: 15px;
+        cursor: pointer;
+        background-color: rgb(113, 81, 29);
+        color: white;
+    }
+
+
 `;
 
 const UserProfile = () => {
@@ -145,6 +200,10 @@ const UserProfile = () => {
     window.scrollTo(0, 0);
     const [userGrade, setUserGrade] = useState(1);
     const [clicked, setClicked] = useState(false);
+    const [reviewClicked, setReviewClicked] = useState(false); 
+    const [commentClicked, setCommentClicked] = useState(false);
+    const [likeClicked, setLikeClicked] = useState(false);
+    const [reviewCommentClicked, setReviewCommentClicked] = useState(false);
 
     useEffect(()=> {
         const userInfo = async() => {
@@ -161,9 +220,39 @@ const UserProfile = () => {
     const [orderBy, setOrderBy] = useState(1);
 
     const handleNum = (e) => {
-        setOrderBy(e.target.dataset.value);
-        console.log(e.target.dataset.value);
+        const selectedValue = e.target.dataset.value;
+        setOrderBy(selectedValue);
+        console.log(selectedValue);
         setClicked(true);
+
+                // 리뷰 버튼 클릭 시
+        if (selectedValue === "1") {
+            setReviewClicked(true);
+            setCommentClicked(false);
+            setLikeClicked(false);
+            setReviewCommentClicked(false);
+        }
+        // 댓글 버튼 클릭 시
+        else if (selectedValue === "2") {
+            setReviewClicked(false);
+            setCommentClicked(true);
+            setLikeClicked(false);
+            setReviewCommentClicked(false);
+        }
+        // 좋아요 버튼 클릭 시
+        else if (selectedValue === "3") {
+            setReviewClicked(false);
+            setCommentClicked(false);
+            setLikeClicked(true);
+            setReviewCommentClicked(false);
+        }
+        // 한줄평 버튼 클릭 시
+        else if (selectedValue === "4") {
+            setReviewClicked(false);
+            setCommentClicked(false);
+            setLikeClicked(false);
+            setReviewCommentClicked(true);
+        }
     };
       
     let gradeImage = "";
@@ -175,6 +264,8 @@ const UserProfile = () => {
         case 3 : gradeImage = gradeGold; break;
         default : gradeImage = gradeGold; break;
     }
+
+    
 
     return (
         <>
@@ -190,26 +281,26 @@ const UserProfile = () => {
                                 </div>
                                 <div className="profileC">
                                     <div className="perProfile">
-                                        <div className="nickname">아이디 : {id}</div>
-                                        <div className="gradeLv">회원 등급 : <p className="gradeImg" style={{backgroundImage: `url(${gradeImage})`, backgroundSize: 'contain', backgroundRepeat: 'no-repeat', }}></p></div>
-                                        <Tooltip content="회원등급 설정방식 : dsfds"><button className="hintBtn">?</button></Tooltip>
-                                    </div>
-                                    <div className="textProfile">
-                                        <button className="textHistory" data-value={1} onClick={handleNum}>내 리뷰</button>
-                                        <button className="textHistory" data-value={2} onClick={handleNum}>내 댓글</button>
-                                        <button className="textHistory" data-value={3} onClick={handleNum}>내 좋아요</button>
-                                        <button className="textHistory" data-value={4} onClick={handleNum}>내 한줄평</button>
+                                        <div className="nickname">{id}</div>
+                                        <div className="grade">
+                                            <div className="gradeLv">회원 등급 : <p className="gradeImg" style={{backgroundImage: `url(${gradeImage})`, backgroundSize: 'contain', backgroundRepeat: 'no-repeat', }}></p></div>
+                                            <Tooltip image1={grade} image2={gradeBronze} image3={gradeSilver} image4={gradeGold}><button className="hintBtn">?</button></Tooltip>
+                                        </div>
                                     </div>
                                 </div>
+                                <div className="profileS">
+                                </div>
                             </div>
+                        </div>
+                        <div className="textProfile">
+                                        <button className= {reviewClicked ?  "clickedTextHistory" : "textHistory"}  data-value={1} onClick={handleNum}>리뷰</button>
+                                        <button className= {commentClicked ?  "clickedTextHistory" : "textHistory"} data-value={2} onClick={handleNum}>댓글</button>
+                                        <button className= {likeClicked ?  "clickedTextHistory" : "textHistory"} data-value={3} onClick={handleNum}>좋아요</button>
+                                        <button className= {reviewCommentClicked ?  "clickedTextHistory" : "textHistory"} data-value={4} onClick={handleNum}>한줄평</button>
+                                    </div>
                             <div className= {clicked ? "down" : "noClicked"}>
                                 <MyReview id={id} views={orderBy}/>
                             </div>
-                        </div>
-                    </div>
-                    <div className="line"></div>
-                    <div className="bottom">
-                        
                     </div>
                 </div>
                 

@@ -62,6 +62,7 @@ const PerfumeList = () => {
     isFetchingNextPage,
   } = useInfiniteQuery('perfumes', fetchPerfumes, {
     getNextPageParam: (lastPage) => lastPage.nextPage,
+    enabled:true
   });
 
 

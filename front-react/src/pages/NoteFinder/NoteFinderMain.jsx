@@ -60,7 +60,7 @@ button{
   const NoteFinderMain = () => {
     const nav = useNavigate();
     const location = useLocation();
-    const {state} = useLocation();
+   
     const [selectedValue, setSelectedValue] = useState({ 0: {}, 1: {}, 2: {} });
     const [perfumes, setPerfumes] = useState(null);
 console.log(selectedValue);

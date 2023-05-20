@@ -286,9 +286,11 @@ const MyPage = () => {
                                 </div>
                             </div>
                             <div className="down">
+
                                 <MyReview id={userId} views={orderBy}/>
                                 <MyComment id={userId} views={orderBy}/>
                             </div>
+
                         </div>
                     </div>
                     <div className="line"></div>

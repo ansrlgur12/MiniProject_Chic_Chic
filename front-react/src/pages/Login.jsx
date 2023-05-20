@@ -150,7 +150,7 @@ const Login = () => {
 
     // Context API에 값을 저장
     const context = useContext(UserContext);
-    const {setUserId, setPassword, setIsLogin} = context;
+    const {setUserId, setPassword, setIsLogin, setUserImage} = context;
 
     // 키보드 입력 받기
     const[inputId, setInputId] = useState("");
@@ -207,10 +207,12 @@ const Login = () => {
       console.log(response.data);
 
       if(response.data === true) {
+        console.log("33");
           setLoginFinishOpen(true);
           setUserId(inputId);
           setPassword(inputPw);
           setIsLogin(true);
+          setUserImage(response.data.userImage);
           
       } else {
           console.log("로그인 에러");
