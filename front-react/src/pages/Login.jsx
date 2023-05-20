@@ -251,15 +251,15 @@ const Login = () => {
             <div className="item2">
                 <Input placeholder="아이디" value={inputId} onChange={onChangeId}/>
             </div>
-            <div className="hint">
+            {/* <div className="hint">
                 {inputId.length > 0 && <span className= {`${isId ? "success" : "error"}`}>{idMessage}</span>}
-            </div>
+            </div> */}
             <div className="item2">
                 <Input type="password" placeholder="비밀번호" value={inputPw} onChange={onChangePw} onKeyPress={onKeyPress}/>
             </div>
-            <div className="hint">
+            {/* <div className="hint">
                 {inputId.length > 0 && <span className= {`${isPw ? "success" : "error"}`}>{pwMessage}</span>}
-            </div>
+            </div> */}
             <div className="item2">
             {(isId && isPw) ?
               <button className="enable-button"onClick={onClickLogin}>로그인</button>  :

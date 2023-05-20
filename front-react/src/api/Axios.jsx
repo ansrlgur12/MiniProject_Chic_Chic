@@ -286,6 +286,14 @@ const AxiosApi = {
         return await axios.post(CHIC_DOMAIN + `/myGrade`, grade);
     },
 
+    updatePassword : async(id, pwd) => {
+        const update = {
+            id : id,
+            pwd : pwd
+        }
+        return await axios.post(CHIC_DOMAIN + "/updatePw", update);
+    },
+
 };
 
 export default AxiosApi;
