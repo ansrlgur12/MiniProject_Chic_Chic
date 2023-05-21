@@ -48,7 +48,7 @@ const MyLiked = (props) => {
     window.scrollTo(0, 0);
     const nav = useNavigate();
 
-    const [comment, setcomment] = useState("");
+    const [liked, setLiked] = useState("");
 
     const [currentPage, setCurrentPage] = useState(1);
     const pageSize = 6;
@@ -57,7 +57,7 @@ const MyLiked = (props) => {
     const reviews = async() => {
         console.log("유저번호, view : " + props.id);
         const rsp = await AxiosApi.myLikeList(props.id);
-        setcomment(rsp.data);
+        setLiked(rsp.data);
     }
     reviews();
     }, [props.id]);
@@ -72,9 +72,9 @@ const MyLiked = (props) => {
 
     const startIndex = (currentPage - 1) * pageSize;
     const endIndex = startIndex + pageSize;
-    const displayedComments = comment.slice(startIndex, endIndex);
+    const displayedLiked = liked.slice(startIndex, endIndex);
 
-    const totalArticles = comment.length;
+    const totalArticles = liked.length;
     const totalPages = Math.ceil(totalArticles / pageSize);
 
     const maxPageButtons = 5;
@@ -102,12 +102,12 @@ const MyLiked = (props) => {
                             <th className="th3">좋아요수</th>
                             <th className="th5">등록일</th>
                         </tr>
-                    {displayedComments && displayedComments.map((comment)=> (
-                        <tr className="trb" key={comment.aNum}>
-                            <td className="td1">{comment.bnum}</td>
-                            <td className="td2" onClick={()=>onClick(comment.anum)}>{comment.title}</td>
-                            <td className="td3">{comment.like}</td>
-                            <td className="td5">{comment.date}</td>
+                    {displayedLiked && displayedLiked.map((liked)=> (
+                        <tr className="trb" key={liked.aNum}>
+                            <td className="td1">{liked.bnum}</td>
+                            <td className="td2" onClick={()=>onClick(liked.anum)}>{liked.title}</td>
+                            <td className="td3">{liked.like}</td>
+                            <td className="td5">{liked.date}</td>
                         </tr>
                     ))}
                     </table>

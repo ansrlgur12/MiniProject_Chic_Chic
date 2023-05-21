@@ -20,6 +20,8 @@ import gradeSilver from "../../image/은.png";
 import gradeBronze from "../../image/동.png";
 import MyComment from "./MyComment";
 import { UserProfileStyle } from "./UserProfile";
+import MyLiked from "./MyLiked";
+import MyOneLine from "./MyOneLine";
 
 
 export const MyPageStyle = styled.div`
@@ -336,8 +338,8 @@ const MyPage = () => {
                             <div className="down">
                                 {reviewClicked && <MyReview id={userId} views={orderBy}/>}
                                 {commentClicked && <MyComment id={userId} views={orderBy}/>}
-                                {/* {commentClicked && <MyLiked id={userId} views={orderBy}/>} */}
-                                {/* {commentClicked && <MyOneLine id={userId} views={orderBy}/>} */}
+                                {commentClicked && <MyLiked id={userId} views={orderBy}/>}
+                                {commentClicked && <MyOneLine id={userId} views={orderBy}/>}
                         </div>
                     </div>
                     <div className="line"></div>
