@@ -14,6 +14,7 @@ const MyPageStyle = styled.div`
         width: 100%;
     }
     .btnBox{
+        padding-top: 5px;
         display: flex;
         justify-content: center;
     }
@@ -42,6 +43,25 @@ const MyPageStyle = styled.div`
         background-color: hsl(32.72727272727272, 9.821428571428575%, 43.92156862745098%);
         color: white;
     }
+    .trb{
+        border-bottom: .5px solid #ccc;
+    }
+    .numBtn{
+        width: 30px;
+        height: 30px;
+        border: .5px solid #ccc;
+        background-color: white;
+        font-size: large;
+        font-weight: 500;
+        color: #42240a;
+    }
+    .numBtn + .numBtn{
+        margin-left: 10px;
+    }
+    .active{
+        background-color:  #5f330d;
+        color: white;
+    }
 `;
 
 const MyLiked = (props) => {
@@ -58,6 +78,7 @@ const MyLiked = (props) => {
         console.log("유저번호, view : " + props.id, props.views);
         const rsp = await AxiosApi.myHistoryList(props.id, props.views);
         setLiked(rsp.data);
+        console.log(rsp.data);
     }
     reviews();
     }, [props.id]);
@@ -105,7 +126,7 @@ const MyLiked = (props) => {
                         </tr>
                     {displayedLiked && displayedLiked.map((liked)=> (
                         <tr className="trb" key={liked.aNum}>
-                            <td className="td1">{liked.bnum}</td>
+                            <td className="td1">{liked.bname}</td>
                             <td className="td2" onClick={()=>onClick(liked.anum)}>{liked.title}</td>
                             <td className="td3">{liked.like}</td>
                             <td className="td4"></td>

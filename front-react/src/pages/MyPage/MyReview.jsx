@@ -17,6 +17,7 @@ const MyPageStyle = styled.div`
     .btnBox{
         display: flex;
         justify-content: center;
+        padding-top: 5px;
     }
     
     .th1{
@@ -45,6 +46,26 @@ const MyPageStyle = styled.div`
         background-color: hsl(32.72727272727272, 9.821428571428575%, 43.92156862745098%);
         color: white;
     }
+    .trb{
+        border-bottom: .5px solid #ccc;
+    }
+    .numBtn{
+        width: 30px;
+        height: 30px;
+        border: .5px solid #ccc;
+        background-color: white;
+        font-size: large;
+        font-weight: 500;
+        color: #42240a;
+    }
+    .numBtn + .numBtn{
+        margin-left: 10px;
+    }
+    .active{
+        background-color:  #5f330d;
+        color: white;
+    }
+    
 `;
 
 const MyReview = (props) => {
@@ -108,7 +129,7 @@ const MyReview = (props) => {
                         </tr>
                     {displayedReviews && displayedReviews.map((review)=> (
                         <tr className="trb" key={review.anum}>
-                            <td className="td1">{review.bnum}</td>
+                            <td className="td1">{review.bname}</td>
                             <td className="td2" onClick={()=>onClick(review.anum)}>{review.title}</td>
                             <td className="td3">{review.view}</td>
                             <td className="td4">{review.like}</td>

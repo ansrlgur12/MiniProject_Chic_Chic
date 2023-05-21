@@ -3,6 +3,9 @@ import { useEffect, useState } from "react";
 import AxiosApi from "../../api/Axios";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faStar as farStar } from "@fortawesome/free-regular-svg-icons";
+import { faStar as fasStar } from "@fortawesome/free-solid-svg-icons";
 
 const MyPageStyle = styled.div`
     
@@ -14,14 +17,15 @@ const MyPageStyle = styled.div`
         width: 100%;
     }
     .btnBox{
+        padding-top: 5px;
         display: flex;
         justify-content: center;
     }
     .th1{
-        width: 10vw;
+        width: 20vw;
     }
     .th4{
-        width: 9vw;
+        width: 11vw;
     }
     .th5{
         width: 11vw;
@@ -30,16 +34,36 @@ const MyPageStyle = styled.div`
         width: 9vw;
     }
     .th2{
-        width: 26vw;
+        width: 24vw;
+        
     }
     .td2{
         cursor: pointer;
-        display: flex;
+        text-align: center;
     }
     .trt{
         border-top: 1px solid black;
         border-bottom: 1px solid black;
         background-color: hsl(32.72727272727272, 9.821428571428575%, 43.92156862745098%);
+        color: white;
+    }
+    .trb{
+        border-bottom: .5px solid #ccc;
+    }
+    .numBtn{
+        width: 30px;
+        height: 30px;
+        border: .5px solid #ccc;
+        background-color: white;
+        font-size: large;
+        font-weight: 500;
+        color: #42240a;
+    }
+    .numBtn + .numBtn{
+        margin-left: 10px;
+    }
+    .active{
+        background-color:  #5f330d;
         color: white;
     }
 `;
@@ -57,6 +81,7 @@ const MyOneLine = (props) => {
     const reviews = async() => {
         console.log("유저번호, view : " + props.id, props.views);
         const rsp = await AxiosApi.myHistoryList(props.id, props.views);
+        console.log(rsp);
         setoneLine(rsp.data);
     }
     reviews();
@@ -90,7 +115,7 @@ const MyOneLine = (props) => {
             startPage = Math.max(endPage - maxPageButtons + 1, 1);
         }
     }
-
+    
     return(
         <>
             <MyPageStyle>
@@ -99,19 +124,24 @@ const MyOneLine = (props) => {
                         <tr className="trt">
                             <th className="th1">향수</th>
                             <th className="th2">한줄평</th>
-                            <th className="th3"></th>
                             <th className="th4">별점</th>
-                            <th className="th5"></th>
                         </tr>
-                    {displayedOneLine && displayedOneLine.map((oneLine)=> (
-                        <tr className="trb" key={oneLine.perfumeNumber}>
-                            <td className="td1">{oneLine.perfumeNumber}</td>
-                            <td className="td2" onClick={()=>onClick(oneLine.perfumeNumber)}>{oneLine.review}</td>
-                            <td className="td3"></td>
-                            <td className="td4">{oneLine.starRating}</td>
-                            <td className="td5"></td>
+                        {displayedOneLine && displayedOneLine.map((oneLine) => (
+                        <tr className="trb" key={oneLine.perfumeName}>
+                            <td className="td1">{oneLine.perfumeName}</td>
+                            <td className="td2" onClick={() => onClick(oneLine.perfumeName)}>{oneLine.oneLineText}</td>
+                            <td className="td4">
+                            {[...Array(5)].map((_, index) => (
+                                <FontAwesomeIcon
+                                key={index}
+                                icon={index < Math.round(oneLine.star) ? fasStar : farStar}
+                                color={index < Math.round(oneLine.star) ? "#ffc107" : "#e4e5e9"}
+                                size="lg"
+                                />
+                            ))}
+                            </td>
                         </tr>
-                    ))}
+                        ))}
                     </table>
                     <div className="btnBox">
                     {startPage > 1 && (<button onClick={() => handlePageChange(startPage - 1)}>{"<"}</button>)}
