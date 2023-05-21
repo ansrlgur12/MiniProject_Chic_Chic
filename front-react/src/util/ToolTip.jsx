@@ -9,8 +9,8 @@ const Sytled = styled.div`
 
 
     .toolTip{
-        width : 180px;
-        height : auto;
+        width : 175px;
+        height : 175px;
         position: absolute;
         top: 100%;
         left: 250%;
@@ -20,6 +20,8 @@ const Sytled = styled.div`
         color: black;
         padding: 10px;
         border-radius: 4px;
+        display: flex;
+        flex-direction: column;
     }
 
     .gradeImg{
