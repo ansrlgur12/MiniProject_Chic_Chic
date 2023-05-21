@@ -106,7 +106,7 @@ const EventPage = () => {
                                 <option value={4}>종료 이벤트</option>
                             </select>
                             {isLogin && showWriteButton && (
-                            <div><p className={isLogin ? "write" : "notLoginWrite"} onClick={()=>nav("/newNotice")}>작성하기</p></div>
+                            <div><p className={isLogin ? "write" : "notLoginWrite"} onClick={()=>nav("/newEvent")}>작성하기</p></div>
                             )}
                         </div>
                         <div className="line"/> 
