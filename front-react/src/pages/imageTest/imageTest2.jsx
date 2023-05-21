@@ -1,8 +1,9 @@
 import React, {useEffect} from "react";
 import Header from "../../Header/Header";
 import { Gage,ImageTestStyle,ImageTestStyle1 ,TextOpt} from "./imageTest";
-import { useNavigate,useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import Footer from "../../Footer/Footer";
 
 
 
@@ -65,6 +66,7 @@ const ImageTest2 = () => {
       
       </ImageTestStyle1>
       </ImageTestStyle>
+      <Footer/>
         
           
 

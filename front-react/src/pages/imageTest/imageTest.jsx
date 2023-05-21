@@ -7,7 +7,7 @@ import Fall from "../../image/fall.png"
 import Winter from "../../image/winter.png"
 import "../../Header/font.css";
 import { useNavigate} from "react-router-dom";
-
+import Footer from "../../Footer/Footer";
 import { useState } from "react";
 
 export const Gage = styled.div`
@@ -71,6 +71,7 @@ export const ImageTestStyle = styled.div`
   justify-content: center; 
   align-items: center;
     text-align: center;
+    margin-bottom: 4rem;
     
     
   }
@@ -157,7 +158,7 @@ export const ImageTestStyle = styled.div`
   position: absolute;
   bottom: 2rem;
   cursor: pointer;
-  
+  margin-bottom: 4rem;
   }
   .startBtn:active{
     background-color:beige;
@@ -306,6 +307,7 @@ const ImageTest= () =>{
       
       </ImageTestStyle1>
       </ImageTestStyle>
+      <Footer/>
         </>
     );
 };
