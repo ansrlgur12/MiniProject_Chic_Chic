@@ -87,9 +87,9 @@ const Reviews = () => {
             {/* 가져온 리뷰 출력 */}
             {reviews && reviews.map((review, index) => (
                 <div key={index}>
-                    <p>User: {review.userId}</p>
-                    <p>Rating: {review.starRating}</p>
-                    <p>Review: {review.review}</p>
+                    <p>이름: {review.userId}</p>
+                    <p>별점: {review.starRating}</p>
+                    <p>한줄평: {review.review}</p>
                 </div>
             ))}
         </form>

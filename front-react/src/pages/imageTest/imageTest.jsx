@@ -46,6 +46,7 @@ export const ImageTestStyle = styled.div`
     display:flex;
     align-items:center;
     justify-content:center;
+    background-color: #FFF8EA;
     
     
   .resultbox{
@@ -56,8 +57,9 @@ export const ImageTestStyle = styled.div`
  
 
   .container {
+    background-color: #fff;
     
-   
+   border-radius: 8%;
     width: 375px;
     height: 77vh;
     margin: 0px auto;
@@ -85,6 +87,7 @@ export const ImageTestStyle = styled.div`
     margin-top:0;
     font-size: 24px;
     font-weight: bold;
+    color: #4C3D3D;
   }
   `
   export const ImageTestStyle1 = styled.div`
@@ -119,6 +122,7 @@ export const ImageTestStyle = styled.div`
   .question-title {
     font-size: 20px;
     margin-bottom: 10px;
+    color: #4C3D3D;
   }
   
   .question-description {
@@ -145,10 +149,10 @@ export const ImageTestStyle = styled.div`
   margin: 0 auto ;
   padding: 1rem 4rem;
   
-  border: 1px solid black;
+  border: none;
   border-radius: 8px;
-  background-color: #fff;
-  color: #333;
+  background-color: #FFD95A;
+  color: #4C3D3D;
   font-size: 1.5rem;
   position: absolute;
   bottom: 2rem;
@@ -204,7 +208,7 @@ export const ImageTestStyle = styled.div`
   .option:hover {
     background-color: #f5f5f5;
     border-color: #999;
-    color: #333;
+    color: #4C3D3D;
   }
   
   .option:focus {
@@ -266,7 +270,7 @@ const ImageTest= () =>{
           <div className="gage">
           <p className="qnum">1/6</p>
         <div className="qheader">
-          <div className="bar" style={{width:' 3.2vw',height:'100%', background:'black'}}></div>
+          <div className="bar" style={{width:' 3.2vw',height:'100%', background:'#4C3D3D'}}></div>
           </div>
         </div>
         </Gage>

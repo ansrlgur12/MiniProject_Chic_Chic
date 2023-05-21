@@ -26,16 +26,16 @@ const Triangle = styled.div`
 .pyramid__section {
   word-break: break-all;
   flex: 1 1 100%;
-  background-color: orangered;
+  background-color: orange;
   margin-bottom: 2px;
 }
 
 .pyramid__section:nth-of-type(even) {
-  background-color: orangered;
+  background-color: orange;
 }
 
 .pyramid__section:hover {
-  background-color: orange;
+  background-color: orangered;
 }
 button{
     

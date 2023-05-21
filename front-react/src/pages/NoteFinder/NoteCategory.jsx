@@ -16,7 +16,7 @@ export const Btn = styled.div`
   border: none;
   border-radius: 8px;
   background-color: #fff;
-  color: black;
+  color: #4C3D3D;
   font-size: 1.5rem;
   position: absolute;
   bottom: 2rem;
@@ -59,7 +59,7 @@ display: flex;
 flex-wrap: wrap;
 align-items: center;
 justify-content: center;
-
+color: #4C3D3D;
   width: 100%;
   padding: 20px;
   box-sizing: border-box;
@@ -82,13 +82,14 @@ const FragranceContainer = styled.div`
   `;
 const Selcategory= styled.div`
 display: flex;
-
+color: #4C3D3D;
 margin-bottom:7rem;
 font-size: 2rem;
 `
 const Selfragrance= styled.div`
   display: flex;
   font-size: .8rem;
+  color: #4C3D3D;
 `
 
 

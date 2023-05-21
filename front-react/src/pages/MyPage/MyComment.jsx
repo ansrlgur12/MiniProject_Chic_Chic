@@ -8,25 +8,29 @@ const MyPageStyle = styled.div`
     
     * {
         box-sizing: border-box;
-
     }
     table {
         text-align: center;
-        width: 59vw;
+        width: 100%;
     }
     .btnBox{
         display: flex;
         justify-content: center;
     }
-    
     .th1{
         width: 10vw;
     }
-    .th1 .th3 .th4 .th5{
-        width: 10vw;
+    .th4{
+        width: 9vw;
+    }
+    .th5{
+        width: 11vw;
+    }
+    .th3{
+        width: 9vw;
     }
     .th2{
-        width: 30vw;
+        width: 26vw;
     }
     .td2{
         cursor: pointer;
@@ -35,6 +39,8 @@ const MyPageStyle = styled.div`
     .trt{
         border-top: 1px solid black;
         border-bottom: 1px solid black;
+        background-color: hsl(32.72727272727272, 9.821428571428575%, 43.92156862745098%);
+        color: white;
     }
 `;
 
@@ -49,8 +55,8 @@ const MyComment = (props) => {
 
     useEffect(()=>{
     const reviews = async() => {
-        console.log("유저번호, view : " + props.id, props.views);
-        const rsp = await AxiosApi.myHistoryList(props.id, props.views);
+        console.log("유저번호, view : " + props.id);
+        const rsp = await AxiosApi.myHistoryList(props.id);
         setcomment(rsp.data);
     }
     reviews();
@@ -97,7 +103,7 @@ const MyComment = (props) => {
                             <th className="th5">등록일</th>
                         </tr>
                     {displayedComments && displayedComments.map((comment)=> (
-                        <tr className="trb" key={comment.commentNum}>
+                        <tr className="trb" key={comment.anum}>
                             <td className="td1">{comment.bnum}</td>
                             <td className="td2" onClick={()=>onClick(comment.anum)}>{comment.title}</td>
                             <td className="td3">{comment.commentText}</td>

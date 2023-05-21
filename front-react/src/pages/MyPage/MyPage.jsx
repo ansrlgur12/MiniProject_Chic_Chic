@@ -238,7 +238,7 @@ const MyPage = () => {
         await deleteMember();
     };
 
-    const [orderBy, setOrderBy] = useState(2);
+    const [orderBy, setOrderBy] = useState(1);
 
     const handleNum = (e) => {
         const selectedValue = e.target.dataset.value;
@@ -284,6 +284,10 @@ const MyPage = () => {
         default : gradeImage = gradeGold; break;
     }
 
+    const onClickUpdate = (id) => {
+        nav(`/UpdateMember/${id}`);
+    }
+
     return (
         <>
             <Header/>
@@ -316,24 +320,24 @@ const MyPage = () => {
                                    
                                 </div>
                                 <div className="profileS">
-                                        <button className="logOut" onClick={()=>setUpdateProfile(true)}>프로필 편집</button>
+                                        {updateProfile && <button className="logOut" onClick={()=>onClickUpdate(userId)}>비밀번호 변경</button>}
+                                        <button className="logOut" onClick={()=>setUpdateProfile(true)}>회원정보 수정</button>
                                         <div><button className="logOut" onClick={onClickLogout}>로그아웃</button></div>
                                         <div><button className="logOut red" onClick={onClickMemberDelete}>회원탈퇴</button></div>
                                     </div>
                                     
                             </div>
                             <div className="textProfile">
-                            <button className= {reviewClicked ?  "clickedTextHistory" : "textHistory"}  data-value={1} onClick={handleNum}>리뷰</button>
+                                        <button className= {reviewClicked ?  "clickedTextHistory" : "textHistory"}  data-value={1} onClick={handleNum}>리뷰</button>
                                         <button className= {commentClicked ?  "clickedTextHistory" : "textHistory"} data-value={2} onClick={handleNum}>댓글</button>
                                         <button className= {likeClicked ?  "clickedTextHistory" : "textHistory"} data-value={3} onClick={handleNum}>좋아요</button>
                                         <button className= {reviewCommentClicked ?  "clickedTextHistory" : "textHistory"} data-value={4} onClick={handleNum}>한줄평</button>
                                     </div>
                             <div className="down">
-
-                                {/* <MyReview id={userId} views={orderBy}/> */}
-                                <MyComment id={userId} views={orderBy}/>
-                            </div>
-
+                                {reviewClicked && <MyReview id={userId} views={orderBy}/>}
+                                {commentClicked && <MyComment id={userId} views={orderBy}/>}
+                                {/* {commentClicked && <MyLiked id={userId} views={orderBy}/>} */}
+                                {/* {commentClicked && <MyOneLine id={userId} views={orderBy}/>} */}
                         </div>
                     </div>
                     <div className="line"></div>
@@ -343,7 +347,7 @@ const MyPage = () => {
                 </div>
                 <Modal open={modalOpen} confirm={confirmModal} close={closeModal} type={true} header="확인">정말 탈퇴하시겠습니까?</Modal>
                 <Modal open={deleteModalOpen} confirm={()=>window.location.replace("/")} justConfirm={true} header="확인">회원 탈퇴가 완료되었습니다.</Modal>
-
+                </div>
             </UserProfileStyle>
             <Footer />
         </>

@@ -13,6 +13,7 @@ import grade from "../../image/향수등급.png";
 import gradeGold from "../../image/금.png";
 import gradeSilver from "../../image/은.png";
 import gradeBronze from "../../image/동.png";
+import MyComment from "./MyComment";
 
 
 export const UserProfileStyle = styled.div`
@@ -316,7 +317,10 @@ const UserProfile = () => {
                                         <button className= {reviewCommentClicked ?  "clickedTextHistory" : "textHistory"} data-value={4} onClick={handleNum}>한줄평</button>
                                     </div>
                             <div className= {clicked ? "down" : "noClicked"}>
-                                <MyReview id={id} views={orderBy}/>
+                                {reviewClicked && <MyReview id={id} views={orderBy}/>}
+                                {commentClicked && <MyComment id={id} views={orderBy}/>}
+                                {/* {commentClicked && <MyLiked id={userId} views={orderBy}/>} */}
+                                {/* {commentClicked && <MyOneLine id={userId} views={orderBy}/>} */}
                             </div>
                     </div>
                 </div>
