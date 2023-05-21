@@ -186,8 +186,7 @@ const NewEvent = () => {
         <div className="setting">
             <label>카테고리</label>
             <select value={bnum} onChange={onClickOption}>
-            <option value={4}>공지사항</option>
-            <option value={5}>News</option>
+            <option value={1}>이벤트</option>
             </select>
         </div>
         <div className="setting">

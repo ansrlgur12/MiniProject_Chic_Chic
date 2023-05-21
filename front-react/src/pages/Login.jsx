@@ -223,7 +223,8 @@ const Login = () => {
       const response = await AxiosApi.memberLogin(inputId, inputPw);
       console.log(response.data);
 
-      if(response.data.success === true) {
+      if(response.data === true) {
+        console.log("33");
           setLoginFinishOpen(true);
           setUserId(inputId);
           setPassword(inputPw);
