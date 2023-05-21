@@ -119,7 +119,7 @@ const Reviews = () => {
         </label>
         <label style={{ marginRight: "20px",marginLeft: "100px" }}>
             한줄평
-            <input style={{borderRadius:'4px',marginLeft:"20px", border:  '1px solid #815B5B', outlineColor:'#815B5B'}}  type="text" value={review} onChange={handleReviewChange} required />
+            <input style={{borderRadius:'4px',marginLeft:"20px", border:  '1px solid #815B5B', outlineColor:'#815B5B'}}  type="text" value={review} onChange={handleReviewChange} required maxLength={30} />
         </label>
            <Btn> <input className='btn' type="submit" value="등록"/></Btn>
            <Line><div className='line1'></div></Line>
