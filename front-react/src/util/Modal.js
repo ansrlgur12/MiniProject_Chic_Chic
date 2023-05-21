@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 const ModalStyled = styled.div`
+font-family: 'KorailRoundGothicBold';
     .modal {
         display: none;
         position: fixed;
@@ -35,7 +36,8 @@ const ModalStyled = styled.div`
     .modal section > header {
         position: relative;
         padding: 16px 64px 16px 16px;
-        background-color: #f1f1f1;
+        background-color: #594545;
+        color: whitesmoke;
         font-weight: 700;
     }
 
@@ -48,7 +50,7 @@ const ModalStyled = styled.div`
         font-size: 21px;
         font-weight: 700;
         text-align: center;
-        color: #999;
+        color: whitesmoke;
         background-color: transparent;
     }
     .modal > section > main {
@@ -61,8 +63,9 @@ const ModalStyled = styled.div`
     }
     .modal > section > footer button {
         padding: 6px 12px;
-        color: #fff;
-        background-color: #6c757d;
+        color: whitesmoke;
+        background-color: #815B5B;
+        border: none;
         border-radius: 5px;
         font-size: 13px;
         margin: 5px;

@@ -97,7 +97,7 @@ const MyComment = (props) => {
                             <th className="th5">등록일</th>
                         </tr>
                     {displayedComments && displayedComments.map((comment)=> (
-                        <tr className="trb" key={comment.cmtNum}>
+                        <tr className="trb" key={comment.commentNum}>
                             <td className="td1">{comment.bnum}</td>
                             <td className="td2" onClick={()=>onClick(comment.anum)}>{comment.title}</td>
                             <td className="td3">{comment.commentText}</td>

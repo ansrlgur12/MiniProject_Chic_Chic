@@ -25,7 +25,7 @@ const UserDeal = () => {
             <CommunityStyle>
             <div className = "main">
             <div className="section">
-                <h2>회원거래</h2>
+                <div className="sectionTitle"><h2>회원거래</h2></div>
                 <div className="article-title">
                 <select  className ="select" value={orderBy} onChange={onClickOrderBy}>
                             <option value={1}>조회순</option>

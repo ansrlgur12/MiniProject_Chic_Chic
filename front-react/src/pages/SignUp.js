@@ -6,15 +6,24 @@ import styled from 'styled-components';
 import Header from '../Header/Header';
 
 const Container = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: column;
-  justify-content: space-evenly;
-  width: 40%;
-  margin: 0 auto;
-  padding-top: 150px;
+  background-color: #9c8d83 ;
+  height: 120vh;
+  padding-top: 200px;
+
+.signUpContainer{
+    background-color: white;
+    border-radius: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: space-evenly;
+    width: 50%;
+    margin: 0 auto;
+    padding: 40px 40px 40px 40px;
+}
 
 .sign {
+    font-family: 'KorailRoundGothicBold';
     margin-top: 47px;
     margin-left: 34px;
     font: normal normal bold 24px/35px Poppins;
@@ -52,6 +61,7 @@ const Container = styled.div`
 
   .hint {
       display: flex;
+      font-family: 'KorailRoundGothicBold';
       margin-top: -5px;
       margin-bottom: 10px;
       margin-right: 40px;
@@ -68,7 +78,8 @@ const Container = styled.div`
   }
 
   .enable-button {
-    margin-top: 50px;
+    font-family: 'KorailRoundGothicBold';
+    margin-top: 30px;
     margin-left: 30px;
     margin-right: 30px;
     font-family: 'Noto Sans KR', sans-serif;
@@ -77,7 +88,7 @@ const Container = styled.div`
     width: 100%; /* 원하는 너비 설정 */
     height: 50px;
     color: white;
-    background-color: orange;
+    background-color: #815B5B;
     font-size: 15px;
     font-weight: 400;
     border-radius: 18px;
@@ -85,6 +96,7 @@ const Container = styled.div`
     font-weight: 700;
   }
   .enable-button:active {
+    font-family: 'KorailRoundGothicBold';
     margin-left: 30px;
     margin-right: 30px;
     font-family: 'Noto Sans KR', sans-serif;
@@ -101,7 +113,8 @@ const Container = styled.div`
     font-weight: 700;
   }
   .disable-button {
-    margin-top: 50px;
+    font-family: 'KorailRoundGothicBold';
+    margin-top: 30px;
     margin-left: 30px;
     margin-right: 30px;
     font-family: 'Noto Sans KR', sans-serif;
@@ -248,6 +261,7 @@ const SignUp = () => {
         <>
         <Header/>
         <Container>
+            <div className="signUpContainer">
             <div className="sign">
                 <span>Sign Up</span>
             </div>
@@ -285,10 +299,11 @@ const SignUp = () => {
 
             <div className="item2">
                 {(isId && isPw && isConPw && isName && isMail) ? 
-                <button className="enable-button" onClick={onClickLogin}>NEXT</button> :
-                <button className="disable-button">NEXT</button>}
-                <Modal open={modalOpen} close={closeModal} type={true} header="오류">{modalText}</Modal>
-                <Modal open={finishModal} confirm={()=>nav("/")} justConfirm={true} header="오류">회원가입에 성공했습니다!</Modal>
+                <button className="enable-button" onClick={onClickLogin}>가입</button> :
+                <button className="disable-button">가입</button>}
+                <Modal open={modalOpen} confirm={closeModal} justConfirm={true} header="오류">{modalText}</Modal>
+                <Modal open={finishModal} confirm={()=>nav("/")} justConfirm={true} header="성공">회원가입에 성공했습니다!</Modal>
+            </div>
             </div>
         </Container>
         </>

@@ -15,7 +15,9 @@ import gradeSilver from "../../image/은.png";
 import gradeBronze from "../../image/동.png";
 
 
-export const MyPageStyle = styled.div`
+export const UserProfileStyle = styled.div`
+    font-family: 'KorailRoundGothicBold';
+    background-color: #FFF7D4 ;
     box-sizing: border-box;
     margin: 0px;
     height: 1300px;
@@ -45,17 +47,19 @@ export const MyPageStyle = styled.div`
         margin: 1em;
     }
     .top {
+        background-color: white;
         width: 1fr;
         height: 100%;
-        border: 1px solid black;
+        border: .5px solid #ccc;
         /* padding: 20px; */
         padding: 0px 20px;
         border-radius: 10px;
+        margin-top: 5em;
     }
     .profileP1 {
         width: 130px;
         height: 130px;
-        border: 1px solid black;
+        border: .5px solid #8d8d8d;
         border-radius: 50%;
     }
     .profileP2 {
@@ -70,6 +74,7 @@ export const MyPageStyle = styled.div`
         display: flex;
         flex-direction: row;
         width: 100%;
+        justify-content: center;
         align-items: center;
         height: 50%;
 
@@ -88,6 +93,7 @@ export const MyPageStyle = styled.div`
         cursor: pointer;
     }
     .gradeImg {
+        margin-left: 10px;
         width: 10px;
         height: 10px;
         padding: 12px;
@@ -153,7 +159,7 @@ export const MyPageStyle = styled.div`
     }
     .profileC{
         
-        flex-basis: 60%;
+        flex-basis: 55%;
         height: 100%;
         display: flex;
         flex-direction: column;
@@ -162,13 +168,12 @@ export const MyPageStyle = styled.div`
         
     }
     .profileS{
-        flex-basis: 10%;
-        background-color: red;
+        flex-basis: 15%;
         height: 100%;
     }
     .nickname{
         font-family: 'KIMM_Bold';
-        font-size: large;
+        font-size: 1.5em;
         height: 50%;
         margin-bottom: 15px;
     }
@@ -186,6 +191,19 @@ export const MyPageStyle = styled.div`
         cursor: pointer;
         background-color: rgb(113, 81, 29);
         color: white;
+    }
+    .logOut{
+        height: 2em;
+        width: 110px;
+        background-color: #FFD95A;
+        margin-bottom: 5px;
+        border-radius: 5px;
+        padding : .2em;
+        border: .5px solid #ccc;
+        color: white;
+    }
+    .red{
+        color: orangered;
     }
 
 
@@ -270,9 +288,8 @@ const UserProfile = () => {
     return (
         <>
             <Header/>
-            <MyPageStyle>
+            <UserProfileStyle>
                 <div className="container">
-                    <h2>My Page</h2>
                     <div className="top">
                         <div className="inside">
                             <div className="up">
@@ -283,7 +300,7 @@ const UserProfile = () => {
                                     <div className="perProfile">
                                         <div className="nickname">{id}</div>
                                         <div className="grade">
-                                            <div className="gradeLv">회원 등급 : <p className="gradeImg" style={{backgroundImage: `url(${gradeImage})`, backgroundSize: 'contain', backgroundRepeat: 'no-repeat', }}></p></div>
+                                            <div className="gradeLv">회원 등급  <p className="gradeImg" style={{backgroundImage: `url(${gradeImage})`, backgroundSize: 'contain', backgroundRepeat: 'no-repeat', }}></p></div>
                                             <Tooltip image1={grade} image2={gradeBronze} image3={gradeSilver} image4={gradeGold}><button className="hintBtn">?</button></Tooltip>
                                         </div>
                                     </div>
@@ -303,8 +320,7 @@ const UserProfile = () => {
                             </div>
                     </div>
                 </div>
-                
-            </MyPageStyle>
+            </UserProfileStyle>
             <Footer />
         </>
     );

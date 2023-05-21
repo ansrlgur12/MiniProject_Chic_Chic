@@ -93,6 +93,7 @@ const Update = () => {
         <>
         <Header />
           <Setting>
+            <div className="writeArticle">
           <div className="title">
             <h2>글 수정</h2>
             <hr />
@@ -153,6 +154,7 @@ const Update = () => {
             <button onClick={onClickSubmit}>수정</button>
             <button onClick={goBack}>취소</button>
             </div>
+          </div>
           <Modal open={modalOpen} type={true} confirm={submit} close={closeModal} header={"확인"}>수정 하시겠습니까?</Modal>
           </Setting>
         </>

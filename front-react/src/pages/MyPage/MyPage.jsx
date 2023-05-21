@@ -19,6 +19,7 @@ import gradeGold from "../../image/금.png";
 import gradeSilver from "../../image/은.png";
 import gradeBronze from "../../image/동.png";
 import MyComment from "./MyComment";
+import { UserProfileStyle } from "./UserProfile";
 
 
 export const MyPageStyle = styled.div`
@@ -140,6 +141,7 @@ export const MyPageStyle = styled.div`
     .noClicked{
         display: none;
     }
+    
 
 `;
 
@@ -156,6 +158,11 @@ const MyPage = () => {
     const [deleteModalOpen, setDeleteModalOpen] = useState(false);
     const [userGrade, setUserGrade] = useState(1);
     const [clicked, setClicked] = useState(false);
+    const [reviewClicked, setReviewClicked] = useState(false); 
+    const [commentClicked, setCommentClicked] = useState(false);
+    const [likeClicked, setLikeClicked] = useState(false);
+    const [reviewCommentClicked, setReviewCommentClicked] = useState(false);
+
 
     useEffect(()=> {
         const userInfo = async() => {
@@ -231,12 +238,40 @@ const MyPage = () => {
         await deleteMember();
     };
 
-    const [orderBy, setOrderBy] = useState(1);
+    const [orderBy, setOrderBy] = useState(2);
 
     const handleNum = (e) => {
-        setOrderBy(e.target.dataset.value);
-        console.log(e.target.dataset.value);
-        setClicked(true);
+        const selectedValue = e.target.dataset.value;
+        setOrderBy(selectedValue);
+        console.log(selectedValue);
+        setClicked(true);        // 리뷰 버튼 클릭 시
+        if (selectedValue === "1") {
+            setReviewClicked(true);
+            setCommentClicked(false);
+            setLikeClicked(false);
+            setReviewCommentClicked(false);
+        }
+        // 댓글 버튼 클릭 시
+        else if (selectedValue === "2") {
+            setReviewClicked(false);
+            setCommentClicked(true);
+            setLikeClicked(false);
+            setReviewCommentClicked(false);
+        }
+        // 좋아요 버튼 클릭 시
+        else if (selectedValue === "3") {
+            setReviewClicked(false);
+            setCommentClicked(false);
+            setLikeClicked(true);
+            setReviewCommentClicked(false);
+        }
+        // 한줄평 버튼 클릭 시
+        else if (selectedValue === "4") {
+            setReviewClicked(false);
+            setCommentClicked(false);
+            setLikeClicked(false);
+            setReviewCommentClicked(true);
+        }
     };
       
     let gradeImage = "";
@@ -252,16 +287,14 @@ const MyPage = () => {
     return (
         <>
             <Header/>
-            <MyPageStyle>
+            <UserProfileStyle>
                 <div className="container">
-                    <h2>My Page</h2>
                     <div className="top">
                         <div className="inside">
                             <div className="up">
                                 <div className="profileP">
                                     <img className="profileP1" src={url ? url : profile} style={{ backgroundSize: 'cover', backgroundRepeat: 'no-repeat'}}></img>
                                     <div className="profileP2">
-                                        <button onClick={()=>setUpdateProfile(true)}>프로필 편집</button>
                                         <div className={updateProfile ? "profileChange" : "noProfileChange"}>
                                             <input type="file" onChange={handleFileInputChange} />
                                             <button onClick={handleUploadClick}>변경</button>
@@ -271,23 +304,33 @@ const MyPage = () => {
                                 </div>
                                 <div className="profileC">
                                     <div className="perProfile">
-                                        <div className="nickname">아이디 : {userId}</div>
-                                        <div className="gradeLv">회원 등급 : <p className="gradeImg" style={{backgroundImage: `url(${gradeImage})`, backgroundSize: 'contain', backgroundRepeat: 'no-repeat', }}></p></div>
-                                        <Tooltip image1={grade} image2={gradeBronze} image3={gradeSilver} image4={gradeGold}><button className="hintBtn">?</button></Tooltip>
-                                        <div><button className="logOut" onClick={onClickLogout}>로그아웃</button></div>
-                                        <div><button className="logOut" onClick={onClickMemberDelete}>회원탈퇴</button></div>
+                                        <div className="nickname">{userId}</div>
+                                        <div className="grade">
+                                            <div className="gradeLv">
+                                                회원 등급 <p className="gradeImg" style={{backgroundImage: `url(${gradeImage})`, backgroundSize: 'contain', backgroundRepeat: 'no-repeat', }}></p>
+                                                </div>
+                                            <Tooltip image1={grade} image2={gradeBronze} image3={gradeSilver} image4={gradeGold}><button className="hintBtn">?</button></Tooltip>
+                                        </div>
                                     </div>
-                                    <div className="textProfile">
-                                        <button className="textHistory" data-value={1} onClick={handleNum}>내 리뷰</button>
-                                        <button className="textHistory" data-value={2} onClick={handleNum}>내 댓글</button>
-                                        <button className="textHistory" data-value={3} onClick={handleNum}>내 좋아요</button>
-                                        <button className="textHistory" data-value={4} onClick={handleNum}>내 한줄평</button>
-                                    </div>
+                                   
+                                   
                                 </div>
+                                <div className="profileS">
+                                        <button className="logOut" onClick={()=>setUpdateProfile(true)}>프로필 편집</button>
+                                        <div><button className="logOut" onClick={onClickLogout}>로그아웃</button></div>
+                                        <div><button className="logOut red" onClick={onClickMemberDelete}>회원탈퇴</button></div>
+                                    </div>
+                                    
                             </div>
+                            <div className="textProfile">
+                            <button className= {reviewClicked ?  "clickedTextHistory" : "textHistory"}  data-value={1} onClick={handleNum}>리뷰</button>
+                                        <button className= {commentClicked ?  "clickedTextHistory" : "textHistory"} data-value={2} onClick={handleNum}>댓글</button>
+                                        <button className= {likeClicked ?  "clickedTextHistory" : "textHistory"} data-value={3} onClick={handleNum}>좋아요</button>
+                                        <button className= {reviewCommentClicked ?  "clickedTextHistory" : "textHistory"} data-value={4} onClick={handleNum}>한줄평</button>
+                                    </div>
                             <div className="down">
 
-                                <MyReview id={userId} views={orderBy}/>
+                                {/* <MyReview id={userId} views={orderBy}/> */}
                                 <MyComment id={userId} views={orderBy}/>
                             </div>
 
@@ -300,8 +343,8 @@ const MyPage = () => {
                 </div>
                 <Modal open={modalOpen} confirm={confirmModal} close={closeModal} type={true} header="확인">정말 탈퇴하시겠습니까?</Modal>
                 <Modal open={deleteModalOpen} confirm={()=>window.location.replace("/")} justConfirm={true} header="확인">회원 탈퇴가 완료되었습니다.</Modal>
-                
-            </MyPageStyle>
+
+            </UserProfileStyle>
             <Footer />
         </>
     );
