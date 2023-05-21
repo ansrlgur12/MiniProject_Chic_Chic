@@ -3,7 +3,7 @@ import Header from "../../Header/Header";
 import { useNavigate,useLocation } from "react-router-dom";
 import { ImageTestStyle, ImageTestStyle1,Gage,TextOpt } from "./imageTest";
 import { useState } from "react";
-
+import Footer from "../../Footer/Footer";
 import AxiosApi from "../../api/Axios";
 
 
@@ -117,6 +117,7 @@ const ImageTest5 = () =>{
       
       </ImageTestStyle1>
       </ImageTestStyle>
+      <Footer/>
 
 </>
 
