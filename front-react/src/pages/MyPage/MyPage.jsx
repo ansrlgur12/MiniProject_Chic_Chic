@@ -43,7 +43,7 @@ export const MyPageStyle = styled.div`
     }
     .container {
         width: 960px;
-        height: auto;
+        height: 1500px;
         display: inline-block;
         margin-top: 130px;
     }

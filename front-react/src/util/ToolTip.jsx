@@ -9,7 +9,7 @@ const Sytled = styled.div`
 
 
     .toolTip{
-        width : 175px;
+        width : 160px;
         height : 175px;
         position: absolute;
         top: 100%;
@@ -24,20 +24,19 @@ const Sytled = styled.div`
         flex-direction: column;
     }
 
-    .gradeImg{
-        width: 100%;
+    .gradeImg {
         display: flex;
         flex-direction: row;
+        align-items: center; /* 중앙 정렬을 위해 추가 */
     }
 
-    p{
+    p {
         position: relative;
         margin-left: 40px;
         padding-bottom: 15px;
-        bottom: 10px;
-    
+        top: 20px; /* 아래로 이동하는 값 제거 */
+        white-space: nowrap; /* 한 줄로 텍스트를 유지하도록 설정 */
     }
-
     .gradeImg + .gradeImg{
         margin-top: 15px;
     }
