@@ -144,7 +144,7 @@ const Reviews = () => {
                 })}
             </p>
         </div>
-        <p> {review.review}</p>
+        <p style={{marginLeft:'4.8rem'}}> {review.review}</p>
     </div>
 ))}
         </form>
