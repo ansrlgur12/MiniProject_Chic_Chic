@@ -56,7 +56,7 @@ const MyOneLine = (props) => {
     useEffect(()=>{
     const reviews = async() => {
         console.log("유저번호, view : " + props.id, props.views);
-        const rsp = await AxiosApi.myLikeList(props.id, props.views);
+        const rsp = await AxiosApi.myHistoryList(props.id, props.views);
         setoneLine(rsp.data);
     }
     reviews();
@@ -99,15 +99,17 @@ const MyOneLine = (props) => {
                         <tr className="trt">
                             <th className="th1">향수</th>
                             <th className="th2">한줄평</th>
-                            <th className="th3">별점</th>
-
+                            <th className="th3"></th>
+                            <th className="th4">별점</th>
+                            <th className="th5"></th>
                         </tr>
                     {displayedOneLine && displayedOneLine.map((oneLine)=> (
                         <tr className="trb" key={oneLine.perfumeNumber}>
-                            <td className="td1">{oneLine.bnum}</td>
+                            <td className="td1">{oneLine.perfumeNumber}</td>
                             <td className="td2" onClick={()=>onClick(oneLine.perfumeNumber)}>{oneLine.review}</td>
-                            <td className="td3">{oneLine.starRating}</td>
-
+                            <td className="td3"></td>
+                            <td className="td4">{oneLine.starRating}</td>
+                            <td className="td5"></td>
                         </tr>
                     ))}
                     </table>

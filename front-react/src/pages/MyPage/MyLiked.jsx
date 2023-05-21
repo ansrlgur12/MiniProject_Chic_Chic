@@ -55,8 +55,8 @@ const MyLiked = (props) => {
 
     useEffect(()=>{
     const reviews = async() => {
-        console.log("유저번호, view : " + props.id);
-        const rsp = await AxiosApi.myLikeList(props.id);
+        console.log("유저번호, view : " + props.id, props.views);
+        const rsp = await AxiosApi.myHistoryList(props.id, props.views);
         setLiked(rsp.data);
     }
     reviews();
@@ -100,6 +100,7 @@ const MyLiked = (props) => {
                             <th className="th1">게시판</th>
                             <th className="th2">제목</th>
                             <th className="th3">좋아요수</th>
+                            <th className="th4"></th>
                             <th className="th5">등록일</th>
                         </tr>
                     {displayedLiked && displayedLiked.map((liked)=> (
@@ -107,6 +108,7 @@ const MyLiked = (props) => {
                             <td className="td1">{liked.bnum}</td>
                             <td className="td2" onClick={()=>onClick(liked.anum)}>{liked.title}</td>
                             <td className="td3">{liked.like}</td>
+                            <td className="td4"></td>
                             <td className="td5">{liked.date}</td>
                         </tr>
                     ))}

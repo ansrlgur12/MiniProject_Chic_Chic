@@ -338,8 +338,8 @@ const MyPage = () => {
                             <div className="down">
                                 {reviewClicked && <MyReview id={userId} views={orderBy}/>}
                                 {commentClicked && <MyComment id={userId} views={orderBy}/>}
-                                {commentClicked && <MyLiked id={userId} views={orderBy}/>}
-                                {commentClicked && <MyOneLine id={userId} views={orderBy}/>}
+                                {likeClicked && <MyLiked id={userId} views={orderBy}/>}
+                                {reviewCommentClicked && <MyOneLine id={userId} views={orderBy}/>}
                         </div>
                     </div>
                     <div className="line"></div>
