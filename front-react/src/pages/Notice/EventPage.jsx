@@ -83,6 +83,12 @@ const EventStyle = styled.div`
         border: 0.5px solid rgb(131, 131, 131);
         text-align: center;
     }
+    p{
+        cursor: pointer;
+    }
+    h2{
+        color: #8e6240;
+    }
 `;
 
 const EventPage = () => {

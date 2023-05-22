@@ -12,26 +12,31 @@ const EventDescStyle = styled.div`
     align-items: center;
     flex-wrap: wrap;
     
-    .eContainer{
+    .eventWarp{
+        width: 200px;
+        height: 240px;
+        border: 1px solid #8e6240;
         cursor: pointer;
+        padding: 0;
     }
-
     .eventPost {
-        display: flex;  // flex 스타일 적용
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        width: 160px;
-        height: 200px;
-        margin: 10px;
-        border: .5px solid #afafaf;
-        background-color: #afafaf;
-        font-size: 1.2em;
-        font-weight: bold;
+        width: 100%;
+        height: 50%;
+        margin: 0;
+        padding: 0;
     }
     .eDate {
-        font-size: .8em;
+        font-size: .9em;
+        color: #8e6240;
     }
+    .eNum, .eTitle {
+        color: #8e6240;
+        font-weight: bold;
+    }
+    .eDate{
+
+    }
+    
 `;
 
 const EventList = (props) => {
@@ -54,12 +59,13 @@ const EventList = (props) => {
             <EventDescStyle>
                 {eventList && eventList.map(event => (
                     <div className="eContainer" key={event.eventNum} onClick={()=>onClick(event.eventNum)}>
-                        <div className="eventPost">
-                            {event.eventNum} <br />
-                            {event.eventTitle} <br /><br />
-                            <p className="eDate">
-                            {event.startEvent}<br /> ~ <br /> {event.endEvent}
-                            </p>
+                        <div className="eventWarp">
+                            <div className="eventPost" style={{backgroundImage: `url(${event.eventImg})`, backgroundSize: 'cover', backgroundRepeat: 'no-repeat'}}></div>
+                            <div className="eNum">{event.eventNum}</div>
+                            <div className="eTitle">{event.eventTitle}</div><br/>
+                                <p className="eDate">
+                                {event.startEvent} ~ {event.endEvent}
+                                </p>
                         </div>
                     </div>
                 ))}
