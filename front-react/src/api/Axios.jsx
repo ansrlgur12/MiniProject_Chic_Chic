@@ -63,6 +63,19 @@ const AxiosApi = {
         return await axios.get(CHIC_DOMAIN + `/EventDesc/${eventNum}`)
     },
 
+    // 이벤트 등록
+    newEvent : async(eventNum, eventTitle, eventText, image, startEvent, endEvent) => {
+        const event = {
+            eventNum : eventNum.toString(),
+            eventTitle : eventTitle,
+            eventText : eventText,
+            image : image,
+            startEvent : startEvent,
+            endEvent : endEvent
+        };
+        return await axios.post(CHIC_DOMAIN + "/newEvent", event);
+    },
+
     // 로그인
     memberLogin : async(id, pw) => {
         const login = {

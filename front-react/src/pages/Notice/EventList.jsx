@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import AxiosApi from "../../api/Axios";
 import { useNavigate } from "react-router-dom";
+import EventDate from "./EventDate";
 
 const EventDescStyle = styled.div`
     box-sizing: border-box;
@@ -49,19 +50,23 @@ const EventList = (props) => {
     };
 
     return(
-        <EventDescStyle>
-            {eventList && eventList.map(event => (
-                <div className="eContainer" key={event.eventNum} onClick={()=>onClick(event.eventNum)}>
-                    <div className="eventPost">
-                        {event.eventNum} <br />
-                        {event.eventTitle} <br /><br />
-                        <p className="eDate">
-                        {event.startEvent}<br /> ~ <br /> {event.endEvent}
-                        </p>
+        <>
+            <EventDescStyle>
+                <div onClick={()=>nav(`/date`)}>date</div>
+                {eventList && eventList.map(event => (
+                    <div className="eContainer" key={event.eventNum} onClick={()=>onClick(event.eventNum)}>
+                        <div className="eventPost">
+                            {event.eventNum} <br />
+                            {event.eventTitle} <br /><br />
+                            <p className="eDate">
+                            {event.startEvent}<br /> ~ <br /> {event.endEvent}
+                            </p>
+                        </div>
                     </div>
-                </div>
-            ))}
-        </EventDescStyle>
+                ))}
+            </EventDescStyle>
+            <EventDate />
+        </>
     );
 }
 export default EventList;
