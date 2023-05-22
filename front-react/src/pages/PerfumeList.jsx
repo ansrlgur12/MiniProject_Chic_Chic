@@ -1,10 +1,10 @@
-
-
 import React, { useState, useRef, useCallback } from 'react';
 import { useInfiniteQuery } from 'react-query';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import PerfumeRating from './PerfumeRating';
+
 
 export const PerfumeContainer = styled.div`
   display: flex;
@@ -14,7 +14,8 @@ export const PerfumeContainer = styled.div`
 `;
 
 export const PerfumeCard = styled.div`
-  border: 1px solid #ccc;
+ font-family: 'KorailRoundGothicBold';
+  border: 0.5px solid #9E7676;
   border-radius: 1em;
   margin: 1rem;
   display: flex;
@@ -22,8 +23,8 @@ export const PerfumeCard = styled.div`
   align-items: center;
   flex-direction: column;
   width: 230px;
-  height: 250px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  height: 320px;
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
   transition: transform 0.2s ease-in-out;
   &:hover {
     transform: scale(1.05);
@@ -35,6 +36,7 @@ const PerfumeName = styled.h4`
   font-size: 1.5rem;
   text-align: center;
   color: black;
+  
 `;
 
 const StyledLink = styled(Link)`
@@ -44,6 +46,15 @@ const StyledLink = styled(Link)`
     color: #888;
   }
 `;
+
+const PerfumeImage = styled.img`\
+margin: 15px;
+max-width: 85%;
+  max-height: 90%;
+  object-fit: contain;
+  align-self: flex-end;
+`;
+
 
 const fetchPerfumes = async ({ pageParam = 0 }) => {
   const response = await axios.get('http://localhost:8111/api/perfumes', {
@@ -78,6 +89,7 @@ const PerfumeList = ({perfumes}) => {
     enabled:!perfumes
   });
 
+ 
   const observer = useRef();
   const lastPerfumeElementRef = useCallback(
     (node) => {
@@ -108,8 +120,12 @@ const PerfumeList = ({perfumes}) => {
             <PerfumeCard key={perfume.perfumeNumber} {...refProp}>
               <StyledLink to={`/perfumeDetail/${perfume.perfumeNumber}`}>
                 <PerfumeName>{perfume.name}</PerfumeName>
-                <img src={perfume.thumbnail} alt="Perfume Thumbnail" style={{ maxWidth: '85%', maxHeight: '90%', objectFit: 'contain' }} />
+                <PerfumeImage
+                    src={perfume.thumbnail}
+                    alt="Perfume Thumbnail"
+                  />
               </StyledLink>
+              <PerfumeRating perfumeNumber={perfume.perfumeNumber} />
             </PerfumeCard>
           );
         })

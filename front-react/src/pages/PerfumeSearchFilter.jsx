@@ -5,6 +5,10 @@ import { useNavigate  } from 'react-router-dom';
 import styled from 'styled-components';
 
 const PerfumeSearchFilterStyle = styled.div`
+background-color: #FFF8EA;
+  position: fixed;    
+  top: 15rem;             
+  left: 5rem;            
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   padding: 1rem;
@@ -17,15 +21,23 @@ const PerfumeSearchFilterStyle = styled.div`
   }
 
   button {
-    background-color: #007bff;
+    background-color: #9E7676;
     color: #fff;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    width: 350px;  /* 버튼의 폭을 150px로 설정 */
+    height: 50px;  /* 버튼의 높이를 50px로 설정 */
+    font-size: 20px;  /* 버튼 내부 텍스트의 크기를 20px로 설정 */
+    padding: 10px 20px;  /* 버튼 내부의 패딩을 상하 10px, 좌우 20px로 설정 */
+  }
+  
+  h3 {
+    font-family: 'NeoDunggeunmoPro-Regular', sans-serif;
   }
 
   button:hover {
-    background-color: #0056b3;
+    background-color: #815B5B;
   }
 `;
 
@@ -87,8 +99,8 @@ const PerfumeSearchFilter = () => {
             {brand.name}
           </label>
         ))}
-        <br />
-        {/* Add getBrands radio buttons */}
+        <br /><br />
+        
         <h3>유명브랜드</h3>
         {brandNumbers.map((brand, index) => (
           <label key={index}>
@@ -127,6 +139,7 @@ const PerfumeSearchFilter = () => {
           <option value="1">Female</option>
         </select>
       </div>
+      <br />
       <button onClick={searchPerfumes}>Search</button>
       <div>
         {searchResults.map((perfume, index) => (
