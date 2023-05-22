@@ -16,6 +16,7 @@ export const CommunityStyle = styled.div`
     flex-direction: column;
     align-items: center;
     flex-grow: 1;
+    padding-bottom: 70px;
     
   .main{
     border-radius: 15px;

@@ -8,7 +8,7 @@ import logoimage from "../../image/로고.jpg";
 
 export const ArticleListBlock = styled.div`
     font-family: 'KorailRoundGothicBold';
-    height: 1210px;
+    height: auto;
 
     h2{
         font-family: 'KIMM_Bold';
