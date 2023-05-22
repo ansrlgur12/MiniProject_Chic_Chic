@@ -87,8 +87,8 @@ const MyOneLine = (props) => {
     reviews();
     }, [props.id]);
     
-    const onClick = (anum) => {
-        nav(`/article/${anum}`);
+    const onClick = (pnum) => {
+        nav(`/perfumeDetail/${pnum}`);
     };
 
     const handlePageChange = (pageNumber) => {
@@ -127,9 +127,9 @@ const MyOneLine = (props) => {
                             <th className="th4">별점</th>
                         </tr>
                         {displayedOneLine && displayedOneLine.map((oneLine) => (
-                        <tr className="trb" key={oneLine.perfumeName}>
+                        <tr className="trb" key={oneLine.perfumeName} onClick={() => onClick(oneLine.pnum)}>
                             <td className="td1">{oneLine.perfumeName}</td>
-                            <td className="td2" onClick={() => onClick(oneLine.perfumeName)}>{oneLine.oneLineText}</td>
+                            <td className="td2">{oneLine.oneLineText}</td>
                             <td className="td4">
                             {[...Array(5)].map((_, index) => (
                                 <FontAwesomeIcon

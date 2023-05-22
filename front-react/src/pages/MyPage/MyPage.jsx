@@ -43,7 +43,7 @@ export const MyPageStyle = styled.div`
     }
     .container {
         width: 960px;
-        height: 1500px;
+        height: auto;
         display: inline-block;
         margin-top: 130px;
     }
@@ -322,10 +322,11 @@ const MyPage = () => {
                                    
                                 </div>
                                 <div className="profileS">
+                                {updateProfile && <button className="logOut" onClick={()=>setUpdateProfile(false)}>수정 완료</button>}
                                         {updateProfile && <button className="logOut" onClick={()=>onClickUpdate(userId)}>비밀번호 변경</button>}
-                                        <button className="logOut" onClick={()=>setUpdateProfile(true)}>회원정보 수정</button>
-                                        <div><button className="logOut" onClick={onClickLogout}>로그아웃</button></div>
-                                        <div><button className="logOut red" onClick={onClickMemberDelete}>회원탈퇴</button></div>
+                                        {!updateProfile && <button className="logOut" onClick={()=>setUpdateProfile(true)}>회원정보 수정</button>}
+                                        <button className="logOut" onClick={onClickLogout}>로그아웃</button>
+                                        {updateProfile && <button className="logOut red" onClick={onClickMemberDelete}>회원탈퇴</button>}
                                     </div>
                                     
                             </div>
