@@ -10,8 +10,7 @@ import { UserContext } from "../../context/UserInfo";
 import { storage } from "../../firebase/firebase";
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/storage';
-import EventDate from "./EventDate";
-import EventModal from "../../util/EventModal";
+
 
 
 export const Setting = styled.div`
