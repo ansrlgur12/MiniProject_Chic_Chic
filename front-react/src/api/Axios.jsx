@@ -144,7 +144,31 @@ const AxiosApi = {
             }
             return await axios.get(CHIC_DOMAIN + `/reviews/${perfumeNumber}`);
         },
-      
+
+       /* updateReview: async (perfumeNumber, userId, starRating, review) => {
+            const updateData = {
+                perfumeNumber : perfumeNumber.toString(),
+                userId : userId,
+                starRating : starRating.toString(),
+                review :review
+            };
+            return await axios.put(`${CHIC_DOMAIN}/reviews/${perfumeNumber}/${userId}`, updateData);
+        },
+
+        viewReviewBeforeUpdate: async (perfumeNumber, userId) => {
+            return await axios.get(`${CHIC_DOMAIN}/viewReview/${perfumeNumber}/${userId}`);
+          },*/
+          
+          
+        
+          deleteReview: async (perfumeNumber, userId) => {
+            return await axios.delete(`${CHIC_DOMAIN}/reviews/${perfumeNumber}/${userId}`, {
+              headers: {
+                'Access-Control-Allow-Origin': 'http://localhost:3000'
+              }
+            });
+          },
+        
     showComment : async(anum) => { // 댓글 목록 출력
         
         return await axios.get(CHIC_DOMAIN + `/showComment/${anum}`);
