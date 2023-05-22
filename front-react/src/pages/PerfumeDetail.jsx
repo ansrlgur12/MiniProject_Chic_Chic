@@ -5,33 +5,83 @@ import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import styled from 'styled-components';
 import PerfumeReview from './PerfumeReview';
+import { CommunityStyle } from './Community/Community';
+import { Line } from './PerfumeReview';
 
 const PerfumeDetailStyle = styled.div`
-.perfume-detail-container {
-  box-sizing: border-box;
-  padding-top: 300px;
-  height: 1000px;
-  margin: auto;
+
+.main{
+  padding: 5rem;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: flex-start;
+  margin-bottom: 80px;
+}
+.perfume-img{
+  margin-top:5rem;
+  margin-bottom: 5rem;
+}
+.detail-text1{
+  width: 100px;
+  font-weight: bold;
+  justify-content: flex-start;
+
+}
+.detail-text2{
+  width: 100px;
+  font-weight: bold;
+
+}
+.detail-text3{
+  width: 100px;
+  font-weight: bold;
+ 
+}
+.detail-text4{
+  width: 100px;
+  font-weight: bold;
+ 
+}
+.detail-text5{
+  width: 100px;
+  font-weight: bold;
+  
+}
+.detail-text6{
+  width: 100px;
+  font-weight: bold;
+ 
+}
+.detail-text7{
+  width: 100px;
+  font-weight: bold;
+
+}
+.detail-text8{
+  width: 100px;
+  font-weight: bold;
+ 
+}
+
+
+.text-box{
+  
+  display: flex;
+  flex-direction: column;
   justify-content: center;
-  background-color: #f9f9f9;
-  border-radius: 10px;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  margin-left: 14rem;
+ 
+}
+.detail-item{
+  display: flex;
+  justify-content: start;
+  margin-top: 20px;
+  width: 30vw;  
 }
 
-.perfume-title {
-  color: #333;
-  font-size: 4em;
-  margin-bottom: 50px;
-}
 
-.detail-text {
-  color: #666;
-  font-size: 1.5em;
-  margin-bottom: 50px;
-}
+
 
 `
 
@@ -61,21 +111,29 @@ const PerfumeDetail = () => {
     <>
       <Header/>
       <PerfumeDetailStyle>
-      <div className="perfume-detail-container">
-        <h1 className="perfume-title"><b>{perfumeDetail.name}</b></h1>
-        <img src={perfumeDetail.thumbnail} alt="" />
-        <p className="detail-text">Brand: {perfumeDetail.brandName}</p>
-        <p className="detail-text">Launch Date: {perfumeDetail.launchDate}</p>
-        <p className="detail-text">Price: {perfumeDetail.price}$</p>
-        <p className="detail-text">Gender: {perfumeDetail.gender}</p>
-        <p className="detail-text">Top Notes: {perfumeDetail.topNote.join(', ')}</p>
-        <p className="detail-text">Middle Notes: {perfumeDetail.middleNote.join(', ')}</p>
-        <p className="detail-text">Base Notes: {perfumeDetail.baseNote.join(', ')}</p>
-        <p className="detail-text">Seasons: {perfumeDetail.seasons.join(', ')}</p>
-      </div>
-      <PerfumeReview/>
+      <CommunityStyle>
+      
+        
+      <div className="main">
+          <h1 className="perfume-title"><b>{perfumeDetail.name}</b></h1>
+          <img className='perfume-img' src={perfumeDetail.thumbnail} alt="" />
+          <div className="text-box">
+            <div className="detail-item"><span className="detail-text1">브랜드</span><span>{perfumeDetail.brandName}</span></div>
+            <div className="detail-item"><span className="detail-text2">발매 일자</span><span>{perfumeDetail.launchDate}</span></div>
+            <div className="detail-item"><span className="detail-text3">가격</span><span>{perfumeDetail.price}$</span></div>
+            <div className="detail-item"><span className="detail-text4">성별</span><span>{perfumeDetail.gender === 0 ? '여성' : '남성'}</span></div>
+            <div className="detail-item"><span className="detail-text5">탑 노트</span><span>{perfumeDetail.topNote.join(', ')}</span></div>
+            <div className="detail-item"><span className="detail-text6">미들 노트</span><span>{perfumeDetail.middleNote.join(', ')}</span></div>
+            <div className="detail-item"><span className="detail-text7">베이스 노트</span><span>{perfumeDetail.baseNote.join(', ')}</span></div>
+            <div className="detail-item"><span className="detail-text8">계절</span><span>{perfumeDetail.seasons.join(', ')}</span></div>
+            
+          </div>
+          
+          <PerfumeReview/>
+        </div>
+      </CommunityStyle>
       </PerfumeDetailStyle>
-      {/* <Footer/> */}
+       <Footer/>
     </>
   );
 };

@@ -223,7 +223,7 @@ const Login = () => {
       const response = await AxiosApi.memberLogin(inputId, inputPw);
       console.log(response.data);
 
-      if(response.data === true) {
+      if(response.data.success === true) {
         console.log("33");
           setLoginFinishOpen(true);
           setUserId(inputId);
@@ -267,7 +267,7 @@ const Login = () => {
               <button className="disable-button"onClick={onClickLogin}>로그인</button>}
             </div>
             <Modal open={modalOpen} confirm={closeModal} justConfirm = {true} header={"오류"}>아이디 및 패스워드를 확인해주세요.</Modal>
-            <Modal open={loginFinishOpen} confirm={()=>nav(-1)} justConfirm = {true} header={"오류"}>로그인이 성공했습니다.</Modal>
+            <Modal open={loginFinishOpen} confirm={()=>nav(-1)} justConfirm = {true} header={"성공"}>로그인이 성공했습니다.</Modal>
             <div className="signup">
                 <div className="link_style" onClick={() => nav("/SignUp")}>아직 회원이 아니세요?</div>
             </div>
