@@ -1,6 +1,6 @@
 import React from "react";
 import Header from "../../Header/Header";
-
+import Footer from "../../Footer/Footer";
 import {ImageTestStyle} from "./imageTest";
 import{ImageTestStyle1}  from "./imageTest";
 import { useNavigate } from "react-router-dom";
@@ -30,7 +30,7 @@ const Testmain = () => {
       </div>
       </ImageTestStyle1>
         </ImageTestStyle>
-        
+        <Footer/>
         </>
     );
 };

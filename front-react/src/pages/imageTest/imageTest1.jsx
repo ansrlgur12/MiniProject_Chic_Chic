@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import city from "../../image/도시.png"
 import vacation from "../../image/휴양지.png"
+import Footer from "../../Footer/Footer";
 
 const ImageTest1 = () =>{
     const nav = useNavigate();
@@ -63,6 +64,7 @@ const ImageTest1 = () =>{
       
       </ImageTestStyle1>
       </ImageTestStyle>
+      <Footer/>
         </>
     );
 };

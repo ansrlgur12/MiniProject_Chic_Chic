@@ -1,9 +1,9 @@
 import React, {useEffect} from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Header from "../../Header/Header";
 import { ImageTestStyle,ImageTestStyle1,Gage,TextOpt } from "./imageTest";
 import { useState } from "react";
-
+import Footer from "../../Footer/Footer";
 
 const ImageTest3= ()=>{
       const nav= useNavigate();
@@ -63,6 +63,7 @@ const ImageTest3= ()=>{
       
       </ImageTestStyle1>
       </ImageTestStyle>
+      <Footer/>
 
         </>
     );

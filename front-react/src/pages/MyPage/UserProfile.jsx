@@ -14,6 +14,8 @@ import gradeGold from "../../image/금.png";
 import gradeSilver from "../../image/은.png";
 import gradeBronze from "../../image/동.png";
 import MyComment from "./MyComment";
+import MyLiked from "./MyLiked";
+import MyOneLine from "./MyOneLine";
 
 
 export const UserProfileStyle = styled.div`
@@ -319,8 +321,8 @@ const UserProfile = () => {
                             <div className= {clicked ? "down" : "noClicked"}>
                                 {reviewClicked && <MyReview id={id} views={orderBy}/>}
                                 {commentClicked && <MyComment id={id} views={orderBy}/>}
-                                {/* {commentClicked && <MyLiked id={userId} views={orderBy}/>} */}
-                                {/* {commentClicked && <MyOneLine id={userId} views={orderBy}/>} */}
+                                {likeClicked && <MyLiked id={id} views={orderBy}/>}
+                                {reviewCommentClicked && <MyOneLine id={id} views={orderBy}/>}
                             </div>
                     </div>
                 </div>
