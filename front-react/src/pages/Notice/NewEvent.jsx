@@ -111,40 +111,37 @@ export const Container = styled.div`
 
 const NewEvent = () => {
     const nav = useNavigate();
-    const [eventNum, setCategory] = useState("");
     const [eventTitle, setTitle] = useState("");
     const [eventText, setBoard_content] = useState("");
-    const [startEvent, setStart] = useState("");
-    const [endEvent, setEnd] = useState("");
+    const [startEvent, setStart] = useState(new Date());
+    const [endEvent, setEnd] = useState(new Date());
     const [eventImg, setImage] = useState('');
     const [file, setFile] = useState(null);
-    const [pwd, setPwd] = useState("");
+    // const [pwd, setPwd] = useState("");
     const [uploadedImage, setUploadedImage] = useState('');
     const [modalOpen, setModalOpen] = useState(false);    
     const context = useContext(UserContext);
-    const {userId} = context;
+    // const {userId} = context;
     
     const onChangeTitle = (e) => {
         setTitle(e.target.value);
     }
-    const onClickOption = (e) => {
-        setCategory(e.target.value);
-    }
-    const onChangePwd = (e) => {
-        setPwd(e.target.value);
-    }
+    // const onClickOption = (e) => {
+    //     setCategory(e.target.value);
+    // }
+    // const onChangePwd = (e) => {
+    //     setPwd(e.target.value);
+    // }
     const eventStart = (e) => {
         setStart(e.target.value);
+        console.log("eventStart: " + e.target.value);
     }
     const eventEnd = (e) => {
         setEnd(e.target.value);
+        console.log("eventEnd: " + e.target.value);
     }
-    const eventDate = (start, end) => {
-
-    }
-
     const submit = async() => {
-        const rsp = await AxiosApi.newEvent(eventNum, eventTitle, eventText, eventImg, startEvent, endEvent);
+        const rsp = await AxiosApi.newEvent(eventTitle, eventText, eventImg, startEvent, endEvent);
         console.log("submit : " + rsp);
         nav(-1);
     }
@@ -207,12 +204,12 @@ const NewEvent = () => {
         <blockquote>
             <div className="topContainer">
                 <div className="topLeft">
-                    <div className="setting">
+                    {/* <div className="setting">
                         <label>카테고리</label>
                         <select value={eventNum} onChange={onClickOption}>
                         <option value={1}>이벤트</option>
                         </select>
-                    </div>
+                    </div> */}
                     <div className="setting">
                         <label htmlFor="">제목</label>
                         <input className="titleInput" type="text" onChange={onChangeTitle} />
@@ -229,11 +226,9 @@ const NewEvent = () => {
                     </div>
                     <div className="setting setDate">
                         <label htmlFor="">이벤트 날짜</label>
-                        <input className="eventDate startEvent" type="date" onChange={eventStart} placeholder="이벤트 시작일" />
+                        <input className="eventDate startEvent" type="date" onChange={eventStart} />
                         <p className="wave">~</p>
-                        <input className="eventDate endEvent" type="date" onChange={eventEnd} placeholder="이벤트 종료일" />
-                        {/* <button onClick={onClickOpen}>등록</button> */}
-                        {/* <EventModal open={modalOpen} type={true} confirm={eventDate} close={closeModal} header={"확인"}><EventDate /></EventModal> */}
+                        <input className="eventDate endEvent" type="date" onChange={eventEnd} />
                     </div>
                 </div>
             </div>
@@ -270,10 +265,10 @@ const NewEvent = () => {
                 />
             </Container>
         </div>
-        <div className="setting">
+        {/* <div className="setting">
             <label htmlFor="">비밀번호</label>
             <input type="password" onChange={onChangePwd} />
-        </div>
+        </div> */}
         </blockquote>
         <div className="submit">
             <button onClick={onClickSubmit}>등록</button>

@@ -7,6 +7,8 @@ import { useNavigate } from "react-router-dom";
 import { UserContext } from "../../context/UserInfo";
 
 const EventStyle = styled.div`
+    font-family: 'KorailRoundGothicBold';
+    background-color: #8e6240;
     box-sizing: border-box;
     margin: 0px;
     height: auto;
@@ -15,13 +17,16 @@ const EventStyle = styled.div`
     align-items: center;
 
     .eMain {
+        border-radius: 15px;
+        background-color: white;
         margin: 0, auto;
-        width: 60vw;
+        width: 65vw;
         max-width: 1024px;
         height: auto;
         text-align: center;
-        padding: 70px 0px 0px 0px;
-        margin-top: 130px;
+        padding: 60px 60px 0px 60px;
+        margin-top: 200px;
+        min-height: 1520px;
     }
     .eContents {
         width: 1fr;
@@ -31,6 +36,7 @@ const EventStyle = styled.div`
         text-align: right;
         display: flex;
         justify-content: right;
+        font-size: .8em;
     }
     .eContainer{
         display: flex;
