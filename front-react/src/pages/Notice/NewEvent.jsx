@@ -12,6 +12,7 @@ import firebase from 'firebase/compat/app';
 import 'firebase/compat/storage';
 
 
+
 export const Setting = styled.div`
     padding-top: 160px;
     width: 60vw;
@@ -80,7 +81,20 @@ export const Setting = styled.div`
     .imagePreview{
         width: 80px;
         margin-bottom: 15px;
-    } 
+    }
+    .topContainer{
+        display: flex;
+    }
+    .setDate {
+        display: flex;
+        align-items: center;
+    }
+    .wave {
+        margin: 0 10px 0 10px;
+    }
+    .eventDate{
+
+    }
 `;
 
 export const Container = styled.div`
@@ -96,19 +110,20 @@ export const Container = styled.div`
 
 
 const NewEvent = () => {
-    const [title, setTitle] = useState("");
-    const [pwd, setPwd] = useState("");
-    const [bnum, setCategory] = useState(4);
     const nav = useNavigate();
-    const [text, setBoard_content] = useState("");
-    const [modalOpen, setModalOpen] = useState(false);
+    const [eventNum, setCategory] = useState("");
+    const [eventTitle, setTitle] = useState("");
+    const [eventText, setBoard_content] = useState("");
+    const [startEvent, setStart] = useState("");
+    const [endEvent, setEnd] = useState("");
+    const [eventImg, setImage] = useState('');
+    const [file, setFile] = useState(null);
+    const [pwd, setPwd] = useState("");
+    const [uploadedImage, setUploadedImage] = useState('');
+    const [modalOpen, setModalOpen] = useState(false);    
     const context = useContext(UserContext);
     const {userId} = context;
-    const [file, setFile] = useState(null);
-    const [image, setImage] = useState('');
-    const [uploadedImage, setUploadedImage] = useState('');
-
-
+    
     const onChangeTitle = (e) => {
         setTitle(e.target.value);
     }
@@ -118,11 +133,18 @@ const NewEvent = () => {
     const onChangePwd = (e) => {
         setPwd(e.target.value);
     }
+    const eventStart = (e) => {
+        setStart(e.target.value);
+    }
+    const eventEnd = (e) => {
+        setEnd(e.target.value);
+    }
+    const eventDate = (start, end) => {
+
+    }
 
     const submit = async() => {
-        const rsp = await AxiosApi.newEvent(bnum, userId, title, text, pwd, image);
-        await AxiosApi.plusThreePoint(userId);
-        await AxiosApi.myGrade(userId);
+        const rsp = await AxiosApi.newEvent(eventNum, eventTitle, eventText, eventImg, startEvent, endEvent);
         console.log("submit : " + rsp);
         nav(-1);
     }
@@ -183,26 +205,38 @@ const NewEvent = () => {
             <hr />
         </div>
         <blockquote>
-        <div className="setting">
-            <label>카테고리</label>
-            <select value={bnum} onChange={onClickOption}>
-            <option value={1}>이벤트</option>
-            </select>
-        </div>
-        <div className="setting">
-            <label htmlFor="">제목</label>
-            <input className="titleInput" type="text" onChange={onChangeTitle} />
-        </div>
-        <div className="setting">
-            <label htmlFor="">대표이미지</label>
-            <input type="file" onChange={handleFileInputChange} />
-            <button className="submitBtn" onClick={handleUploadClick}>등록</button>
-            <button className="submitBtn" onClick={handleUploadDelete}>삭제</button>
-        </div>
-        <div className="setting">
-            <label htmlFor="">이미지 미리보기</label>
-            <img className = {image ? "imagePreview" : "noImage" } src={image} alt="image" style={{ backgroundSize: 'cover', backgroundRepeat: 'no-repeat'}} />
-        </div>
+            <div className="topContainer">
+                <div className="topLeft">
+                    <div className="setting">
+                        <label>카테고리</label>
+                        <select value={eventNum} onChange={onClickOption}>
+                        <option value={1}>이벤트</option>
+                        </select>
+                    </div>
+                    <div className="setting">
+                        <label htmlFor="">제목</label>
+                        <input className="titleInput" type="text" onChange={onChangeTitle} />
+                    </div>
+                    <div className="setting">
+                        <label htmlFor="">대표이미지</label>
+                        <input type="file" onChange={handleFileInputChange} />
+                        <button className="submitBtn" onClick={handleUploadClick}>등록</button>
+                        <button className="submitBtn" onClick={handleUploadDelete}>삭제</button>
+                    </div>
+                    <div className="setting">
+                        <label htmlFor="">이미지 미리보기</label>
+                        <img className = {eventImg ? "imagePreview" : "noImage" } src={eventImg} alt="image" style={{ backgroundSize: 'cover', backgroundRepeat: 'no-repeat'}} />
+                    </div>
+                    <div className="setting setDate">
+                        <label htmlFor="">이벤트 날짜</label>
+                        <input className="eventDate startEvent" type="date" onChange={eventStart} placeholder="이벤트 시작일" />
+                        <p className="wave">~</p>
+                        <input className="eventDate endEvent" type="date" onChange={eventEnd} placeholder="이벤트 종료일" />
+                        {/* <button onClick={onClickOpen}>등록</button> */}
+                        {/* <EventModal open={modalOpen} type={true} confirm={eventDate} close={closeModal} header={"확인"}><EventDate /></EventModal> */}
+                    </div>
+                </div>
+            </div>
         <div className="setting">
             <label htmlFor="">내용</label>
             <Container>
@@ -247,6 +281,9 @@ const NewEvent = () => {
             </div>
         <Modal open={modalOpen} type={true} confirm={submit} close={closeModal} header={"확인"}>등록 하시겠습니까?</Modal>
         </Setting>
+                {/* <div className="topRight">
+                    <EventDate />
+                </div> */}
         </>
     );
 };

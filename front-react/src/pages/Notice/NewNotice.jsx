@@ -229,6 +229,7 @@ const NewNotice = () => {
                     console.log({ event, editor, data });
                     setBoard_content(data);
                     }}
+
                     // onBlur={(event, editor) => {
                     //   console.log('Blur.', editor);
                     // }}
