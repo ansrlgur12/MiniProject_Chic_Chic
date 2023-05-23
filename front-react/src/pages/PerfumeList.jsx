@@ -47,7 +47,7 @@ const StyledLink = styled(Link)`
   }
 `;
 
-const PerfumeImage = styled.img`\
+const PerfumeImage = styled.img`
 margin: 15px;
 max-width: 85%;
   max-height: 90%;

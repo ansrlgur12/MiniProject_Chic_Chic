@@ -135,9 +135,11 @@ const NewEvent = () => {
     }
     const eventStart = (e) => {
         setStart(e.target.value);
+        console.log(startEvent);
     }
     const eventEnd = (e) => {
         setEnd(e.target.value);
+        console.log(endEvent);
     }
     const eventDate = (start, end) => {
 

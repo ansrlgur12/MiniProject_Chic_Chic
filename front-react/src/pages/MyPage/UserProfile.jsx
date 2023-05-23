@@ -23,7 +23,7 @@ export const UserProfileStyle = styled.div`
     background-color: #FFF7D4 ;
     box-sizing: border-box;
     margin: 0px;
-    height: 1300px;
+    height: 800px;
     display: flex;
     flex-direction: column;
     align-items: center;
