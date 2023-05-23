@@ -9,6 +9,8 @@ import { UserContext } from "../../context/UserInfo";
 
 
 const NoticeListStyle = styled.div`
+    font-family: 'KorailRoundGothicBold';
+    background-color: #8e6240;
     box-sizing: border-box;
     height: auto;
     margin: 0px;
@@ -17,10 +19,13 @@ const NoticeListStyle = styled.div`
     align-items: center;
 
     .main{
-        margin-top: 130px;
-        width: 60vw;
-        height: auto;
-        padding: 70px 0px 0px 0px;
+        border-radius: 15px;
+        background-color: white;
+        margin-top: 200px;
+        width: 65vw;
+        min-height: 1520px;
+        padding: 60px 60px 0px 60px;
+        flex-grow: 1;
     }
     .main .section{
         /* height: 15vh; */
@@ -31,7 +36,7 @@ const NoticeListStyle = styled.div`
         display: flex;
         flex-direction: row;
         justify-content: right;
-        margin: 20px 0px;
+        /* margin: 20px 0px; */
     }
     h2 {
         color: #804f23;;
