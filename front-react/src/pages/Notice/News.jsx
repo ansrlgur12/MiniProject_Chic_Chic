@@ -6,6 +6,8 @@ import { useNavigate, useParams } from "react-router-dom";
 import AxiosApi from "../../api/Axios";
 
 const NewsStyle = styled.div`
+    font-family: 'KorailRoundGothicBold';
+    background-color: #8e6240;
     box-sizing: border-box;
     padding-top: 130px;
     height: auto;
@@ -14,6 +16,12 @@ const NewsStyle = styled.div`
     
     .newsContainer{
         text-align: center;
+        border-radius: 15px;
+        background-color: white;
+        padding: 60px 60px 0px 60px;
+        margin-top: 70px;
+        width: 65vw;
+        margin-bottom: 80px;
     }
     .newsDesc{
         margin: 70px 0 20px 0;
@@ -63,7 +71,8 @@ const News = () => {
                         <h2>{newsText.title}</h2><br />
                         <div className="line" /><br /><br />
                         <div className="explain">
-                            {newsText.text}<br /><br />
+                            <div className="main" dangerouslySetInnerHTML={{ __html: newsText.text }} /><br /><br/>
+                            <br /><br />
                         </div>
                         <div className="eventList">
                             <button className="descBtn" onClick={()=>nav(-1)}>목록</button>

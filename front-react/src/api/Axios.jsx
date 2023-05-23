@@ -64,12 +64,11 @@ const AxiosApi = {
     },
 
     // 이벤트 등록
-    newEvent : async(eventNum, eventTitle, eventText, image, startEvent, endEvent) => {
+    newEvent : async(eventTitle, eventText, eventImg, startEvent, endEvent) => {
         const event = {
-            eventNum : eventNum.toString(),
             eventTitle : eventTitle,
             eventText : eventText,
-            image : image,
+            eventImg : eventImg,
             startEvent : startEvent,
             endEvent : endEvent
         };

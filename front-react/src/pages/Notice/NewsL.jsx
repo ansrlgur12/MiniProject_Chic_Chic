@@ -7,6 +7,8 @@ import styled from "styled-components";
 import { UserContext } from "../../context/UserInfo";
 
 const NewsLStyle = styled.div`
+    font-family: 'KorailRoundGothicBold';
+    background-color: #8e6240;
     box-sizing: border-box;
     height: auto;
     display: flex;
@@ -15,8 +17,13 @@ const NewsLStyle = styled.div`
     align-items: center;
 
     .main{
+        border-radius: 15px;
+        background-color: white;
         margin-top: 200px;
-        width: 60vw;
+        width: 65vw;
+        min-height: 1520px;
+        padding: 60px 60px 0px 60px;
+        flex-grow: 1;
     }
     .main .section{
         display: flex;

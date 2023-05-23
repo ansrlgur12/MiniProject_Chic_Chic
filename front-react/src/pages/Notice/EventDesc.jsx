@@ -7,6 +7,8 @@ import Footer from "../../Footer/Footer";
 
 
 const EventDescStyle = styled.div`
+    font-family: 'KorailRoundGothicBold';
+    background-color: #8e6240;
     box-sizing: border-box;
     padding-top: 130px;
     height: auto;
@@ -15,6 +17,12 @@ const EventDescStyle = styled.div`
     
     .descContainer{
         text-align: center;
+        border-radius: 15px;
+        background-color: white;
+        padding: 0px 60px 0px 60px;
+        margin-top: 70px;
+        width: 65vw;
+        margin-bottom: 80px;
     }
     .eventDesc{
         margin: 70px 0 20px 0;
@@ -26,12 +34,6 @@ const EventDescStyle = styled.div`
         border-bottom: 1px solid #afafaf;
         width: 60vw;
         margin: 10px 0 20px 0;
-    }
-    .descImg {
-        width: 50vw;
-        height: 300px;
-        border: 1px solid black;
-        text-align: center;
     }
     .explain {
         width: 50vw;
@@ -73,10 +75,10 @@ const EventDesc = () => {
                             <h2>{desc.eventTitle}</h2><br />
                             <div className="line" /><br />
                             <div className="descImg">
-                                {desc.eventImg}
+                            <div className={desc.eventImg === 'image' || desc.eventImg === null ? "noimage" : "imageContainer" }><img className="image" src={desc.eventImg} alt="article image" style={{ backgroundSize: 'cover', backgroundRepeat: 'no-repeat'}}/></div>
                             </div> <br />
                             <div className="explain">
-                                {desc.eventText}<br /><br/>
+                                <div className="main" dangerouslySetInnerHTML={{ __html: desc.eventText }} /><br /><br/>
                                 행사기간 : {desc.startEvent} ~ {desc.endEvent}
                             </div>
                             

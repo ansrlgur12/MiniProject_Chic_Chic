@@ -7,6 +7,8 @@ import Footer from "../../Footer/Footer";
 
 
 const NoticeStyle = styled.div`
+    font-family: 'KorailRoundGothicBold';
+    background-color: #8e6240;
     box-sizing: border-box;
     padding-top: 130px;
     height: auto;
@@ -15,6 +17,12 @@ const NoticeStyle = styled.div`
     
     .noticeCtn{
         text-align: center;
+        border-radius: 15px;
+        background-color: white;
+        padding: 60px 60px 0px 60px;
+        margin-top: 70px;
+        width: 65vw;
+        margin-bottom: 80px;
     }
     .noticeDesc{
         margin: 70px 0 20px 0;
@@ -66,7 +74,8 @@ const Notice = () => {
                             <h2>{noticeText.title}</h2><br />
                             <div className="line" /><br /><br />
                             <div className="explain">
-                                {noticeText.text}<br /><br/>
+                                <div className="main" dangerouslySetInnerHTML={{ __html: noticeText.text }} />
+                                <br /><br/>
                             </div>
                             
                             <div className="eventList">
