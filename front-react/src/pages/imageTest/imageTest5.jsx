@@ -55,12 +55,14 @@ const ImageTest5 = () =>{
     
   }, [selected]);
   
+ 
+ 
 
-  useEffect(() => {
+useEffect(() => {
     if (perfumes) {
-      nav('/TestResult', { state: { perfumes } });
+        nav('/TestResult', { state: { perfumes } });  
     }
-  }, [perfumes, nav]);
+}, [perfumes, nav]);
 
 
 
@@ -81,6 +83,7 @@ const ImageTest5 = () =>{
  </>
     )
 }
+
 
   return(
 <>
