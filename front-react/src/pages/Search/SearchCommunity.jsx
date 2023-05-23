@@ -6,6 +6,7 @@ import logoimage from "../../image/로고.jpg";
 import styled from "styled-components";
 
 const Style = styled.div`
+
     h2 {
     color: #804f23;;
     display: block;
@@ -22,6 +23,9 @@ const Style = styled.div`
 
   .yesResult{
     display: none;
+  }
+  .article{
+    height: auto;
   }
 `;
 
@@ -88,8 +92,8 @@ if (endPage - startPage < maxPageButtons - 1) {
                         <div className="text" dangerouslySetInnerHTML={{ __html: article.text }} >
                         </div>
                     </div>
-                    <div className="article-image">
-                        <img className="profileP1" src={article.img === 'image' ? logoimage : article.img} style={{ backgroundSize: 'cover', backgroundRepeat: 'no-repeat'}}></img>
+                    <div className={article.img === 'image' || article.img === null ? "no-image" : "article-image"}>
+                        <img className="profileP1" src={article.img} style={{ backgroundSize: 'cover', backgroundRepeat: 'no-repeat'}}></img>
                     </div>
                 </div>
             ))}

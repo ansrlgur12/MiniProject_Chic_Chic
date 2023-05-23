@@ -49,6 +49,7 @@ import NewNotice from './pages/Notice/NewNotice';
 import UpdateMember from './pages/UpdateMember';
 import NewEvent from './pages/Notice/NewEvent';
 
+
 const queryClient = new QueryClient();
 
 
@@ -104,6 +105,7 @@ function App() {
         <Route path='/NewNotice' element={<NewNotice />} />
         <Route path='/newEvent' element={<NewEvent />} />
         <Route path='/UpdateMember/:id' element={<UpdateMember />} />
+
       </Routes>
     </Router>
     

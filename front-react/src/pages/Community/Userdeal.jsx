@@ -41,6 +41,7 @@ const UserDeal = () => {
             </div>
             </div>
             </CommunityStyle>
+            <Footer />
         </>
     );
 }

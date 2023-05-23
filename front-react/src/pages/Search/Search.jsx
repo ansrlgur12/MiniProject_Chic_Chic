@@ -6,11 +6,21 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
 const SearchStyle = styled.div`
-    padding-top: 130px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    padding-top: 200px;
+    font-family: 'KorailRoundGothicBold';
+    background-color: #9c8d83 ;
+    height: 280vh;
 
+    .totalContainer{
+        background-color: white;
+        border-radius: 15px;
+        width: 65vw;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin: auto;
+        padding: 60px 20px;
+    }
     .searchContainer {
         display: flex;
         align-items: center;
@@ -19,7 +29,6 @@ const SearchStyle = styled.div`
 
     .searchBar{
         padding-left: 2em;
-        margin-top: 150px;
         width: 50vw;
         height: 3em;
         border-radius: 20px;
@@ -31,13 +40,13 @@ const SearchStyle = styled.div`
     .searchBtn {
         position: absolute;
         right: 30px;
-        top: 173px;
+        top: 25px;
         transform: translateY(-50%);
         cursor: pointer;
     }
 
     .searchResult{
-        width: 80vw;
+        width: 100%;
         margin-top: 60px;
         display: flex;
         flex-direction: column;
@@ -78,6 +87,10 @@ const SearchStyle = styled.div`
     .communityList{
         width: 60vw;
     }
+    .title{
+        margin: 10px 0px 20px 10px;
+        color: #5f330d;
+    }
 `;
 
 const Search = () => {
@@ -105,6 +118,12 @@ const Search = () => {
         setChange(1);
     }
 
+    const onKeyPress = (e) => {
+        if (e.key === 'Enter') {
+          onClickSearch();
+        }
+      };
+
     const searchPerfumes = async () => {
       try {
         const response = await axios.get(`http://localhost:8111/perfumes/searchByName?name=${searchValue}`);
@@ -119,8 +138,10 @@ const Search = () => {
         <>
         <Header />
         <SearchStyle>
+            <div className="totalContainer">
+            <div className="title"><h2>통합검색</h2></div>
             <div className="searchContainer">
-                <input type="text" className="searchBar" placeholder="검색어를 입력하세요" onChange={searchBarChange} />
+                <input type="text" className="searchBar" placeholder="검색어를 입력하세요" onChange={searchBarChange}  onKeyPress={onKeyPress} />
                 <div className="searchBtn" onClick={onClickSearch}><i className="fas fa-search"></i></div>
             </div>
             <div className={isSearched ? "searchResult" : "noSearched"}>
@@ -148,6 +169,7 @@ const Search = () => {
                     <hr />
                     <p>"event 검색 결과"</p>
                 </div>
+            </div>
             </div>
         </SearchStyle>
         </>

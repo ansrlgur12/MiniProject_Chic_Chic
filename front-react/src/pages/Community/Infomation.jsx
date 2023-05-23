@@ -41,6 +41,7 @@ const Information = () => {
             </div>
             </div>
             </CommunityStyle>
+            <Footer />
         </>
     );
 }
