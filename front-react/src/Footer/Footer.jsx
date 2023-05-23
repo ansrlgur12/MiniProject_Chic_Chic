@@ -1,20 +1,47 @@
-import React from "react";
-import styled, {css} from "styled-components";
-import { Link, useNavigate } from "react-router-dom";
+import styled from "styled-components"
 
-const FooterStyled = styled.div`
-    width: 100%;
-    height: 30vh;
-    background-color: #747474;
-    margin-top: auto;
-`;
+const Foot = styled.div`
+    text-align: center;
+    color: white;
+    background-color: #594545;
+    padding-top: 20px;
 
+p{
+    font-size: 15px;
+    margin: 0;
+}
+img{
+    margin: 5px;
+    width: 80px;
+    height: 60px;
+}
+h2{
+    font-size: 25px;
+    color :#ffe19a;
+}
+.logo {
+    height: 80px;
+    width: 85px;
+}
+.title{
+    font-family: 'KCCMurukmuruk';
+    font-size: 3em;
+}
+.object{
+    font-family: 'KorailRoundGothicBold';
+    font-size: 1.1em;
+}
+`
 const Footer = () => {
-
     return(
-        <FooterStyled>
-            <p>푸터 들어갈 자리 입니당</p>
-        </FooterStyled>
+        <Foot>
+            <h2 className="title">Chic chic</h2>
+            <p className="object">Community & Search : <span>문기혁</span></p>
+            <p className="object">Notice & MyPage : <span>정인식</span></p>
+            <p className="object">Perfume & Search : <span>정승현</span></p>
+            <p className="object">Perfume & Custom : <span>권영진</span></p>
+            <br/>
+        </Foot>
     );
 }
 

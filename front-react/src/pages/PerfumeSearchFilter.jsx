@@ -120,7 +120,6 @@ const PerfumeSearchFilter = () => {
             checked={brandIdentifier === "etc"}
             onChange={() => setBrandIdentifier("etc")}
           />
-          Etc
         </label>
       </div>
       <div className="filterItem">
